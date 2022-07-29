@@ -1,4 +1,5 @@
-bookdown::gitbook:
+bookdown::html_book:
+  theme: cosmo
   includes:
     in_header: html/in_header.html
     after_body: html/after_body.html
@@ -8,9 +9,9 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Fundamentos de Estadística con Remuestreo</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+        <li><a href="https://github.com/tereom/fundamentos-2022" target="blank">Publicado con bookdown</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
-    download: ["pdf"]
+    download: ["Rmd"]
     sharing:
       github: yes
       facebook: no
