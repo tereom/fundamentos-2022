@@ -32,10 +32,15 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
-      - name: Render book to all format
-        # Add any command line argument needed
-        run: |
-          quarto render --to html
+        - name: Cache bookdown results
+        uses: actions/cache@v1
+        with:
+          path: _bookdown_files
+          key: bookdown-${{ hashFiles('**/*Rmd') }}
+          restore-keys: bookdown-
+
+      - name: Build site
+        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
       - name: Deploy 🚀
         # only deploy when push to main
         if: github.event_name != 'pull_request'
