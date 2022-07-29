@@ -15,30 +15,6 @@ pre code {
   white-space: inherit;
 }
 
-/*---------------Hero Image------------------*/
-
-/* next 3 rules are for setting large image at top of each page and pushing down the book content to appear beneath the image */
-
-.hero-image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 390px;
-  /*background-image: url("images/books.jpg");*/
-  background-color: #3fb5bd;
-}
-
-.hero-image {
-  width: 100%;
-  height: 390px;
-  object-fit: cover;
-}
-
-.page-inner {
-  padding-top: 440px !important;
-}
-
 
 /* ------------Links------------------ */
 
@@ -70,10 +46,10 @@ h1, h2, h3, h4 {
 
 .title {
   font-family: 'Lora';
-  font-size: 4em !important;
+  font-size: 3.5em !important;
   color: #3fb5bd;
-  margin-top: 0.275em !important;
-  margin-bottom: 0.35em !important;
+  margin-top: 0.2em !important;
+  margin-bottom: 0.2em !important;
 }
 
 .subtitle {
@@ -102,7 +78,7 @@ h1, h2, h3, h4 {
   color: #3fb5bd;
   float: left;
   font-family: 'Abril Fatface', serif;
-  font-size: 7em;
+  font-size: 5em;
   line-height: 65px;
   padding-top: 4px;
   padding-right: 8px;
@@ -258,25 +234,6 @@ div.rstudio-tip, div.tip, div.gotcha, div.design, div.hat{
 }
 
 
-div.rstudio-tip {
-  background-image: url("../images/divs/rstudio.png");
-}
-
-div.tip {
-  background-image: url("../images/divs/lightbulb.png");
-}
-
-div.gotcha {
-  background-image: url("../images/divs/gotcha_2.png");
-}
-
-div.design {
-  background-image: url("../images/divs/design.png");
-}
-
-div.hat {
-  background-image: url("../images/divs/hat.png");
-}
 
 /* for fancy bookdown cookbook */
 
@@ -292,23 +249,6 @@ div.puzzle, div.fyi, div.demo, div.note {
   background-color: #bed3ec;
   border: solid 5px #dfedff;
 }
-
-div.puzzle {
-  background-image: url("../images/illos/Your-turn.png");
-}
-
-div.fyi {
-  background-image: url("../images/illos/fyi.png");
-}
-
-div.demo {
-  background-image: url("../images/illos/Live-code.png");
-}
-
-div.note {
-  background-image: url("../images/illos/lightbulb2.png");
-}
-
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed
    to override the styles produced by gitbook, which are ridiculously
@@ -432,4 +372,94 @@ a.anchor:hover {
   font-family: "Lora", serif;
   font-size: .85em;
   color: #2ea8b3;
+}
+
+
+/* My styles */
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+.comentario {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #F0E7E7;
+  position:relative;
+  background-position: 6px 15px
+}
+
+.comentario:before {
+    content: "\f075";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:0px;
+    font-size: 30px;
+ }
+
+.mathblock {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #E7E7F0 5px center/2.5em no-repeat;
+}
+
+.mathblock {
+  background-image: url("../images/eye.png");
+  background-position: 10px 15px;
+}
+
+
+.resumen {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #ffe4e1;
+  position:relative;
+}
+
+.ejercicio {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #FFFFFF 5px center/3.5em no-repeat;
+  background-image: url("../images/manicule.png");
+  background-position: 6px 15px;
+}
+
+.level1 .header-section-number {
+  display: inline-block;
+  border-bottom: 3px solid;
+}
+
+.level1 h1 {
+  border-bottom: 1px solid;
+}
+
+.level2 h2 {
+  border-bottom: 1px solid;
+}
+
+body {
+  text-align: justify;
+}
+
+.cols {
+  display: flex;
+}
+
+.caja {
+    background-color:#fff6f5;
+    padding:5px;
+    margin: 20px 0;
+    border-radius: 3px;
 }
