@@ -1,23 +1,24 @@
 ---
-title: "EST-46111: Fundamentos de Estadística con Remuestreo"
+title: "Fundamentos de Estadística con Remuestreo"
 author: "Teresa Ortiz, Alfredo Garbuno, Felipe González"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
 documentclass: book
 bibliography: [bibs/book.bib, bibs/packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: tereom/fundamentos-2022
 description: "Curso de Fundamentos de Estadística con Remuestreo, maestría en Ciencia de Datos, ITAM, Otoño 2022."
+url: 'https://tereom.github.io/fundamentos-2022'
 ---
 
 # Información del curso {.unnumbered}
 
-Notas del curso *Fundamentos de Estadística con Remuestreo* del programa de maestría en Ciencia de Datos del ITAM. En caso de encontrar errores o tener sugerencias del material se agradece la propuesta de correcciones mediante [pull requests](https://github.com/tereom/fundamentos-2021).
+Notas del curso *Fundamentos de Estadística con Remuestreo* del programa de 
+maestría en Ciencia de Datos del ITAM. En caso de encontrar errores o tener sugerencias del material se agradece la propuesta de correcciones mediante [pull requests](https://github.com/tereom/fundamentos-2021).
 
 #### Ligas {.unnumbered}
 
--   Notas: </>\
+-   Notas: <https://tereom.github.io/fundamentos-2022/>\
 -   Correos: [teresa.ortiz.mancera\@gmail.com](mailto:teresa.ortiz.mancera@gmail.com){.email}, [alfredo.garbuno\@itam.mx](mailto:alfredo.garbuno@itam.mx){.email}.\
 -   GitHub: <https://github.com/tereom/fundamentos-2022>
 
