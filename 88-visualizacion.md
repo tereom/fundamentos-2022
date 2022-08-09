@@ -1,11 +1,11 @@
-# Apendice: Principios de visualizacion {-}
+# Apéndice: Principios de visualizacion {-}
 
 > "The simple graph has brought more information to the data analyst's
 > mind than any other device."
 >
 > --- John Tukey
 
-## El cuarteto de Ascombe {-}
+## El cuarteto de Anscombe {-}
 
 En 1971 un estadístico llamado Frank Anscombe (fundador del departamento de
 Estadística de la Universidad de Yale) publicó cuatro conjuntos de dato. Cada
@@ -110,7 +110,7 @@ adulto, lo graficado para el niño).
 Existe teoría fundamentada acerca de la visualización. Después del trabajo
 pionero de Tukey, los principios e indicadores de Tufte se basan en un estudio
 de la historia de la graficación y ejercicios de muestreo de la práctica gráfica
-a lo largo de varias disciplinas (¿cuáles son las mejores gráficas? ¿por qué?
+a lo largo de varias disciplinas (¿cuáles son las mejores gráficas? ¿por qué?)
 El trabajo de Cleveland es orientado a la práctica del análisis de datos
 (¿cuáles gráficas nos han ayudado a mostrar claramente los resultados del
 análisis?), por una parte, y a algunos estudios de percepción visual.
@@ -180,9 +180,11 @@ otras <span class="citation">[@cleveland94]</span>.</p>
 ![](images/pies.jpg)
 </div>
 
+
 El **factor de engaño** es el cociente entre el efecto mostrado en una gráfica y
 el efecto correspondiente en los datos. Idealmente, el factor de engaño debe ser
 1 (ninguna distorsión).  
+
 El **chartjunk** son aquellos elementos gráficos que no corresponden a variación
 de datos, o que entorpecen la interpretación de una gráfica.  
 Estos son los indicadores de calidad más fáciles de entender y aplicar, y
@@ -253,8 +255,7 @@ La razón de este encogimiento es una que tiene qué ver con las oportunidades p
 Esta es una gráfica de puntos. Es útil como sustituto de una gráfica de barras, 
 y es superior en el sentido de que una mayor proporción de la tinta que se usa 
 es tinta de datos. Otra vez, mayor proporción de tinta de datos representa más 
-oportunidades que se pueden capitalizar, como muestra la gráfica de punto y 
-líneas que mostramos al principio (rendimiento en campos de cebada).
+oportunidades que se pueden capitalizar.
 
 <div style="clear:both"></div>
 
@@ -265,28 +266,11 @@ Los pequeños múltiplos presentan oportunidades para mostrar más acerca
 de nuestro problema de interés. Consideramos por ejemplo la relación
 de radiación solar y niveles de ozono:
 
-
-```r
-ggplot(airquality, aes(x=Solar.R, y=Ozone)) + geom_point() +
-    geom_smooth(method = "loess", span = 1)
-```
-
 <img src="88-visualizacion_files/figure-html/unnamed-chunk-10-1.png" width="45%" style="display: block; margin: auto;" />
 
 En el ejemplo anterior incluyendo
 una variable adicional (velocidad del viento) podemos entender más
 acerca de la relación de radiación solar y niveles de ozono:
-
-
-```r
-airquality$Wind_cat <- cut(airquality$Wind,
-            breaks = quantile(airquality$Wind, c(0, 1/3, 2/3, 1)),
-            include.lowest = TRUE)
-ggplot(airquality, aes(x=Solar.R, y=Ozone)) + geom_point() +
-    facet_wrap(~Wind_cat) +
-    geom_smooth(method = "loess", span = 0.8, se = FALSE,
-                method.args = list(degree = 1, family="symmetric"))
-```
 
 <img src="88-visualizacion_files/figure-html/unnamed-chunk-11-1.png" width="95%" style="display: block; margin: auto;" />
 
@@ -362,7 +346,7 @@ la menor cantidad de tinta, y en el espacio más pequeño. ... Es casi siempre
 multivariado. ... Una excelente gráfica debe decir la verdad acerca de los
 datos. (Tufte, 1983)
 
-La famosa visualización de Charles Joseph Minard de la marcha de Napoleón sobre
+La [famosa visualización](https://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png) de Charles Joseph Minard de la marcha de Napoleón sobre
 Moscú, ilustra los principios de una buena gráfica. Tufte señala que esta imagen
 "bien podría ser el mejor gráfico estadístico jamás dibujado", y sostiene que
 "cuenta una historia rica y coherente con sus datos multivariados, mucho más
