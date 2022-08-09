@@ -4,17 +4,13 @@ editor_options:
     wrap: 72
 ---
 
-# Analisis exploratorio
+# Análisis exploratorio
 
 > "Exploratory data analysis can never be the whole story, but nothing
 > else can serve as the foundation stone --as the first step."
 >
 > --- John Tukey
 
-> "The simple graph has brought more information to the data analyst's
-> mind than any other device."
->
-> --- John Tukey
 
 
 
@@ -41,14 +37,19 @@ En análisis de datos existen dos distintos tipos de trabajo:
     anterior? ¿qué tan bien soportadas están las respuestas y
     conclusiones por nuestro conjunto de datos?
 
+## Preguntas y datos {-}
+
+Cuando observamos un conjunto de datos, independientemente de su tamaño, el paso inicial más importante es entender bajo qué proceso se generan los datos.
+
+A grandes rasgos, cuanto más sepamos de este proceso, mejor podemos contestar preguntas de interés.
+En muchos casos, tendremos que hacer algunos supuestos de cómo se generan estos datos para dar respuestas (condicionales a esos supuestos).
+
 ## Algunos conceptos básicos {.unnumbered}
 
-Empezamos explicando algunas ideas que no serán útiles más adelante. Por
-ejemplo, los siguientes datos fueron registrados en un restaurante
-durante cuatro días consecutivos:
+Empezamos explicando algunas ideas que no serán útiles más adelante. El primer concepto se refiere a entender cómo se distribuyen los datos a los largo de su escala de medición. Comenzamos con un ejemplo: los siguientes datos fueron registrados en un restaurante durante cuatro días consecutivos.
 
 
-```r
+```{.r .fold-hide}
 library(tidyverse)
 library(patchwork)
 source("R/funciones_auxiliares.R")
@@ -76,15 +77,63 @@ sample_n(propinas, 10) |> formatear_tabla()
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 29.80 </td>
-   <td style="text-align:right;"> 4.20 </td>
+   <td style="text-align:right;"> 10.33 </td>
+   <td style="text-align:right;"> 2.00 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Jue </td>
    <td style="text-align:left;"> Comida </td>
-   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 18.04 </td>
+   <td style="text-align:right;"> 31.85 </td>
+   <td style="text-align:right;"> 3.18 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 18.28 </td>
+   <td style="text-align:right;"> 4.00 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 12.60 </td>
+   <td style="text-align:right;"> 1.00 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13.16 </td>
+   <td style="text-align:right;"> 2.75 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 12.02 </td>
+   <td style="text-align:right;"> 1.97 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8.58 </td>
+   <td style="text-align:right;"> 1.92 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Vie </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 18.29 </td>
    <td style="text-align:right;"> 3.00 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Dom </td>
@@ -92,67 +141,19 @@ sample_n(propinas, 10) |> formatear_tabla()
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 17.82 </td>
-   <td style="text-align:right;"> 1.75 </td>
+   <td style="text-align:right;"> 48.33 </td>
+   <td style="text-align:right;"> 9.00 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Sab </td>
    <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3.07 </td>
-   <td style="text-align:right;"> 1.00 </td>
-   <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Sab </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 15.69 </td>
-   <td style="text-align:right;"> 1.50 </td>
-   <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Dom </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 25.21 </td>
-   <td style="text-align:right;"> 4.29 </td>
-   <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Sab </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 20.29 </td>
-   <td style="text-align:right;"> 2.75 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Sab </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 24.08 </td>
-   <td style="text-align:right;"> 2.92 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Jue </td>
-   <td style="text-align:left;"> Comida </td>
    <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 11.87 </td>
-   <td style="text-align:right;"> 1.63 </td>
+   <td style="text-align:right;"> 9.68 </td>
+   <td style="text-align:right;"> 1.32 </td>
    <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Jue </td>
-   <td style="text-align:left;"> Comida </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 7.56 </td>
-   <td style="text-align:right;"> 1.44 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Jue </td>
-   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
 </tbody>
@@ -290,6 +291,14 @@ que denotamos por <span class="math inline">\(q(f)\)</span> es valor a
 lo largo de la escala de medición de los datos tal que aproximadamente
 una fracción <span class="math inline">\(f\)</span> de los datos son
 menores o iguales a <span class="math inline">\(q(f)\)</span>.</p>
+<ul>
+<li>Al cuantil <span class="math inline">\(f=0.5\)</span> le llamamos la
+mediana.<br />
+</li>
+<li>A los cuantiles <span class="math inline">\(f=0.25\)</span> y <span
+class="math inline">\(f=0.75\)</span> les llamamos cuartiles inferior y
+superior.</li>
+</ul>
 </div>
 
 En nuestro ejemplo:
@@ -345,17 +354,19 @@ ejemplo).
 
 ------------------------------------------------------------------------
 
-Asociada a la función de cuantiles también tenemos la **distribución
+Asociada a la función de cuantiles $q$ tenemos la **distribución
 acumulada empírica de los datos**, que es aproximadamente inversa de la
-función de $q$ de cuantiles, y se define como:
+función de cuantiles, y se define como:
 
-$$\hat{F}(x) = i/N$$ si $x_{(i)} \leq x < x_{(i+1)}$. Nótese que
+$$\hat{F}(x) = i/N$$ si $x_{(i)} \leq x < x_{(i+1)}$.
+
+Nótese que
 $\hat{F}(q(f_i)) = i/N = f_i$ (demuéstralo).
 
 
 ```r
 acum_cuenta <- ecdf(cuenta$cuenta_total)
-cuenta <- cuenta |> 
+cuenta <- cuenta |>
   mutate(dea_cuenta_total = acum_cuenta(cuenta_total))
 g_acum <- ggplot(cuenta, aes(x = cuenta_total, y = dea_cuenta_total)) + geom_point() +
   labs(subtitle = "Distribución acum empírica de cuenta total") + xlab("")
@@ -363,6 +374,14 @@ g_cuantiles + g_acum
 ```
 
 <img src="01-exploratorio_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+
+La función de distribución acumulada empírica es otra forma de graficar la dispersión de los datos. En su gráfica vemos que proporción de los datos que son iguales o están por debajo de cada valor en el eje horizontal.
+
+Nota:
+
+* En análisis de datos, es más frecuente utilizar la función de cuantiles pues existen versiones más generales que son útiles, por ejemplo, para evaluar ajuste de modelos probabilísticos
+
+* En la teoría, generalmente es más común utilizar la fda empírica, que tiene una única definición que veremos coincide con definiciones teóricas.
 
 <div class="ejercicio">
 <p>Para una medición de interés <span class="math inline">\(x\)</span>
@@ -392,7 +411,7 @@ esta gráfica se compara con distintos histogramas?</p>
 
 
 ```r
-g_1 <- ggplot(propinas, aes(sample = propina)) + 
+g_1 <- ggplot(propinas, aes(sample = propina)) +
   geom_qq(distribution = stats::qunif) + xlab("f") + ylab("propina")
 g_1
 ```
@@ -527,12 +546,13 @@ estimación.
 Por otro lado, ventajas de estas medidas de centralidad y dispersión
 son:
 
--   La media y desviación estándar son computacionalmente convenientes.
--   Para el trabajo de modelado estas medidas de resumen tienen ventajas
-    computacionales y teóricas
+-   La media y desviación estándar son computacionalmente convenientes.Por lo tanto regresaremos a estas medidas una vez que estudiemos modelos de probabilidad básicos.
+
 -   En muchas ocasiones conviene usar estas medidas pues permite hacer
     comparaciones históricas o tradicionales ---pues análisis anteriores
     pudieran estar basados en éstas.
+    
+
 
 <div class="ejercicio">
 <ol style="list-style-type: decimal">
@@ -666,9 +686,9 @@ resumen <- casas |>
   mutate(mediana_zona = mediana_zona - mediana) |>
   select(nombre_zona, mediana_zona, residual) |>
   pivot_longer(mediana_zona:residual, names_to = "tipo", values_to = "valor")
-ggplot(resumen, aes(sample = valor)) + 
+ggplot(resumen, aes(sample = valor)) +
   geom_qq(distribution = stats::qunif) +
-  facet_wrap(~ tipo) + 
+  facet_wrap(~ tipo) +
   ylab("Precio por m2") + xlab("f") +
   labs(subtitle = "Precio por m2 por zona",
        caption = paste0("Mediana total de ", round(mediana)))
@@ -987,11 +1007,11 @@ bolsita o suelto):
 
 
 ```r
-precio <- te |> 
+precio <- te |>
   count(precio) |>
   mutate(prop = round(100 * n / sum(n))) |>
   select(-n)
-tipo <- te |> 
+tipo <- te |>
   count(presentacion) |>
   mutate(pct = round(100 * n / sum(n)))
 tipo |> formatear_tabla()
@@ -1160,7 +1180,7 @@ marcar <- marcar_tabla_fun(25, "red", "black")
 tab_out <- tabla_perfil |>
   arrange(desc(bolsas)) |>
   select(-pct, everything()) |>
-  mutate(across(where(is.numeric), round, 0)) |> 
+  mutate(across(where(is.numeric), round, 0)) |>
   mutate_if(if_profile, marcar) |>
   knitr::kable(format_table_salida(), escape = FALSE, digits = 0, booktabs = T) |>
   kableExtra::kable_styling(latex_options = c("striped", "scale_down"),
@@ -1305,8 +1325,8 @@ load(here::here("data", "ventas_sorteo.Rdata"))
 ggplot(ventas.sorteo, aes(x = premio, y = ventas.tot.1)) +
   geom_point() +
   geom_smooth(method = "loess", alpha = 0.5, degree = 1, se = FALSE) +
-  scale_x_log10(breaks = c(20000, 40000, 80000)) + 
-  scale_y_log10(breaks = c(10000, 15000, 22000, 33000)) 
+  scale_x_log10(breaks = c(20000, 40000, 80000)) +
+  scale_y_log10(breaks = c(10000, 15000, 22000, 33000))
 ```
 
 <img src="01-exploratorio_files/figure-html/unnamed-chunk-43-1.png" width="345.6" style="display: block; margin: auto;" />
@@ -1338,8 +1358,8 @@ con otras familias de funciones (por ejemplo cuadráticas).
 ggplot(ventas.sorteo, aes(x = premio, y = ventas.tot.1)) +
   geom_point() +
   geom_smooth(method = "lm", alpha = 0.5, se = FALSE) +
-  scale_x_log10(breaks = c(20000, 40000, 80000)) + 
-  scale_y_log10(breaks = c(10000, 15000, 22000, 33000)) 
+  scale_x_log10(breaks = c(20000, 40000, 80000)) +
+  scale_y_log10(breaks = c(10000, 15000, 22000, 33000))
 ```
 
 <img src="01-exploratorio_files/figure-html/unnamed-chunk-44-1.png" width="345.6" style="display: block; margin: auto;" />
@@ -1399,7 +1419,7 @@ x) para la observación $(x_n, y_n)$.
 
 Para poder calcular $w_n(x)$ debemos comenzar calculando
 $q=\lfloor{N\alpha}\rfloor$ que suponemos mayor que uno. Ahora definimos
-la función *tricubo*: \begin{align}  
+la función *tricubo*: \begin{align}
 T(u)=\begin{cases}
 (1-|u|^3)^3, & \text{para $|u| < 1$}.\\
 0, & \text{en otro caso}.
@@ -1501,7 +1521,7 @@ natalidad <- read_rds("./data/nacimientos/natalidad.rds") |>
   mutate(dia_semana = weekdays(fecha)) |>
   mutate(dia_año = yday(fecha)) |>
   mutate(año = year(fecha)) |>
-  mutate(mes = month(fecha)) |> 
+  mutate(mes = month(fecha)) |>
   ungroup() |>
   mutate(dia_semana = recode(dia_semana, Monday = "Lunes", Tuesday = "Martes", Wednesday = "Miércoles",
                              Thursday = "Jueves", Friday = "Viernes", Saturday = "Sábado", Sunday = "Domingo")) |>
@@ -1604,9 +1624,9 @@ datos_dia <- datos_dia |>
   mutate(ajuste_mod =
            map(data, ~ loess(res_2 ~ as.numeric(fecha), data = .x, span = 0.1, degree = 1))) |>
   mutate(ajuste_3 =  map(ajuste_mod, fitted)) |>
-  select(-ajuste_mod) |> 
+  select(-ajuste_mod) |>
   unnest(cols = c(data, ajuste_3)) |>
-  mutate(res_3 = res_2 - ajuste_3) |> 
+  mutate(res_3 = res_2 - ajuste_3) |>
   ungroup()
 ```
 
@@ -1728,12 +1748,6 @@ identificar ahora los residuales más grandes: se deben, por ejemplo, a
 días feriados, con consecuencias adicionales que tienen en días ajuntos
 (excesos de nacimientos):
 
-
-```
-## `summarise()` has grouped output by 'dia_año_366', 'antes_2006'. You can
-## override using the `.groups` argument.
-```
-
 <img src="01-exploratorio_files/figure-html/unnamed-chunk-68-1.png" width="90%" style="display: block; margin: auto;" />
 
 ### Semana santa {.unnumbered}
@@ -1743,11 +1757,6 @@ datos por días antes de Domingo de Pascua, obtenemos un patrón de caída
 fuerte de nacimientos el Viernes de Semana Santa, y la característica
 forma de "valle con hombros" en días anteriores y posteriores estos
 Viernes. ¿Por qué ocurre este patrón?
-
-
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
 
 <img src="01-exploratorio_files/figure-html/unnamed-chunk-69-1.png" width="90%" style="display: block; margin: auto;" />
 

@@ -13,14 +13,15 @@ url: 'https://tereom.github.io/fundamentos-2022'
 
 # Información del curso {.unnumbered}
 
-Notas del curso *Fundamentos de Estadística con Remuestreo* del programa de 
-maestría en Ciencia de Datos del ITAM. En caso de encontrar errores o tener sugerencias del material se agradece la propuesta de correcciones mediante [pull requests](https://github.com/tereom/fundamentos-2021).
+Notas del curso *Fundamentos de Estadística con Remuestreo*, este curso busca explicar los principios básicos de la estadística y su papel en el análisis de datos. Nuestro punto de vista es uno de fundamentos, con menos énfasis en recetas o técnicas particulares.
 
 #### Ligas {.unnumbered}
 
--   Notas: <https://tereom.github.io/fundamentos-2022/>\
--   Correos: [teresa.ortiz.mancera\@gmail.com](mailto:teresa.ortiz.mancera@gmail.com){.email}, [alfredo.garbuno\@itam.mx](mailto:alfredo.garbuno@itam.mx){.email}.\
--   GitHub: <https://github.com/tereom/fundamentos-2022>
+- Notas: <https://tereom.github.io/fundamentos-2022/>\
+- Zoom clase (martes 4:00-7:00 pm): <https://itam.zoom.us/j/98626655757>\
+- Zoom sesiones de dudas (viernes 5:00-5:45 pm): <https://itam.zoom.us/j/97547475945>\
+- GitHub: <https://github.com/tereom/fundamentos-2022>\
+- Correo: [teresa.ortiz.mancera\@gmail.com](mailto:teresa.ortiz.mancera@gmail.com){.email}\
 
 </br>
 
