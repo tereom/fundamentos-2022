@@ -4,7 +4,7 @@ editor_options:
     wrap: 72
 ---
 
-# Analisis exploratorio
+# Análisis exploratorio
 
 > "Exploratory data analysis can never be the whole story, but nothing
 > else can serve as the foundation stone --as the first step."
@@ -46,13 +46,18 @@ En análisis de datos existen dos distintos tipos de trabajo:
     anterior? ¿qué tan bien soportadas están las respuestas y
     conclusiones por nuestro conjunto de datos?
 
+## Preguntas y datos {-}
+
+Cuando observamos un conjunto de datos, independientemente de su tamaño, el paso inicial más importante es entender bajo qué proceso se generan los datos.
+
+A grandes rasgos, cuanto más sepamos de este proceso, mejor podemos contestar preguntas de interés.
+En muchos casos, tendremos que hacer algunos supuestos de cómo se generan estos datos para dar respuestas (condicionales a esos supuestos).
+
 ## Algunos conceptos básicos {.unnumbered}
 
-Empezamos explicando algunas ideas que no serán útiles más adelante. Por
-ejemplo, los siguientes datos fueron registrados en un restaurante
-durante cuatro días consecutivos:
+Empezamos explicando algunas ideas que no serán útiles más adelante. El primer concepto se refiere a entender cómo se distribuyen los datos a los largo de su escala de medición. Comenzamos con un ejemplo: los siguientes datos fueron registrados en un restaurante durante cuatro días consecutivos.
 
-```{r, message = FALSE, warning=FALSE}
+```{r class.source = 'fold-hide', message = FALSE, warning=FALSE}
 library(tidyverse)
 library(patchwork)
 source("R/funciones_auxiliares.R")
@@ -102,7 +107,7 @@ bind_rows(head(cuenta), tail(cuenta)) |> formatear_tabla()
 También podemos graficar los datos en orden, interpolando valores
 consecutivos.
 
-```{r, fig.width = 7, fig.height = 4, echo = FALSE}
+```{r, fig.width = 7, fig.height = 4, echo = FALSE, message=FALSE}
 g_orden <- ggplot(cuenta, aes(y = cuenta_total, x = orden_cuenta)) +
   geom_point(colour = "red", alpha = 0.5) +
   labs(subtitle = "Cuenta total")
@@ -127,8 +132,11 @@ los datos observados:
 
 ```{block, type='mathblock'}
 El **cuantil** $f$, que denotamos por $q(f)$ es valor a lo largo
-de la escala de medición de los datos tal que aproximadamente una fracción $f$ de los datos 
+de la escala de medición de los datos tal que aproximadamente una fracción $f$ de los datos
 son menores o iguales a $q(f)$.
+
+* Al cuantil $f=0.5$  le llamamos la mediana.  
+* A los cuantiles $f=0.25$ y $f=0.75$ les llamamos cuartiles inferior y superior.
 ```
 
 En nuestro ejemplo:
@@ -184,21 +192,31 @@ ejemplo).
 
 ------------------------------------------------------------------------
 
-Asociada a la función de cuantiles también tenemos la **distribución
+Asociada a la función de cuantiles $q$ tenemos la **distribución
 acumulada empírica de los datos**, que es aproximadamente inversa de la
-función de $q$ de cuantiles, y se define como:
+función de cuantiles, y se define como:
 
-$$\hat{F}(x) = i/N$$ si $x_{(i)} \leq x < x_{(i+1)}$. Nótese que
+$$\hat{F}(x) = i/N$$ si $x_{(i)} \leq x < x_{(i+1)}$.
+
+Nótese que
 $\hat{F}(q(f_i)) = i/N = f_i$ (demuéstralo).
 
 ```{r, fig.width = 7, fig.height=4}
 acum_cuenta <- ecdf(cuenta$cuenta_total)
-cuenta <- cuenta |> 
+cuenta <- cuenta |>
   mutate(dea_cuenta_total = acum_cuenta(cuenta_total))
 g_acum <- ggplot(cuenta, aes(x = cuenta_total, y = dea_cuenta_total)) + geom_point() +
   labs(subtitle = "Distribución acum empírica de cuenta total") + xlab("")
 g_cuantiles + g_acum
 ```
+
+La función de distribución acumulada empírica es otra forma de graficar la dispersión de los datos. En su gráfica vemos que proporción de los datos que son iguales o están por debajo de cada valor en el eje horizontal.
+
+Nota:
+
+* En análisis de datos, es más frecuente utilizar la función de cuantiles pues existen versiones más generales que son útiles, por ejemplo, para evaluar ajuste de modelos probabilísticos
+
+* En la teoría, generalmente es más común utilizar la fda empírica, que tiene una única definición que veremos coincide con definiciones teóricas.
 
 ```{block, type='ejercicio'}
 Para una medición de interés $x$ con posibles valores en el intervalo $[a, b]$.
@@ -212,7 +230,7 @@ dividimos el rango de la variable en cubetas o intervalos (en este caso
 de igual longitud), y graficamos por medio de barras cuántos datos caen
 en cada cubeta:
 
-```{r, fig.width = 10, fig.height = 4, echo = FALSE}
+```{r, fig.width = 10, fig.height = 4, echo = FALSE, message=FALSE}
 binwidth_min <- 1
 g_1 <- ggplot(propinas, aes(x = cuenta_total)) + geom_histogram(binwidth = binwidth_min)
 g_2 <- ggplot(propinas, aes(x = cuenta_total)) + geom_histogram(binwidth = binwidth_min * 2)
@@ -229,7 +247,7 @@ compara con distintos histogramas?
 ```
 
 ```{r, fig.width = 4, fig.height = 3, cache = TRUE}
-g_1 <- ggplot(propinas, aes(sample = propina)) + 
+g_1 <- ggplot(propinas, aes(sample = propina)) +
   geom_qq(distribution = stats::qunif) + xlab("f") + ylab("propina")
 g_1
 ```
@@ -338,12 +356,13 @@ estimación.
 Por otro lado, ventajas de estas medidas de centralidad y dispersión
 son:
 
--   La media y desviación estándar son computacionalmente convenientes.
--   Para el trabajo de modelado estas medidas de resumen tienen ventajas
-    computacionales y teóricas
+-   La media y desviación estándar son computacionalmente convenientes.Por lo tanto regresaremos a estas medidas una vez que estudiemos modelos de probabilidad básicos.
+
 -   En muchas ocasiones conviene usar estas medidas pues permite hacer
     comparaciones históricas o tradicionales ---pues análisis anteriores
     pudieran estar basados en éstas.
+    
+
 
 ```{block , type='ejercicio'}
 1. Considera el caso de tener $N$ observaciones y asume que ya tienes calculado el
@@ -462,9 +481,9 @@ resumen <- casas |>
   mutate(mediana_zona = mediana_zona - mediana) |>
   select(nombre_zona, mediana_zona, residual) |>
   pivot_longer(mediana_zona:residual, names_to = "tipo", values_to = "valor")
-ggplot(resumen, aes(sample = valor)) + 
+ggplot(resumen, aes(sample = valor)) +
   geom_qq(distribution = stats::qunif) +
-  facet_wrap(~ tipo) + 
+  facet_wrap(~ tipo) +
   ylab("Precio por m2") + xlab("f") +
   labs(subtitle = "Precio por m2 por zona",
        caption = paste0("Mediana total de ", round(mediana)))
@@ -746,11 +765,11 @@ Empezamos por ver las proporciones que compran té según su empaque (en
 bolsita o suelto):
 
 ```{r}
-precio <- te |> 
+precio <- te |>
   count(precio) |>
   mutate(prop = round(100 * n / sum(n))) |>
   select(-n)
-tipo <- te |> 
+tipo <- te |>
   count(presentacion) |>
   mutate(pct = round(100 * n / sum(n)))
 tipo |> formatear_tabla()
@@ -813,7 +832,7 @@ marcar <- marcar_tabla_fun(25, "red", "black")
 tab_out <- tabla_perfil |>
   arrange(desc(bolsas)) |>
   select(-pct, everything()) |>
-  mutate(across(where(is.numeric), round, 0)) |> 
+  mutate(across(where(is.numeric), round, 0)) |>
   mutate_if(if_profile, marcar) |>
   knitr::kable(format_table_salida(), escape = FALSE, digits = 0, booktabs = T) |>
   kableExtra::kable_styling(latex_options = c("striped", "scale_down"),
@@ -898,8 +917,8 @@ load(here::here("data", "ventas_sorteo.Rdata"))
 ggplot(ventas.sorteo, aes(x = premio, y = ventas.tot.1)) +
   geom_point() +
   geom_smooth(method = "loess", alpha = 0.5, degree = 1, se = FALSE) +
-  scale_x_log10(breaks = c(20000, 40000, 80000)) + 
-  scale_y_log10(breaks = c(10000, 15000, 22000, 33000)) 
+  scale_x_log10(breaks = c(20000, 40000, 80000)) +
+  scale_y_log10(breaks = c(10000, 15000, 22000, 33000))
 ```
 
 El patrón no era difícil de ver en los datos originales, sin embargo, la
@@ -928,8 +947,8 @@ con otras familias de funciones (por ejemplo cuadráticas).
 ggplot(ventas.sorteo, aes(x = premio, y = ventas.tot.1)) +
   geom_point() +
   geom_smooth(method = "lm", alpha = 0.5, se = FALSE) +
-  scale_x_log10(breaks = c(20000, 40000, 80000)) + 
-  scale_y_log10(breaks = c(10000, 15000, 22000, 33000)) 
+  scale_x_log10(breaks = c(20000, 40000, 80000)) +
+  scale_y_log10(breaks = c(10000, 15000, 22000, 33000))
 ```
 
 Si observamos la gráfica notamos que este modelo lineal (en los
@@ -958,7 +977,7 @@ ventas <- readr::read_csv(here::here("data", "ventas_semanal.csv"))
 if(!fs::file_exists(here::here("images", "02_loess-spans.gif"))){
   # spans a considerar
   spans <- c(.05, .10, .5, 1)
-  
+
   # crear ajustes loess, uno por span
   fits <- crossing(ventas, span = spans) |>
     nest_by(span) |>
@@ -967,14 +986,14 @@ if(!fs::file_exists(here::here("images", "02_loess-spans.gif"))){
                        span = span)),
       data_mod = list(augment(mod))
     )
-  
+
   # calcular pesos
   dat <- ventas |>
     tidyr::crossing(span = spans, center = unique(ventas$period)) |>
     mutate(dist = abs(period - center)) |>
     filter(rank(dist) / n() <= span) |>
     mutate(weight = (1 - (dist / max(dist)) ^ 3) ^ 3)
-  
+
   # Crear gráfica de páneles con puntos que se mueven, ajustes locales lineales,
   # y líneas verticales
   loess_spans <- ggplot(dat, aes(period, sales.kg)) +
@@ -988,7 +1007,7 @@ if(!fs::file_exists(here::here("images", "02_loess-spans.gif"))){
               data = unnest(fits, cols = data_mod), color = "red") +
     facet_wrap(~span, ncol = 1) +
     ggtitle("Loess lineal")
-  
+
   loess_anim <- animate(loess_spans, nframes = 150)
   anim_save(here::here("images", "02_loess-spans.gif"), loess_anim)
 }
@@ -1018,7 +1037,7 @@ ventas <- readr::read_csv(here::here("data", "ventas_semanal.csv"))
 if(!fs::file_exists(here::here("images", "02_loess-spans-cuad.gif"))){
   # spans a considerar
   spans <- c(.05, .10, .5, 1)
-  
+
   # crear ajustes loess, uno por span
   fits <- crossing(ventas, span = spans) |>
     nest_by(span) |>
@@ -1027,14 +1046,14 @@ if(!fs::file_exists(here::here("images", "02_loess-spans-cuad.gif"))){
                        span = span)),
       data_mod = list(augment(mod))
     )
-  
+
   # calcular pesos
   dat <- ventas |>
     tidyr::crossing(span = spans, center = unique(ventas$period)) |>
     mutate(dist = abs(period - center)) |>
     filter(rank(dist) / n() <= span) |>
     mutate(weight = (1 - (dist / max(dist)) ^ 3) ^ 3)
-  
+
   # Crear gráfica de páneles con puntos que se mueven, ajustes locales lineales,
   # y líneas verticales
   loess_spans <- ggplot(dat, aes(period, sales.kg)) +
@@ -1048,7 +1067,7 @@ if(!fs::file_exists(here::here("images", "02_loess-spans-cuad.gif"))){
               data = unnest(fits, cols = data_mod), color = "red") +
     facet_wrap(~span, ncol = 1) +
     ggtitle("Loess cuadrático")
-  
+
   loess_anim <- animate(loess_spans, nframes = 150)
   anim_save(here::here("images", "02_loess-spans-cuad.gif"), loess_anim)
 }
@@ -1075,7 +1094,7 @@ x) para la observación $(x_n, y_n)$.
 
 Para poder calcular $w_n(x)$ debemos comenzar calculando
 $q=\lfloor{N\alpha}\rfloor$ que suponemos mayor que uno. Ahora definimos
-la función *tricubo*: \begin{align}  
+la función *tricubo*: \begin{align}
 T(u)=\begin{cases}
 (1-|u|^3)^3, & \text{para $|u| < 1$}.\\
 0, & \text{en otro caso}.
@@ -1175,7 +1194,7 @@ natalidad <- read_rds("./data/nacimientos/natalidad.rds") |>
   mutate(dia_semana = weekdays(fecha)) |>
   mutate(dia_año = yday(fecha)) |>
   mutate(año = year(fecha)) |>
-  mutate(mes = month(fecha)) |> 
+  mutate(mes = month(fecha)) |>
   ungroup() |>
   mutate(dia_semana = recode(dia_semana, Monday = "Lunes", Tuesday = "Martes", Wednesday = "Miércoles",
                              Thursday = "Jueves", Friday = "Viernes", Saturday = "Sábado", Sunday = "Domingo")) |>
@@ -1293,9 +1312,9 @@ datos_dia <- datos_dia |>
   mutate(ajuste_mod =
            map(data, ~ loess(res_2 ~ as.numeric(fecha), data = .x, span = 0.1, degree = 1))) |>
   mutate(ajuste_3 =  map(ajuste_mod, fitted)) |>
-  select(-ajuste_mod) |> 
+  select(-ajuste_mod) |>
   unnest(cols = c(data, ajuste_3)) |>
-  mutate(res_3 = res_2 - ajuste_3) |> 
+  mutate(res_3 = res_2 - ajuste_3) |>
   ungroup()
 ```
 
@@ -1505,7 +1524,7 @@ identificar ahora los residuales más grandes: se deben, por ejemplo, a
 días feriados, con consecuencias adicionales que tienen en días ajuntos
 (excesos de nacimientos):
 
-```{r, fig.width=10, echo = FALSE,  out.width = '90%', fig.align= 'center', cache=TRUE, fig.asp = 0.55}
+```{r, fig.width=10, echo = FALSE,  out.width = '90%', fig.align= 'center', cache=TRUE, fig.asp = 0.55, message=FALSE}
 datos_da <- datos_dia |>
   mutate(bisiesto = (año %in% c(2000, 2004, 2008, 2012, 2016))) |>
   mutate(dia_año_366 = ifelse(!bisiesto & dia_año >= 60, dia_año + 1, dia_año)) |>
@@ -1552,7 +1571,7 @@ fuerte de nacimientos el Viernes de Semana Santa, y la característica
 forma de "valle con hombros" en días anteriores y posteriores estos
 Viernes. ¿Por qué ocurre este patrón?
 
-```{r, echo = FALSE, fig.height=2, echo = FALSE,  out.width = '90%', fig.align= 'center', cache=TRUE, fig.asp = 0.35}
+```{r, echo = FALSE, fig.height=2, echo = FALSE,  out.width = '90%', fig.align= 'center', cache=TRUE, fig.asp = 0.35, message=FALSE}
 pascuas <- tibble(pascua_dia = ymd(as.character(timeDate::Easter(1999:2017)))) |>
   mutate(año = year(pascua_dia))
 datos_dia <- left_join(datos_dia, pascuas, by = "año") |>
