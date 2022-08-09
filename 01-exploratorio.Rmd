@@ -11,10 +11,6 @@ editor_options:
 >
 > --- John Tukey
 
-> "The simple graph has brought more information to the data analyst's
-> mind than any other device."
->
-> --- John Tukey
 
 ```{r setup, include=FALSE, message=FALSE}
 library(tidyverse)
