@@ -271,7 +271,7 @@ knitr::include_graphics('images/barras_moire.jpg')
 
 La densidad de una gráfica es el tamaño del conjunto de datos que se grafica
 comparado con el área total de la gráfica. En el siguiente ejemplo, graficamos
-en logaritmo-10 de cabezas de ganado en Francia (cerdos, res, ovejas y
+en logaritmo-10 de millones de cabezas de ganado en Francia (cerdos, res, ovejas y
 caballos). La gráfica de la izquierda es pobre en densidad pues sólo representa
 4 datos. La manera más fácil de mejorar la densidad es hacer más chica la
 gráfica:

@@ -214,10 +214,6 @@ Nota:
 
 * En la teoría, generalmente es más común utilizar la fda empírica, que tiene una única definición que veremos coincide con definiciones teóricas.
 
-```{block, type='ejercicio'}
-Para una medición de interés $x$ con posibles valores en el intervalo $[a, b]$.
-Comprueba que $\hat F(a) = 0$ y $\hat F(b) = 1$ para cualquier colección de datos de tamaño $N.$
-```
 
 ### Histogramas {.unnumbered}
 
@@ -315,6 +311,9 @@ cuantiles:
 -   Es fácil comparar cuantiles de distintos bonches de datos en la
     misma escala
 
+**Nota:** Existen diferentes definiciones para calcular cuantiles de una muestra de 
+datos, puedes leer más en [este artículo](https://www.amherst.edu/media/view/129116/original/Sample+Quantiles.pdf).
+
 ### Media y desviación estándar {.unnumbered}
 
 Las medidas más comunes de localización y dispersión para un conjunto de
@@ -352,7 +351,7 @@ estimación.
 Por otro lado, ventajas de estas medidas de centralidad y dispersión
 son:
 
--   La media y desviación estándar son computacionalmente convenientes.Por lo tanto regresaremos a estas medidas una vez que estudiemos modelos de probabilidad básicos.
+-   La media y desviación estándar son computacionalmente convenientes. Por lo tanto regresaremos a estas medidas una vez que estudiemos modelos de probabilidad básicos.
 
 -   En muchas ocasiones conviene usar estas medidas pues permite hacer
     comparaciones históricas o tradicionales ---pues análisis anteriores
@@ -499,7 +498,7 @@ casas |>
   mutate(ind_calidad = cut(calidad_gral, c(0, 5, 8,10))) |>
   ggplot(aes(y = precio_m2, x = nombre_zona, colour = factor(ind_calidad))) +
   geom_hline(yintercept = c(1000, 2000), colour = "gray") +
-  geom_jitter(width = 0.2, height = 0, alpha = 0.5) +
+  geom_jitter(width = 0.2, height = 0, alpha = 0.5, show.legend = FALSE) +
   coord_flip() +
   scale_colour_colorblind("Índice calidad") +
   facet_wrap(~ind_calidad)
@@ -829,7 +828,7 @@ tab_out <- tabla_perfil |>
   arrange(desc(bolsas)) |>
   select(-pct, everything()) |>
   mutate(across(where(is.numeric), round, 0)) |>
-  mutate_if(if_profile, marcar) |>
+  mutate(across(where(if_profile), marcar)) |>
   knitr::kable(format_table_salida(), escape = FALSE, digits = 0, booktabs = T) |>
   kableExtra::kable_styling(latex_options = c("striped", "scale_down"),
                             bootstrap_options = c( "hover", "condensed"),
