@@ -77,80 +77,80 @@ sample_n(propinas, 10) |> formatear_tabla()
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 24.27 </td>
-   <td style="text-align:right;"> 2.03 </td>
+   <td style="text-align:right;"> 22.42 </td>
+   <td style="text-align:right;"> 3.48 </td>
    <td style="text-align:left;"> Si </td>
    <td style="text-align:left;"> Sab </td>
    <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 18.28 </td>
-   <td style="text-align:right;"> 4.00 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Jue </td>
-   <td style="text-align:left;"> Comida </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 25.71 </td>
-   <td style="text-align:right;"> 4.00 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Dom </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 7.25 </td>
-   <td style="text-align:right;"> 5.15 </td>
-   <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Dom </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 27.28 </td>
-   <td style="text-align:right;"> 4.00 </td>
-   <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Vie </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 29.03 </td>
-   <td style="text-align:right;"> 5.92 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Sab </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 19.49 </td>
-   <td style="text-align:right;"> 3.51 </td>
+   <td style="text-align:right;"> 17.31 </td>
+   <td style="text-align:right;"> 3.50 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Dom </td>
    <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 15.98 </td>
+   <td style="text-align:right;"> 18.29 </td>
    <td style="text-align:right;"> 3.00 </td>
    <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 17.92 </td>
+   <td style="text-align:right;"> 3.08 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10.63 </td>
+   <td style="text-align:right;"> 2.00 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15.42 </td>
+   <td style="text-align:right;"> 1.57 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10.27 </td>
+   <td style="text-align:right;"> 1.71 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8.58 </td>
+   <td style="text-align:right;"> 1.92 </td>
+   <td style="text-align:left;"> Si </td>
    <td style="text-align:left;"> Vie </td>
    <td style="text-align:left;"> Comida </td>
-   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 27.05 </td>
+   <td style="text-align:right;"> 25.28 </td>
    <td style="text-align:right;"> 5.00 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Jue </td>
-   <td style="text-align:left;"> Comida </td>
-   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 12.54 </td>
-   <td style="text-align:right;"> 2.50 </td>
+   <td style="text-align:right;"> 14.78 </td>
+   <td style="text-align:right;"> 3.23 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Dom </td>
    <td style="text-align:left;"> Cena </td>
@@ -383,14 +383,6 @@ Nota:
 
 * En la teoría, generalmente es más común utilizar la fda empírica, que tiene una única definición que veremos coincide con definiciones teóricas.
 
-<div class="ejercicio">
-<p>Para una medición de interés <span class="math inline">\(x\)</span>
-con posibles valores en el intervalo <span class="math inline">\([a,
-b]\)</span>. Comprueba que <span class="math inline">\(\hat F(a) =
-0\)</span> y <span class="math inline">\(\hat F(b) = 1\)</span> para
-cualquier colección de datos de tamaño <span
-class="math inline">\(N.\)</span></p>
-</div>
 
 ### Histogramas {.unnumbered}
 
@@ -399,7 +391,7 @@ dividimos el rango de la variable en cubetas o intervalos (en este caso
 de igual longitud), y graficamos por medio de barras cuántos datos caen
 en cada cubeta:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-9-1.png" width="960" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-8-1.png" width="960" />
 
 Es una gráfica más popular, pero perdemos cierto nivel de detalle, y
 distintas particiones resaltan distintos aspectos de los datos.
@@ -416,7 +408,7 @@ g_1 <- ggplot(propinas, aes(sample = propina)) +
 g_1
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-11-1.png" width="384" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-10-1.png" width="384" />
 
 Finalmente, una gráfica más compacta que resume la gráfica de cuantiles
 o el histograma es el **diagrama de caja y brazos**. Mostramos dos
@@ -474,7 +466,7 @@ g_1 + g_2 + g_3 + g_4 +
   plot_layout(widths = c(8, 2, 2, 2))
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-12-1.png" width="768" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-11-1.png" width="768" />
 
 ::: {.cols data-latex=""}
 ::: {.col data-latex="{0.50\\textwidth}"}
@@ -509,6 +501,9 @@ cuantiles:
 -   Permiten identificar valores extremos
 -   Es fácil comparar cuantiles de distintos bonches de datos en la
     misma escala
+
+**Nota:** Existen diferentes definiciones para calcular cuantiles de una muestra de 
+datos, puedes leer más en [este artículo](https://www.amherst.edu/media/view/129116/original/Sample+Quantiles.pdf).
 
 ### Media y desviación estándar {.unnumbered}
 
@@ -546,7 +541,7 @@ estimación.
 Por otro lado, ventajas de estas medidas de centralidad y dispersión
 son:
 
--   La media y desviación estándar son computacionalmente convenientes.Por lo tanto regresaremos a estas medidas una vez que estudiemos modelos de probabilidad básicos.
+-   La media y desviación estándar son computacionalmente convenientes. Por lo tanto regresaremos a estas medidas una vez que estudiemos modelos de probabilidad básicos.
 
 -   En muchas ocasiones conviene usar estas medidas pues permite hacer
     comparaciones históricas o tradicionales ---pues análisis anteriores
@@ -612,7 +607,7 @@ ggplot(casas, aes(x = nombre_zona, y = precio_miles)) +
   coord_flip()
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-19-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-18-1.png" width="80%" style="display: block; margin: auto;" />
 
 La primera pregunta que nos hacemos es cómo pueden variar las
 características de las casas dentro de cada zona. Para esto, podemos
@@ -628,7 +623,7 @@ ggplot(casas, aes(x = nombre_zona, y = precio_m2)) +
   coord_flip()
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-21-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;" />
 
 Podemos cuantificar la variación que observamos de zona a zona y la
 variación que hay dentro de cada una de las zonas. Una primera
@@ -705,7 +700,7 @@ extremos.
 Podemos seguir con otro indicador importante: la calificación de calidad
 de los terminados de las casas. Como primer intento podríamos hacer:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-24-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-23-1.png" width="80%" style="display: block; margin: auto;" />
 
 Lo que indica que las calificaciones de calidad están distribuidas de
 manera muy distinta a lo largo de las zonas, y que probablemente no va
@@ -779,7 +774,7 @@ ejemplo, podemos utilizar nuevamente las gráficas de caja y brazos, así
 como graficar los percentiles. Nótese que en la gráfica 1 se utilizan
 los cuantiles 0.05, 0.25, 0.5, 0.75 y 0.95:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-27-1.png" width="95%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-26-1.png" width="95%" style="display: block; margin: auto;" />
 
 Se puede discutir qué tan apropiada es cada gráfica con el objetivo de
 realizar comparaciones. Sin duda, graficar más cuantiles es más útil
@@ -798,7 +793,7 @@ marginación del municipio donde se encuentra la escuela.
 Para este objetivo, podemos usar páneles (pequeños múltiplos útiles para
 hacer comparaciones) y graficar:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-29-1.png" width="95%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-28-1.png" width="95%" style="display: block; margin: auto;" />
 
 Esta gráfica pone en contexto la pregunta inicial, y permite evidenciar
 la dificultad de contestarla. En particular:
@@ -892,7 +887,7 @@ ggplot(sat, aes(x = expend, y = sat, label = state)) +
   ylab("Calificación promedio en SAT")
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-31-1.png" width="95%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-30-1.png" width="95%" style="display: block; margin: auto;" />
 
 Estas comparaciones no son de alta calidad, solo estamos usando 2
 variables ---que son muy pocas--- y no hay mucho que podamos decir en
@@ -915,7 +910,7 @@ ggplot(sat, aes(x = expend, y = math, label=state, colour = frac)) +
   ylab("Calificación en matemáticas")
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-32-1.png" width="95%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-31-1.png" width="95%" style="display: block; margin: auto;" />
 
 Esto nos permite entender por qué nuestra comparación inicial es
 relativamente pobre. Los estados con mejores resultados promedio en el
@@ -942,7 +937,7 @@ ggplot(sat, aes(x = rank_p, y = frac, label = state,
   geom_point(size = 2)
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-33-1.png" width="95%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-32-1.png" width="95%" style="display: block; margin: auto;" />
 
 Estos resultados indican que es más probable que buenos alumnos decidan
 hacer el SAT. Lo interesante es que esto ocurre de manera diferente en
@@ -953,7 +948,7 @@ Si hacemos *clusters* de estados según el % de alumnos, empezamos a ver
 otra historia. Para esto, ajustemos rectas de mínimos cuadrados como
 referencia:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-34-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-33-1.png" width="90%" style="display: block; margin: auto;" />
 
 Esto da una imagen muy diferente a la que originalmente planteamos. Nota
 que dependiendo de cómo categorizamos, esta gráfica puede variar (puedes
@@ -1124,7 +1119,7 @@ ggplot(tabla_cruzada |> ungroup() |>
   geom_point() + coord_flip() + geom_line()
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-39-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-38-1.png" width="90%" style="display: block; margin: auto;" />
 
 En lugar de eso, calcularemos *perfiles columna*. Esto es, comparamos
 cada una de las columnas con la columna marginal (en la tabla de tipo de
@@ -1181,7 +1176,7 @@ tab_out <- tabla_perfil |>
   arrange(desc(bolsas)) |>
   select(-pct, everything()) |>
   mutate(across(where(is.numeric), round, 0)) |>
-  mutate_if(if_profile, marcar) |>
+  mutate(across(where(if_profile), marcar)) |>
   knitr::kable(format_table_salida(), escape = FALSE, digits = 0, booktabs = T) |>
   kableExtra::kable_styling(latex_options = c("striped", "scale_down"),
                             bootstrap_options = c( "hover", "condensed"),
@@ -1269,7 +1264,7 @@ g_perfil <- ggplot(tabla_graf,
 g_perfil
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-42-1.png" width="95%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-41-1.png" width="95%" style="display: block; margin: auto;" />
 
 **Observación**: hay dos maneras de construir la columna promedio:
 tomando los porcentajes sobre todos los datos, o promediando los
@@ -1329,7 +1324,7 @@ ggplot(ventas.sorteo, aes(x = premio, y = ventas.tot.1)) +
   scale_y_log10(breaks = c(10000, 15000, 22000, 33000))
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-43-1.png" width="345.6" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-42-1.png" width="345.6" style="display: block; margin: auto;" />
 
 El patrón no era difícil de ver en los datos originales, sin embargo, la
 curva lo hace más claro, el logaritmo de las ventas tiene una relación
@@ -1362,7 +1357,7 @@ ggplot(ventas.sorteo, aes(x = premio, y = ventas.tot.1)) +
   scale_y_log10(breaks = c(10000, 15000, 22000, 33000))
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-44-1.png" width="345.6" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-43-1.png" width="345.6" style="display: block; margin: auto;" />
 
 Si observamos la gráfica notamos que este modelo lineal (en los
 logaritmos) no resumen adecuadamente estos datos. Podríamos experimentar
@@ -1455,7 +1450,7 @@ tricubo <- function(x) {
 curve(tricubo, from = -1.5, to = 1.5)
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-45-1.png" width="326.4" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-44-1.png" width="326.4" style="display: block; margin: auto;" />
 
 Finalmente, para cada valor de $x_k$ que está en el conjunto de datos
 $\{x_1,...,x_n\}$, ajustamos una recta de mínimos cuadrados ponderados
@@ -1537,7 +1532,7 @@ Consideremos los *datos agregados* del número de nacimientos
 ser hacer una gráfica de la serie de tiempo. Sin embargo, vemos que no
 es muy útil:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-48-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-47-1.png" width="90%" style="display: block; margin: auto;" />
 
 Hay varias características que notamos. Primero, parece haber una
 tendencia ligeramente decreciente del número de nacimientos a lo largo
@@ -1585,7 +1580,7 @@ datos_dia <- natalidad |> mutate(ajuste_1 = fitted(mod_1)) |>
   mutate(res_1 = n - ajuste_1)
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-51-1.png" width="95%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-50-1.png" width="95%" style="display: block; margin: auto;" />
 
 Notemos que a principios de 2000 el suavizador está en niveles de
 alrededor de 7000 nacimientos diarios, hacia 2015 ese número es más
@@ -1606,7 +1601,7 @@ datos_dia <- datos_dia |> mutate(ajuste_2 = fitted(mod_anual)) |>
   mutate(res_2 = res_1 - ajuste_2)
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-53-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-52-1.png" width="90%" style="display: block; margin: auto;" />
 
 ### Día de la semana {.unnumbered}
 
@@ -1630,7 +1625,7 @@ datos_dia <- datos_dia |>
   ungroup()
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-55-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-54-1.png" width="90%" style="display: block; margin: auto;" />
 
 ### Residuales {.unnumbered}
 
@@ -1642,7 +1637,7 @@ ajustados:
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-56-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-55-1.png" width="90%" style="display: block; margin: auto;" />
 
 **Observación**: nótese que la distribución de estos residuales presenta
 irregularidades interesantes. La distribución es de *colas largas*, y no
@@ -1650,7 +1645,7 @@ se debe a unos cuantos datos atípicos. Esto generalmente es indicación
 que hay factores importantes que hay que examinar mas a detalle en los
 residuales:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-57-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-56-1.png" width="90%" style="display: block; margin: auto;" />
 
 ### Reestimación {.unnumbered}
 
@@ -1672,15 +1667,15 @@ mod_1 <- loess(n_1 ~ as.numeric(fecha), data = datos_dia, span = 0.02, degree = 
                family = "symmetric")
 ```
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-59-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-58-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-61-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-60-1.png" width="90%" style="display: block; margin: auto;" />
 
 Y ahora repetimos con la componente de día de la semana:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-62-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-61-1.png" width="90%" style="display: block; margin: auto;" />
 
 ### Análisis de componentes {.unnumbered}
 
@@ -1688,7 +1683,7 @@ Ahora comparamos las componentes estimadas y los residuales en una misma
 gráfica. Por definición, la suma de todas estas componentes da los datos
 originales.
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-63-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-62-1.png" width="90%" style="display: block; margin: auto;" />
 
 Este último paso nos permite diversas comparaciones que explican la
 variación que vimos en los datos. Una gran parte de los residuales está
@@ -1714,7 +1709,7 @@ quantile(datos_dia$res_6, c(00, .01,0.05, 0.10, 0.90, 0.95, 0.99, 1)) |> round()
 Podemos empezar con una curosidad. Los días Viernes o Martes 13, ¿nacen
 menos niños?
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-66-1.png" width="1152" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-65-1.png" width="1152" />
 
 Nótese que fue útil agregar el indicador de Semana santa por el Viernes
 13 de Semana Santa que se ve como un atípico en el panel de los viernes
@@ -1725,7 +1720,7 @@ Nótese que fue útil agregar el indicador de Semana santa por el Viernes
 Veamos primero una agregación sobre los años de los residuales. Lo
 primero es observar un cambio que sucedió repentinamente en 2006:
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-67-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-66-1.png" width="90%" style="display: block; margin: auto;" />
 
 La razón es un cambio en la ley acerca de cuándo pueden entrar los niños
 a la primaria. Antes era por edad y había poco margen. Ese exceso de
@@ -1748,7 +1743,7 @@ identificar ahora los residuales más grandes: se deben, por ejemplo, a
 días feriados, con consecuencias adicionales que tienen en días ajuntos
 (excesos de nacimientos):
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-68-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-67-1.png" width="90%" style="display: block; margin: auto;" />
 
 ### Semana santa {.unnumbered}
 
@@ -1758,7 +1753,7 @@ fuerte de nacimientos el Viernes de Semana Santa, y la característica
 forma de "valle con hombros" en días anteriores y posteriores estos
 Viernes. ¿Por qué ocurre este patrón?
 
-<img src="01-exploratorio_files/figure-html/unnamed-chunk-69-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="01-exploratorio_files/figure-html/unnamed-chunk-68-1.png" width="90%" style="display: block; margin: auto;" />
 
 Nótese un defecto de nuestro modelo: el patrón de "hombros" alrededor
 del Viernes Santo no es suficientemente fuerte para equilibrar los
