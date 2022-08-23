@@ -77,15 +77,31 @@ sample_n(propinas, 10) |> formatear_tabla()
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 18.43 </td>
-   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:right;"> 14.26 </td>
+   <td style="text-align:right;"> 2.50 </td>
    <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 21.70 </td>
+   <td style="text-align:right;"> 4.30 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 23.17 </td>
+   <td style="text-align:right;"> 6.50 </td>
+   <td style="text-align:left;"> Si </td>
    <td style="text-align:left;"> Dom </td>
    <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 10.34 </td>
+   <td style="text-align:right;"> 13.00 </td>
    <td style="text-align:right;"> 2.00 </td>
    <td style="text-align:left;"> Si </td>
    <td style="text-align:left;"> Jue </td>
@@ -93,68 +109,52 @@ sample_n(propinas, 10) |> formatear_tabla()
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 13.39 </td>
-   <td style="text-align:right;"> 2.61 </td>
+   <td style="text-align:right;"> 25.00 </td>
+   <td style="text-align:right;"> 3.75 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Dom </td>
    <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 11.02 </td>
-   <td style="text-align:right;"> 1.98 </td>
-   <td style="text-align:left;"> Si </td>
+   <td style="text-align:right;"> 11.61 </td>
+   <td style="text-align:right;"> 3.39 </td>
+   <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Sab </td>
    <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 23.33 </td>
-   <td style="text-align:right;"> 5.65 </td>
+   <td style="text-align:right;"> 14.48 </td>
+   <td style="text-align:right;"> 2.00 </td>
    <td style="text-align:left;"> Si </td>
    <td style="text-align:left;"> Dom </td>
    <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 14.78 </td>
-   <td style="text-align:right;"> 3.23 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Dom </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 9.78 </td>
-   <td style="text-align:right;"> 1.73 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Jue </td>
-   <td style="text-align:left;"> Comida </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 34.63 </td>
-   <td style="text-align:right;"> 3.55 </td>
+   <td style="text-align:right;"> 16.58 </td>
+   <td style="text-align:right;"> 4.00 </td>
    <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Dom </td>
-   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 18.64 </td>
-   <td style="text-align:right;"> 1.36 </td>
+   <td style="text-align:right;"> 10.33 </td>
+   <td style="text-align:right;"> 2.00 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Jue </td>
    <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 24.06 </td>
+   <td style="text-align:right;"> 3.60 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 17.46 </td>
-   <td style="text-align:right;"> 2.54 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Dom </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
   </tr>
 </tbody>
 </table>
@@ -1432,7 +1432,7 @@ $j=1,\ldots,N$. De esta forma, las observaciones $x_n$ reciben más peso
 cuanto más cerca estén de $x$.
 
 En palabras, de $x_1,...,x_N$ tomamos los $q$ datos más cercanos a $x$,
-que denotamos $x_{i_1}(x) \leq x_{i_2}(x) \leq \cdots x_{i_q}(x) \leq$.
+que denotamos $x_{i_1}(x) \leq x_{i_2}(x) \leq \cdots \leq x_{i_q}(x)$.
 Los re-escalamos a $[0,1]$ haciendo corresponder $x$ a $0$ y el punto
 más alejado de $x$ (que es $x_{i_q}$) a 1.
 
@@ -1481,7 +1481,7 @@ dependencia de una serie de mediciones indexadas por el tiempo.
 Típicamente es necesario utilizar distintas componentes para describir
 exitosamente una serie de tiempo, y para esto usamos distintos tipos de
 suavizamientos. Veremos que distintas componentes varían en distintas
-escalas de tiempo (unas muy lentas, cono la tendencia, otras más
+escalas de tiempo (unas muy lentas, como la tendencia, otras más
 rapidamente, como variación quincenal, etc.).
 
 Este caso de estudio esta basado en un análisis propuesto por [A.
@@ -1494,7 +1494,7 @@ en México desde 1999. Los usaremos para contestar las preguntas: ¿cuáles
 son los cumpleaños más frecuentes? y ¿en qué mes del año hay más
 nacimientos?
 
-Podríamos utilizaar una gráfica popular (ver por ejemplo [esta
+Podríamos utilizar una gráfica popular (ver por ejemplo [esta
 visualización](http://thedailyviz.com/2016/09/17/how-common-is-your-birthday-dailyviz/))
 como:
 
@@ -1725,7 +1725,7 @@ primero es observar un cambio que sucedió repentinamente en 2006:
 La razón es un cambio en la ley acerca de cuándo pueden entrar los niños
 a la primaria. Antes era por edad y había poco margen. Ese exceso de
 nacimientos son reportes falsos para que los niños no tuvieran que
-esperar un año completo por haber nacido unos cuantos días antes de la
+esperar un año completo por haber nacido unos cuantos días después de la
 fecha límite.
 
 Otras características que debemos investigar:

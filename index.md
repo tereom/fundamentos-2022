@@ -21,8 +21,8 @@ Notas del curso *Fundamentos de Estadística con Remuestreo*, este curso busca e
 - Repositorio con material: <https://github.com/tereom/fundamentos-2022>\
 - Correo: [teresa.ortiz.mancera\@gmail.com](mailto:teresa.ortiz.mancera@gmail.com)\
 - Zoom clase (martes 4:00-7:00 pm): <https://itam.zoom.us/j/98626655757>\
-- Canvas: <https://itam.instructure.com/courses/7652>\
 - Zoom sesiones de dudas (viernes 5:00-5:45 pm): <https://itam.zoom.us/j/97547475945>\
+- Canvas: <https://itam.instructure.com/courses/7652>\
 
 </br>
 
