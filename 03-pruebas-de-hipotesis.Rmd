@@ -1105,8 +1105,7 @@ ejemplo$cuartiles_razon <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif
 ejemplo <- read_rds("cache/ejemplo_p_val.rds")
 ejemplo$media_dif
 ejemplo$media_dif_log
-ej
-emplo$mediana_razon
+ejemplo$mediana_razon
 ejemplo$cuartiles_razon
 ```
 
