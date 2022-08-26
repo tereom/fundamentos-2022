@@ -1252,7 +1252,8 @@ anual:
 
 ```{r}
 mod_1 <- loess(n ~ as.numeric(fecha), data = natalidad, span = 0.2, degree = 1)
-datos_dia <- natalidad |> mutate(ajuste_1 = fitted(mod_1)) |>
+datos_dia <- natalidad |> 
+  mutate(ajuste_1 = fitted(mod_1)) |>
   mutate(res_1 = n - ajuste_1)
 ```
 
