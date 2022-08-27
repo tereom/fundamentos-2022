@@ -77,64 +77,16 @@ sample_n(propinas, 10) |> formatear_tabla()
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 14.26 </td>
-   <td style="text-align:right;"> 2.50 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Jue </td>
-   <td style="text-align:left;"> Comida </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 21.70 </td>
-   <td style="text-align:right;"> 4.30 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Sab </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 23.17 </td>
-   <td style="text-align:right;"> 6.50 </td>
-   <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Dom </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 13.00 </td>
-   <td style="text-align:right;"> 2.00 </td>
-   <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Jue </td>
-   <td style="text-align:left;"> Comida </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 25.00 </td>
-   <td style="text-align:right;"> 3.75 </td>
+   <td style="text-align:right;"> 26.88 </td>
+   <td style="text-align:right;"> 3.12 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Dom </td>
    <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 11.61 </td>
-   <td style="text-align:right;"> 3.39 </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> Sab </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 14.48 </td>
-   <td style="text-align:right;"> 2.00 </td>
-   <td style="text-align:left;"> Si </td>
-   <td style="text-align:left;"> Dom </td>
-   <td style="text-align:left;"> Cena </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 16.58 </td>
-   <td style="text-align:right;"> 4.00 </td>
+   <td style="text-align:right;"> 32.68 </td>
+   <td style="text-align:right;"> 5.00 </td>
    <td style="text-align:left;"> Si </td>
    <td style="text-align:left;"> Jue </td>
    <td style="text-align:left;"> Comida </td>
@@ -149,12 +101,60 @@ sample_n(propinas, 10) |> formatear_tabla()
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 24.06 </td>
-   <td style="text-align:right;"> 3.60 </td>
+   <td style="text-align:right;"> 30.06 </td>
+   <td style="text-align:right;"> 2.00 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7.56 </td>
+   <td style="text-align:right;"> 1.44 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 20.65 </td>
+   <td style="text-align:right;"> 3.35 </td>
    <td style="text-align:left;"> No </td>
    <td style="text-align:left;"> Sab </td>
    <td style="text-align:left;"> Cena </td>
    <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15.42 </td>
+   <td style="text-align:right;"> 1.57 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 17.92 </td>
+   <td style="text-align:right;"> 4.08 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 25.56 </td>
+   <td style="text-align:right;"> 4.34 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 24.08 </td>
+   <td style="text-align:right;"> 2.92 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
 </tbody>
 </table>
@@ -1576,7 +1576,8 @@ anual:
 
 ```r
 mod_1 <- loess(n ~ as.numeric(fecha), data = natalidad, span = 0.2, degree = 1)
-datos_dia <- natalidad |> mutate(ajuste_1 = fitted(mod_1)) |>
+datos_dia <- natalidad |> 
+  mutate(ajuste_1 = fitted(mod_1)) |>
   mutate(res_1 = n - ajuste_1)
 ```
 
