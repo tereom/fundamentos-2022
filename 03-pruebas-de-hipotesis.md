@@ -3,11 +3,9 @@
 
 
 
-Las primeras técnicas inferenciales que veremos intentan contestar la siguiente pregunta:
-
-- Si observamos cierto patrón en los datos, ¿cómo podemos cuantificar  la
+Las primeras técnicas inferenciales que veremos intentan contestar la siguiente pregunta: Si observamos cierto patrón en los datos, **¿cómo podemos cuantificar  la
 evidencia de que es un patrón notable y no sólo debido a fluctuaciones en los
-datos particulares que tenemos?
+datos particulares que tenemos?**
 
 - ¿Cómo sabemos que no estamos **sobreinterpretando** esas fluctuaciones?
 
@@ -85,7 +83,7 @@ obs <- simular_serie(500, x_inicial = last(obs$obs))
 prueba_tbl <- muestrear_ventanas(historicos, obs[1:20, ], n_ventana = 20)
 # gráfica de pequeños múltiplos
 ggplot(prueba_tbl$lineup, aes(x = t_0, y = obs)) + geom_line() +
-     facet_wrap(~rep, nrow = 4) + scale_y_log10()
+  facet_wrap(~rep, nrow = 4) + scale_y_log10()
 ```
 
 <img src="03-pruebas-de-hipotesis_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
@@ -125,15 +123,15 @@ prueba_tbl$pos
 1. Llamamos *hipótesis nula* a la hipótesis de que los nuevos
 datos son producidos bajo las mismas condiciones que los datos de control o de referencia.
 
-3. **Si no escogemos la gráfica de los nuevos datos, nuestra conclusión es que
+2. **Si no escogemos la gráfica de los nuevos datos, nuestra conclusión es que
 la prueba no aporta evidencia en contra de la hipótesis nula.**
 
-4. **Si escogemos la gráfica correcta, nuestra conclusión es que la prueba aporta evidencia
+3. **Si escogemos la gráfica correcta, nuestra conclusión es que la prueba aporta evidencia
 en contra de la hipótesis nula.**
 
 ¿Qué tan fuerte es la evidencia, en caso de que descubrimos los datos no nulos?
 
-5. Cuando el número de paneles es más grande y detectamos los datos, la evidencia es más alta en contra de la nula.
+4. Cuando el número de paneles es más grande y detectamos los datos, la evidencia es más alta en contra de la nula.
 Decimos que el *nivel de significancia de la prueba* es la probabilidad de seleccionar a los
 datos correctos cuando la hipótesis nula es cierta (el sistema no ha cambiado).
 En el caso de 20 paneles, la significancia es de 1/20 = 0.05. Cuando detectamos los datos nuevos,
@@ -148,11 +146,9 @@ hiciéramos muchos páneles.
 
 ## Comparando distribuciones {-}
 
-Ahora intentamos un ejemplo más típico.
-
-Supongamos tenemos *muestras* para tres grupos `a`, `b` y `c`, que quiere decir
-que dentro de cada grupo, el proceso de selección de los elementos se hace
-de manera al azar y de manera simétrica (por ejemplo cada elemento tiene a misma probabiidad de ser seleccionado,
+Ahora intentamos un ejemplo más típico. Supongamos que tenemos *muestras* para 
+tres grupos `a`, `b` y `c`,  esto es que dentro de cada grupo, el proceso de 
+selección de los elementos se hace al azar y de manera simétrica (por ejemplo cada elemento tiene a misma probabiidad de ser seleccionado,
 y las extracciones se hacen de manera independiente.)
 
 Queremos comparar las distribuciones de los datos obtenidos para cada grupo.
@@ -209,11 +205,20 @@ Usamos una gráfica que muestra los cuantiles 0.10, 0.50, 0.90:
 ```r
 set.seed(88)
 reps <- lineup(null_permute("grupo"), muestra_tab, n = 20)
-reps_mezcla <- reps %>%  mutate(grupo_1 = factor(digest::digest2int(grupo) %% 177))
+```
+
+```
+## decrypt("WaTs 3YjY 5z lIB5j5Iz JL")
+```
+
+```r
+reps_mezcla <- reps |>  
+  mutate(grupo_1 = factor(digest::digest2int(grupo) %% 177))
 grafica_cuantiles(reps_mezcla, grupo_1, x) +
-    coord_flip() + 
-    facet_wrap(~.sample, ncol = 5) + ylab("x") +
-    labs(caption = "Mediana y percentiles 10% y 90%")+ geom_point(aes(colour = grupo_1))
+  coord_flip() + 
+  facet_wrap(~.sample, ncol = 5) + ylab("x") +
+  labs(caption = "Mediana y percentiles 10% y 90%") + 
+  geom_point(aes(colour = grupo_1))
 ```
 
 <img src="03-pruebas-de-hipotesis_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" />
@@ -236,7 +241,7 @@ evidencia en contra de que los datos se producen de manera homogénea, independi
 
 - Si la persona escoge uno de los datos permutados,
 no encontramos evidencia en contra de que los tres grupos producen datos con
- distribuciones similares.
+distribuciones similares.
 
 ## Comparaciones usando *lineup* (continuación) {-}
 
@@ -251,9 +256,9 @@ Hacemos primero la prueba del *lineup*:
 ```r
 set.seed(121)
 reps <- lineup(null_permute("grupo"), muestra_tab, n = 20)
-grafica_cuantiles(reps %>%  mutate(grupo_escondido = factor(digest::digest2int(grupo) %% 177)),
-                             grupo_escondido, x) + facet_wrap(~.sample) + ylab("x") +
-    coord_flip() + geom_point(aes(colour = grupo_escondido))
+grafica_cuantiles(reps |>  mutate(grupo_escondido = factor(digest::digest2int(grupo) %% 177)),
+                  grupo_escondido, x) + facet_wrap(~.sample) + ylab("x") +
+  coord_flip() + geom_point(aes(colour = grupo_escondido))
 ```
 
 <img src="03-pruebas-de-hipotesis_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" />
@@ -352,12 +357,12 @@ permutadas.
 
 
 ```r
-dif_obs <- te_azucar %>%
-  mutate(usa_azucar = as.numeric(sugar == "sugar")) %>%
-  group_by(how) %>%
-  summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') %>%
-  pivot_wider(names_from = how, values_from = prop_azucar) %>%
-  mutate(diferencia_prop = bolsa_exclusivo - `suelto o bolsa`) %>%
+dif_obs <- te_azucar |>
+  mutate(usa_azucar = as.numeric(sugar == "sugar")) |>
+  group_by(how) |>
+  summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') |>
+  pivot_wider(names_from = how, values_from = prop_azucar) |>
+  mutate(diferencia_prop = bolsa_exclusivo - `suelto o bolsa`) |>
   pull(diferencia_prop)
 ```
 
@@ -365,7 +370,7 @@ La diferencia observada es:
 
 
 ```r
-dif_obs %>% round(3)
+dif_obs |> round(3)
 ```
 
 ```
@@ -390,11 +395,11 @@ glimpse(reps)
 ```
 
 ```r
-valores_ref <- reps %>%
-  mutate(usa_azucar = as.numeric(sugar == "sugar")) %>%
-  group_by(.sample, how) %>%
-  summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') %>%
-  pivot_wider(names_from = how, values_from = prop_azucar) %>%
+valores_ref <- reps |>
+  mutate(usa_azucar = as.numeric(sugar == "sugar")) |>
+  group_by(.sample, how) |>
+  summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') |>
+  pivot_wider(names_from = how, values_from = prop_azucar) |>
   mutate(diferencia = bolsa_exclusivo - `suelto o bolsa`)
 ```
 
@@ -404,9 +409,9 @@ estadística evaluada un cada una de nuestras muestras permutadas:
 
 ```r
 g_1 <- ggplot(valores_ref, aes(sample = diferencia)) + geom_qq(distribution = stats::qunif)  +
-    xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia")
+  xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia")
 g_2 <- ggplot(valores_ref, aes(x = diferencia)) + geom_histogram(binwidth = 0.04) +
-    coord_flip() + xlab("") + labs(subtitle = " ")
+  coord_flip() + xlab("") + labs(subtitle = " ")
 g_1 + g_2
 ```
 
@@ -430,13 +435,13 @@ percentil_obs <- dist_perm(dif_obs)
 
 ```r
 g_1 <- ggplot(valores_ref, aes(sample = diferencia)) + geom_qq(distribution = stats::qunif)  +
-    xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia") +
-    geom_hline(yintercept = dif_obs, colour = "red") +
-    annotate("text", x = 0.3, y = dif_obs - 0.05, label = "diferencia observada", colour = "red")
+  xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia") +
+  geom_hline(yintercept = dif_obs, colour = "red") +
+  annotate("text", x = 0.3, y = dif_obs - 0.05, label = "diferencia observada", colour = "red")
 g_2 <- ggplot(valores_ref, aes(x = diferencia)) + geom_histogram(binwidth = 0.04) +
-    coord_flip() + xlab("") + labs(subtitle = " ") +
-    geom_vline(xintercept = dif_obs, colour = "red") +
-    annotate("text", x = dif_obs, y = N_rep * .3, label = percentil_obs,vjust = -0.2, colour = "red")
+  coord_flip() + xlab("") + labs(subtitle = " ") +
+  geom_vline(xintercept = dif_obs, colour = "red") +
+  annotate("text", x = dif_obs, y = N_rep * .3, label = percentil_obs,vjust = -0.2, colour = "red")
 g_1 + g_2
 ```
 
@@ -450,6 +455,7 @@ la hipótesis
 $$H_0: p_1 = p_2,$$
 o bien, 
 $$H_0: p_1 - p_2 = 0.$$
+
 
 
 ## Pruebas de hipótesis tradicionales {-}
@@ -617,8 +623,8 @@ y <code>n</code> de otra.</p>
 <ul>
 <li>Combina los <code>m+n</code> valores.<br />
 </li>
-<li>Repite:
-<ul>
+<li>Repite:<br />
+</li>
 <li>Obtén un remuestra de tamaño <code>m</code> sin reemplazo del
 total.<br />
 </li>
@@ -627,7 +633,6 @@ muestra.<br />
 </li>
 <li>Calcula la estadística de prueba (que compara las muestras).<br />
 </li>
-</ul></li>
 <li>Calcula el valor <em>p</em> como la fracción de las veces que la
 estadística sobrepasó la estadística observada, multiplica por 2 para
 una prueba de dos lados.</li>
@@ -675,16 +680,16 @@ Y en porcentajes tenemos que:
 
 
 ```r
-prop_azucar <- te_azucar %>%
-  count(Tea, sugar) %>%
-  group_by(Tea) %>%
+prop_azucar <- te_azucar |>
+  count(Tea, sugar) |>
+  group_by(Tea) |>
   mutate(prop = 100 * n / sum(n),
-         n = sum(n)) %>%
-  filter(sugar == "sugar") %>%
-  select(Tea, prop_azucar = prop, n) %>%
-  mutate('% usa azúcar' = round(prop_azucar)) %>%
+         n = sum(n)) |>
+  filter(sugar == "sugar") |>
+  select(Tea, prop_azucar = prop, n) |>
+  mutate('% usa azúcar' = round(prop_azucar)) |>
   select(-prop_azucar)
-prop_azucar %>% formatear_tabla
+prop_azucar |> formatear_tabla()
 ```
 
 <table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -719,12 +724,12 @@ Escribimos la función que calcula diferencias para cada muestra:
 
 ```r
 calc_diferencia_2 <- function(datos){
-  datos %>%
-    mutate(usa_azucar = as.numeric(sugar == "sugar")) %>%
-    group_by(Tea) %>%
-    summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') %>%
-    pivot_wider(names_from = Tea, values_from = prop_azucar) %>%
-    mutate(diferencia_prop = `Earl Grey` - black) %>%
+  datos |>
+    mutate(usa_azucar = as.numeric(sugar == "sugar")) |>
+    group_by(Tea) |>
+    summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') |>
+    pivot_wider(names_from = Tea, values_from = prop_azucar) |>
+    mutate(diferencia_prop = `Earl Grey` - black) |>
     pull(diferencia_prop)
 }
 ```
@@ -742,10 +747,10 @@ Ahora construimos nuestra distribución nula o de referencia:
 ```r
 set.seed(2)
 reps <- lineup(null_permute("Tea"), te_azucar, n = N_rep)
-valores_ref <- reps %>%
-  group_by(.sample) %>%
-  nest() %>%
-  mutate(diferencia = lapply(data, calc_diferencia_2)) %>%
+valores_ref <- reps |>
+  group_by(.sample) |>
+  nest() |>
+  mutate(diferencia = lapply(data, calc_diferencia_2)) |>
   unnest(diferencia)
 ```
 
@@ -769,6 +774,7 @@ comparar la propina en cena vs en comidas.<br />
 <li>Calcula el valor <em>p</em> (dos colas).</li>
 </ul>
 </div>
+
 
 
 ## Pruebas de permutación: problemas en implementación. {-}
@@ -844,6 +850,17 @@ Existen dos condiciones: en una se dio indicaciones de qué figura tenían que
 buscar (VV) y en otra no se dio esa indicación. ¿Las instrucciones verbales
 ayudan a fusionar más rápido el estereograma?
 
+
+```
+## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   n = col_double(),
+##   time = col_double(),
+##   nv.vv = col_character()
+## )
+```
+
 <img src="03-pruebas-de-hipotesis_files/figure-html/unnamed-chunk-40-1.png" width="384" style="display: block; margin: auto;" />
 
 La situación es la siguiente: considerando que hay mucha variación en el
@@ -890,22 +907,22 @@ permutaciones_est <- function(datos, variable, calc_diferencia, n = 1000){
   permutar <- function(variable){
     sample(variable, length(variable))
   }
-  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) %>%
+  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) |>
     mutate(diferencia = map_dbl(.sample,
-              ~ datos %>% mutate({{variable}}:= permutar({{variable}})) %>% calc_diferencia))
+                                ~ datos |> mutate({{variable}}:= permutar({{variable}})) |> calc_diferencia()))
   bind_rows(tbl_perms, tibble(.sample = n, diferencia = calc_diferencia(datos)))
 }
 
 stat_fusion <- function(x){
-    (quantile(x, 0.75) + quantile(x, 0.25))/2
+  (quantile(x, 0.75) + quantile(x, 0.25))/2
 }
 calc_fusion <- function(stat_fusion){
   fun <- function(datos){
-    datos %>%
-      group_by(nv.vv) %>%
-      summarise(est = stat_fusion(time), .groups = 'drop') %>%
-      pivot_wider(names_from = nv.vv, values_from = est) %>%
-      mutate(dif = VV / NV ) %>% pull(dif)
+    datos |>
+      group_by(nv.vv) |>
+      summarise(est = stat_fusion(time), .groups = 'drop') |>
+      pivot_wider(names_from = nv.vv, values_from = est) |>
+      mutate(dif = VV / NV ) |> pull(dif)
   }
   fun
 }
@@ -990,22 +1007,22 @@ con los datos de prueba:
 
 ```r
 set.seed(8)
-wasps_1 <- wasps %>% mutate(u = runif(nrow(wasps), 0, 1))
-wasps_entrena <- wasps_1 %>% filter(u <= 0.8)
-wasps_prueba <- wasps_1 %>% filter(u > 0.8)                            
+wasps_1 <- wasps |> mutate(u = runif(nrow(wasps), 0, 1))
+wasps_entrena <- wasps_1 |> filter(u <= 0.8)
+wasps_prueba <- wasps_1 |> filter(u > 0.8)                            
 
 wasp.lda <- MASS::lda(Group ~ ., data=wasps_entrena[,-1])
-wasp_ld_entrena <- predict(wasp.lda,  dimen=2)$x %>%
-    as_tibble(.name_repair = "universal") %>%
-     mutate(tipo = "entrenamiento") %>%
-    mutate(grupo = wasps_entrena$Group)
-wasp_ld_prueba <- predict(wasp.lda, newdata = wasps_prueba, dimen=2)$x  %>%
-    as_tibble(.name_repair = "universal") %>%
-    mutate(tipo = "prueba")%>%
-    mutate(grupo = wasps_prueba$Group)
+wasp_ld_entrena <- predict(wasp.lda,  dimen=2)$x |>
+  as_tibble(.name_repair = "universal") |>
+  mutate(tipo = "entrenamiento") |>
+  mutate(grupo = wasps_entrena$Group)
+wasp_ld_prueba <- predict(wasp.lda, newdata = wasps_prueba, dimen=2)$x  |>
+  as_tibble(.name_repair = "universal") |>
+  mutate(tipo = "prueba")|>
+  mutate(grupo = wasps_prueba$Group)
 wasp_lda <- bind_rows(wasp_ld_entrena, wasp_ld_prueba)
 ggplot(wasp_lda, aes(x = LD1, y = LD2, colour = grupo)) + geom_point(size = 3) +
-    facet_wrap(~tipo)
+  facet_wrap(~tipo)
 ```
 
 <img src="03-pruebas-de-hipotesis_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" />
@@ -1088,11 +1105,11 @@ de "aceptación de datos en la muestra", que simulamos tomando una submuestra al
 ```r
 calc_fusion <- function(stat_fusion, trans, comparacion){
   fun <- function(datos){
-    datos %>%
-      group_by(nv.vv) %>%
-      summarise(est = stat_fusion({{ trans }}(time)), .groups = 'drop') %>%
-      pivot_wider(names_from = nv.vv, values_from = est) %>%
-      mutate(dif = {{ comparacion }}) %>% pull(dif)
+    datos |>
+      group_by(nv.vv) |>
+      summarise(est = stat_fusion({{ trans }}(time)), .groups = 'drop') |>
+      pivot_wider(names_from = nv.vv, values_from = est) |>
+      mutate(dif = {{ comparacion }}) |> pull(dif)
   }
   fun
 }
@@ -1101,9 +1118,9 @@ valor_p <- function(datos, variable, calc_diferencia, n = 1000){
   permutar <- function(variable){
     sample(variable, length(variable))
   }
-  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) %>%
+  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) |>
     mutate(diferencia = map_dbl(.sample,
-              ~ datos %>% mutate({{variable}} := permutar({{variable}})) %>% calc_diferencia))
+                                ~ datos |> mutate({{variable}} := permutar({{variable}})) |> calc_diferencia()))
   perms <- bind_rows(tbl_perms, tibble(.sample = n, diferencia = calc_diferencia(datos)))
   perms_ecdf <- ecdf(perms$diferencia)
   dif <- calc_diferencia(datos)
@@ -1115,18 +1132,18 @@ valor_p <- function(datos, variable, calc_diferencia, n = 1000){
 ```r
 set.seed(7272)
 media_cuartiles <- function(x){
-    (quantile(x, 0.75) + quantile(x, 0.25))/2
+  (quantile(x, 0.75) + quantile(x, 0.25))/2
 }
 # nota: usar n=10000 o más, esto solo es para demostración:
 ejemplo <- list()
 calc_dif <- calc_fusion(mean, identity, VV - NV)
-ejemplo$media_dif <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
+ejemplo$media_dif <- valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
 calc_dif <- calc_fusion(mean, log, VV - NV)
-ejemplo$media_dif_log <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
+ejemplo$media_dif_log <- valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
 calc_dif <- calc_fusion(median, identity, VV / NV)
-ejemplo$mediana_razon <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
+ejemplo$mediana_razon <- valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
 calc_dif <- calc_fusion(media_cuartiles, identity, VV / NV)
-ejemplo$cuartiles_razon <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
+ejemplo$cuartiles_razon <- valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
 ```
 
 
