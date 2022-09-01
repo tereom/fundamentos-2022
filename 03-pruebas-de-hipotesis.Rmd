@@ -6,11 +6,9 @@ N_rep <- 1000
 ```
 
 
-Las primeras técnicas inferenciales que veremos intentan contestar la siguiente pregunta:
-
-- Si observamos cierto patrón en los datos, ¿cómo podemos cuantificar  la
+Las primeras técnicas inferenciales que veremos intentan contestar la siguiente pregunta: Si observamos cierto patrón en los datos, **¿cómo podemos cuantificar  la
 evidencia de que es un patrón notable y no sólo debido a fluctuaciones en los
-datos particulares que tenemos?
+datos particulares que tenemos?**
 
 - ¿Cómo sabemos que no estamos **sobreinterpretando** esas fluctuaciones?
 
@@ -59,13 +57,13 @@ theme_set(theme_minimal(base_size = 14))
 
 ```{r, echo = FALSE}
 simular_serie <- function(n = 1000, lambda = 1, ac = 0.7, x_inicial = 1){
-    x <- numeric(n)
-    x[1] <- x_inicial
-    for(i in 2:n){
-        x[i] <-  ac*(x[i - 1]) + rgamma(1, 1, 1 / lambda)
-    }
-    tibble(t = 1:n, obs = x) %>% filter(t > 50) %>%
-        mutate(t = t - 50 + 1)
+  x <- numeric(n)
+  x[1] <- x_inicial
+  for(i in 2:n){
+    x[i] <-  ac*(x[i - 1]) + rgamma(1, 1, 1 / lambda)
+  }
+  tibble(t = 1:n, obs = x) |> filter(t > 50) |>
+    mutate(t = t - 50 + 1)
 }
 ```
 
@@ -78,29 +76,29 @@ historicos <- simular_serie(2000)
 
 ```{r, echo = FALSE}
 muestrear_ventanas <- function(control, obs, n_ventana = 20, long = 20){
-    n_control <- nrow(control)
-    inicios <- sample(1:(nrow(control) - long), n_ventana - 1)
-    control_lista <- map(inicios, function(i){
-        muestra <- filter(control, t %in% seq(i, i + long - 1, 1))
-        muestra
-    })
-    dat_lista <- append(control_lista, list(obs))
-    orden <- sample(1:n_ventana, n_ventana)
-    datos_lineup <- tibble(rep = orden, datos = dat_lista) %>%
-        unnest(cols = c(datos)) %>% group_by(rep) %>% 
-        mutate(t_0 = t - min(t)) %>% ungroup  
-    list(lineup = datos_lineup,
-         pos = last(orden))
+  n_control <- nrow(control)
+  inicios <- sample(1:(nrow(control) - long), n_ventana - 1)
+  control_lista <- map(inicios, function(i){
+    muestra <- filter(control, t %in% seq(i, i + long - 1, 1))
+    muestra
+  })
+  dat_lista <- append(control_lista, list(obs))
+  orden <- sample(1:n_ventana, n_ventana)
+  datos_lineup <- tibble(rep = orden, datos = dat_lista) |>
+    unnest(cols = c(datos)) |> group_by(rep) |> 
+    mutate(t_0 = t - min(t)) |> ungroup  
+  list(lineup = datos_lineup,
+       pos = last(orden))
 }
 set.seed(12)
 obs <- historicos[500:519, ]
 ventanas_tbl <- muestrear_ventanas(historicos, obs, n_ventana = 6)
 ggplot(ventanas_tbl$lineup, aes(x = t_0, y = obs, colour = factor(rep==ventanas_tbl$pos))) + 
-    geom_line() +
-    geom_point() + 
-    facet_wrap(~rep, nrow = 2) +
-    theme(legend.position = "none") + 
-    scale_y_log10()
+  geom_line() +
+  geom_point() + 
+  facet_wrap(~rep, nrow = 2) +
+  theme(legend.position = "none") + 
+  scale_y_log10()
 ```
 
 ¿Vemos algo diferente en los datos nuevos (el panel de color diferente)?
@@ -128,7 +126,7 @@ obs <- simular_serie(500, x_inicial = last(obs$obs))
 prueba_tbl <- muestrear_ventanas(historicos, obs[1:20, ], n_ventana = 20)
 # gráfica de pequeños múltiplos
 ggplot(prueba_tbl$lineup, aes(x = t_0, y = obs)) + geom_line() +
-     facet_wrap(~rep, nrow = 4) + scale_y_log10()
+  facet_wrap(~rep, nrow = 4) + scale_y_log10()
 ```
 
 ```{block, type = 'ejercicio'}
@@ -144,7 +142,7 @@ set.seed(912)
 obs_dif <- simular_serie(500, lambda = 3, ac = 0.3, x_inicial = last(historicos$obs))
 prueba_tbl <- muestrear_ventanas(historicos, obs_dif[10:29, ], n_ventana = 20)
 ggplot(prueba_tbl$lineup, aes(x = t_0, y = obs)) + geom_line() +
-   facet_wrap(~rep, nrow = 4) + scale_y_log10()
+  facet_wrap(~rep, nrow = 4) + scale_y_log10()
 ```
 
 Aunque es imposible estar seguros de que ha ocurrido un cambio, la diferencia de una de las
@@ -166,15 +164,15 @@ prueba_tbl$pos
 1. Llamamos *hipótesis nula* a la hipótesis de que los nuevos
 datos son producidos bajo las mismas condiciones que los datos de control o de referencia.
 
-3. **Si no escogemos la gráfica de los nuevos datos, nuestra conclusión es que
+2. **Si no escogemos la gráfica de los nuevos datos, nuestra conclusión es que
 la prueba no aporta evidencia en contra de la hipótesis nula.**
 
-4. **Si escogemos la gráfica correcta, nuestra conclusión es que la prueba aporta evidencia
+3. **Si escogemos la gráfica correcta, nuestra conclusión es que la prueba aporta evidencia
 en contra de la hipótesis nula.**
 
 ¿Qué tan fuerte es la evidencia, en caso de que descubrimos los datos no nulos?
 
-5. Cuando el número de paneles es más grande y detectamos los datos, la evidencia es más alta en contra de la nula.
+4. Cuando el número de paneles es más grande y detectamos los datos, la evidencia es más alta en contra de la nula.
 Decimos que el *nivel de significancia de la prueba* es la probabilidad de seleccionar a los
 datos correctos cuando la hipótesis nula es cierta (el sistema no ha cambiado).
 En el caso de 20 paneles, la significancia es de 1/20 = 0.05. Cuando detectamos los datos nuevos,
@@ -189,11 +187,9 @@ hiciéramos muchos páneles.
 
 ## Comparando distribuciones {-}
 
-Ahora intentamos un ejemplo más típico.
-
-Supongamos tenemos *muestras* para tres grupos `a`, `b` y `c`, que quiere decir
-que dentro de cada grupo, el proceso de selección de los elementos se hace
-de manera al azar y de manera simétrica (por ejemplo cada elemento tiene a misma probabiidad de ser seleccionado,
+Ahora intentamos un ejemplo más típico. Supongamos que tenemos *muestras* para 
+tres grupos `a`, `b` y `c`,  esto es que dentro de cada grupo, el proceso de 
+selección de los elementos se hace al azar y de manera simétrica (por ejemplo cada elemento tiene a misma probabiidad de ser seleccionado,
 y las extracciones se hacen de manera independiente.)
 
 Queremos comparar las distribuciones de los datos obtenidos para cada grupo.
@@ -205,11 +201,11 @@ más? La medición que comparamos es el gasto de los clientes.
 ```{r, fig.width =5, fig.height = 3, echo = FALSE}
 set.seed(8)
 pob_tab <- tibble(id = 1:2000, x = rgamma(2000, 4, 1),
-    grupo = sample(c("a","b", "c"), 2000, prob = c(4,2,1), replace = T))
-muestra_tab <- pob_tab %>% sample_n(125)
+                  grupo = sample(c("a","b", "c"), 2000, prob = c(4,2,1), replace = T))
+muestra_tab <- pob_tab |> sample_n(125)
 g_1 <- ggplot(muestra_tab, aes(x = grupo, y = x)) + geom_boxplot(outlier.alpha = 0) +
-    geom_jitter(alpha = 0.3) +
-    coord_flip() +  labs(subtitle = "Muestra")
+  geom_jitter(alpha = 0.3) +
+  coord_flip() +  labs(subtitle = "Muestra")
 g_1
 ```
 
@@ -255,14 +251,16 @@ los datos verdaderos? Para evitar sesgarnos, también ocultamos la etiqueta verd
 
 Usamos una gráfica que muestra los cuantiles 0.10, 0.50, 0.90:
 
-```{r}
+```{r, message=TRUE}
 set.seed(88)
 reps <- lineup(null_permute("grupo"), muestra_tab, n = 20)
-reps_mezcla <- reps %>%  mutate(grupo_1 = factor(digest::digest2int(grupo) %% 177))
+reps_mezcla <- reps |>  
+  mutate(grupo_1 = factor(digest::digest2int(grupo) %% 177))
 grafica_cuantiles(reps_mezcla, grupo_1, x) +
-    coord_flip() + 
-    facet_wrap(~.sample, ncol = 5) + ylab("x") +
-    labs(caption = "Mediana y percentiles 10% y 90%")+ geom_point(aes(colour = grupo_1))
+  coord_flip() + 
+  facet_wrap(~.sample, ncol = 5) + ylab("x") +
+  labs(caption = "Mediana y percentiles 10% y 90%") + 
+  geom_point(aes(colour = grupo_1))
 ```
 
 Y la pregunta que hacemos es ¿**podemos distinguir nuestra muestra entre todas las
@@ -283,7 +281,7 @@ evidencia en contra de que los datos se producen de manera homogénea, independi
 
 - Si la persona escoge uno de los datos permutados,
 no encontramos evidencia en contra de que los tres grupos producen datos con
- distribuciones similares.
+distribuciones similares.
 
 ## Comparaciones usando *lineup* (continuación) {-}
 
@@ -292,13 +290,13 @@ de datos es diferente para el grupo `b`):
 
 ```{r, echo = FALSE, fig.width =5, fig.height=3}
 set.seed(72)
-muestra_tab <- pob_tab %>% sample_n(90) %>%
-    mutate(x = ifelse(grupo == "b", 1.8 * x + 1, x))
+muestra_tab <- pob_tab |> sample_n(90) |>
+  mutate(x = ifelse(grupo == "b", 1.8 * x + 1, x))
 g_1 <- ggplot(muestra_tab, aes(x = grupo, y = x)) + geom_boxplot(outlier.alpha = 0) +
-    geom_jitter(alpha = 0.3) +
-    coord_flip() + ylim(c(0, 20)) + labs(subtitle = "Muestra")
+  geom_jitter(alpha = 0.3) +
+  coord_flip() + ylim(c(0, 20)) + labs(subtitle = "Muestra")
 g_2 <- ggplot(pob_tab, aes(x= grupo, y = x)) + geom_boxplot(outlier.alpha = 0) +
-    coord_flip() + ylim(c(0, 20)) + labs(subtitle = "Población")
+  coord_flip() + ylim(c(0, 20)) + labs(subtitle = "Población")
 g_1
 ```
 
@@ -307,9 +305,9 @@ Hacemos primero la prueba del *lineup*:
 ```{r}
 set.seed(121)
 reps <- lineup(null_permute("grupo"), muestra_tab, n = 20)
-grafica_cuantiles(reps %>%  mutate(grupo_escondido = factor(digest::digest2int(grupo) %% 177)),
-                             grupo_escondido, x) + facet_wrap(~.sample) + ylab("x") +
-    coord_flip() + geom_point(aes(colour = grupo_escondido))
+grafica_cuantiles(reps |>  mutate(grupo_escondido = factor(digest::digest2int(grupo) %% 177)),
+                  grupo_escondido, x) + facet_wrap(~.sample) + ylab("x") +
+  coord_flip() + geom_point(aes(colour = grupo_escondido))
 ```
 Podemos distinguir más o menos claramente que está localizada en valores
 más altos y tiene mayor dispersión. En este caso, como en general podemos identificar los
@@ -333,26 +331,26 @@ Los datos que obtuvimos en nuestra encuesta, en conteos, son:
 
 ```{r, echo=FALSE, message=FALSE}
 tea <- read_csv(("data/tea.csv"))
-te <- tea %>% select(how, price, sugar)
+te <- tea |> select(how, price, sugar)
 ```
 
 ```{r, echo = FALSE}
-te_azucar <- tea %>% select(how, sugar) %>%
+te_azucar <- tea |> select(how, sugar) |>
   mutate(how = ifelse(how == "tea bag", "bolsa_exclusivo", "suelto o bolsa"))
-te_azucar %>% count(how, sugar) %>%
-  pivot_wider(names_from = how, values_from = n) %>%
+te_azucar |> count(how, sugar) |>
+  pivot_wider(names_from = how, values_from = n) |>
   formatear_tabla()
 ```
 
 Y en proporciones tenemos que:
 
 ```{r, echo = FALSE}
-prop_azucar <- te_azucar %>% count(how, sugar) %>%
-  group_by(how) %>% mutate(prop = n / sum(n), n = sum(n)) %>%
-  filter(sugar == "sugar") %>%
-  select(how, prop_azucar = prop, n) %>%
+prop_azucar <- te_azucar |> count(how, sugar) |>
+  group_by(how) |> mutate(prop = n / sum(n), n = sum(n)) |>
+  filter(sugar == "sugar") |>
+  select(how, prop_azucar = prop, n) |>
   mutate(prop_azucar = round(prop_azucar,2))
-prop_azucar %>% formatear_tabla()
+prop_azucar |> formatear_tabla()
 ```
 
 Pero distintas muestras podrían haber dado distintos resultados. Nos preguntamos
@@ -381,19 +379,19 @@ permutadas.
 
 
 ```{r, message = FALSE}
-dif_obs <- te_azucar %>%
-  mutate(usa_azucar = as.numeric(sugar == "sugar")) %>%
-  group_by(how) %>%
-  summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') %>%
-  pivot_wider(names_from = how, values_from = prop_azucar) %>%
-  mutate(diferencia_prop = bolsa_exclusivo - `suelto o bolsa`) %>%
+dif_obs <- te_azucar |>
+  mutate(usa_azucar = as.numeric(sugar == "sugar")) |>
+  group_by(how) |>
+  summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') |>
+  pivot_wider(names_from = how, values_from = prop_azucar) |>
+  mutate(diferencia_prop = bolsa_exclusivo - `suelto o bolsa`) |>
   pull(diferencia_prop)
 ```
 
 La diferencia observada es:
 
 ```{r}
-dif_obs %>% round(3)
+dif_obs |> round(3)
 ```
 
 Ahora construimos nuestra distribución nula o de referencia:
@@ -403,11 +401,11 @@ reps <- lineup(null_permute("how"), te_azucar, n = 10000)
 
 glimpse(reps)
 
-valores_ref <- reps %>%
-  mutate(usa_azucar = as.numeric(sugar == "sugar")) %>%
-  group_by(.sample, how) %>%
-  summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') %>%
-  pivot_wider(names_from = how, values_from = prop_azucar) %>%
+valores_ref <- reps |>
+  mutate(usa_azucar = as.numeric(sugar == "sugar")) |>
+  group_by(.sample, how) |>
+  summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') |>
+  pivot_wider(names_from = how, values_from = prop_azucar) |>
   mutate(diferencia = bolsa_exclusivo - `suelto o bolsa`)
 ```
 
@@ -416,9 +414,9 @@ estadística evaluada un cada una de nuestras muestras permutadas:
 
 ```{r, fig.width = 6, fig.height = 3}
 g_1 <- ggplot(valores_ref, aes(sample = diferencia)) + geom_qq(distribution = stats::qunif)  +
-    xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia")
+  xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia")
 g_2 <- ggplot(valores_ref, aes(x = diferencia)) + geom_histogram(binwidth = 0.04) +
-    coord_flip() + xlab("") + labs(subtitle = " ")
+  coord_flip() + xlab("") + labs(subtitle = " ")
 g_1 + g_2
 ```
 
@@ -438,13 +436,13 @@ percentil_obs <- dist_perm(dif_obs)
 
 ```{r, fig.width = 6, fig.height = 3}
 g_1 <- ggplot(valores_ref, aes(sample = diferencia)) + geom_qq(distribution = stats::qunif)  +
-    xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia") +
-    geom_hline(yintercept = dif_obs, colour = "red") +
-    annotate("text", x = 0.3, y = dif_obs - 0.05, label = "diferencia observada", colour = "red")
+  xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia") +
+  geom_hline(yintercept = dif_obs, colour = "red") +
+  annotate("text", x = 0.3, y = dif_obs - 0.05, label = "diferencia observada", colour = "red")
 g_2 <- ggplot(valores_ref, aes(x = diferencia)) + geom_histogram(binwidth = 0.04) +
-    coord_flip() + xlab("") + labs(subtitle = " ") +
-    geom_vline(xintercept = dif_obs, colour = "red") +
-    annotate("text", x = dif_obs, y = N_rep * .3, label = percentil_obs,vjust = -0.2, colour = "red")
+  coord_flip() + xlab("") + labs(subtitle = " ") +
+  geom_vline(xintercept = dif_obs, colour = "red") +
+  annotate("text", x = dif_obs, y = N_rep * .3, label = percentil_obs,vjust = -0.2, colour = "red")
 g_1 + g_2
 ```
 
@@ -456,6 +454,7 @@ la hipótesis
 $$H_0: p_1 = p_2,$$
 o bien, 
 $$H_0: p_1 - p_2 = 0.$$
+
 
 
 ## Pruebas de hipótesis tradicionales {-}
@@ -595,9 +594,9 @@ Supongamos que tenemos `m` observaciones de una población y `n` de otra.
 
 * Combina los `m+n` valores.  
 * Repite:  
-  - Obtén un remuestra de tamaño `m` sin reemplazo del total.  
-  - Usa las `n` observaciones restantes para obtener la otra muestra.  
-  - Calcula la estadística de prueba (que compara las muestras).  
+- Obtén un remuestra de tamaño `m` sin reemplazo del total.  
+- Usa las `n` observaciones restantes para obtener la otra muestra.  
+- Calcula la estadística de prueba (que compara las muestras).  
 * Calcula el valor *p* como la fracción de las veces que la estadística
 sobrepasó la estadística observada, multiplica por 2 para una prueba de dos
 lados.
@@ -620,28 +619,28 @@ Los datos que obtuvimos en nuestra encuesta se muestran en la siguiente tabla:
 
 ```{r, echo = FALSE}
 set.seed(23)
-te_azucar <- tea %>%
-  select(Tea, sugar) %>%
+te_azucar <- tea |>
+  select(Tea, sugar) |>
   filter(Tea != "green")
-te_azucar %>%
-  count(Tea, sugar) %>%
-  pivot_wider(names_from = Tea, values_from = n) %>%
+te_azucar |>
+  count(Tea, sugar) |>
+  pivot_wider(names_from = Tea, values_from = n) |>
   formatear_tabla()
 ```
 
 Y en porcentajes tenemos que:
 
 ```{r}
-prop_azucar <- te_azucar %>%
-  count(Tea, sugar) %>%
-  group_by(Tea) %>%
+prop_azucar <- te_azucar |>
+  count(Tea, sugar) |>
+  group_by(Tea) |>
   mutate(prop = 100 * n / sum(n),
-         n = sum(n)) %>%
-  filter(sugar == "sugar") %>%
-  select(Tea, prop_azucar = prop, n) %>%
-  mutate('% usa azúcar' = round(prop_azucar)) %>%
+         n = sum(n)) |>
+  filter(sugar == "sugar") |>
+  select(Tea, prop_azucar = prop, n) |>
+  mutate('% usa azúcar' = round(prop_azucar)) |>
   select(-prop_azucar)
-prop_azucar %>% formatear_tabla
+prop_azucar |> formatear_tabla
 ```
 
 Pero distintas muestras podrían haber dado distintos resultados. Nos preguntamos
@@ -653,12 +652,12 @@ Escribimos la función que calcula diferencias para cada muestra:
 
 ```{r, message = FALSE}
 calc_diferencia_2 <- function(datos){
-  datos %>%
-    mutate(usa_azucar = as.numeric(sugar == "sugar")) %>%
-    group_by(Tea) %>%
-    summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') %>%
-    pivot_wider(names_from = Tea, values_from = prop_azucar) %>%
-    mutate(diferencia_prop = `Earl Grey` - black) %>%
+  datos |>
+    mutate(usa_azucar = as.numeric(sugar == "sugar")) |>
+    group_by(Tea) |>
+    summarise(prop_azucar = mean(usa_azucar), .groups = 'drop') |>
+    pivot_wider(names_from = Tea, values_from = prop_azucar) |>
+    mutate(diferencia_prop = `Earl Grey` - black) |>
     pull(diferencia_prop)
 }
 ```
@@ -667,7 +666,7 @@ La diferencia observada es:
 
 ```{r, echo = FALSE}
 dif_obs <- calc_diferencia_2(te_azucar)
-dif_obs %>% round(3)
+dif_obs |> round(3)
 ```
 
 Ahora construimos nuestra distribución nula o de referencia:
@@ -675,10 +674,10 @@ Ahora construimos nuestra distribución nula o de referencia:
 ```{r sims-te-2}
 set.seed(2)
 reps <- lineup(null_permute("Tea"), te_azucar, n = N_rep)
-valores_ref <- reps %>%
-  group_by(.sample) %>%
-  nest() %>%
-  mutate(diferencia = lapply(data, calc_diferencia_2)) %>%
+valores_ref <- reps |>
+  group_by(.sample) |>
+  nest() |>
+  mutate(diferencia = lapply(data, calc_diferencia_2)) |>
   unnest(diferencia)
 ```
 
@@ -693,13 +692,13 @@ percentil_obs <- dist_perm(dif_obs)
 
 ```{r, fig.width = 6, fig.height = 3, echo = FALSE}
 g_1 <- ggplot(valores_ref, aes(sample = diferencia)) + geom_qq(distribution = stats::qunif)  +
-    xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia") +
-    geom_hline(yintercept = dif_obs, colour = "red") +
-    annotate("text", x = 0.3, y = dif_obs - 0.02, label = "diferencia observada", colour = "red")
+  xlab("f") + ylab("diferencia") + labs(subtitle = "Distribución nula o de referencia") +
+  geom_hline(yintercept = dif_obs, colour = "red") +
+  annotate("text", x = 0.3, y = dif_obs - 0.02, label = "diferencia observada", colour = "red")
 g_2 <- ggplot(valores_ref, aes(x = diferencia)) + geom_histogram(binwidth = 0.04) +
-    coord_flip() + xlab("") + labs(subtitle = "") +
-    geom_vline(xintercept = dif_obs, colour = "red") +
-    annotate("text", x = dif_obs, y = N_rep * .3, label = percentil_obs,vjust = 1, colour = "red")
+  coord_flip() + xlab("") + labs(subtitle = "") +
+  geom_vline(xintercept = dif_obs, colour = "red") +
+  annotate("text", x = dif_obs, y = N_rep * .3, label = percentil_obs,vjust = 1, colour = "red")
 g_1 + g_2
 ```
 
@@ -708,11 +707,12 @@ resultado que obtuvimos es muy extremo en relación a la distribución de refere
 El valor *p* es cercano a 0.
 
 ```{block, type = 'ejercicio'}
- * Haz una prueba de permutaciones para diferencia de medias para comparar la
- propina en cena vs en comidas.  
- * Grafica la distribución de referencia.  
- * Calcula el valor *p* (dos colas).  
+* Haz una prueba de permutaciones para diferencia de medias para comparar la
+propina en cena vs en comidas.  
+* Grafica la distribución de referencia.  
+* Calcula el valor *p* (dos colas).  
 ```
+
 
 
 ## Pruebas de permutación: problemas en implementación. {-}
@@ -785,7 +785,7 @@ Existen dos condiciones: en una se dio indicaciones de qué figura tenían que
 buscar (VV) y en otra no se dio esa indicación. ¿Las instrucciones verbales
 ayudan a fusionar más rápido el estereograma?
 
-```{r, message = FALSE, echo = FALSE, fig.width =4, fig.height = 3}
+```{r, message = TRUE, echo = FALSE, fig.width =4, fig.height = 3}
 fusion <- read_table("./data/fusion_time.txt")
 ggplot(fusion, aes(x = nv.vv, y = time)) + geom_boxplot() + geom_jitter()
 ```
@@ -803,13 +803,13 @@ En este caso, compararemos gráficas de cuantiles de los datos con los
 producidos por permutaciones (transformamos los datos pues en este caso es
 más apropiado una comparación multiplicativa):
 
-```{r, fig.width = 8, fig.height = 6, echo = FALSE}
+```{r, fig.width = 8, fig.height = 6, echo = FALSE, message=FALSE}
 set.seed(113)
 reps <- lineup(null_permute("nv.vv"), fusion, 20)
 ggplot(reps, aes(sample = time, colour = nv.vv)) +
-    geom_qq(distribution = stats::qunif, size = 0.5) +
-    facet_wrap(~.sample) + scale_y_log10() +
-    scale_x_continuous(breaks = c(0, 0.5, 1))
+  geom_qq(distribution = stats::qunif, size = 0.5) +
+  facet_wrap(~.sample) + scale_y_log10() +
+  scale_x_continuous(breaks = c(0, 0.5, 1))
 ```
 
 ```{block, type = 'ejercicio'}
@@ -840,22 +840,22 @@ permutaciones_est <- function(datos, variable, calc_diferencia, n = 1000){
   permutar <- function(variable){
     sample(variable, length(variable))
   }
-  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) %>%
+  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) |>
     mutate(diferencia = map_dbl(.sample,
-              ~ datos %>% mutate({{variable}}:= permutar({{variable}})) %>% calc_diferencia))
+                                ~ datos |> mutate({{variable}}:= permutar({{variable}})) |> calc_diferencia))
   bind_rows(tbl_perms, tibble(.sample = n, diferencia = calc_diferencia(datos)))
 }
 
 stat_fusion <- function(x){
-    (quantile(x, 0.75) + quantile(x, 0.25))/2
+  (quantile(x, 0.75) + quantile(x, 0.25))/2
 }
 calc_fusion <- function(stat_fusion){
   fun <- function(datos){
-    datos %>%
-      group_by(nv.vv) %>%
-      summarise(est = stat_fusion(time), .groups = 'drop') %>%
-      pivot_wider(names_from = nv.vv, values_from = est) %>%
-      mutate(dif = VV / NV ) %>% pull(dif)
+    datos |>
+      group_by(nv.vv) |>
+      summarise(est = stat_fusion(time), .groups = 'drop') |>
+      pivot_wider(names_from = nv.vv, values_from = est) |>
+      mutate(dif = VV / NV ) |> pull(dif)
   }
   fun
 }
@@ -873,16 +873,16 @@ cuantil_obs <- dist_perm_nv(dif_obs)
 
 ```{r, fig.width = 6, fig.height = 3, echo = FALSE}
 g_1 <- ggplot(valores_ref, aes(sample = diferencia)) +
-    geom_qq(distribution = stats::qunif)  +
-    xlab("f") + ylab("Cociente media intercuartil") +
-    labs(subtitle = "Distribución nula o de referencia") +
-    geom_hline(yintercept = dif_obs, colour = "red") +
-    annotate("text", x = 0.3, y = dif_obs - 0.05, label = "diferencia observada", colour = "red")
+  geom_qq(distribution = stats::qunif)  +
+  xlab("f") + ylab("Cociente media intercuartil") +
+  labs(subtitle = "Distribución nula o de referencia") +
+  geom_hline(yintercept = dif_obs, colour = "red") +
+  annotate("text", x = 0.3, y = dif_obs - 0.05, label = "diferencia observada", colour = "red")
 g_2 <- ggplot(valores_ref, aes(x = diferencia)) + geom_histogram(binwidth = 0.04) +
-    coord_flip() + xlab("") + labs(subtitle = " ") +
-    geom_vline(xintercept = dif_obs, colour = "red") +
-    annotate("text", x = dif_obs, y = N_rep * .3, label = cuantil_obs,vjust = 0,
-             colour = "red")
+  coord_flip() + xlab("") + labs(subtitle = " ") +
+  geom_vline(xintercept = dif_obs, colour = "red") +
+  annotate("text", x = dif_obs, y = N_rep * .3, label = cuantil_obs,vjust = 0,
+           colour = "red")
 g_1 + g_2
 ```
 
@@ -966,22 +966,22 @@ con los datos de prueba:
 
 ```{r, message = FALSE, warning = FALSE}
 set.seed(8)
-wasps_1 <- wasps %>% mutate(u = runif(nrow(wasps), 0, 1))
-wasps_entrena <- wasps_1 %>% filter(u <= 0.8)
-wasps_prueba <- wasps_1 %>% filter(u > 0.8)                            
+wasps_1 <- wasps |> mutate(u = runif(nrow(wasps), 0, 1))
+wasps_entrena <- wasps_1 |> filter(u <= 0.8)
+wasps_prueba <- wasps_1 |> filter(u > 0.8)                            
 
 wasp.lda <- MASS::lda(Group ~ ., data=wasps_entrena[,-1])
-wasp_ld_entrena <- predict(wasp.lda,  dimen=2)$x %>%
-    as_tibble(.name_repair = "universal") %>%
-     mutate(tipo = "entrenamiento") %>%
-    mutate(grupo = wasps_entrena$Group)
-wasp_ld_prueba <- predict(wasp.lda, newdata = wasps_prueba, dimen=2)$x  %>%
-    as_tibble(.name_repair = "universal") %>%
-    mutate(tipo = "prueba")%>%
-    mutate(grupo = wasps_prueba$Group)
+wasp_ld_entrena <- predict(wasp.lda,  dimen=2)$x |>
+  as_tibble(.name_repair = "universal") |>
+  mutate(tipo = "entrenamiento") |>
+  mutate(grupo = wasps_entrena$Group)
+wasp_ld_prueba <- predict(wasp.lda, newdata = wasps_prueba, dimen=2)$x  |>
+  as_tibble(.name_repair = "universal") |>
+  mutate(tipo = "prueba")|>
+  mutate(grupo = wasps_prueba$Group)
 wasp_lda <- bind_rows(wasp_ld_entrena, wasp_ld_prueba)
 ggplot(wasp_lda, aes(x = LD1, y = LD2, colour = grupo)) + geom_point(size = 3) +
-    facet_wrap(~tipo)
+  facet_wrap(~tipo)
 ```
 
 Aunque esta separación de datos es menos efectiva en este ejemplo por la muestra chica, podemos ver
@@ -1061,11 +1061,11 @@ de "aceptación de datos en la muestra", que simulamos tomando una submuestra al
 ```{r}
 calc_fusion <- function(stat_fusion, trans, comparacion){
   fun <- function(datos){
-    datos %>%
-      group_by(nv.vv) %>%
-      summarise(est = stat_fusion({{ trans }}(time)), .groups = 'drop') %>%
-      pivot_wider(names_from = nv.vv, values_from = est) %>%
-      mutate(dif = {{ comparacion }}) %>% pull(dif)
+    datos |>
+      group_by(nv.vv) |>
+      summarise(est = stat_fusion({{ trans }}(time)), .groups = 'drop') |>
+      pivot_wider(names_from = nv.vv, values_from = est) |>
+      mutate(dif = {{ comparacion }}) |> pull(dif)
   }
   fun
 }
@@ -1074,9 +1074,9 @@ valor_p <- function(datos, variable, calc_diferencia, n = 1000){
   permutar <- function(variable){
     sample(variable, length(variable))
   }
-  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) %>%
+  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) |>
     mutate(diferencia = map_dbl(.sample,
-              ~ datos %>% mutate({{variable}} := permutar({{variable}})) %>% calc_diferencia))
+                                ~ datos |> mutate({{variable}} := permutar({{variable}})) |> calc_diferencia))
   perms <- bind_rows(tbl_perms, tibble(.sample = n, diferencia = calc_diferencia(datos)))
   perms_ecdf <- ecdf(perms$diferencia)
   dif <- calc_diferencia(datos)
@@ -1087,18 +1087,18 @@ valor_p <- function(datos, variable, calc_diferencia, n = 1000){
 ```{r, eval=FALSE}
 set.seed(7272)
 media_cuartiles <- function(x){
-    (quantile(x, 0.75) + quantile(x, 0.25))/2
+  (quantile(x, 0.75) + quantile(x, 0.25))/2
 }
 # nota: usar n=10000 o más, esto solo es para demostración:
 ejemplo <- list()
 calc_dif <- calc_fusion(mean, identity, VV - NV)
-ejemplo$media_dif <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
+ejemplo$media_dif <- valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
 calc_dif <- calc_fusion(mean, log, VV - NV)
-ejemplo$media_dif_log <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
+ejemplo$media_dif_log <- valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
 calc_dif <- calc_fusion(median, identity, VV / NV)
-ejemplo$mediana_razon <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
+ejemplo$mediana_razon <- valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
 calc_dif <- calc_fusion(media_cuartiles, identity, VV / NV)
-ejemplo$cuartiles_razon <- valor_p(fusion %>% sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
+ejemplo$cuartiles_razon <- valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = N_rep)
 ```
 
 ```{r}

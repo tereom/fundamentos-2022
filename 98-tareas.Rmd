@@ -68,3 +68,11 @@ involucradas?
 
 2. ¿Cuál es la diferencia entre un experimento aleatorizado y una muestra 
 aleatoria?
+
+
+## 4. Pruebas de hipótesis visuales y de permutación
+
+Resuelve la tarea-04 ubicada en nuestro RStudio.cloud, 
+encontrarás un archivo .qmd que describe los ejercicios a realizar y si lo deseas puedes
+utilizar este esqueleto para generar un archivo html con tus respuestas. 
+Envía tu tarea por correo electrónico con el título fundamentos-tarea04.

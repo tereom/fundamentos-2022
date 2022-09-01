@@ -33,7 +33,8 @@ grafica_cuantiles <- function(datos, grupo, valor){
   cuantiles_tbl <- datos %>% group_by({{ grupo }}, .sample) %>%
     summarise(
       num = n(),
-      cuantiles = list(cuantil({{ valor }}, c(0.1, 0.25, 0.5, 0.75, 0.9)))) %>%
+      cuantiles = list(cuantil({{ valor }}, c(0.1, 0.25, 0.5, 0.75, 0.9))),
+      .groups = "drop") %>%
     unnest(cols = c(cuantiles))
 
   grafica <- ggplot(cuantiles_tbl  %>% spread(cuantil, valor),
