@@ -86,7 +86,7 @@ muestrear_ventanas <- function(control, obs, n_ventana = 20, long = 20){
   orden <- sample(1:n_ventana, n_ventana)
   datos_lineup <- tibble(rep = orden, datos = dat_lista) |>
     unnest(cols = c(datos)) |> group_by(rep) |> 
-    mutate(t_0 = t - min(t)) |> ungroup  
+    mutate(t_0 = t - min(t)) |> ungroup()
   list(lineup = datos_lineup,
        pos = last(orden))
 }
@@ -640,7 +640,7 @@ prop_azucar <- te_azucar |>
   select(Tea, prop_azucar = prop, n) |>
   mutate('% usa azúcar' = round(prop_azucar)) |>
   select(-prop_azucar)
-prop_azucar |> formatear_tabla
+prop_azucar |> formatear_tabla()
 ```
 
 Pero distintas muestras podrían haber dado distintos resultados. Nos preguntamos
@@ -842,7 +842,7 @@ permutaciones_est <- function(datos, variable, calc_diferencia, n = 1000){
   }
   tbl_perms <- tibble(.sample = seq(1, n-1, 1)) |>
     mutate(diferencia = map_dbl(.sample,
-                                ~ datos |> mutate({{variable}}:= permutar({{variable}})) |> calc_diferencia))
+                                ~ datos |> mutate({{variable}}:= permutar({{variable}})) |> calc_diferencia()))
   bind_rows(tbl_perms, tibble(.sample = n, diferencia = calc_diferencia(datos)))
 }
 
@@ -1076,7 +1076,7 @@ valor_p <- function(datos, variable, calc_diferencia, n = 1000){
   }
   tbl_perms <- tibble(.sample = seq(1, n-1, 1)) |>
     mutate(diferencia = map_dbl(.sample,
-                                ~ datos |> mutate({{variable}} := permutar({{variable}})) |> calc_diferencia))
+                                ~ datos |> mutate({{variable}} := permutar({{variable}})) |> calc_diferencia()))
   perms <- bind_rows(tbl_perms, tibble(.sample = n, diferencia = calc_diferencia(datos)))
   perms_ecdf <- ecdf(perms$diferencia)
   dif <- calc_diferencia(datos)
