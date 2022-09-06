@@ -208,7 +208,7 @@ reps <- lineup(null_permute("grupo"), muestra_tab, n = 20)
 ```
 
 ```
-## decrypt("WaTs 3YjY 5z lIB5j5Iz JL")
+## decrypt("0u9M Vofo 6n DZ36f6Zn I1")
 ```
 
 ```r

@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sección 5 Intervalos de confianza y remuestreo | Fundamentos de Estadística con Remuestreo</title>
+  <meta name="description" content="Curso de Fundamentos de Estadística con Remuestreo, maestría en Ciencia de Datos, ITAM, Otoño 2022." />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Sección 5 Intervalos de confianza y remuestreo | Fundamentos de Estadística con Remuestreo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Curso de Fundamentos de Estadística con Remuestreo, maestría en Ciencia de Datos, ITAM, Otoño 2022." />
+  <meta name="github-repo" content="tereom/fundamentos-2022" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sección 5 Intervalos de confianza y remuestreo | Fundamentos de Estadística con Remuestreo" />
+  
+  <meta name="twitter:description" content="Curso de Fundamentos de Estadística con Remuestreo, maestría en Ciencia de Datos, ITAM, Otoño 2022." />
+  
+
+<meta name="author" content="Teresa Ortiz, Alfredo Garbuno, Felipe González" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estimación-y-distribución-de-muestreo-1.html"/>
+<link rel="next" href="apéndice-principios-de-visualizacion.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous">
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fnaufel/smartify/smartify.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Fundamentos de Estadística con Remuestreo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Información del curso</a></li>
+<li class="chapter" data-level="" data-path="temario.html"><a href="temario.html"><i class="fa fa-check"></i>Temario</a>
+<ul>
+<li class="chapter" data-level="" data-path="temario.html"><a href="temario.html#plan-semanal"><i class="fa fa-check"></i>Plan semanal</a></li>
+<li class="chapter" data-level="" data-path="temario.html"><a href="temario.html#evaluación"><i class="fa fa-check"></i>Evaluación</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html"><i class="fa fa-check"></i><b>1</b> Análisis exploratorio</a>
+<ul>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#el-papel-de-la-exploración-en-el-análisis-de-datos"><i class="fa fa-check"></i>El papel de la exploración en el análisis de datos</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#preguntas-y-datos"><i class="fa fa-check"></i>Preguntas y datos</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#algunos-conceptos-básicos"><i class="fa fa-check"></i>Algunos conceptos básicos</a>
+<ul>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#histogramas"><i class="fa fa-check"></i>Histogramas</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#media-y-desviación-estándar"><i class="fa fa-check"></i>Media y desviación estándar</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#ejemplos"><i class="fa fa-check"></i>Ejemplos</a>
+<ul>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#precios-de-casas"><i class="fa fa-check"></i>Precios de casas</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#prueba-enlace"><i class="fa fa-check"></i>Prueba Enlace</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#estados-y-calificaciones-en-sat"><i class="fa fa-check"></i>Estados y calificaciones en SAT</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#tablas-de-conteos"><i class="fa fa-check"></i>Tablas de conteos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#suavizamiento-loess"><i class="fa fa-check"></i>Suavizamiento loess</a>
+<ul>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#opcional-cálculo-del-suavizador"><i class="fa fa-check"></i>Opcional: cálculo del suavizador</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#caso-de-estudio-nacimientos-en-méxico"><i class="fa fa-check"></i>Caso de estudio: nacimientos en México</a>
+<ul>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#datos-de-natalidad-para-méxico"><i class="fa fa-check"></i>Datos de natalidad para México</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#tendencia"><i class="fa fa-check"></i>Tendencia</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#componente-anual"><i class="fa fa-check"></i>Componente anual</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#día-de-la-semana"><i class="fa fa-check"></i>Día de la semana</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#residuales"><i class="fa fa-check"></i>Residuales</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#reestimación"><i class="fa fa-check"></i>Reestimación</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#análisis-de-componentes"><i class="fa fa-check"></i>Análisis de componentes</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#residuales-antes-y-después-de-2006"><i class="fa fa-check"></i>Residuales: antes y después de 2006</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#otros-días-especiales-más-de-residuales"><i class="fa fa-check"></i>Otros días especiales: más de residuales</a></li>
+<li class="chapter" data-level="" data-path="análisis-exploratorio.html"><a href="análisis-exploratorio.html#semana-santa"><i class="fa fa-check"></i>Semana santa</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html"><i class="fa fa-check"></i><b>2</b> Tipos de estudio y experimentos</a>
+<ul>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#motivación"><i class="fa fa-check"></i>Motivación</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#proceso-generador-de-datos"><i class="fa fa-check"></i>Proceso Generador de Datos</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#ejemplo-prevalencia-de-anemia"><i class="fa fa-check"></i>Ejemplo: Prevalencia de anemia</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#muestreo-aleatorio"><i class="fa fa-check"></i>Muestreo aleatorio</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#pero-si-no-podemos-hacer-muestreo-aleatorio"><i class="fa fa-check"></i>Pero si no podemos hacer muestreo aleatorio?</a>
+<ul>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#ejemplo-policías-y-tráfico"><i class="fa fa-check"></i>Ejemplo: Policías y tráfico</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#el-estimador-estándar"><i class="fa fa-check"></i>El estimador estándar</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#experimentos-tradicionales"><i class="fa fa-check"></i>Experimentos tradicionales</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#bloqueo"><i class="fa fa-check"></i>Bloqueo</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#variables-desconocidas"><i class="fa fa-check"></i>Variables desconocidas</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#aleatorizando-el-tratamiento"><i class="fa fa-check"></i>Aleatorizando el tratamiento</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#selección-de-unidades-y-tratamiento"><i class="fa fa-check"></i>Selección de unidades y tratamiento</a></li>
+<li class="chapter" data-level="" data-path="tipos-de-estudio-y-experimentos.html"><a href="tipos-de-estudio-y-experimentos.html#asignación-natural-del-tratamiento"><i class="fa fa-check"></i>Asignación natural del tratamiento</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html"><i class="fa fa-check"></i><b>3</b> Pruebas de hipótesis</a>
+<ul>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#comparación-con-poblaciones-de-referencia"><i class="fa fa-check"></i>Comparación con poblaciones de referencia</a>
+<ul>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#ejemplo"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#comparando-distribuciones"><i class="fa fa-check"></i>Comparando distribuciones</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#prueba-de-permutaciones-y-el-lineup"><i class="fa fa-check"></i>Prueba de permutaciones y el <em>lineup</em></a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#comparaciones-usando-lineup-continuación"><i class="fa fa-check"></i>Comparaciones usando <em>lineup</em> (continuación)</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#prueba-de-permutaciones-para-proporciones"><i class="fa fa-check"></i>Prueba de permutaciones para proporciones</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#pruebas-de-hipótesis-tradicionales"><i class="fa fa-check"></i>Pruebas de hipótesis tradicionales</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#tomadores-de-té-continuación"><i class="fa fa-check"></i>Tomadores de té (continuación)</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#pruebas-de-permutación-problemas-en-implementación."><i class="fa fa-check"></i>Pruebas de permutación: problemas en implementación.</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#ejemplo-tiempos-de-fusión"><i class="fa fa-check"></i>Ejemplo: tiempos de fusión</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#ejemplo-tiempos-de-fusión-continuación"><i class="fa fa-check"></i>Ejemplo: tiempos de fusión (continuación)</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#separación-de-grupos"><i class="fa fa-check"></i>Separación de grupos</a>
+<ul>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#avispas-opcional"><i class="fa fa-check"></i>Avispas (opcional)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#la-crisis-de-replicabilidad"><i class="fa fa-check"></i>La “crisis de replicabilidad”</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#el-jardín-de-los-senderos-que-se-bifurcan"><i class="fa fa-check"></i>El jardín de los senderos que se bifurcan</a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#ejemplo-decisiones-de-análisis-y-valores-p"><i class="fa fa-check"></i>Ejemplo: decisiones de análisis y valores <em>p</em></a></li>
+<li class="chapter" data-level="" data-path="pruebas-de-hipótesis.html"><a href="pruebas-de-hipótesis.html#alternativas-o-soluciones"><i class="fa fa-check"></i>Alternativas o soluciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html"><i class="fa fa-check"></i><b>4</b> Estimación y distribución de muestreo</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#ejemplo-precios-de-casas"><i class="fa fa-check"></i>Ejemplo: precios de casas</a></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#distribución-de-muestreo"><i class="fa fa-check"></i>Distribución de muestreo</a></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#más-ejemplos"><i class="fa fa-check"></i>Más ejemplos</a></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#el-error-estándar"><i class="fa fa-check"></i>El error estándar</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#ejemplo-valor-de-casas"><i class="fa fa-check"></i>Ejemplo: valor de casas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#calculando-la-distribución-de-muestreo"><i class="fa fa-check"></i>Calculando la distribución de muestreo</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#ejemplo-1"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#ejemplo-2"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#teorema-central-del-límite"><i class="fa fa-check"></i>Teorema central del límite</a></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#normalidad-y-gráficas-de-cuantiles-normales"><i class="fa fa-check"></i>Normalidad y gráficas de cuantiles normales</a></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#prueba-de-hipótesis-de-normalidad"><i class="fa fa-check"></i>Prueba de hipótesis de normalidad</a>
+<ul>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#ejemplo-3"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#ejemplo-4"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#ejemplo-5"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="" data-path="estimación-y-distribución-de-muestreo-1.html"><a href="estimación-y-distribución-de-muestreo-1.html#más-del-teorema-central-del-límite"><i class="fa fa-check"></i>Más del Teorema central del límite</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html"><i class="fa fa-check"></i><b>5</b> Intervalos de confianza y remuestreo</a>
+<ul>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-introductorio"><i class="fa fa-check"></i>Ejemplo introductorio</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#la-idea-del-bootstrap"><i class="fa fa-check"></i>La idea del bootstrap</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#el-principio-de-plug-in"><i class="fa fa-check"></i>El principio de plug-in</a>
+<ul>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#discusión-propiedades-de-la-distribución-bootstrap"><i class="fa fa-check"></i>Discusión: propiedades de la distribución bootstrap</a>
+<ul>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-7"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#variación-en-distribuciones-bootstrap"><i class="fa fa-check"></i>Variación en distribuciones bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#error-estándar-bootstrap-e-intervalos-normales"><i class="fa fa-check"></i>Error estándar bootstrap e intervalos normales</a>
+<ul>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-tomadores-de-té-negro"><i class="fa fa-check"></i>Ejemplo: tomadores de té negro</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-inventario-de-casas-vendidas"><i class="fa fa-check"></i>Ejemplo: inventario de casas vendidas</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#calibración-de-intervalos-de-confianza"><i class="fa fa-check"></i>Calibración de intervalos de confianza</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#interpretación-de-intervalos-de-confianza"><i class="fa fa-check"></i>Interpretación de intervalos de confianza</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#intervalos-bootstrap-de-percentiles"><i class="fa fa-check"></i>Intervalos bootstrap de percentiles</a>
+<ul>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-8"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-para-dos-muestras"><i class="fa fa-check"></i>Bootstrap para dos muestras</a>
+<ul>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-9"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#datos-pareados"><i class="fa fa-check"></i>Datos pareados</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-y-otras-estadísticas"><i class="fa fa-check"></i>Bootstrap y otras estadísticas</a>
+<ul>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-estimadores-de-razón"><i class="fa fa-check"></i>Ejemplo: estimadores de razón</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-suavizadores"><i class="fa fa-check"></i>Ejemplo: suavizadores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-y-estimadores-complejos-tablas-de-perfiles"><i class="fa fa-check"></i>Bootstrap y estimadores complejos: tablas de perfiles</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html"><i class="fa fa-check"></i>Apéndice: Principios de visualizacion</a>
+<ul>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#el-cuarteto-de-anscombe"><i class="fa fa-check"></i>El cuarteto de Anscombe</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#introducción"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#visualización-popular-de-datos"><i class="fa fa-check"></i>Visualización popular de datos</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#teoría-de-visualización-de-datos"><i class="fa fa-check"></i>Teoría de visualización de datos</a>
+<ul>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#principios-generales-del-diseño-analítico"><i class="fa fa-check"></i>Principios generales del diseño analítico</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#técnicas-de-visualización"><i class="fa fa-check"></i>Técnicas de visualización</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#indicadores-de-calidad-gráfica"><i class="fa fa-check"></i>Indicadores de calidad gráfica</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#factor-de-engaño-y-chartjunk"><i class="fa fa-check"></i>Factor de engaño y Chartjunk</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#pequeños-múltiplos-y-densidad-gráfica"><i class="fa fa-check"></i>Pequeños múltiplos y densidad gráfica</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#tinta-de-datos"><i class="fa fa-check"></i>Tinta de datos</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#decoración"><i class="fa fa-check"></i>Decoración</a></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#percepción-de-escala"><i class="fa fa-check"></i>Percepción de escala</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#ejemplo-gráfica-de-minard"><i class="fa fa-check"></i>Ejemplo: gráfica de Minard</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html"><i class="fa fa-check"></i>Tareas</a>
+<ul>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#visualización"><i class="fa fa-check"></i>1. Visualización</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#análisis-exploratorio-1"><i class="fa fa-check"></i>2. Análisis Exploratorio</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#tipos-de-estudio-y-pgd"><i class="fa fa-check"></i>3. Tipos de estudio y PGD</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#pruebas-de-hipótesis-visuales-y-de-permutación"><i class="fa fa-check"></i>4. Pruebas de hipótesis visuales y de permutación</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/tereom/fundamentos-2022" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de Estadística con Remuestreo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intervalos-de-confianza-y-remuestreo" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Sección 5</span> Intervalos de confianza y remuestreo<a href="intervalos-de-confianza-y-remuestreo.html#intervalos-de-confianza-y-remuestreo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En la sección anterior, vimos el concepto de distribución de muestreo
+de una estadística que queremos utilizar para estimar un valor poblacional, y
+vimos que con esta distribución podíamos evaluar <strong>qué tan preciso es nuestro
+estimador</strong> evaluando qué tan concentrada está esta distribución alrededor
+del valor poblacion que queremos estimar.</p>
+<p>Sin embargo, en los ejemplos que vimos la población era conocida: ya sea que
+tuviéramos toda la población finita disponible (como el ejemplo de las casas), o
+donde la población estaba definida por un modelo teórico de probabilidad (como
+los ejemplos de las distribuciones uniforme o exponencial).</p>
+<p>Ahora vemos qué hacer en el caso que realmente nos interesa: solo tenemos una
+muestra disponible, y la población es desconocida. Todo lo que tenemos es una
+muestra y una estimación basada en la muestra, y requerimos estimar la
+distribución de muestreo de la estadística de interés. El enfoque que
+presentaremos aquí es uno de los más flexibles y poderosos que están disponibles
+para este problema: el método <strong>bootstrap</strong> o de <strong>remuestreo</strong>.</p>
+<p>En primer lugar explicamos el concepto de intervalo de confianza, que es una
+manera resumida de evaluar la precisión de nuestras estimaciones.</p>
+<div id="ejemplo-introductorio" class="section level2 unnumbered hasAnchor">
+<h2>Ejemplo introductorio<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-introductorio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Regresamos a nuestro ejemplo anterior donde muestreamos 3 grupos, y nos preguntábamos
+acerca de la diferencia de sus medianas. En lugar de hacer pruebas de permutaciones
+(ya sea pruebas gráficas o alguna prueba de permutaciones para media o mediana, por ejemplo),
+podríamos considerar qué tan precisa es cada una de nuestras estimaciones
+para las medianas de los grupos.</p>
+<p>Nuestros resultados podríamos presentarlos como sigue. Este código lo explicaremos
+más adelante, por el momento consideramos la gŕafica resultante:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">8</span>)</span>
+<span id="cb144-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-2" aria-hidden="true" tabindex="-1"></a>pob_tab <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2000</span>, <span class="at">x =</span> <span class="fu">rgamma</span>(<span class="dv">2000</span>, <span class="dv">4</span>, <span class="dv">1</span>), </span>
+<span id="cb144-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">grupo =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="dv">2000</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="at">replace =</span> T))</span>
+<span id="cb144-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-4" aria-hidden="true" tabindex="-1"></a>muestra_tab <span class="ot">&lt;-</span> pob_tab <span class="sc">|&gt;</span> </span>
+<span id="cb144-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">125</span>)</span>
+<span id="cb144-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-6" aria-hidden="true" tabindex="-1"></a>g_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(muestra_tab, <span class="fu">aes</span>(<span class="at">x =</span> grupo, <span class="at">y =</span> x)) <span class="sc">+</span> </span>
+<span id="cb144-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.alpha =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb144-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> </span>
+<span id="cb144-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Muestra </span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">14</span>))</span>
+<span id="cb144-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Hacemos bootstrap</span></span>
+<span id="cb144-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-11" aria-hidden="true" tabindex="-1"></a>fun_boot <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb144-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-12" aria-hidden="true" tabindex="-1"></a>    datos <span class="sc">|&gt;</span> <span class="fu">group_by</span>(grupo) <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb144-13"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb144-14"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-14" aria-hidden="true" tabindex="-1"></a>reps_boot <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2000</span>, <span class="cf">function</span>(i){</span>
+<span id="cb144-15"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-15" aria-hidden="true" tabindex="-1"></a>  muestra_tab <span class="sc">|&gt;</span> </span>
+<span id="cb144-16"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fun_boot</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb144-17"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(grupo) <span class="sc">|&gt;</span> </span>
+<span id="cb144-18"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mediana =</span> <span class="fu">median</span>(x), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)}, </span>
+<span id="cb144-19"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">.id =</span> <span class="st">&#39;rep&#39;</span>) </span>
+<span id="cb144-20"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-20" aria-hidden="true" tabindex="-1"></a>resumen_boot <span class="ot">&lt;-</span> reps_boot <span class="sc">|&gt;</span> <span class="fu">group_by</span>(grupo) <span class="sc">|&gt;</span> </span>
+<span id="cb144-21"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">ymin =</span> <span class="fu">quantile</span>(mediana, <span class="fl">0.025</span>), </span>
+<span id="cb144-22"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">ymax =</span> <span class="fu">quantile</span>(mediana, <span class="fl">0.975</span>), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb144-23"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(muestra_tab <span class="sc">|&gt;</span> </span>
+<span id="cb144-24"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">group_by</span>(grupo) <span class="sc">|&gt;</span> </span>
+<span id="cb144-25"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-25" aria-hidden="true" tabindex="-1"></a>                <span class="fu">summarise</span>(<span class="at">mediana =</span> <span class="fu">median</span>(x)), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
+<span id="cb144-26"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-26" aria-hidden="true" tabindex="-1"></a>g_2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(resumen_boot, <span class="fu">aes</span>(<span class="at">x =</span> grupo, <span class="at">y =</span> mediana, <span class="at">ymin =</span> ymin, </span>
+<span id="cb144-27"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-27" aria-hidden="true" tabindex="-1"></a>                                <span class="at">ymax =</span> ymax)) <span class="sc">+</span></span>
+<span id="cb144-28"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_linerange</span>() <span class="sc">+</span></span>
+<span id="cb144-29"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">14</span>)) <span class="sc">+</span></span>
+<span id="cb144-30"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Intervalos de 95% </span><span class="sc">\n</span><span class="st"> para la mediana&quot;</span>)</span>
+<span id="cb144-31"><a href="intervalos-de-confianza-y-remuestreo.html#cb144-31" aria-hidden="true" tabindex="-1"></a>g_1 <span class="sc">+</span> g_2</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Donde:</p>
+<ul>
+<li>En rojo está nuestro estimador puntual de la mediana de cada
+grupo (la mediana muestral), y</li>
+<li>Las segmentos muestran un intervalo de confianza del 95%
+para nuestra estimación de la mediana: esto quiere decir que
+los valores poblacionales tienen probabilidad aproximada de 95% de estar
+dentro del intervalo.</li>
+</ul>
+<p>Este análisis comunica correctamente que tenemos <strong>incertidumbre</strong> alta acerca
+de nuestras estimaciones (especialmente grupos b y c), y que no tenemos mucha
+evidencia de que el grupo b tenga una mediana poblacional considerablemente más
+alta que a o c. <strong>En muchos casos es más útil presentar la información de esta
+manera que usando alguna prueba de hipótesis.</strong></p>
+</div>
+<div id="la-idea-del-bootstrap" class="section level2 unnumbered hasAnchor">
+<h2>La idea del bootstrap<a href="intervalos-de-confianza-y-remuestreo.html#la-idea-del-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como explicamos, el problema que tenemos ahora es que normalmente sólo tenemos
+una muestra, así que no es posible calcular las distribuciones de muestreo como
+hicimos en la sección anterior y evaluar qué tan preciso es nuestro estimador. Sin embargo,
+podemos hacer lo siguiente:</p>
+<p>Supongamos que tenemos una muestra <span class="math inline">\(X_1,X_2,\dots, X_n\)</span> independientes de alguna
+población desconocida y un estimador <span class="math inline">\(T=t(X_1,\dots, X_n)\)</span></p>
+<p><strong>Mundo poblacional</strong></p>
+<ol style="list-style-type: decimal">
+<li>Si tuviéramos la distribución poblacional, simulamos muestras iid para
+aproximar la distribución de muestreo de nuestro estimador, y así entender su
+variabilidad.</li>
+<li>Pero <strong>no</strong> tenemos la distribución poblacional.</li>
+<li><strong>Sin embargo, podemos estimar la distribución poblacional con nuestros valores muestrales</strong>.</li>
+</ol>
+<p><strong>Mundo bootstrap</strong></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Si usamos la estimación del inciso 3, entonces usando el inciso 1 podríamos
+tomar muestras de nuestros datos muestrales, como si fueran de la población, y
+usando el mismo tamaño de muestra. El muestreo lo hacemos con reemplazo de
+manera que produzcamos muestras independientes de la misma “población estimada”,
+que es la muestra.</li>
+<li>Evaluamos nuestra estadística en cada una de estas remuestras.</li>
+<li>A la distribución resultante le llamamos <strong>distribución bootstrap</strong> o
+<strong>distribución de remuestreo</strong> del estimador.</li>
+<li>Usamos la distribución bootstrap de la muestra para estimar la variabilidad
+en nuestra estimación con <strong>la muestra original</strong>.</li>
+</ol>
+<p>Veamos que sucede para un ejemplo concreto, donde nos interesa estimar
+la media de los precios de venta de una población de casas. Tenemos nuestra muestra:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2112</span>)</span>
+<span id="cb145-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb145-2" aria-hidden="true" tabindex="-1"></a>poblacion_casas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/casas.csv&quot;</span>)</span>
+<span id="cb145-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb145-3" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(poblacion_casas, <span class="at">n =</span> <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb145-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(muestra<span class="sc">$</span>precio_miles)</span></code></pre></div>
+<pre><code>## [1] 179.963</code></pre>
+<p>Esta muestra nos da nuestro estimador de la distribución poblacional:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(muestra <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="st">&quot;muestra&quot;</span>),</span>
+<span id="cb147-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb147-2" aria-hidden="true" tabindex="-1"></a>    poblacion_casas <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="st">&quot;población&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb147-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> precio_miles, <span class="at">colour =</span> tipo, <span class="at">group =</span> tipo)) <span class="sc">+</span> </span>
+<span id="cb147-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb147-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_qq</span>(<span class="at">distribution =</span> stats<span class="sc">::</span>qunif, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb147-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb147-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> tipo)</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>O con histogramas:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(muestra <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="st">&quot;muestra&quot;</span>),</span>
+<span id="cb148-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb148-2" aria-hidden="true" tabindex="-1"></a>    poblacion_casas <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="st">&quot;población&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb148-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> precio_miles, <span class="at">group =</span> tipo)) <span class="sc">+</span> </span>
+<span id="cb148-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb148-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y=</span>..density..), <span class="at">binwidth =</span> <span class="dv">50</span>) <span class="sc">+</span> </span>
+<span id="cb148-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb148-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> tipo)</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Y vemos que la aproximación es razonable en las partes centrales de la
+distribución.</p>
+<p>Ahora supongamos que nos interesa cuantificar la precisión de nuestra
+estimación de la media poblacional de precios de casas, y usaremos la media
+muestral para hacer esto. Para nuestra muestra, nuestra estimación puntual es:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb149-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(muestra<span class="sc">$</span>precio_miles)</span>
+<span id="cb149-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb149-2" aria-hidden="true" tabindex="-1"></a>media</span></code></pre></div>
+<pre><code>## [1] 179.963</code></pre>
+<p>Y recordamos que para aproximar la distribución de muestreo
+podíamos muestrear repetidamente la población y calcular el valor del
+estimador en cada una de estas muestras. Aquí no tenemos la población,
+<strong>pero tenemos una estimación de la población</strong>: la muestra obtenida.</p>
+<p>Así que para evaluar la variabilidad de nuestro estimador, entramos en el mundo
+boostrap, y consideramos que la población es nuestra muestra.</p>
+<p>Podemos entonces extraer un número grande de muestras con reemplazo de tamaño
+200 <strong>de la muestra</strong>: el muestreo debe ser análogo al que se tomó para nuestra
+muestra original. Evaluamos nuestra estadística (en este caso la media) en cada
+una de estas remuestras:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb151-1" aria-hidden="true" tabindex="-1"></a>media_muestras <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>, <span class="sc">~</span> muestra <span class="sc">|&gt;</span>  </span>
+<span id="cb151-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb151-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">200</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb151-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb151-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">media_precio =</span> <span class="fu">mean</span>(precio_miles), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(media_precio)) </span></code></pre></div>
+<p>Y nuestra estimación de la distribución de muestreo para la media es entonces:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb152-1" aria-hidden="true" tabindex="-1"></a>bootstrap <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">media =</span> media_muestras)</span>
+<span id="cb152-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb152-2" aria-hidden="true" tabindex="-1"></a>g_cuantiles <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bootstrap, <span class="fu">aes</span>(<span class="at">sample =</span> media)) <span class="sc">+</span> <span class="fu">geom_qq</span>(<span class="at">distribution =</span> stats<span class="sc">::</span>qunif)</span>
+<span id="cb152-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb152-3" aria-hidden="true" tabindex="-1"></a>g_histograma <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bootstrap, <span class="fu">aes</span>(<span class="at">x =</span> media)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>)</span>
+<span id="cb152-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb152-4" aria-hidden="true" tabindex="-1"></a>g_cuantiles <span class="sc">+</span> g_histograma</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" />
+A esta le llamamos la distribución de remuestreo de la media, que definimos más
+abajo. Ahora podemos calcular un intervalo de confianza del 90% simplemente
+calculando los cuantiles de esta distribución (no son los cuantiles de la
+muestra original!):</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb153-1" aria-hidden="true" tabindex="-1"></a>limites_ic <span class="ot">&lt;-</span> <span class="fu">quantile</span>(media_muestras, <span class="fu">c</span>(<span class="fl">0.05</span>,  <span class="fl">0.95</span>)) <span class="sc">|&gt;</span> <span class="fu">round</span>()</span>
+<span id="cb153-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb153-2" aria-hidden="true" tabindex="-1"></a>limites_ic</span></code></pre></div>
+<pre><code>##  5% 95% 
+## 171 189</code></pre>
+<p>Presentaríamos nuestro resultado como sigue: nuestra estimación puntual de la
+mediana es 180, con un intervalo de
+confianza del 90% de (171, 189)</p>
+<p>Otra cosa que podríamos hacer para describir la dispersión de nuestro estimador
+es calcular el error estándar de remuestreo, que estima el error estándar de la
+distribución de muestreo:</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb155-1" aria-hidden="true" tabindex="-1"></a>ee_boot <span class="ot">&lt;-</span> <span class="fu">sd</span>(media_muestras)</span>
+<span id="cb155-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(ee_boot, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 5.39</code></pre>
+
+<div class="mathblock">
+<p><strong>Definición.</strong> Sea <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span> una muestra independiente y idénticamente
+distribuida, y <span class="math inline">\(T=t(X_1, X_2, \ldots, X_n)\)</span> una estadística. Supongamos que sus valores
+que obervamos son <span class="math inline">\(x_1, x_2,\ldots, x_n\)</span>.</p>
+<p>La <strong>distribución de remuestreo</strong> de <span class="math inline">\(T\)</span> es la
+distribución de <span class="math inline">\(T^*=t(X_1^*, X_2^*, \dots X_n^*)\)</span>, donde cada <span class="math inline">\(X_i^*\)</span> se obtiene
+tomando al azar uno de los valores de <span class="math inline">\(x_1,x_2,\ldots, x_n\)</span>.</p>
+</div>
+<ul>
+<li>Otra manera de decir esto es que la remuestra <span class="math inline">\(X_1^*, X_2^*, \ldots, X_n^*\)</span> es una muestra
+con reemplazo de los valores observados <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span></li>
+</ul>
+<p><strong>Ejemplo.</strong> Si observamos la muestra</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb157-1" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">5</span>)</span>
+<span id="cb157-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb157-2" aria-hidden="true" tabindex="-1"></a>muestra</span></code></pre></div>
+<pre><code>## [1]  6 10  7  3 14</code></pre>
+<p>Una remuestra se obtiene:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(muestra, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1]  7  3  7 10  6</code></pre>
+<p>Nótese que algunos valores de la muestra original pueden aparecer varias veces, y otros no aparecen del todo.</p>
+
+<div class="comentario">
+<strong>La idea del bootstrap (no paramétrico)</strong>. La muestra original es una aproximación de la población
+de donde fue extraída. Así que remuestrear la muestra aproxima lo que pasaría si
+tomáramos muestras de la población. La <strong>distribución de remuestreo</strong> de una estadística,
+que se construye tomando muchas remuestras, aproxima la distribución de muestreo
+de la estadística.
+</div>
+<p>Y el proceso que hacemos es:</p>
+
+<div class="comentario">
+<p><strong>Remuestreo para una población.</strong> Dada una muestra de tamaño <span class="math inline">\(n\)</span> de una población,</p>
+<ol style="list-style-type: decimal">
+<li>Obtenemos una remuestra de tamaño <span class="math inline">\(n\)</span> con reemplazo de la muestra original</li>
+<li>Repetimos este remuestreo muchas veces (por ejemplo, 10,000).</li>
+<li>Construímos la distribución bootstrap, y examinamos sus características
+(dónde está centrada, dispersión y forma).</li>
+</ol>
+</div>
+</div>
+<div id="el-principio-de-plug-in" class="section level2 unnumbered hasAnchor">
+<h2>El principio de plug-in<a href="intervalos-de-confianza-y-remuestreo.html#el-principio-de-plug-in" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La idea básica detrás del bootstrap es el principio de plug-in para estimar
+parámetros poblacionales: si queremos estimar una cantidad poblacional,
+calculamos esa cantidad poblacional con la muestra obtenida. Es un principio
+común en estadística.</p>
+<p>Por ejemplo, si queremos estimar la media o desviación estándar poblacional,
+usamos la media muestral o la desviación estándar muestral. Si queremos estimar
+un cuantil de la población usamos el cuantil correspondiente de la muestra, y
+así sucesivamente.</p>
+<p>En todos estos casos, lo que estamos haciendo es:</p>
+<ul>
+<li>Tenemos una fórmula para la cantidad poblacional de interés en términos de la
+distribución poblacional.<br />
+</li>
+<li>Tenemos una muestra, que usamos para estimar la cantidad poblacional. La
+distribución que da una muestra se llama distribución <em>empírica</em>.</li>
+<li>Contruimos nuestro estimador “enchufando” la distribución empírica de la
+muestra en la fórmula del estimador.</li>
+</ul>
+<p>En el bootstrap aplicamos este principio simple a la <strong>distribución de
+muestreo</strong>:</p>
+<ul>
+<li><em>Si tenemos la población</em>, podemos <em>calcular</em> la distribución de muestreo de
+nuestro estimador tomando muchas muestras de la <em>población</em>.</li>
+<li>Estimamos la <em>poblacion</em> con la <em>muestra</em> y enchufamos en la frase anterior:</li>
+<li>Podemos <em>estimar</em> la distribucion de muestreo de nuestro estimador
+tomando muchas muestras de la <em>muestra</em> (bootstrap).</li>
+</ul>
+<p>Nótese que el proceso de muestreo en el último paso <strong>debe ser el mismo</strong> que
+se usó para tomar la muestra original. Estas dos imágenes simuladas con base en
+un ejemplo de <span class="citation">Chihara and Hesterberg (<a href="#ref-Chihara" role="doc-biblioref">2018</a>)</span> muestran lo que acabamos de describir:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mundo-real"></span>
+<img src="05-remuestreo_files/figure-html/mundo-real-1.png" alt="Mundo Real" width="672" />
+<p class="caption">
+Figure 5.1: Mundo Real
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mundo-bootstrap"></span>
+<img src="05-remuestreo_files/figure-html/mundo-bootstrap-1.png" alt="Mundo Bootstrap" width="672" />
+<p class="caption">
+Figure 5.2: Mundo Bootstrap
+</p>
+</div>
+<p><strong>Observación 1</strong>. Veremos ejemplos más complejos, pero nótese que si la muestra
+original son observaciones independientes obtenidas de la distribución poblacional,
+entonces logramos esto en las remuestras tomando observaciones con reemplazo
+de la muestra. Igualmente, las remuestras deben ser del mismo tamaño que la muestra
+original.</p>
+
+<div class="ejercicio">
+<ul>
+<li>¿Porqué no funcionaría tomar muestras sin reemplazo? Piensa si hay independencia
+entre las observaciones de la remuestra, y cómo serían las remuestras sin reemplazo.</li>
+<li>¿Por qué no se puede hacer bootstrap si no conocemos cómo se obtuvo la muestra original?
+</div></li>
+</ul>
+<p><strong>Observación 2</strong>. Estos argumentos se pueden escribir con fórmulas usando por
+ejemplo la función de distribución acumulada <span class="math inline">\(F\)</span> de la población y su estimador,
+que es la función empírica <span class="math inline">\(\hat{F}\)</span>, como en <span class="citation">Efron and Tibshirani (<a href="#ref-Efron" role="doc-biblioref">1993</a>)</span>.
+Si <span class="math inline">\(\theta = t(F)\)</span> es una
+cantidad poblacional que queremos estimar, su estimador plug-in es
+<span class="math inline">\(\hat{\theta} = t(\hat{F})\)</span>.</p>
+<p><strong>Observación 3</strong>: La distribución empírica <span class="math inline">\(\hat{F}\)</span> es un estimador “razonable” de
+la distribución poblacional <span class="math inline">\(F,\)</span> pues por el teorema de Glivenko-Cantelli (ver <span class="citation">Wasserman (<a href="#ref-Wasserman" role="doc-biblioref">2013</a>)</span>,
+o <a href="https://en.wikipedia.org/wiki/Glivenko-Cantelli_theorem">aquí</a>),
+<span class="math inline">\(\hat{F}\)</span> converge a <span class="math inline">\(F\)</span> cuando el tamaño de muestra <span class="math inline">\(n\to\infty\)</span>, lo cual es
+intuitivamente claro.</p>
+<div id="ejemplo-6" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En el ejemplo de tomadores de té, podemos estimar la proporción de tomadores
+de té que prefiere el té negro usando nuestra muestra:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb161-1" aria-hidden="true" tabindex="-1"></a>te <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/tea.csv&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb161-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb161-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowid_to_column</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb161-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb161-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rowid, Tea, sugar)</span>
+<span id="cb161-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb161-4" aria-hidden="true" tabindex="-1"></a>te <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">negro =</span> <span class="fu">ifelse</span>(Tea <span class="sc">==</span> <span class="st">&quot;black&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb161-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb161-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prop_negro =</span> <span class="fu">mean</span>(negro), <span class="at">n =</span> <span class="fu">length</span>(negro), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
+##   prop_negro     n
+##        &lt;dbl&gt; &lt;int&gt;
+## 1      0.247   300</code></pre>
+<p>¿Cómo evaluamos la precisión de este estimador? Supondremos que el estudio se
+hizo tomando una muestra aleatoria simple de tamaño 300 de la población de tomadores de té que
+nos interesa. Podemos entonces usar el boostrap:</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 1: define el estimador</span></span>
+<span id="cb163-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-2" aria-hidden="true" tabindex="-1"></a>calc_estimador <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb163-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-3" aria-hidden="true" tabindex="-1"></a>  prop_negro <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span> </span>
+<span id="cb163-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">negro =</span> <span class="fu">ifelse</span>(Tea <span class="sc">==</span> <span class="st">&quot;black&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb163-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">prop_negro =</span> <span class="fu">mean</span>(negro), <span class="at">n =</span> <span class="fu">length</span>(negro), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb163-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(prop_negro)</span>
+<span id="cb163-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-7" aria-hidden="true" tabindex="-1"></a>  prop_negro</span>
+<span id="cb163-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb163-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 2: define el proceso de remuestreo</span></span>
+<span id="cb163-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-10" aria-hidden="true" tabindex="-1"></a>muestra_boot <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb163-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#tomar muestra con reemplazo del mismo tamaño</span></span>
+<span id="cb163-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(datos, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb163-13"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb163-14"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-14" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 3: remuestrea y calcula el estimador</span></span>
+<span id="cb163-15"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-15" aria-hidden="true" tabindex="-1"></a>prop_negro_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">prop_negro =</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>,  <span class="sc">~</span> <span class="fu">calc_estimador</span>(<span class="fu">muestra_boot</span>(<span class="at">datos =</span> te))))</span>
+<span id="cb163-16"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-17"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-17" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 4: examina la distribución bootstrap</span></span>
+<span id="cb163-18"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-18" aria-hidden="true" tabindex="-1"></a>prop_negro_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb163-19"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> prop_negro)) <span class="sc">+</span></span>
+<span id="cb163-20"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb163-21"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">calc_estimador</span>(te), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Y podemos evaluar varios aspectos, por ejemplo dónde está centrada y
+qué tan dispersa es la distribución bootstrap:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-1" aria-hidden="true" tabindex="-1"></a>prop_negro_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb164-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(prop_negro),</span>
+<span id="cb164-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sesgo =</span> <span class="fu">mean</span>(prop_negro) <span class="sc">-</span> <span class="fl">0.2499</span>,</span>
+<span id="cb164-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ee =</span> <span class="fu">sd</span>(prop_negro),</span>
+<span id="cb164-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">cuantil_75 =</span> <span class="fu">quantile</span>(prop_negro, <span class="fl">0.75</span>), </span>
+<span id="cb164-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">cuantil_25 =</span> <span class="fu">quantile</span>(prop_negro, <span class="fl">0.25</span>),</span>
+<span id="cb164-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb164-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="dv">3</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb164-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   name        value
+##   &lt;chr&gt;       &lt;dbl&gt;
+## 1 media       0.247
+## 2 sesgo      -0.003
+## 3 ee          0.025
+## 4 cuantil_75  0.263
+## 5 cuantil_25  0.23</code></pre>
+</div>
+</div>
+<div id="discusión-propiedades-de-la-distribución-bootstrap" class="section level2 unnumbered hasAnchor">
+<h2>Discusión: propiedades de la distribución bootstrap<a href="intervalos-de-confianza-y-remuestreo.html#discusión-propiedades-de-la-distribución-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Uasremos la distribución bootstrap principalmente para evaluar la variabilidad
+de nuestros estimadores (y también otros aspectos como sesgo) estimando
+la dispersión de la distribución de muestreo. Sin embargo, es importante notar
+que no la usamos, por ejemplo, para saber dónde está centrada la distribución
+de muestreo, o para “mejorar” la estimación remuestreando.</p>
+<div id="ejemplo-7" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En nuestro ejemplo, podemos ver varias muestras (por ejemplo 20) de tamaño 200, y
+vemos cómo se ve la aproximación a la distribución de la población:</p>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-19-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Podemos calcular las distribuciones de remuestreo para cada muestra bootstrap,
+y compararlas con la distribución de muestreo real.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 1: define el estimador</span></span>
+<span id="cb166-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-2" aria-hidden="true" tabindex="-1"></a>calc_estimador <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb166-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  media_precio <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span> </span>
+<span id="cb166-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(precio_miles), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb166-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(media)</span>
+<span id="cb166-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-6" aria-hidden="true" tabindex="-1"></a>  media_precio</span>
+<span id="cb166-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb166-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 2: define el proceso de remuestreo</span></span>
+<span id="cb166-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-9" aria-hidden="true" tabindex="-1"></a>muestra_boot <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, <span class="at">n =</span> <span class="cn">NULL</span>){</span>
+<span id="cb166-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#tomar muestra con reemplazo del mismo tamaño</span></span>
+<span id="cb166-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.null</span>(n)){</span>
+<span id="cb166-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-12" aria-hidden="true" tabindex="-1"></a>    m <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(datos, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)}</span>
+<span id="cb166-13"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> {</span>
+<span id="cb166-14"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-14" aria-hidden="true" tabindex="-1"></a>    m <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(datos, <span class="at">n =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb166-15"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb166-16"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-16" aria-hidden="true" tabindex="-1"></a>  m</span>
+<span id="cb166-17"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb166-18"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-18" aria-hidden="true" tabindex="-1"></a>dist_boot <span class="ot">&lt;-</span> datos_sim <span class="sc">|&gt;</span></span>
+<span id="cb166-19"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo <span class="sc">==</span> <span class="st">&quot;muestras&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb166-20"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(precio_miles, rep) <span class="sc">|&gt;</span> </span>
+<span id="cb166-21"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rep) <span class="sc">|&gt;</span> <span class="fu">nest</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb166-22"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">precio_miles =</span>  <span class="fu">map</span>(data, <span class="cf">function</span>(data){</span>
+<span id="cb166-23"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">precio_miles =</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="sc">~</span> <span class="fu">calc_estimador</span>(<span class="fu">muestra_boot</span>(data))))</span>
+<span id="cb166-24"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-24" aria-hidden="true" tabindex="-1"></a>  })) <span class="sc">|&gt;</span> </span>
+<span id="cb166-25"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rep, precio_miles) <span class="sc">|&gt;</span> </span>
+<span id="cb166-26"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>()</span>
+<span id="cb166-27"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb166-28"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-28" aria-hidden="true" tabindex="-1"></a>dist_muestreo <span class="ot">&lt;-</span> datos_sim <span class="sc">|&gt;</span> </span>
+<span id="cb166-29"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo <span class="sc">==</span> <span class="st">&quot;población&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb166-30"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rep) <span class="sc">|&gt;</span> <span class="fu">nest</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb166-31"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">precio_miles =</span>  <span class="fu">map</span>(data, <span class="cf">function</span>(data){</span>
+<span id="cb166-32"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">precio_miles =</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="sc">~</span> <span class="fu">calc_estimador</span>(<span class="fu">muestra_boot</span>(data, <span class="at">n =</span> <span class="dv">200</span>))))</span>
+<span id="cb166-33"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-33" aria-hidden="true" tabindex="-1"></a>  })) <span class="sc">|&gt;</span> </span>
+<span id="cb166-34"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rep, precio_miles) <span class="sc">|&gt;</span> </span>
+<span id="cb166-35"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>()</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-21-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Obsérvese que:</p>
+<ul>
+<li>En algunos casos la aproximación es mejor que en otros (a veces
+la muestra tiene valores ligeramente más altos o más bajos).</li>
+<li>La dispersión de cada una de estas distribuciones bootstrap es similar a la de la verdadera
+distribución de muestreo (en rojo), pero puede está desplazada dependiendo
+de la muestra original que utilizamos.</li>
+<li>Adicionalmente, los valores centrales de la distribución de bootstrap
+tiende cubrir el verdadero valor que buscamos estimar, que es:</li>
+</ul>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb167-1" aria-hidden="true" tabindex="-1"></a>poblacion_casas <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(precio_miles), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   media
+##   &lt;dbl&gt;
+## 1  183.</code></pre>
+</div>
+<div id="variación-en-distribuciones-bootstrap" class="section level3 unnumbered hasAnchor">
+<h3>Variación en distribuciones bootstrap<a href="intervalos-de-confianza-y-remuestreo.html#variación-en-distribuciones-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En el proceso de estimación bootstrap hay dos fuentes de variación pues:</p>
+<ul>
+<li><p>La muestra original se selecciona con aleatoriedad de una población.</p></li>
+<li><p>Las muestras bootstrap se seleccionan con aleatoriedad de la muestra
+original. Esto es: <em>La estimación bootstrap ideal es un resultado asintótico
+<span class="math inline">\(B=\infty\)</span>, en esta caso <span class="math inline">\(\hat{\textsf{se}}_B\)</span> iguala la estimación <em>plug-in</em>
+<span class="math inline">\(se_{P_n}\)</span>.</em></p></li>
+</ul>
+<p>En el proceso de <em>bootstrap</em> podemos controlar la variación del segundo aspecto,
+conocida como <strong>implementación de muestreo Monte Carlo</strong>, y la variación
+Monte Carlo decrece conforme incrementamos el número de muestras.</p>
+<p>Podemos eliminar la variación Monte Carlo si seleccionamos todas las posibles
+muestras con reemplazo de tamaño <span class="math inline">\(n\)</span>, hay <span class="math inline">\({2n-1}\choose{n}\)</span> posibles muestras
+y si seleccionamos todas obtenemos <span class="math inline">\(\hat{\textsf{se}}_\infty\)</span> (bootstrap ideal), sin
+embargo, en la mayor parte de los problemas no es factible proceder así.</p>
+<p>En la siguiente gráfica mostramos 6 posibles muestras de tamaño 50 simuladas de
+la población, para cada una de ellas se graficó la distribución empírica y se
+se realizan histogramas de la distribución bootstrap con <span class="math inline">\(B=30\)</span> y <span class="math inline">\(B=1000\)</span>, en
+cada caso hacemos dos repeticiones, notemos que cuando el número de muestras
+bootstrap es grande las distribuciones bootstrap son muy similares (para una
+muestra de la población dada), esto es porque disminuimos el erro Monte Carlo.
+También vale la pena recalcar que la distribución bootstrap está centrada en el
+valor observado en la muestra (línea azúl punteada) y no en el valor poblacional
+sin embargo la forma de la distribución es similar a lo largo de las filas.</p>
+<p><img src="images/bootstrap_mc_error.png" /></p>
+<p>Entonces, ¿cuántas muestras bootstrap?</p>
+<ol style="list-style-type: decimal">
+<li><p>Incluso un número chico de replicaciones bootstrap, digamos <span class="math inline">\(B=25\)</span> es
+informativo, y <span class="math inline">\(B=50\)</span> con frecuencia es suficiente para dar una buena
+estimación de <span class="math inline">\(se_P(\hat{\theta})\)</span> (<span class="citation">Efron and Tibshirani (<a href="#ref-Efron" role="doc-biblioref">1993</a>)</span>).</p></li>
+<li><p>Cuando se busca estimar error estándar <span class="citation">Chihara and Hesterberg (<a href="#ref-Chihara" role="doc-biblioref">2018</a>)</span> recomienda <span class="math inline">\(B=1000\)</span> muestras, o
+<span class="math inline">\(B=10,000\)</span> muestras dependiendo la presición que se busque.</p></li>
+</ol>
+</div>
+</div>
+<div id="error-estándar-bootstrap-e-intervalos-normales" class="section level2 unnumbered hasAnchor">
+<h2>Error estándar bootstrap e intervalos normales<a href="intervalos-de-confianza-y-remuestreo.html#error-estándar-bootstrap-e-intervalos-normales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ahora podemos construir nuestra primera versión de intervalos de confianza
+basados en la distribución bootstrap.</p>
+<ul>
+<li><p>Supongamos que queremos estimar una cantidad poblacional <span class="math inline">\(\theta\)</span> con una
+estadística <span class="math inline">\(\hat{\theta} = t(X_1,\ldots, X_n)\)</span>, donde <span class="math inline">\(X_1,\ldots, X_n\)</span> es una muestra
+independiente e idénticamente distribuida de la población.</p></li>
+<li><p>Suponemos además que la distribución muestral de <span class="math inline">\(\hat{\theta}\)</span> es aproximadamente normal (el teorema
+central del límite aplica), y está centrada en el verdadero valor poblacional <span class="math inline">\(\theta\)</span>.</p></li>
+</ul>
+<p>Ahora queremos construir un intervalo que tenga probabilidad 95% de cubrir al
+valor poblacional <span class="math inline">\(\theta\)</span>. Tenemos que</p>
+<p><span class="math display">\[P(-2\mathsf{ee}(\hat{\theta}) &lt;  \hat{\theta} - \theta &lt; 2\mathsf{ee}(\hat{\theta})) \approx 0.95\]</span>
+por las propiedades de la distribución normal (<span class="math inline">\(P(-2\sigma &lt; X -\mu &lt; 2\sigma)\approx 0.95\)</span> si <span class="math inline">\(X\)</span> es
+normal con media <span class="math inline">\(\mu\)</span> y desviación estándar <span class="math inline">\(\sigma\)</span>). Entonces</p>
+<p><span class="math display">\[P(\hat{\theta} - 2\mathsf{ee}(\hat{\theta}) &lt; \theta &lt; \hat{\theta} + 2\mathsf{ee}(\hat{\theta})) \approx 0.95\]</span>
+Es decir, la probabilidad de que el verdadero valor poblacional <span class="math inline">\(\theta\)</span> esté en el intervalo
+<span class="math display">\[[\hat{\theta} - 2\mathsf{ee}(\hat{\theta}), \hat{\theta} + 2\mathsf{ee}(\hat{\theta})]\]</span>
+es cercano a 0.95. En este intervalo no conocemos el error estándar (es la desviación estándar
+de la distribución de muestreo de <span class="math inline">\(\hat{\theta}\)</span>), y aquí es donde
+entre la distribución bootstrap, que aproxima la distribución de muestreo. Lo estimamos con</p>
+<p><span class="math display">\[\hat{\mathsf{ee}}_{\textrm{boot}}(\hat{\theta})\]</span>
+que es la desviación estándar de la <strong>distribución bootsrap</strong>.</p>
+
+<div class="mathblock">
+<p><strong>Definición.</strong> El <strong>error estándar bootstrap</strong> <span class="math inline">\(\hat{\mathsf{ee}}_{\textrm{boot}}(\hat{\theta})\)</span> se
+define como la desviación estándar de la distribución bootstrap de <span class="math inline">\(\theta\)</span>.</p>
+El <strong>intervalo de confianza normal bootstrap</strong> al 95% está dado por
+<span class="math display">\[[\hat{\theta} - 2\mathsf{ee}(\hat{\theta}), \hat{\theta} + 2\mathsf{ee}(\hat{\theta})].\]</span>
+</div>
+<p>Nótese que hay varias cosas qué checar aquí: que el teorema central del límite aplica y
+que la distribución de muestreo de nuestro estimador está centrado en el valor verdadero.
+Esto en algunos casos se puede demostrar usando la teoría, pero más abajo veremos
+comprobaciones empíricas.</p>
+<div id="ejemplo-tomadores-de-té-negro" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo: tomadores de té negro<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-tomadores-de-té-negro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consideremos la estimación que hicimos de el procentaje de tomadores de té que toma
+té negro:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 1: define el estimador</span></span>
+<span id="cb169-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-2" aria-hidden="true" tabindex="-1"></a>calc_estimador <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb169-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-3" aria-hidden="true" tabindex="-1"></a>  prop_negro <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span> </span>
+<span id="cb169-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">negro =</span> <span class="fu">ifelse</span>(Tea <span class="sc">==</span> <span class="st">&quot;black&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb169-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">prop_negro =</span> <span class="fu">mean</span>(negro), <span class="at">n =</span> <span class="fu">length</span>(negro)) <span class="sc">|&gt;</span> </span>
+<span id="cb169-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(prop_negro)</span>
+<span id="cb169-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-7" aria-hidden="true" tabindex="-1"></a>  prop_negro</span>
+<span id="cb169-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb169-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-9" aria-hidden="true" tabindex="-1"></a>prop_hat <span class="ot">&lt;-</span> <span class="fu">calc_estimador</span>(te)</span>
+<span id="cb169-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb169-10" aria-hidden="true" tabindex="-1"></a>prop_hat <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.25</code></pre>
+<p>Podemos graficar su distribución bootstrap —la cual simulamos arriba—.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb171-1" aria-hidden="true" tabindex="-1"></a>g_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(prop_negro_tbl, <span class="fu">aes</span>(<span class="at">x =</span> prop_negro)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)</span>
+<span id="cb171-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb171-2" aria-hidden="true" tabindex="-1"></a>g_qq_normal <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(prop_negro_tbl, <span class="fu">aes</span>(<span class="at">sample =</span> prop_negro)) <span class="sc">+</span></span>
+<span id="cb171-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb171-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> <span class="fu">geom_qq_line</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb171-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb171-4" aria-hidden="true" tabindex="-1"></a>g_hist <span class="sc">+</span> g_qq_normal</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Y notamos que la distribución bootstrap es aproximadamente normal.
+Adicionalmente, vemos que el sesgo tiene un valor estimado de:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb172-1" aria-hidden="true" tabindex="-1"></a>media_boot <span class="ot">&lt;-</span> prop_negro_tbl <span class="sc">|&gt;</span> <span class="fu">pull</span>(prop_negro) <span class="sc">|&gt;</span> <span class="fu">mean</span>()</span>
+<span id="cb172-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb172-2" aria-hidden="true" tabindex="-1"></a>media_boot <span class="sc">-</span> prop_hat</span></code></pre></div>
+<pre><code>## [1] 0.0004393333</code></pre>
+<p>De esta forma, hemos verificado que:</p>
+<ul>
+<li>La distribución bootstrap es aproximadamente normal (ver gráfica de cuantiles normales);</li>
+<li>La distribución bootstrap es aproximadamente insesgada.</li>
+</ul>
+<p>Lo cual nos lleva a construir intervalos de confianza basados en la distribución
+normal. Estimamos el error estándar con la desviación estándar de la
+distribución bootstrap</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb174-1" aria-hidden="true" tabindex="-1"></a>ee_boot <span class="ot">&lt;-</span> prop_negro_tbl <span class="sc">|&gt;</span> <span class="fu">pull</span>(prop_negro) <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span>
+<span id="cb174-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb174-2" aria-hidden="true" tabindex="-1"></a>ee_boot</span></code></pre></div>
+<pre><code>## [1] 0.02485138</code></pre>
+<p>y construimos un intervalo de confianza del 95%:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb176-1" aria-hidden="true" tabindex="-1"></a>intervalo_95 <span class="ot">&lt;-</span> <span class="fu">c</span>(prop_hat <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> ee_boot, prop_hat <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> ee_boot)</span>
+<span id="cb176-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb176-2" aria-hidden="true" tabindex="-1"></a>intervalo_95 <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.2 0.3</code></pre>
+<p>Este intervalo tiene probabilidad del 95% de capturar al verdadero poblacional. Con
+<em>alta</em> probabilidad, entonces, el porcentaje de tomadores de té en la población
+está entre 0.2 y 0.3.</p>
+</div>
+</div>
+<div id="ejemplo-inventario-de-casas-vendidas" class="section level2 unnumbered hasAnchor">
+<h2>Ejemplo: inventario de casas vendidas<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-inventario-de-casas-vendidas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ahora consideremos el problema de estimar el total del valor de las casas
+vendidas en un periodo. Tenemos una muestra de tamaño <span class="math inline">\(n=150\)</span>:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># muestra original</span></span>
+<span id="cb178-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">121</span>)</span>
+<span id="cb178-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-3" aria-hidden="true" tabindex="-1"></a>muestra_casas <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(poblacion_casas, <span class="at">n =</span> <span class="dv">150</span>)</span>
+<span id="cb178-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-4" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 1: define el estimador</span></span>
+<span id="cb178-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-5" aria-hidden="true" tabindex="-1"></a>calc_estimador_casas <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb178-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-6" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(poblacion_casas)</span>
+<span id="cb178-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-7" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
+<span id="cb178-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-8" aria-hidden="true" tabindex="-1"></a>  total_muestra <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>precio_miles)</span>
+<span id="cb178-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-9" aria-hidden="true" tabindex="-1"></a>  estimador_total <span class="ot">&lt;-</span> (N <span class="sc">/</span> n) <span class="sc">*</span> total_muestra</span>
+<span id="cb178-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-10" aria-hidden="true" tabindex="-1"></a>  estimador_total</span>
+<span id="cb178-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb178-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-12" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 2: define el proceso de remuestreo</span></span>
+<span id="cb178-13"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-13" aria-hidden="true" tabindex="-1"></a>muestra_boot <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb178-14"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#tomar muestra con reemplazo del mismo tamaño</span></span>
+<span id="cb178-15"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(datos, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb178-16"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb178-17"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-17" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 3: remuestrea y calcula el estimador</span></span>
+<span id="cb178-18"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-18" aria-hidden="true" tabindex="-1"></a>totales_boot <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">total_boot =</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>,  <span class="sc">~</span> <span class="fu">calc_estimador_casas</span>(<span class="fu">muestra_boot</span>(muestra_casas))))</span>
+<span id="cb178-19"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-19" aria-hidden="true" tabindex="-1"></a><span class="co"># paso 4: examina la distribución bootstrap</span></span>
+<span id="cb178-20"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-20" aria-hidden="true" tabindex="-1"></a>g_hist <span class="ot">&lt;-</span> totales_boot <span class="sc">|&gt;</span> </span>
+<span id="cb178-21"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> total_boot)) <span class="sc">+</span></span>
+<span id="cb178-22"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb178-23"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-23" aria-hidden="true" tabindex="-1"></a>g_qq <span class="ot">&lt;-</span> totales_boot <span class="sc">|&gt;</span></span>
+<span id="cb178-24"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> total_boot)) <span class="sc">+</span></span>
+<span id="cb178-25"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> <span class="fu">geom_qq_line</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb178-26"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">quantile</span>(totales_boot<span class="sc">$</span>total_boot, <span class="fl">0.975</span>), <span class="at">colour =</span> <span class="st">&quot;gray&quot;</span>) <span class="sc">+</span></span>
+<span id="cb178-27"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">quantile</span>(totales_boot<span class="sc">$</span>total_boot, <span class="fl">0.025</span>), <span class="at">colour =</span> <span class="st">&quot;gray&quot;</span>) </span>
+<span id="cb178-28"><a href="intervalos-de-confianza-y-remuestreo.html#cb178-28" aria-hidden="true" tabindex="-1"></a>g_hist <span class="sc">+</span> g_qq</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>En este caso, distribución de muestreo presenta cierta asimetría, pero la
+desviación no es grande. En la parte central la aproximación normal es
+razonable. Procedemos a checar sesgo</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb179-1" aria-hidden="true" tabindex="-1"></a>total_est <span class="ot">&lt;-</span> <span class="fu">calc_estimador_casas</span>(muestra_casas)</span>
+<span id="cb179-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb179-2" aria-hidden="true" tabindex="-1"></a>sesgo <span class="ot">&lt;-</span> <span class="fu">mean</span>(totales_boot<span class="sc">$</span>total_boot) <span class="sc">-</span> total_est</span>
+<span id="cb179-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb179-3" aria-hidden="true" tabindex="-1"></a>sesgo</span></code></pre></div>
+<pre><code>## [1] 110.0851</code></pre>
+<p>Este número puede parecer grande, pero sí calculamos la desviación relativa
+con respecto al estimador vemos que es chico en la escala de la distribución
+bootstrap:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb181-1" aria-hidden="true" tabindex="-1"></a>sesgo_relativo <span class="ot">&lt;-</span> sesgo <span class="sc">/</span> total_est</span>
+<span id="cb181-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb181-2" aria-hidden="true" tabindex="-1"></a>sesgo_relativo</span></code></pre></div>
+<pre><code>## [1] 0.0005053678</code></pre>
+<p>De forma que procedemos a construir intervalos de confianza como sigue :</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb183-1" aria-hidden="true" tabindex="-1"></a>ee_boot <span class="ot">&lt;-</span> <span class="fu">sd</span>(totales_boot<span class="sc">$</span>total_boot)</span>
+<span id="cb183-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(total_est <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>ee_boot, total_est <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>ee_boot)</span></code></pre></div>
+<pre><code>## [1] 203366.6 232296.6</code></pre>
+<p>Que está en miles de dólares. En millones de dólares, este intervalo es:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb185-1" aria-hidden="true" tabindex="-1"></a>intervalo_total <span class="ot">&lt;-</span> <span class="fu">c</span>(total_est <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>ee_boot, total_est <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>ee_boot) <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb185-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb185-2" aria-hidden="true" tabindex="-1"></a>intervalo_total <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 203.4 232.3</code></pre>
+<p>Así que con 95% de confianza el verdadero total del valor de las casas vendidas
+está entre 203 y 232 millones
+de dólares.</p>
+<p><strong>Nota:</strong> en este ejemplo mostraremos una alternativa de intervalos de confianza
+que es más apropiado cuando observamos asimetría. Sin embargo, primero tendremos
+que hablar de dos conceptos clave con respecto a intervalos de confianza:
+calibración e interpretación.</p>
+</div>
+<div id="calibración-de-intervalos-de-confianza" class="section level2 unnumbered hasAnchor">
+<h2>Calibración de intervalos de confianza<a href="intervalos-de-confianza-y-remuestreo.html#calibración-de-intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>¿Cómo sabemos que nuestros intervalos de confianza del 95% nominal
+tienen cobertura real de 95%? Es decir, tenemos que checar:</p>
+<ul>
+<li>El procedimiento para construir intervalos debe dar intervalos tales
+que el valor poblacional está en el intervalo de confianza para 95% de las muestras.</li>
+</ul>
+<p>Como solo tenemos una muestra, la calibración depende de argumentos teóricos o
+estudios de simulación previos. Para nuestro ejemplo de casas tenemos la
+población, así que podemos checar qué cobertura real tienen los intervalos normales:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-1" aria-hidden="true" tabindex="-1"></a>simular_intervalos <span class="ot">&lt;-</span> <span class="cf">function</span>(rep, <span class="at">size =</span> <span class="dv">150</span>){</span>
+<span id="cb187-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-2" aria-hidden="true" tabindex="-1"></a>  muestra_casas <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(poblacion_casas, <span class="at">n =</span> size)</span>
+<span id="cb187-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-3" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(poblacion_casas)</span>
+<span id="cb187-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-4" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(muestra_casas)</span>
+<span id="cb187-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-5" aria-hidden="true" tabindex="-1"></a>  total_est <span class="ot">&lt;-</span> (N <span class="sc">/</span> n) <span class="sc">*</span> <span class="fu">sum</span>(muestra_casas<span class="sc">$</span>precio_miles)</span>
+<span id="cb187-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># paso 1: define el estimador</span></span>
+<span id="cb187-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-7" aria-hidden="true" tabindex="-1"></a>  calc_estimador_casas <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb187-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-8" aria-hidden="true" tabindex="-1"></a>    total_muestra <span class="ot">&lt;-</span> <span class="fu">sum</span>(datos<span class="sc">$</span>precio_miles)</span>
+<span id="cb187-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-9" aria-hidden="true" tabindex="-1"></a>    estimador_total <span class="ot">&lt;-</span> (N <span class="sc">/</span> n) <span class="sc">*</span> total_muestra</span>
+<span id="cb187-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-10" aria-hidden="true" tabindex="-1"></a>    estimador_total</span>
+<span id="cb187-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb187-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># paso 2: define el proceso de remuestreo</span></span>
+<span id="cb187-13"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-13" aria-hidden="true" tabindex="-1"></a>  muestra_boot <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb187-14"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#tomar muestra con reemplazo del mismo tamaño</span></span>
+<span id="cb187-15"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(datos, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb187-16"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb187-17"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># paso 3: remuestrea y calcula el estimador</span></span>
+<span id="cb187-18"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-18" aria-hidden="true" tabindex="-1"></a>  totales_boot <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2000</span>,  <span class="sc">~</span> <span class="fu">calc_estimador_casas</span>(<span class="fu">muestra_boot</span>(muestra_casas))) <span class="sc">|&gt;</span> </span>
+<span id="cb187-19"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">total_boot =</span> .) <span class="sc">|&gt;</span></span>
+<span id="cb187-20"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">ee_boot =</span> <span class="fu">sd</span>(total_boot)) <span class="sc">|&gt;</span> </span>
+<span id="cb187-21"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">inf =</span> total_est <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>ee_boot, <span class="at">sup =</span> total_est <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>ee_boot) <span class="sc">|&gt;</span> </span>
+<span id="cb187-22"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rep =</span> rep)</span>
+<span id="cb187-23"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-23" aria-hidden="true" tabindex="-1"></a>  totales_boot</span>
+<span id="cb187-24"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb187-25"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Para recrear, correr:</span></span>
+<span id="cb187-26"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-26" aria-hidden="true" tabindex="-1"></a><span class="co"># sims_intervalos &lt;- map(1:100, ~ simular_intervalos(rep = .x))</span></span>
+<span id="cb187-27"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-27" aria-hidden="true" tabindex="-1"></a><span class="co"># write_rds(sims_intervalos, &quot;cache/sims_intervalos.rds&quot;)</span></span>
+<span id="cb187-28"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Para usar resultados en cache:</span></span>
+<span id="cb187-29"><a href="intervalos-de-confianza-y-remuestreo.html#cb187-29" aria-hidden="true" tabindex="-1"></a>sims_intervalos <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;cache/sims_intervalos.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb188-1" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(poblacion_casas<span class="sc">$</span>precio_miles)</span>
+<span id="cb188-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb188-2" aria-hidden="true" tabindex="-1"></a>sims_tbl <span class="ot">&lt;-</span> sims_intervalos <span class="sc">|&gt;</span> </span>
+<span id="cb188-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">|&gt;</span></span>
+<span id="cb188-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cubre =</span> inf <span class="sc">&lt;</span> total <span class="sc">&amp;</span> total <span class="sc">&lt;</span> sup) </span>
+<span id="cb188-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb188-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_tbl, <span class="fu">aes</span>(<span class="at">x =</span> rep)) <span class="sc">+</span></span>
+<span id="cb188-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb188-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> total, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb188-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb188-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> inf, <span class="at">ymax =</span> sup, <span class="at">colour =</span> cubre)) </span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-36-1.png" width="768" style="display: block; margin: auto;" />
+La cobertura para estos 100 intervalos simulados da</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb189-1" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(poblacion_casas<span class="sc">$</span>precio_miles)</span>
+<span id="cb189-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb189-2" aria-hidden="true" tabindex="-1"></a>sims_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb189-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">cobertura =</span> <span class="fu">mean</span>(cubre))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   cobertura
+##       &lt;dbl&gt;
+## 1      0.96</code></pre>
+<p>que es <em>consistente</em> con una cobertura real del 95% (¿qué significa
+“consistente”? ¿Cómo puedes checarlo con el bootstrap?)</p>
+<p><strong>Observación.</strong> En este caso teníamos la población real, y pudimos verificar
+la cobertura de nuestros intervalos. En general no la tenemos. Estos ejercicios
+de simulación se pueden hacer con poblaciones sintéticas que se generen con
+las características que creemos va a tener nuestra población (por ejemplo, sesgo,
+colas largas, etc.).</p>
+
+<div class="comentario">
+<p>En general, no importa qué tipo de estimadores o intervalos de confianza usemos,
+requerimos checar la calibración. Esto puede hacerse con ejercicios de
+simulación con poblaciones sintéticas y tanto los procedimientos de muestreo
+como los tamaños de muestra que nos interesa usar.</p>
+</div>
+<p>Verificar la cobertura de nuestros intervalos de confianza por medio simulación está
+bien estudiado para algunos casos. Por ejemplo, cuando trabajamos con estimaciones para
+poblaciones teóricas. En general sabemos que los procedimientos funcionan bien en casos:</p>
+<ul>
+<li>con distribuciones simétricas que tengan colas no muy largas;</li>
+<li>estimación de proporciones donde no tratamos con casos raros o casos seguros
+(probabilidades cercanas a 0 o 1).</li>
+</ul>
+</div>
+<div id="interpretación-de-intervalos-de-confianza" class="section level2 unnumbered hasAnchor">
+<h2>Interpretación de intervalos de confianza<a href="intervalos-de-confianza-y-remuestreo.html#interpretación-de-intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como hemos visto, “intervalo de confianza” (de 90% de confianza, por ejemplo) es un
+término <em>frecuentista</em>, que significa:</p>
+<ul>
+<li><strong>Cada muestra produce un intervalo distinto</strong>. Para el 90% de las muestras posibles, el intervalo
+cubre al valor poblacional.</li>
+<li>La afirmación es <em>sobre el intervalo y el mecanismo para construirlo.</em></li>
+<li>Así que con <em>alta probabilidad</em>, el intervalo contiene el valor poblacional.</li>
+<li>Intervalos más anchos nos dan más incertidumbre acerca de dónde está el verdadero valor poblacional
+(y al revés para intervalos más angostos).</li>
+</ul>
+<p>Existen también “intervalos de credibilidad” (de 90% de probabilidad, por ejemplo), que se interpetan de
+forma <em>bayesiana</em>:</p>
+<ul>
+<li>Con 90% de probabilidad (relativamente alta), creemos que el valor poblacional está dentro del intervalo de credibilidad.</li>
+</ul>
+<p>Esta última interpretación es más natural. Obsérvese que para hablar de intervalos de
+confianza frecuentista tenemos que decir:</p>
+<ul>
+<li>Este intervalo particular cubre o no al verdadero valor, pero nuestro procedimiento produce intervalos
+que contiene el verdadero valor para el 90% de las muestras.</li>
+<li>Esta es una interpretación relativamente débil, y muchos intervalos poco útiles pueden satisfacerla.</li>
+<li>La interpretación bayesiana es más natural porque expresa más claramente incertidumbre acerca
+del valor poblacional.</li>
+</ul>
+<p>Por otro lado,</p>
+<ul>
+<li>La interpretación frecuentista nos da maneras empíricas de probar si los intervalos de
+confianza están bien calibrados o no: es un mínimo que “intervalos del 90%” deberían satisfacer.</li>
+</ul>
+<p>Así que tomamos el punto de vista bayesiano en la intepretación, pero
+buscamos que nuestros intervalos cumplan o
+aproximen bien garantías frecuentistas (discutimos esto más adelante). Los intervalos
+que producimos en esta sección pueden interpretarse de las dos maneras.</p>
+</div>
+<div id="intervalos-bootstrap-de-percentiles" class="section level2 unnumbered hasAnchor">
+<h2>Intervalos bootstrap de percentiles<a href="intervalos-de-confianza-y-remuestreo.html#intervalos-bootstrap-de-percentiles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Retomemos nuestro ejemplo del valor total del precio de las casas. A través de
+remuestras bootstrap hemos verificado gráficamente que la distribución de
+remuestreo es <em>ligeramente</em> asimétrica (ver la figura de abajo).</p>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-39-1.png" width="95%" style="display: block; margin: auto;" /></p>
+<p>Anteriormente hemos calculado intervalos de confianza basados en supuestos
+normales por medio del error éstandar. Este intervalo está dado por</p>
+<pre><code>## [1] 203.4 232.3</code></pre>
+<p>y por construcción sabemos que es simétrico con respecto al valor estimado, pero
+como podemos ver la distribución de muestreo no es simétrica, lo cual podemos
+confirmar por ejemplo calculando el porcentaje de muestras bootstrap que caen
+por arriba y por debajo del intervalo construido:</p>
+<pre><code>## # A tibble: 1 × 2
+##   prop_inf prop_sup
+##      &lt;dbl&gt;    &lt;dbl&gt;
+## 1   0.0192    0.026</code></pre>
+<p>los cuales se han calculado como el porcentaje de medias bootstrap por debajo
+(arriba) de la cota inferior (superior), y vemos que no coinciden con el nivel de
+confianza prestablecido (2.5% para cada extremo).</p>
+<p>Otra opción común que se usa específicamente cuando la distribución bootstrap
+no es muy cercana a la normal son los intervalos de percentiles bootstrap:</p>
+
+<div class="mathblock">
+<p><strong>Definición.</strong> El <strong>intervalo de percentiles bootstrap</strong> al 95% de confianza
+está dado por
+<span class="math display">\[[q_{0.025}, q_{0.975}]\]</span>
+donde <span class="math inline">\(q_f\)</span> es el percentil <span class="math inline">\(f\)</span> de la distribución bootstrap.</p>
+</div>
+<p>Otros intervalos comunes son el de 80% o 90% de confianza, por ejemplo,
+que corresponden a <span class="math inline">\([q_{0.10}, q_{0.90}]\)</span> y <span class="math inline">\([q_{0.05}, q_{0.95}]\)</span>. <em>Ojo</em>:
+intervalos de confianza muy alta (por ejemplo 99.5%) pueden tener mala calibración
+o ser muy variables en su longitud pues dependen del comportamiento en las colas de la
+distribución.</p>
+<p>Para el ejemplo de las casas, calcularíamos simplemente</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb193-1" aria-hidden="true" tabindex="-1"></a>intervalo_95 <span class="ot">&lt;-</span> totales_boot <span class="sc">|&gt;</span> <span class="fu">pull</span>(total_boot) <span class="sc">|&gt;</span> <span class="fu">quantile</span>(<span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>)) <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb193-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb193-2" aria-hidden="true" tabindex="-1"></a>(intervalo_95) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  2.5% 97.5% 
+## 204.3 232.5</code></pre>
+<p>que está en millones de dólares. Nótese que es similar al intervalo de error estándar.</p>
+<p>Otro punto interesante sobre los intervalos bootstrap de percentiles es que
+lidian naturalmente con la asímetría de la distribución bootstrap. Ilustramos
+esto con la distancia de las extremos del intervalo con respecto a la media:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(intervalo_95 <span class="sc">-</span> total_est<span class="sc">/</span><span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##     2.5%    97.5% 
+## 13.53912 14.64674</code></pre>
+<p>Los intervalos de confianza nos permiten presentar un rango de valores posibles
+para el parámetro de interés. Esto es una notable diferencia con respecto a
+presentar sólo un candidato como estimador. Nuestra fuente de información son
+los datos. Es por esto que si vemos valores muy chicos (grandes) en nuestra
+muestra, el intervalo se tiene que extender a la izquierda (derecha) para
+compensar dichas observaciones.</p>
+
+<div class="ejercicio">
+Explica por qué cuando la aproximación normal es apropiada, el intervalo de percentiles
+al 95% es muy similar al intervalo normal de 2 errores estándar.
+</div>
+<div id="ejemplo-8" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consideramos los datos de propinas. Queremos estimar la media de cuentas
+totales para la comida y la cena. Podemos hacer bootstrap de cada grupo
+por separado:</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># en este ejemplo usamos rsample, pero puedes</span></span>
+<span id="cb197-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="co"># escribir tu propio código</span></span>
+<span id="cb197-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span>
+<span id="cb197-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-4" aria-hidden="true" tabindex="-1"></a>propinas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/propinas.csv&quot;</span>)</span>
+<span id="cb197-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-5" aria-hidden="true" tabindex="-1"></a>estimador <span class="ot">&lt;-</span> <span class="cf">function</span>(split, ...){</span>
+<span id="cb197-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-6" aria-hidden="true" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">analysis</span>(split) <span class="sc">|&gt;</span> <span class="fu">group_by</span>(momento)</span>
+<span id="cb197-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-7" aria-hidden="true" tabindex="-1"></a>  muestra <span class="sc">|&gt;</span> </span>
+<span id="cb197-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">estimate =</span> <span class="fu">mean</span>(cuenta_total), <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb197-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">term =</span> momento)</span>
+<span id="cb197-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb197-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-11" aria-hidden="true" tabindex="-1"></a>intervalo_propinas_90 <span class="ot">&lt;-</span> <span class="fu">bootstraps</span>(propinas, <span class="at">strata =</span> momento, <span class="dv">1000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb197-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">res_boot =</span> <span class="fu">map</span>(splits, estimador)) <span class="sc">|&gt;</span> </span>
+<span id="cb197-13"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">int_pctl</span>(res_boot, <span class="at">alpha =</span> <span class="fl">0.10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb197-14"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="dv">2</span>))</span>
+<span id="cb197-15"><a href="intervalos-de-confianza-y-remuestreo.html#cb197-15" aria-hidden="true" tabindex="-1"></a>intervalo_propinas_90</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 6
+##   term   .lower .estimate .upper .alpha .method   
+##   &lt;chr&gt;   &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     
+## 1 Cena     19.8      20.8   22.0    0.1 percentile
+## 2 Comida   15.6      17.1   18.8    0.1 percentile</code></pre>
+<p>Nota: <em>.estimate</em> es la media de los valores de la estadística sobre las remuestras, <strong>no</strong> es
+el estimador original.</p>
+<p>De la tabla anterior inferimos que la media en la cuenta en la cena es más grande que la de la comida.
+Podemos graficar agregando los estimadores plugin:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-1" aria-hidden="true" tabindex="-1"></a>estimadores <span class="ot">&lt;-</span> propinas <span class="sc">|&gt;</span> </span>
+<span id="cb199-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(momento) <span class="sc">|&gt;</span> </span>
+<span id="cb199-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">term =</span> momento) <span class="sc">|&gt;</span> </span>
+<span id="cb199-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(cuenta_total))</span>
+<span id="cb199-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(intervalo_propinas_90, <span class="fu">aes</span>(<span class="at">x =</span> term)) <span class="sc">+</span></span>
+<span id="cb199-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> .lower, <span class="at">ymax =</span> .upper)) <span class="sc">+</span></span>
+<span id="cb199-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> estimadores, <span class="fu">aes</span>(<span class="at">y =</span> media), <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb199-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Momento&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Media de cuenta total (dólares)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb199-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb199-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Intervalos de 90% para la media&quot;</span>)</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Nótese que el bootstrap lo hicimos por separado en cada momento del día (por eso
+el argumento <em>strata</em> en la llamada a <strong>bootstraps</strong>):</p>
+
+<div class="ejercicio">
+Justifica el procedimiento de hacer el bootstrap separado para cada grupo. ¿Qué supuestos
+acerca del muestreo se deben satisfacer? ¿Deben ser muestras aleatorias simples
+de cada momento del día, por ejemplo? ¿Qué harías si no fuera así, por ejemplo, si
+se escogieron al azar tickets de todos los disponibles en un periodo?
+</div>
+</div>
+</div>
+<div id="bootstrap-para-dos-muestras" class="section level2 unnumbered hasAnchor">
+<h2>Bootstrap para dos muestras<a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-para-dos-muestras" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En el ejemplo anterior consideramos cómo hacer bootstrap cuando tenemos muestras
+independientes. También podemos aplicarlo a estimadores que comparen directamente las
+dos muestras:</p>
+<div class="mathblock">
+<p>
+<strong>Bootstrap para comparar poblaciones</strong>. Dadas muestras
+independientes de tamaños <span class="math inline"><span class="math inline">\(m\)</span></span> y <span class="math inline"><span class="math inline">\(n\)</span></span> de dos poblaciones:
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Extraer una remuestra de tamaño <span class="math inline"><span class="math inline">\(m\)</span></span> con reemplazo de la primera muestra y
+una remuestra separada de tamaño <span class="math inline"><span class="math inline">\(n\)</span></span>
+de la segunda muestra. Calcula la estadística que compara los dos grupos
+(por ejemplo, diferencia de medias)
+</li>
+<li>
+Repetir este proceso muchas veces (por ejemplo, 1000 - 10000).
+</li>
+<li>
+Construir la distribución bootstrap de la estadística. Examinar
+dispersión, sesgo y forma.
+</li>
+</ol>
+</div>
+<div id="ejemplo-9" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Supongamos que queremos comparar directamente la media de la cuenta total
+en comida y cena. Podemos hacer:</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-1" aria-hidden="true" tabindex="-1"></a>estimador_dif <span class="ot">&lt;-</span> <span class="cf">function</span>(split, ...){</span>
+<span id="cb200-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">analysis</span>(split) <span class="sc">|&gt;</span> <span class="fu">group_by</span>(momento)</span>
+<span id="cb200-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  muestra <span class="sc">|&gt;</span> </span>
+<span id="cb200-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">estimate =</span> <span class="fu">mean</span>(cuenta_total), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb200-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> momento, <span class="at">values_from =</span> estimate) <span class="sc">|&gt;</span> </span>
+<span id="cb200-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">estimate =</span> Cena <span class="sc">-</span> Comida, <span class="at">term =</span> <span class="st">&quot;diferencia&quot;</span>)</span>
+<span id="cb200-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb200-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-8" aria-hidden="true" tabindex="-1"></a>dist_boot <span class="ot">&lt;-</span> <span class="fu">bootstraps</span>(propinas, <span class="at">strata =</span> momento, <span class="dv">2000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb200-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">res_boot =</span> <span class="fu">map</span>(splits, estimador_dif)) </span>
+<span id="cb200-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-10" aria-hidden="true" tabindex="-1"></a>g_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dist_boot <span class="sc">|&gt;</span> <span class="fu">unnest</span>(res_boot), <span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb200-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Diferencia Comida vs Cena&quot;</span>)</span>
+<span id="cb200-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-12" aria-hidden="true" tabindex="-1"></a>g_2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dist_boot <span class="sc">|&gt;</span> <span class="fu">unnest</span>(res_boot), <span class="fu">aes</span>(<span class="at">sample =</span> estimate)) <span class="sc">+</span> <span class="fu">geom_qq</span>() <span class="sc">+</span> <span class="fu">geom_qq_line</span>(<span class="at">colour =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb200-13"><a href="intervalos-de-confianza-y-remuestreo.html#cb200-13" aria-hidden="true" tabindex="-1"></a>g_1 <span class="sc">+</span> g_2</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-50-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>Y podemos calcular un intervalo de confianza para la diferencia de medias:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb201-1" aria-hidden="true" tabindex="-1"></a>dist_boot <span class="sc">|&gt;</span> <span class="fu">int_pctl</span>(res_boot, <span class="at">alpha =</span> <span class="fl">0.01</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb201-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb201-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb201-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb201-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(term, .lower, .upper)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   term       .lower .upper
+##   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+## 1 diferencia   0.73   6.54</code></pre>
+<p>Que nos indica que con alta probabilidad las cuentas son más altas que en la cena
+que en la comida. La diferencia puede ir de un poco menos de un dólar hasta seis dólares
+con 99% de confianza.</p>
+</div>
+<div id="datos-pareados" class="section level3 unnumbered hasAnchor">
+<h3>Datos pareados<a href="intervalos-de-confianza-y-remuestreo.html#datos-pareados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En otros casos, las muestras no son independientes y están pareadas. Por ejemplo, este es un estudio
+dende a 10 personas una noche se les dio una medicina para dormir y otra noche otra medicina.
+Se registraron cuántas horas de sueño extra comparados con un día donde no tomaron medicina.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb203-1" aria-hidden="true" tabindex="-1"></a>dormir <span class="ot">&lt;-</span> sleep <span class="sc">|&gt;</span> </span>
+<span id="cb203-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> group, </span>
+<span id="cb203-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb203-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">&quot;medicina_&quot;</span>,</span>
+<span id="cb203-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb203-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> extra)</span>
+<span id="cb203-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb203-5" aria-hidden="true" tabindex="-1"></a>dormir</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 3
+##    ID    medicina_1 medicina_2
+##    &lt;fct&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+##  1 1            0.7        1.9
+##  2 2           -1.6        0.8
+##  3 3           -0.2        1.1
+##  4 4           -1.2        0.1
+##  5 5           -0.1       -0.1
+##  6 6            3.4        4.4
+##  7 7            3.7        5.5
+##  8 8            0.8        1.6
+##  9 9            0          4.6
+## 10 10           2          3.4</code></pre>
+<p>En este caso, el bootstrap se hace sobre individuos, y quisiéramos comparar
+la medición de la medicina_1 con la medicina_2. Usaremos la media de al diferencia
+entre horas de sueño entre las dos medicinas. Nuestro estimador puntual es:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb205-1" aria-hidden="true" tabindex="-1"></a>estimador_dif <span class="ot">&lt;-</span> dormir <span class="sc">|&gt;</span> </span>
+<span id="cb205-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dif_2_menos_1 =</span> medicina_2 <span class="sc">-</span> medicina_1) <span class="sc">|&gt;</span> </span>
+<span id="cb205-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb205-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">dif_media =</span> <span class="fu">mean</span>(dif_2_menos_1))</span>
+<span id="cb205-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb205-4" aria-hidden="true" tabindex="-1"></a>estimador_dif</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   dif_media
+##       &lt;dbl&gt;
+## 1      1.58</code></pre>
+<p>Esto indica que en promedio duermen hora y media más con la medicina 2 que con
+la medicina 1. Como hay variabilildad considerable en el número de horas extra de
+cada medicina dependiendo del individuo, es necesario hacer una intervalo de confianza
+para descartar que esta diferencia haya aparecido por azar debido a la variación muestral.</p>
+<p>Nótese que aquí no tenemos estratos, pues solo hay una muestra de individuo con
+dos mediciones.</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-1" aria-hidden="true" tabindex="-1"></a>estimador_dif <span class="ot">&lt;-</span> <span class="cf">function</span>(split, ...){</span>
+<span id="cb207-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-2" aria-hidden="true" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">analysis</span>(split)</span>
+<span id="cb207-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-3" aria-hidden="true" tabindex="-1"></a>  muestra <span class="sc">|&gt;</span> </span>
+<span id="cb207-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">dif_2_menos_1 =</span> medicina_2 <span class="sc">-</span> medicina_1) <span class="sc">|&gt;</span> </span>
+<span id="cb207-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">estimate =</span> <span class="fu">mean</span>(dif_2_menos_1), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb207-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">term =</span> <span class="st">&quot;diferencia 2 vs 1&quot;</span>)</span>
+<span id="cb207-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb207-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-8" aria-hidden="true" tabindex="-1"></a>dist_boot <span class="ot">&lt;-</span> <span class="fu">bootstraps</span>(dormir,  <span class="dv">2000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb207-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">res_boot =</span> <span class="fu">map</span>(splits, estimador_dif)) </span>
+<span id="cb207-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-10" aria-hidden="true" tabindex="-1"></a>g_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dist_boot <span class="sc">|&gt;</span> <span class="fu">unnest</span>(res_boot), <span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)</span>
+<span id="cb207-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-11" aria-hidden="true" tabindex="-1"></a>g_2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dist_boot <span class="sc">|&gt;</span> <span class="fu">unnest</span>(res_boot), <span class="fu">aes</span>(<span class="at">sample =</span> estimate)) <span class="sc">+</span> <span class="fu">geom_qq</span>() <span class="sc">+</span> <span class="fu">geom_qq_line</span>(<span class="at">colour =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb207-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb207-12" aria-hidden="true" tabindex="-1"></a>g_1 <span class="sc">+</span> g_2</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-54-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>Nuestro intervalo de percentiles al 90% es de</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb208-1" aria-hidden="true" tabindex="-1"></a>dist_boot <span class="sc">|&gt;</span> <span class="fu">int_pctl</span>(res_boot, <span class="fl">0.10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 6
+##   term              .lower .estimate .upper .alpha .method   
+##   &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     
+## 1 diferencia 2 vs 1   1.04      1.57   2.22    0.1 percentile</code></pre>
+<p>Lo que indica con alta probabilidad que la medicina 2 da entre 1 y 2 horas extras de sueño. Nota
+que en este ejemplo también podríamos hacer una prueba de hipótesis por permutaciones,
+suponiendo como hipótesis nula que las dos medicinas son equivalentes. Sin embargo, usualmente
+es más informativo presentar este tipo de intervalos para estimar la diferencia.</p>
+</div>
+</div>
+<div id="bootstrap-y-otras-estadísticas" class="section level2 unnumbered hasAnchor">
+<h2>Bootstrap y otras estadísticas<a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-y-otras-estadísticas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El bootstrap es una técnica versátil. Un ejemplo son <strong>estimadores de razón</strong>, que tienen
+la forma</p>
+<p><span class="math display">\[ \hat{r} = \frac{\overline y}{\overline x}\]</span>
+Por ejemplo, ¿cómo haríamos estimación para el procentaje de área area habitable
+de las casas en relación al tamaño del lote? Una manera de estimar esta cantidad
+es dividiendo la suma del área habitable de nuestra muestra y dividirlo entre
+la suma del área de los lotes de nuestra muestra, como en la fórmula anterior. Esta
+fórmula es más difícil pues tanto numerador como denominador tienen variabilidad,
+y estas dos cantidades no varían independientemente.</p>
+<p>Con el bootstrap podemos atacar estos problemas</p>
+<div id="ejemplo-estimadores-de-razón" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo: estimadores de razón<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-estimadores-de-razón" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nuestra muestra original es:</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">250</span>)</span>
+<span id="cb210-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb210-2" aria-hidden="true" tabindex="-1"></a>casas_muestra <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(poblacion_casas, <span class="at">n =</span> <span class="dv">200</span>)</span></code></pre></div>
+<p>El estimador de interés es:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb211-1" aria-hidden="true" tabindex="-1"></a>estimador_razon <span class="ot">&lt;-</span> <span class="cf">function</span>(split, ...){</span>
+<span id="cb211-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  muestra <span class="ot">&lt;-</span> <span class="fu">analysis</span>(split)</span>
+<span id="cb211-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb211-3" aria-hidden="true" tabindex="-1"></a>  muestra <span class="sc">|&gt;</span> </span>
+<span id="cb211-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb211-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">estimate =</span> <span class="fu">sum</span>(area_habitable_sup_m2) <span class="sc">/</span> <span class="fu">sum</span>(area_lote_m2), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb211-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb211-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">term =</span> <span class="st">&quot;% area del lote construida&quot;</span>)</span>
+<span id="cb211-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb211-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Y nuestra estimación puntual es</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb212-1" aria-hidden="true" tabindex="-1"></a>estimador <span class="ot">&lt;-</span> muestra_casas <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">estimate =</span> <span class="fu">sum</span>(area_habitable_sup_m2) <span class="sc">/</span> <span class="fu">sum</span>(area_lote_m2))</span>
+<span id="cb212-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb212-2" aria-hidden="true" tabindex="-1"></a>estimador</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   estimate
+##      &lt;dbl&gt;
+## 1    0.148</code></pre>
+<p>Es decir que en promedio, un poco más de 15% del lote total es ocupado por área habitable.
+Ahora hacemos bootstrap para construir un intervalo:</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb214-1" aria-hidden="true" tabindex="-1"></a>dist_boot <span class="ot">&lt;-</span> <span class="fu">bootstraps</span>(casas_muestra,  <span class="dv">2000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb214-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb214-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">res_boot =</span> <span class="fu">map</span>(splits, estimador_razon)) </span>
+<span id="cb214-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb214-3" aria-hidden="true" tabindex="-1"></a>g_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dist_boot <span class="sc">|&gt;</span> <span class="fu">unnest</span>(res_boot), <span class="fu">aes</span>(<span class="at">x =</span> estimate)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)</span>
+<span id="cb214-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb214-4" aria-hidden="true" tabindex="-1"></a>g_2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dist_boot <span class="sc">|&gt;</span> <span class="fu">unnest</span>(res_boot), <span class="fu">aes</span>(<span class="at">sample =</span> estimate)) <span class="sc">+</span> <span class="fu">geom_qq</span>() <span class="sc">+</span> <span class="fu">geom_qq_line</span>(<span class="at">colour =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb214-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb214-5" aria-hidden="true" tabindex="-1"></a>g_1 <span class="sc">+</span> g_2</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-59-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>En este caso la cola derecha parece tener menos dispersión que una distribución normal.
+Usamos un intervalo de percentiles para obtener:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb215-1" aria-hidden="true" tabindex="-1"></a>dist_boot <span class="sc">|&gt;</span> <span class="fu">int_pctl</span>(res_boot) <span class="sc">|&gt;</span> </span>
+<span id="cb215-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb215-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estimador =</span> estimador<span class="sc">$</span>estimate) <span class="sc">|&gt;</span> </span>
+<span id="cb215-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb215-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">media_boot =</span> .estimate) <span class="sc">|&gt;</span> </span>
+<span id="cb215-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb215-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bias =</span> media_boot <span class="sc">-</span> estimador) <span class="sc">|&gt;</span> </span>
+<span id="cb215-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb215-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(is_numeric) <span class="sc">|&gt;</span> </span>
+<span id="cb215-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb215-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">round</span>(value, <span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   term                       .method    name        value
+##   &lt;chr&gt;                      &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;
+## 1 % area del lote construida percentile .lower      0.121
+## 2 % area del lote construida percentile media_boot  0.142
+## 3 % area del lote construida percentile .upper      0.159
+## 4 % area del lote construida percentile .alpha      0.05 
+## 5 % area del lote construida percentile estimador   0.148
+## 6 % area del lote construida percentile bias       -0.006</code></pre>
+<p>Nótese que el sesgo es bajo.
+De modo que en esta zona, entre 12% y 16% de toda el área disponible es ocupada por
+área habitable: estas son casas que tienen jardines o terrenos, garage relativamente grandes.</p>
+</div>
+<div id="ejemplo-suavizadores" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo: suavizadores<a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-suavizadores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Podemos usar el bootstrap para juzgar
+la variabilidad de un suavizador, que consideramos como nuestra
+estadística:</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb217-1" aria-hidden="true" tabindex="-1"></a>graf_casas <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
+<span id="cb217-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb217-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(data <span class="sc">|&gt;</span> <span class="fu">filter</span>(calidad_gral <span class="sc">&lt;</span> <span class="dv">7</span>), </span>
+<span id="cb217-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb217-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> area_habitable_sup_m2)) <span class="sc">+</span> </span>
+<span id="cb217-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb217-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> precio_m2_miles), <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb217-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb217-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y =</span> precio_m2_miles), <span class="at">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="at">span =</span> <span class="fl">0.7</span>, </span>
+<span id="cb217-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb217-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">1</span>, <span class="at">family =</span> <span class="st">&quot;symmetric&quot;</span>))     </span>
+<span id="cb217-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb217-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb217-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb217-8" aria-hidden="true" tabindex="-1"></a><span class="fu">graf_casas</span>(muestra_casas)</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-61-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Podemos hacer bootstrap para juzgar la estabilidad del suavizador:</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-1" aria-hidden="true" tabindex="-1"></a>suaviza_boot <span class="ot">&lt;-</span> <span class="cf">function</span>(x, data){</span>
+<span id="cb218-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remuestreo</span></span>
+<span id="cb218-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-3" aria-hidden="true" tabindex="-1"></a>    muestra_boot <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(data, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> T)</span>
+<span id="cb218-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-4" aria-hidden="true" tabindex="-1"></a>    ajuste <span class="ot">&lt;-</span> <span class="fu">loess</span>(precio_m2_miles <span class="sc">~</span> area_habitable_sup_m2, <span class="at">data =</span> muestra_boot, </span>
+<span id="cb218-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">degree =</span> <span class="dv">1</span>, <span class="at">span =</span> <span class="fl">0.7</span>, <span class="at">family =</span> <span class="st">&quot;symmetric&quot;</span>)</span>
+<span id="cb218-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-6" aria-hidden="true" tabindex="-1"></a>    datos_grafica <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">area_habitable_sup_m2 =</span> <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">250</span>, <span class="dv">5</span>))</span>
+<span id="cb218-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-7" aria-hidden="true" tabindex="-1"></a>    ajustados <span class="ot">&lt;-</span> <span class="fu">predict</span>(ajuste, <span class="at">newdata =</span> datos_grafica)</span>
+<span id="cb218-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-8" aria-hidden="true" tabindex="-1"></a>    datos_grafica <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">ajustados =</span> ajustados) <span class="sc">|&gt;</span> </span>
+<span id="cb218-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">rep =</span> x)</span>
+<span id="cb218-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb218-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-11" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="sc">~</span> <span class="fu">suaviza_boot</span>(.x, casas_muestra <span class="sc">|&gt;</span> <span class="fu">filter</span>(calidad_gral <span class="sc">&lt;</span> <span class="dv">7</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb218-12"><a href="intervalos-de-confianza-y-remuestreo.html#cb218-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ojo: la rutina loess no tienen soporte para extrapolación</span></span>
+<span id="cb219-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="fu">graf_casas</span>(casas_muestra) <span class="sc">+</span> </span>
+<span id="cb219-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb219-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> reps, <span class="fu">aes</span>(<span class="at">y =</span> ajustados, <span class="at">group =</span> rep), <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-63-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Donde vemos que algunas cambios de pendiente del suavizador original no son muy interpretables (por ejemplo,
+para áreas chicas) y alta variabilidad en general en los extremos. Podemos hacer más iteraciones para calcular bandas de confianza:</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb220-1" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="sc">~</span> <span class="fu">suaviza_boot</span>(.x, casas_muestra <span class="sc">|&gt;</span> <span class="fu">filter</span>(calidad_gral <span class="sc">&lt;</span> <span class="dv">7</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb220-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb220-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>()</span>
+<span id="cb220-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ojo: la rutina loess no tienen soporte para extrapolación</span></span>
+<span id="cb220-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="fu">graf_casas</span>(casas_muestra) <span class="sc">+</span> </span>
+<span id="cb220-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb220-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> reps, <span class="fu">aes</span>(<span class="at">y =</span> ajustados, <span class="at">group =</span> rep), <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" />
+Donde observamos cómo tenemos incertidumbre en cuanto al nivel y forma de las curvas
+en los extremos de los datos (casas grandes y chicas), lo cual es natural. Aunque podemos
+resumir para hacer bandas de confianza, mostrar remuestras de esta manera es informativo: por ejempo:
+vemos cómo es probable también que para casas de emnos de 70 metros cuadrados el precio por
+metro cuadrado no cambia tanto (líneas constantes)</p>
+</div>
+</div>
+<div id="bootstrap-y-estimadores-complejos-tablas-de-perfiles" class="section level2 unnumbered hasAnchor">
+<h2>Bootstrap y estimadores complejos: tablas de perfiles<a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-y-estimadores-complejos-tablas-de-perfiles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Podemos regresar al ejemplo de la primera sesión donde calculamos perfiles de los tomadores
+de distintos tés: en bolsa, suelto, o combinados. Caundo hacemos estos tipos de análisis
+no es raro que los prefiles tengan variabilidad considerable que es necesario cuantificar.</p>
+<table class="table table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+price
+</th>
+<th style="text-align:left;">
+tea bag
+</th>
+<th style="text-align:left;">
+tea bag+unpackaged
+</th>
+<th style="text-align:left;">
+unpackaged
+</th>
+<th style="text-align:right;">
+promedio
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+p_upscale
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">-0.71</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">-0.28</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: black !important;">0.98</span>
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_variable
+</td>
+<td style="text-align:left;">
+<span style="     color: lightgray !important;">-0.12</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: black !important;">0.44</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">-0.31</span>
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_cheap
+</td>
+<td style="text-align:left;">
+<span style="     color: black !important;">0.3</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">-0.53</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: lightgray !important;">0.23</span>
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_branded
+</td>
+<td style="text-align:left;">
+<span style="     color: black !important;">0.62</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: lightgray !important;">-0.16</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">-0.45</span>
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_private label
+</td>
+<td style="text-align:left;">
+<span style="     color: black !important;">0.72</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: lightgray !important;">-0.22</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">-0.49</span>
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_unknown
+</td>
+<td style="text-align:left;">
+<span style="     color: black !important;">1.58</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">-0.58</span>
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">-1</span>
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-68-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Hacemos bootstrap sobre toda la muestra, y repetimos exactamente el mismo proceso
+de construción de perfiles:</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb221-1" aria-hidden="true" tabindex="-1"></a>boot_perfiles <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="cf">function</span>(x){</span>
+<span id="cb221-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb221-2" aria-hidden="true" tabindex="-1"></a>    te_boot <span class="ot">&lt;-</span> te <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb221-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb221-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">calcular_perfiles</span>(te_boot) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">rep =</span> x)</span>
+<span id="cb221-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb221-4" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">bind_rows</span>()</span></code></pre></div>
+<p>Ahora resumimos y graficamos, esta vez de manera distinta:</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-1" aria-hidden="true" tabindex="-1"></a>resumen_perfiles <span class="ot">&lt;-</span> boot_perfiles <span class="sc">|&gt;</span> <span class="fu">group_by</span>(how, price) <span class="sc">|&gt;</span> </span>
+<span id="cb222-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">perfil_media =</span> <span class="fu">mean</span>(perfil), <span class="at">ymax =</span> <span class="fu">quantile</span>(perfil, <span class="fl">0.9</span>), <span class="at">ymin =</span> <span class="fu">quantile</span>(perfil, <span class="fl">0.10</span>)) </span>
+<span id="cb222-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-3" aria-hidden="true" tabindex="-1"></a>resumen_bolsa <span class="ot">&lt;-</span> resumen_perfiles <span class="sc">|&gt;</span> <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb222-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(how <span class="sc">==</span> <span class="st">&quot;tea bag&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(price, <span class="at">perfil_bolsa =</span> perfil_media)</span>
+<span id="cb222-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-5" aria-hidden="true" tabindex="-1"></a>resumen_perfiles <span class="ot">&lt;-</span> resumen_perfiles <span class="sc">|&gt;</span> <span class="fu">left_join</span>(resumen_bolsa) <span class="sc">|&gt;</span> </span>
+<span id="cb222-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb222-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">price =</span> <span class="fu">fct_reorder</span>(price, perfil_bolsa))</span>
+<span id="cb222-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(resumen_perfiles, <span class="fu">aes</span>(<span class="at">x =</span> price, <span class="at">y =</span> perfil_media, <span class="at">ymax =</span> ymax, <span class="at">ymin =</span> ymin)) <span class="sc">+</span> </span>
+<span id="cb222-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_linerange</span>() <span class="sc">+</span></span>
+<span id="cb222-10"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>how) <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb222-11"><a href="intervalos-de-confianza-y-remuestreo.html#cb222-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">&quot;gray&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Perfil&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Precio&quot;</span>)</span></code></pre></div>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-70-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Nótese una deficiencia clara del bootstrap: para los que compran té suelto,
+en la muestra no existen personas
+que desconocen de dónde provienen su té (No sabe/No contestó).
+Esto produce un intervalo colapsado en 0 que no es razonable.</p>
+<p>Podemos remediar esto de varias maneras: quitando del análisis los que no sabe o no contestaron, agrupando en otra categoría, usando un modelo, o regularizar usando proporciones calculadas con conteos modificados: por ejemplo, agregando un caso de cada combinación (agregaría 18 personas “falsas” a una muestra de 290 personas).</p>
+
+</div>
+</div>
+<h3>Referencias<a href="referencias.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Chihara" class="csl-entry">
+Chihara, Laura M., and Tim C. Hesterberg. 2018. <em>Mathematical Statistics with Resampling and r</em>. 2nd ed. Hoboken, NJ: John Wiley &amp; Sons. <a href="https://sites.google.com/site/chiharahesterberg/home">https://sites.google.com/site/chiharahesterberg/home</a>.
+</div>
+<div id="ref-Efron" class="csl-entry">
+Efron, Bradley, and Robert J. Tibshirani. 1993. <em>An Introduction to the Bootstrap</em>. Monographs on Statistics and Applied Probability 57. Boca Raton, Florida, USA: Chapman &amp; Hall/CRC.
+</div>
+<div id="ref-Wasserman" class="csl-entry">
+Wasserman, Larry. 2013. <em>All of Statistics: A Concise Course in Statistical Inference</em>. Springer Science &amp; Business Media.
+</div>
+</div>
+<script type="text/javascript">smartify();</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estimación-y-distribución-de-muestreo-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="apéndice-principios-de-visualizacion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-remuestreo.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["fundamentos-estadistica.Rmd"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
