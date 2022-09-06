@@ -1,4 +1,4 @@
-# Estimación y distribución de muestreo {#S:distribucion-muestreo}
+# Estimación y distribución de muestreo 
 
 ```{r setup, include=FALSE, message=FALSE}
 library(tidyverse)
@@ -11,6 +11,15 @@ theme_set(theme_minimal())
 En esta sección discutiremos cuál el objetivo general del proceso de estimación.
 y cómo entender y manejar la variabilidad que se produce cuando aleatorizamos
 la selección de las muestras que utilizamos para hacer análisis.
+
+A diferencia de las pruebas de permutación, donde evaluábamos como cambiaría una 
+estadísitica si un tratamiento o grupo se hubiera asignado de forma distinta, en la
+siguiente sección nos preguntamos como varía una estadística entre muestras. Por ejemplo, 
+pasaremos de preguntar si una vacuna reduce el riesgo de una enfermedad a evaluar 
+en que magnitud se reduce el riesgo de contraer la enfermedad.
+
+<!-- 
+Unlike randomization tests (which modeled how the statistic would change if the treatment had been allocated differently), the bootstrap will model how a statistic varies from one sample to another taken from the population.  Mine https://openintro-ims.netlify.app/foundations-bootstrapping.html-->
 
 ## Ejemplo: precios de casas {-}
 
