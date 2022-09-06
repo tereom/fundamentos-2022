@@ -3,4 +3,4 @@ fig:unnamed-chunk-2
 análisis-exploratorio
 tipos-de-estudio-y-experimentos
 pruebas-de-hipótesis
-pruebas-de-hipótesis-visuales-y-de-permutación
+S:distribucion-muestreo
