@@ -76,3 +76,9 @@ Resuelve la tarea-04 ubicada en nuestro RStudio.cloud,
 encontrarás un archivo .qmd que describe los ejercicios a realizar y si lo deseas puedes
 utilizar este esqueleto para generar un archivo html con tus respuestas. 
 Envía tu tarea por correo electrónico con el título fundamentos-tarea04.
+
+## 5. Distribución muestral {-}
+
+La tarea 5 es el proyecto de RStudio.Cloud con este nombre, el ejercicio está
+en un archvio de qmd. Envíen el reporte html por correo electrónico (con 
+título fundamentos-tarea05).
