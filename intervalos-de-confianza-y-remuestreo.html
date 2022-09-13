@@ -669,7 +669,7 @@ nos interesa. Podemos entonces usar el boostrap:</p>
 <span id="cb163-19"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> prop_negro)) <span class="sc">+</span></span>
 <span id="cb163-20"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
 <span id="cb163-21"><a href="intervalos-de-confianza-y-remuestreo.html#cb163-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">calc_estimador</span>(te), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="05-remuestreo_files/figure-html/unnamed-chunk-17-1.png" width="336" style="display: block; margin: auto;" /></p>
 <p>Y podemos evaluar varios aspectos, por ejemplo dónde está centrada y
 qué tan dispersa es la distribución bootstrap:</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-1" aria-hidden="true" tabindex="-1"></a>prop_negro_tbl <span class="sc">|&gt;</span> </span>
@@ -731,7 +731,7 @@ y compararlas con la distribución de muestreo real.</p>
 <span id="cb166-24"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-24" aria-hidden="true" tabindex="-1"></a>  })) <span class="sc">|&gt;</span> </span>
 <span id="cb166-25"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rep, precio_miles) <span class="sc">|&gt;</span> </span>
 <span id="cb166-26"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>()</span>
-<span id="cb166-27"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb166-27"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb166-28"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-28" aria-hidden="true" tabindex="-1"></a>dist_muestreo <span class="ot">&lt;-</span> datos_sim <span class="sc">|&gt;</span> </span>
 <span id="cb166-29"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo <span class="sc">==</span> <span class="st">&quot;población&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb166-30"><a href="intervalos-de-confianza-y-remuestreo.html#cb166-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rep) <span class="sc">|&gt;</span> <span class="fu">nest</span>() <span class="sc">|&gt;</span> </span>
@@ -825,7 +825,7 @@ define como la desviación estándar de la distribución bootstrap de <span clas
 El <strong>intervalo de confianza normal bootstrap</strong> al 95% está dado por
 <span class="math display">\[[\hat{\theta} - 2\mathsf{ee}(\hat{\theta}), \hat{\theta} + 2\mathsf{ee}(\hat{\theta})].\]</span>
 </div>
-<p>Nótese que hay varias cosas qué checar aquí: que el teorema central del límite aplica y
+<p>Nótese que hay varias cosas qué revisar aquí: que el teorema central del límite aplica y
 que la distribución de muestreo de nuestro estimador está centrado en el valor verdadero.
 Esto en algunos casos se puede demostrar usando la teoría, pero más abajo veremos
 comprobaciones empíricas.</p>
@@ -910,7 +910,7 @@ vendidas en un periodo. Tenemos una muestra de tamaño <span class="math inline"
 <p><img src="05-remuestreo_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>En este caso, distribución de muestreo presenta cierta asimetría, pero la
 desviación no es grande. En la parte central la aproximación normal es
-razonable. Procedemos a checar sesgo</p>
+razonable. Procedemos a revisar sesgo</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb179-1" aria-hidden="true" tabindex="-1"></a>total_est <span class="ot">&lt;-</span> <span class="fu">calc_estimador_casas</span>(muestra_casas)</span>
 <span id="cb179-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb179-2" aria-hidden="true" tabindex="-1"></a>sesgo <span class="ot">&lt;-</span> <span class="fu">mean</span>(totales_boot<span class="sc">$</span>total_boot) <span class="sc">-</span> total_est</span>
 <span id="cb179-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb179-3" aria-hidden="true" tabindex="-1"></a>sesgo</span></code></pre></div>

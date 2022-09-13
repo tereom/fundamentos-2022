@@ -429,7 +429,7 @@ prop_negro_tbl |>
   geom_vline(xintercept = calc_estimador(te), color = "red")
 ```
 
-<img src="05-remuestreo_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" />
+<img src="05-remuestreo_files/figure-html/unnamed-chunk-17-1.png" width="336" style="display: block; margin: auto;" />
 
 Y podemos evaluar varios aspectos, por ejemplo dónde está centrada y 
 qué tan dispersa es la distribución bootstrap:
@@ -505,7 +505,7 @@ dist_boot <- datos_sim |>
   })) |> 
   select(rep, precio_miles) |> 
   unnest()
-  
+
 dist_muestreo <- datos_sim |> 
   filter(tipo == "población") |> 
   group_by(rep) |> nest() |> 
@@ -622,7 +622,7 @@ El **intervalo de confianza normal bootstrap** al 95\% está dado por
 $$[\hat{\theta} - 2\mathsf{ee}(\hat{\theta}), \hat{\theta} + 2\mathsf{ee}(\hat{\theta})].$$
   </div>\EndKnitrBlock{mathblock}
 
-Nótese que hay varias cosas qué checar aquí: que el teorema central del límite aplica y
+Nótese que hay varias cosas qué revisar aquí: que el teorema central del límite aplica y
 que la distribución de muestreo de nuestro estimador está centrado en el valor verdadero.
 Esto en algunos casos se puede demostrar usando la teoría, pero más abajo veremos
 comprobaciones empíricas.
@@ -752,7 +752,7 @@ g_hist + g_qq
 
 En este caso, distribución de muestreo presenta cierta asimetría, pero la
 desviación no es grande. En la parte central la aproximación normal es
-razonable. Procedemos a checar sesgo
+razonable. Procedemos a revisar sesgo
 
 
 ```r
