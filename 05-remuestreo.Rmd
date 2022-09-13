@@ -465,7 +465,7 @@ te |> mutate(negro = ifelse(Tea == "black", 1, 0)) |>
 hizo tomando una muestra aleatoria simple de tamaño 300 de la población de tomadores de té que
 nos interesa. Podemos entonces usar el boostrap:
 
-```{r}
+```{r, fig.width=3.5, fig.height=3.5}
 # paso 1: define el estimador
 calc_estimador <- function(datos){
   prop_negro <- datos |> 
@@ -521,15 +521,15 @@ vemos cómo se ve la aproximación a la distribución de la población:
 ```{r, echo = FALSE, message = FALSE, fig.width =4, fig.height = 3, cache = TRUE}
 set.seed(911)
 muestras <- map(1:20, function(x) {
-    muestra <- slice_sample(poblacion_casas, n = 200, replace = T) |> 
-        mutate(rep = x, tipo = "muestras")}) |> bind_rows()
+  muestra <- slice_sample(poblacion_casas, n = 200, replace = T) |> 
+    mutate(rep = x, tipo = "muestras")}) |> bind_rows()
 dat_pob <- poblacion_casas |> mutate(tipo = "población", rep = 1)
 datos_sim <- bind_rows(dat_pob, muestras)
 
 ggplot(datos_sim, aes(sample = precio_miles, group = interaction(tipo, rep))) + 
-    geom_qq(distribution = stats::qunif, alpha = 0.7, size = 0.5, geom = "line") + 
-geom_qq(data = dat_pob, aes(sample = precio_miles), colour = "red", size = 1,
-        distribution = stats::qunif, geom="point") +
+  geom_qq(distribution = stats::qunif, alpha = 0.7, size = 0.5, geom = "line") + 
+  geom_qq(data = dat_pob, aes(sample = precio_miles), colour = "red", size = 0.7,
+          distribution = stats::qunif, geom="point") +
   scale_y_log10(breaks = c(50, 100, 200, 400, 800)) 
 ```
 
@@ -563,7 +563,7 @@ dist_boot <- datos_sim |>
   })) |> 
   select(rep, precio_miles) |> 
   unnest()
-  
+
 dist_muestreo <- datos_sim |> 
   filter(tipo == "población") |> 
   group_by(rep) |> nest() |> 
@@ -765,7 +765,7 @@ $$[\hat{\theta} - 2\mathsf{ee}(\hat{\theta}), \hat{\theta} + 2\mathsf{ee}(\hat{\
   
 ```
 
-Nótese que hay varias cosas qué checar aquí: que el teorema central del límite aplica y
+Nótese que hay varias cosas qué revisar aquí: que el teorema central del límite aplica y
 que la distribución de muestreo de nuestro estimador está centrado en el valor verdadero.
 Esto en algunos casos se puede demostrar usando la teoría, pero más abajo veremos
 comprobaciones empíricas.
@@ -869,7 +869,7 @@ g_hist + g_qq
 
 En este caso, distribución de muestreo presenta cierta asimetría, pero la
 desviación no es grande. En la parte central la aproximación normal es
-razonable. Procedemos a checar sesgo
+razonable. Procedemos a revisar sesgo
 
 ```{r}
 total_est <- calc_estimador_casas(muestra_casas)
