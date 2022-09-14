@@ -330,6 +330,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#tipos-de-estudio-y-pgd"><i class="fa fa-check"></i>3. Tipos de estudio y PGD</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#pruebas-de-hipótesis-visuales-y-de-permutación"><i class="fa fa-check"></i>4. Pruebas de hipótesis visuales y de permutación</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#distribución-muestral"><i class="fa fa-check"></i>5. Distribución muestral</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#tcl-e-introducción-a-bootstrap"><i class="fa fa-check"></i>6. TCL e introducción a bootstrap</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -674,21 +675,19 @@ nos interesa. Podemos entonces usar el boostrap:</p>
 qué tan dispersa es la distribución bootstrap:</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-1" aria-hidden="true" tabindex="-1"></a>prop_negro_tbl <span class="sc">|&gt;</span> </span>
 <span id="cb164-2"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(prop_negro),</span>
-<span id="cb164-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sesgo =</span> <span class="fu">mean</span>(prop_negro) <span class="sc">-</span> <span class="fl">0.2499</span>,</span>
-<span id="cb164-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ee =</span> <span class="fu">sd</span>(prop_negro),</span>
-<span id="cb164-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">cuantil_75 =</span> <span class="fu">quantile</span>(prop_negro, <span class="fl">0.75</span>), </span>
-<span id="cb164-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">cuantil_25 =</span> <span class="fu">quantile</span>(prop_negro, <span class="fl">0.25</span>),</span>
-<span id="cb164-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb164-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="dv">3</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb164-9"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>())</span></code></pre></div>
-<pre><code>## # A tibble: 5 × 2
-##   name        value
-##   &lt;chr&gt;       &lt;dbl&gt;
-## 1 media       0.247
-## 2 sesgo      -0.003
-## 3 ee          0.025
-## 4 cuantil_75  0.263
-## 5 cuantil_25  0.23</code></pre>
+<span id="cb164-3"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">ee =</span> <span class="fu">sd</span>(prop_negro),</span>
+<span id="cb164-4"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">cuantil_75 =</span> <span class="fu">quantile</span>(prop_negro, <span class="fl">0.75</span>), </span>
+<span id="cb164-5"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">cuantil_25 =</span> <span class="fu">quantile</span>(prop_negro, <span class="fl">0.25</span>),</span>
+<span id="cb164-6"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb164-7"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="dv">3</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb164-8"><a href="intervalos-de-confianza-y-remuestreo.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 2
+##   name       value
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 media      0.247
+## 2 ee         0.025
+## 3 cuantil_75 0.263
+## 4 cuantil_25 0.23</code></pre>
 </div>
 </div>
 <div id="discusión-propiedades-de-la-distribución-bootstrap" class="section level2 unnumbered hasAnchor">
@@ -1337,8 +1336,7 @@ Usamos un intervalo de percentiles para obtener:</p>
 ## 4 % area del lote construida percentile .alpha      0.05 
 ## 5 % area del lote construida percentile estimador   0.148
 ## 6 % area del lote construida percentile bias       -0.006</code></pre>
-<p>Nótese que el sesgo es bajo.
-De modo que en esta zona, entre 12% y 16% de toda el área disponible es ocupada por
+<p>De modo que en esta zona, entre 12% y 16% de toda el área disponible es ocupada por
 área habitable: estas son casas que tienen jardines o terrenos, garage relativamente grandes.</p>
 </div>
 <div id="ejemplo-suavizadores" class="section level3 unnumbered hasAnchor">

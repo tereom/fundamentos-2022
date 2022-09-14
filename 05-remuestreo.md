@@ -438,7 +438,6 @@ qué tan dispersa es la distribución bootstrap:
 ```r
 prop_negro_tbl |> 
   summarise(media = mean(prop_negro),
-            sesgo = mean(prop_negro) - 0.2499,
             ee = sd(prop_negro),
             cuantil_75 = quantile(prop_negro, 0.75), 
             cuantil_25 = quantile(prop_negro, 0.25),
@@ -448,14 +447,13 @@ prop_negro_tbl |>
 ```
 
 ```
-## # A tibble: 5 × 2
-##   name        value
-##   <chr>       <dbl>
-## 1 media       0.247
-## 2 sesgo      -0.003
-## 3 ee          0.025
-## 4 cuantil_75  0.263
-## 5 cuantil_25  0.23
+## # A tibble: 4 × 2
+##   name       value
+##   <chr>      <dbl>
+## 1 media      0.247
+## 2 ee         0.025
+## 3 cuantil_75 0.263
+## 4 cuantil_25 0.23
 ```
 
 
@@ -1350,7 +1348,7 @@ dist_boot |> int_pctl(res_boot) |>
 ## 5 % area del lote construida percentile estimador   0.148
 ## 6 % area del lote construida percentile bias       -0.006
 ```
-Nótese que el sesgo es bajo.
+
 De modo que en esta zona, entre 12% y 16% de toda el área disponible es ocupada por
 área habitable: estas son casas que tienen jardines o terrenos, garage relativamente grandes.
 
