@@ -304,6 +304,19 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-suavizadores"><i class="fa fa-check"></i>Ejemplo: suavizadores</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-y-estimadores-complejos-tablas-de-perfiles"><i class="fa fa-check"></i>Bootstrap y estimadores complejos: tablas de perfiles</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-y-muestras-complejas"><i class="fa fa-check"></i>Bootstrap y muestras complejas</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-en-r"><i class="fa fa-check"></i>Bootstrap en R</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#conclusiones-y-observaciones"><i class="fa fa-check"></i>Conclusiones y observaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html"><i class="fa fa-check"></i><b>6</b> Estimación por máxima verosimilitud</a>
+<ul>
+<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#introducción-a-estimación-por-máxima-verosimilitud"><i class="fa fa-check"></i>Introducción a estimación por máxima verosimilitud</a></li>
+<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#máxima-verosimilitud-para-observaciones-continuas"><i class="fa fa-check"></i>Máxima verosimilitud para observaciones continuas</a></li>
+<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#aspectos-numéricos"><i class="fa fa-check"></i>Aspectos numéricos</a>
+<ul>
+<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#el-método-de-momentos"><i class="fa fa-check"></i>El método de momentos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#máxima-verosimilitud-para-más-de-un-parámetro"><i class="fa fa-check"></i>Máxima verosimilitud para más de un parámetro</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html"><i class="fa fa-check"></i>Apéndice: Principios de visualizacion</a>
 <ul>
@@ -424,16 +437,36 @@ num_personas
 <tbody>
 <tr>
 <td style="text-align:right;">
-40.17
+44.30
 </td>
 <td style="text-align:right;">
-4.73
+2.50
 </td>
 <td style="text-align:left;">
 Si
 </td>
 <td style="text-align:left;">
-Vie
+Sab
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.33
+</td>
+<td style="text-align:right;">
+9.00
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Sab
 </td>
 <td style="text-align:left;">
 Cena
@@ -444,70 +477,10 @@ Cena
 </tr>
 <tr>
 <td style="text-align:right;">
-17.92
+18.35
 </td>
 <td style="text-align:right;">
-3.08
-</td>
-<td style="text-align:left;">
-Si
-</td>
-<td style="text-align:left;">
-Sab
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-11.69
-</td>
-<td style="text-align:right;">
-2.31
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Jue
-</td>
-<td style="text-align:left;">
-Comida
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-15.98
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Vie
-</td>
-<td style="text-align:left;">
-Comida
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-7.25
-</td>
-<td style="text-align:right;">
-1.00
+2.50
 </td>
 <td style="text-align:left;">
 No
@@ -519,7 +492,27 @@ Sab
 Cena
 </td>
 <td style="text-align:right;">
-1
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19.49
+</td>
+<td style="text-align:right;">
+3.51
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Dom
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+2
 </td>
 </tr>
 <tr>
@@ -544,47 +537,7 @@ Cena
 </tr>
 <tr>
 <td style="text-align:right;">
-16.93
-</td>
-<td style="text-align:right;">
-3.07
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Sab
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-32.90
-</td>
-<td style="text-align:right;">
-3.11
-</td>
-<td style="text-align:left;">
-Si
-</td>
-<td style="text-align:left;">
-Dom
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-20.92
+17.92
 </td>
 <td style="text-align:right;">
 4.08
@@ -604,19 +557,79 @@ Cena
 </tr>
 <tr>
 <td style="text-align:right;">
-26.86
+29.93
 </td>
 <td style="text-align:right;">
-3.14
+5.07
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Dom
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+43.11
+</td>
+<td style="text-align:right;">
+5.00
 </td>
 <td style="text-align:left;">
 Si
 </td>
 <td style="text-align:left;">
-Sab
+Jue
 </td>
 <td style="text-align:left;">
-Cena
+Comida
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10.65
+</td>
+<td style="text-align:right;">
+1.50
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Jue
+</td>
+<td style="text-align:left;">
+Comida
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19.44
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:left;">
+Si
+</td>
+<td style="text-align:left;">
+Jue
+</td>
+<td style="text-align:left;">
+Comida
 </td>
 <td style="text-align:right;">
 2
@@ -2072,7 +2085,7 @@ nacimientos?</p>
 <p>Podríamos utilizar una gráfica popular (ver por ejemplo <a href="http://thedailyviz.com/2016/09/17/how-common-is-your-birthday-dailyviz/">esta
 visualización</a>)
 como:</p>
-<p><img src="images/heatmapbirthdays1.png" style="display: block; margin: auto;" /></p>
+<p><img src="images/heatmapbirthdays1.png" width="305" style="display: block; margin: auto;" /></p>
 <p>Sin embargo, ¿cómo criticarías este análisis desde el punto de vista de
 los tres primeros principios del diseño analítico? ¿Las comparaciones
 son útiles? ¿Hay aspectos multivariados? ¿Qué tan bien explica o sugiere

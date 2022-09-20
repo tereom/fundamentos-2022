@@ -625,7 +625,6 @@ que la distribución de muestreo de nuestro estimador está centrado en el valor
 Esto en algunos casos se puede demostrar usando la teoría, pero más abajo veremos
 comprobaciones empíricas.
 
-
 ### Ejemplo: tomadores de té negro{-}
 
 Consideremos la estimación que hicimos de el procentaje de tomadores de té que toma
@@ -1528,4 +1527,712 @@ que desconocen de dónde provienen su té (No sabe/No contestó).
 Esto produce un intervalo colapsado en 0 que no es razonable. 
 
 Podemos remediar esto de varias maneras: quitando del análisis los que no sabe o no contestaron, agrupando en otra categoría, usando un modelo, o regularizar usando proporciones calculadas con conteos modificados: por ejemplo, agregando un caso de cada combinación (agregaría 18 personas "falsas" a una muestra de 290 personas).
+
+
+## Bootstrap y muestras complejas {-}
+
+La necesidad de estimaciones confiables junto con el uso eficiente de recursos
+conllevan a diseños de muestras complejas. Estos diseños típicamente usan las
+siguientes técnicas: muestreo sin reemplazo de una población finita, muestreo
+sistemático, estratificación, conglomerados, ajustes a no-respuesta, 
+postestratificación. Como consecuencia, los valores de la muestra suelen no ser
+independientes y los análisis de los mismos dependerá del diseño de la muestra.
+Comenzaremos con definiciones para entender el problema.
+
+
+```r
+set.seed(3872999)
+n_escuelas <- 5000
+
+tipo <- sample(c("rural", "urbano", "indigena"), n_escuelas, replace = TRUE, 
+    prob = c(0.3, 0.5, 0.2))
+
+escuela <- tibble(ind_escuela = 1:n_escuelas, tipo, 
+    media_tipo = case_when(tipo == "urbano" ~ 550, tipo == "rural" ~ 400, TRUE ~ 350), 
+    media_escuela = rnorm(n_escuelas, media_tipo, 30), 
+    n_estudiantes = round(rnorm(n_escuelas, 30, 4)))
+
+estudiantes <- uncount(escuela, n_estudiantes) %>% 
+    rowwise() %>% 
+    mutate(calif = rnorm(1, media_escuela, 70)) %>% 
+    ungroup()
+```
+
+Imaginemos que tenemos una población de 5000,
+y queremos estimar la media de las calificaciones de los estudiantes en una prueba.
+
+
+```r
+head(estudiantes)
+```
+
+```
+## # A tibble: 6 × 5
+##   ind_escuela tipo   media_tipo media_escuela calif
+##         <int> <chr>       <dbl>         <dbl> <dbl>
+## 1           1 urbano        550          561.  488.
+## 2           1 urbano        550          561.  574.
+## 3           1 urbano        550          561.  456.
+## 4           1 urbano        550          561.  507.
+## 5           1 urbano        550          561.  598.
+## 6           1 urbano        550          561.  527.
+```
+La primera idea sería tomar una muestra aleatoria (MAS, muestreo aleatorio simple), 
+donde todos los estudiantes tienen igual probabilidad de ser seleccionados. Con
+estas condiciones el presupuesto alcanza para seleccionar a 60 estudiantes, hacemos 
+esto y calculamos la media.
+
+
+```r
+muestra <- slice_sample(estudiantes, n = 60)
+round(mean(muestra$calif), 2)
+```
+
+```
+## [1] 466.73
+```
+
+
+
+Este número es muy cercano a la media verdadera de la población: 
+466.51, pero esta es una de muchas posibles muestras.
+
+
+```r
+medias_mas <- rerun(1000, mean(sample(estudiantes$calif, 60))) %>% flatten_dbl()
+sd(medias_mas)
+```
+
+```
+## [1] 14.75242
+```
+
+```r
+hist_mas <- ggplot(tibble(medias_mas), aes(x = medias_mas)) +
+    geom_histogram(binwidth = 10) +
+    geom_vline(xintercept = mean(estudiantes$calif), color = "red") +
+    xlim(410, 520)
+qq_mas <- ggplot(tibble(medias_mas), aes(sample = medias_mas)) +
+    geom_qq(distribution = stats::qunif) +
+    ylim(410, 520)
+
+hist_mas + qq_mas
+```
+
+<img src="05-remuestreo_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" />
+
+Algunas de las muestras generan valores alejados de la verdadera media, para minimizar
+la probabilidad de seleccionar muestras que lleven a estimaciones alejadas del 
+verdadero valor poblacional podríamos tomar muestras más grandes.
+
+Pero usualmente los costos limitan el tamaño de muestra. Una alternativa es
+estratificar, supongamos que sabemos el tipo de cada escuela (urbana, rural o 
+indígena) y sabemos también que sabemos que la calificación de los estudiantes de escuelas urbanas tiende a ser distinta a las calificaciones que los estudiantes de
+escuelas rurales o indígenas.
+
+
+```r
+muestra_estrat <- estudiantes %>% 
+    group_by(tipo) %>% 
+    sample_frac(0.0004)
+dim(muestra_estrat)
+```
+
+```
+## [1] 60  5
+```
+
+```r
+muestrea_estrat <- function(){
+    muestra <- estudiantes %>% 
+        group_by(tipo) %>% 
+        sample_frac(0.0004)
+    mean(muestra$calif)
+}
+
+medias_estrat <- rerun(1000, muestrea_estrat()) %>% flatten_dbl()
+sd(medias_estrat)
+```
+
+```
+## [1] 10.20239
+```
+
+```r
+hist_estrat <- ggplot(tibble(medias_estrat), aes(x = medias_estrat)) +
+    geom_histogram(binwidth = 6) +
+    geom_vline(xintercept = mean(estudiantes$calif), color = "red") +
+    xlim(410, 520)
+qq_estrat <- ggplot(tibble(medias_estrat), aes(sample = medias_estrat)) +
+    geom_qq(distribution = stats::qunif) +
+    ylim(410, 520)
+
+hist_estrat + qq_estrat
+```
+
+<img src="05-remuestreo_files/figure-html/unnamed-chunk-76-1.png" width="672" style="display: block; margin: auto;" />
+
+La estratificación nos sirve para reducir el error estándar de las estimaciones, 
+por su parte los conglomerados reducen costos. Veamos cuantas escuelas tendría 
+que visitar en una muestra dada (con diseño estratificado).
+
+
+
+
+
+```r
+n_distinct(muestra_estrat$ind_escuela)
+```
+
+```
+## [1] 60
+```
+
+Es fácil ver que visitar una escuela para aplicar solo uno o dos exámenes no es
+muy eficiente en cuestión de costos. Es por ello que se suelen tomar muestras 
+considerando los conglomerados naturales, en este caso la escuela. No es difícil 
+imaginar que una parte grande del costo del muestreo sea mandar al examinador a
+la escuela y que una vez ahí examine a todos los alumnos de sexto grado. Podemos 
+imaginar que considerando estos costos por visita de escuela nos alcance para
+visitar 40 escuelas y en cada una examinar a todos los estudiantes.
+
+
+```r
+muestra_escuelas <- escuela %>% 
+    group_by(tipo) %>% 
+    sample_frac(size = 0.008)
+muestra_cgl <- muestra_escuelas %>% 
+    left_join(estudiantes) 
+mean(muestra_cgl$calif)
+```
+
+```
+## [1] 462.5677
+```
+
+```r
+muestrea_cgl <- function(){
+    muestra_escuelas <- escuela %>% 
+        group_by(tipo) %>% 
+        sample_frac(size = 0.008)
+  muestra_cgl <- muestra_escuelas %>% 
+      left_join(estudiantes, by = c("ind_escuela", "tipo"))
+  mean(muestra_cgl$calif)
+        
+}
+
+medias_cgl <- rerun(1000, muestrea_cgl()) %>% flatten_dbl()
+sd(medias_cgl)
+```
+
+```
+## [1] 5.337327
+```
+
+```r
+hist_cgl <- ggplot(tibble(medias_cgl), aes(x = medias_cgl)) +
+    geom_histogram(binwidth = 6) +
+    geom_vline(xintercept = mean(estudiantes$calif), color = "red") +
+    xlim(410, 520)
+qq_cgl <- ggplot(tibble(medias_cgl), aes(sample = medias_cgl)) +
+    geom_qq(distribution = stats::qunif) +
+    ylim(410, 520)
+
+hist_cgl + qq_cgl
+```
+
+<img src="05-remuestreo_files/figure-html/unnamed-chunk-79-1.png" width="672" style="display: block; margin: auto;" />
+
+
+
+#### Ejemplo: ENIGH {-}
+
+La complejidad de los diseños de encuestas conlleva a que el cálculo de errores
+estándar sea muy complicado, para atacar este problema hay dos técnicas básicas:
+1) un enfoque analítico usando linearización, 2) métodos de remuestreo como 
+bootstrap. El incremento en el poder de cómputo ha favorecido los métodos de
+remuestreo pues la linearización requiere del desarrollo de una fórmula para 
+cada estimación y supuestos adicionales para simplificar.
+
+En 1988 @RaoWu propusieron un método de bootstrap para diseños 
+estratificados multietápicos con reemplazo de UPMs que describimos a 
+continuación.
+
+**ENIGH**. Usaremos como ejemplo la Encuesta Nacional de Ingresos y 
+Gastos de los Hogares, ENIGH 2018 [@enigh], esta encuesta usa un diseño de 
+conglomerados estratificado.
+
+Antes de proceder a bootstrap debemos entender como se seleccionaron los datos,
+esto es, el [diseño de la muestra](https://www.inegi.org.mx/contenidos/programas/enigh/nc/2018/doc/enigh18_diseno_muestral_ns.pdf):
+
+1. Unidad primaria de muestreo (UPM). Las UPMs están constituidas por 
+agrupaciones de viviendas. Se les denomina unidades primarias pues corresponden
+a la primera etapa de selección, las unidades secundarias (USMs) serían los 
+hogares.
+
+2. Estratificación. Los estratos se construyen en base a estado, ámbito (urbano, 
+complemento urbano, rural), características sociodemográficas de los habitantes
+de las viviendas, características físicas y equipamiento. El proceso de 
+estratificación resulta en 888 subestratos en todo el ámbito nacional.
+
+3. La selección de la muestra es independiente para cada estrato, y una 
+vez que se obtiene la muestra se calculan los factores de expansión que 
+reflejan las distintas probabilidades de selección. Después se llevan a cabo
+ajustes por no respuesta y por proyección (calibración), esta última 
+busca que distintos dominios de la muestra coincidan con la proyección de 
+población de INEGI.
+
+
+
+```r
+concentrado_hogar <- read_csv(here::here("data", 
+    "conjunto_de_datos_enigh_2018_ns_csv", 
+    "conjunto_de_datos_concentradohogar_enigh_2018_ns", "conjunto_de_datos",
+    "conjunto_de_datos_concentradohogar_enigh_2018_ns.csv"))
+
+# seleccionar variable de ingreso corriente
+hogar <- concentrado_hogar %>% 
+    mutate(
+        upm = as.integer(upm),
+        edo = str_sub(ubica_geo, 1, 2)
+        ) %>% 
+    select(folioviv, foliohog, est_dis, upm, factor, ing_cor, 
+       edad_jefe, edo) %>% 
+    group_by(est_dis) %>% 
+    mutate(n = n_distinct(upm)) %>% # número de upms por estrato
+    ungroup()
+hogar
+```
+
+```
+## # A tibble: 74,647 × 9
+##     folioviv foliohog est_dis   upm factor ing_cor edad_jefe edo       n
+##        <dbl>    <dbl>   <dbl> <int>  <dbl>   <dbl>     <dbl> <chr> <int>
+##  1 100013601        1       2     1    175  76404.        74 10      106
+##  2 100013602        1       2     1    175  42988.        48 10      106
+##  3 100013603        1       2     1    175 580698.        39 10      106
+##  4 100013604        1       2     1    175  46253.        70 10      106
+##  5 100013606        1       2     1    175  53837.        51 10      106
+##  6 100026701        1       2     2    189 237743.        41 10      106
+##  7 100026703        1       2     2    189  32607.        57 10      106
+##  8 100026704        1       2     2    189 169918.        53 10      106
+##  9 100026706        1       2     2    189  17311.        30 10      106
+## 10 100027201        1       2     3    186 120488.        69 10      106
+## # … with 74,637 more rows
+## # ℹ Use `print(n = ...)` to see more rows
+```
+
+Para el cálculo de estadísticos debemos usar los factores de expansión, por 
+ejemplo el ingreso trimestral total sería:
+
+
+```r
+sum(hogar$factor * hogar$ing_cor / 1000)
+```
+
+```
+## [1] 1723700566
+```
+
+y ingreso trimestral medio (miles pesos)
+
+
+```r
+sum(hogar$factor * hogar$ing_cor / 1000) / sum(hogar$factor)
+```
+
+```
+## [1] 49.61029
+```
+
+La estimación del error estándar, por otro lado, no es sencilla y requiere
+usar aproximaciones, en la metodología de INEGI proponen una aproximación con 
+series de Taylor.
+
+
+<div class="figure" style="text-align: center">
+<img src="images/inegi_metodologia_razon.png" alt="Extracto de estimación de errores de muestreo, ENIGH 2018." width="700px" />
+<p class="caption">(\#fig:unnamed-chunk-83)Extracto de estimación de errores de muestreo, ENIGH 2018.</p>
+</div>
+
+Veamos ahora como calcular el error estándar siguiendo el bootstrap de Rao y Wu:
+
+1. En cada estrato se seleccionan con reemplazo $m_h$ UPMs de las $n_h$ de la
+muestra original. Denotamos por $m_{hi}^*$ el número de veces que se seleccionó
+la UPM $i$ en el estrato $h$ (de tal manera que $\sum m_{hi}^*=m_h$). Creamos
+una replicación del ponderador correspondiente a la $k$-ésima unidad (USM) como:
+
+$$d_k^*=d_k \bigg[\bigg(1-\sqrt{\frac{m_h}{n_h - 1}}\bigg) + 
+\bigg(\sqrt{\frac{m_h}{n_h - 1}}\frac{n_h}{m_h}m_{h}^*\bigg)\bigg]$$
+
+donde $d_k$ es el inverso de la probabilidad de selección. Si $m_h <(n_h -1)$ 
+todos los pesos definidos de esta manera serán no negativos. Calculamos el 
+peso final $w_k^*$ aplicando a $d_k^*$ los mismos ajustes que se hicieron a los 
+ponderadores originales.
+
+2. Calculamos el estadístico de interés $\hat{\theta}$ usando los ponderadores
+$w_k^*$ en lugar de los originales $w_k$.
+
+3. Repetimos los pasos 1 y 2 $B$ veces para obtener $\hat{\theta}^{*1},\hat{\theta}^{*2},...,\hat{\theta}^{*B}$.
+
+4. Calculamos el error estándar como:
+
+$$\hat{\textsf{se}}_B = \bigg\{\frac{\sum_{b=1}^B[\hat{\theta}^*(b)-\hat{\theta}^*(\cdot)]^2 }{B}\bigg\}^{1/2}$$
+
+En principio podemos elegir cualquier valor de $m_h \geq 1$, el más común es elegir
+$m_h=n_h-1$, en este caso:
+$$d_k^*=d_k \frac{n_h}{n_h-1}m_{hi}^*$$
+en este escenario las unidades que no se incluyen en la muestra tienen 
+un valor de cero como ponderador. Si elegimos $n_h \ne n_h-1$ las unidades que 
+no están en la muestra tienen ponderador distinto a cero, si $m_h=n_h$ el
+ponderador podría tomar valores negativos.
+
+Implementemos el bootstrap de Rao y Wu a la ENIGH, usaremos $m_h=n_h-1$
+
+
+```r
+# creamos una tabla con los estratos y upms
+est_upm <- hogar %>% 
+  distinct(est_dis, upm, n) %>% 
+  arrange(upm)
+
+hogar_factor <- est_upm %>% 
+    group_by(est_dis) %>% # dentro de cada estrato tomamos muestra (n_h-1)
+    sample_n(size = first(n) - 1, replace = TRUE) %>% 
+    add_count(est_dis, upm, name = "m_hi") %>% # calculamos m_hi*
+    left_join(hogar, by = c("est_dis", "upm", "n")) %>% 
+    mutate(factor_b = factor * m_hi * n / (n - 1))
+
+# unimos los pasos anteriores en una función para replicar en cada muestra bootstrap
+svy_boot <- function(est_upm, hogar){
+    m_hi <- est_upm %>% 
+        group_split(est_dis) %>% 
+        map(~sample(.$upm, size = first(.$n) - 1, replace = TRUE)) %>% 
+        flatten_int() %>% 
+        plyr::count() %>% 
+        select(upm = x, m_h = freq)
+    m_hi %>% 
+        left_join(hogar, by = c("upm")) %>% 
+        mutate(factor_b = factor * m_h * n / (n - 1))
+}
+set.seed(1038984)
+boot_rep <- rerun(500, svy_boot(est_upm, hogar))
+
+# Aplicación a ingreso medio
+wtd_mean <- function(w, x, na.rm = FALSE) {
+    sum(w * x, na.rm = na.rm) / sum(w, na.rm = na.rm)
+} 
+
+# La media es:
+hogar %>% 
+    summarise(media = wtd_mean(factor, ing_cor))
+```
+
+```
+## # A tibble: 1 × 1
+##    media
+##    <dbl>
+## 1 49610.
+```
+
+Y el error estándar:
+
+
+```r
+map_dbl(boot_rep, ~wtd_mean(w = .$factor_b, x = .$ing_cor)) %>% 
+  quantile(c(0.025, 0.975))
+```
+
+```
+##     2.5%    97.5% 
+## 48742.12 50519.02
+```
+
+
+
+
+El método bootstrap está implementado en el paquete `survey` y más recientemente 
+en `srvyr` que es una versión *tidy* que utiliza las funciones en `survey`.
+
+Podemos comparar nuestros resultados con la implementación en `survey`.
+
+
+```r
+# 1. Definimos el diseño de la encuesta
+library(survey)
+library(srvyr)
+
+enigh_design <- hogar %>% 
+    as_survey_design(ids = upm, weights = factor, strata = est_dis)
+
+# 2. Elegimos bootstrap como el método para el cálculo de errores estándar
+set.seed(7398731)
+enigh_boot <- enigh_design %>% 
+    as_survey_rep(type = "subbootstrap", replicates = 500)
+
+# 3. Así calculamos la media
+enigh_boot %>% 
+    srvyr::summarise(mean_ingcor = survey_mean(ing_cor))
+```
+
+```
+## # A tibble: 1 × 2
+##   mean_ingcor mean_ingcor_se
+##         <dbl>          <dbl>
+## 1      49610.           459.
+```
+
+```r
+enigh_boot %>% 
+    srvyr::summarise(mean_ingcor = survey_mean(ing_cor, vartype =  "ci"))
+```
+
+```
+## # A tibble: 1 × 3
+##   mean_ingcor mean_ingcor_low mean_ingcor_upp
+##         <dbl>           <dbl>           <dbl>
+## 1      49610.          48709.          50512.
+```
+
+```r
+# por estado
+enigh_boot %>% 
+    group_by(edo) %>% 
+    srvyr::summarise(mean_ingcor = survey_mean(ing_cor)) 
+```
+
+```
+## # A tibble: 30 × 3
+##    edo   mean_ingcor mean_ingcor_se
+##    <chr>       <dbl>          <dbl>
+##  1 10         50161.           942.
+##  2 11         46142.          1252.
+##  3 12         29334.          1067.
+##  4 13         38783.           933.
+##  5 14         60541.          1873.
+##  6 15         48013.          1245.
+##  7 16         42653.          1239.
+##  8 17         42973.          1675.
+##  9 18         48148.          1822.
+## 10 19         68959.          3625.
+## # … with 20 more rows
+## # ℹ Use `print(n = ...)` to see more rows
+```
+
+Resumiendo:
+
+* El bootstrap de Rao y Wu genera un estimador consistente y aproximadamente 
+insesgado de la varianza de estadísticos no lineales y para la varianza de un 
+cuantil.
+
+* Este método supone que la seleccion de UPMs es con reemplazo; hay variaciones 
+del estimador bootstrap de Rao y Wu que extienden el método que acabamos de 
+estudiar; sin embargo, es común ignorar este aspecto, 
+por ejemplo [Mach et al](https://fcsm.sites.usa.gov/files/2014/05/2005FCSM_Mach_Dumais_Robidou_VA.pdf) estudian las propiedades del estimador de varianza bootstrap de Rao y Wu cuando 
+la muestra se seleccionó sin reemplazo.
+
+## Bootstrap en R {-}
+
+Es común crear nuestras propias funciones cuando usamos bootstrap, sin embargo, 
+en R también hay alternativas que pueden resultar convenientes, mencionamos 3:
+
+1. El paquete `rsample` (forma parte de la colección [tidymodels](https://www.tidyverse.org/articles/2018/08/tidymodels-0-0-1/)) 
+y tiene una función `bootsrtraps()` que regresa un arreglo cuadrangular 
+(`tibble`, `data.frame`) que incluye una columna con las muestras bootstrap y un 
+identificador del número y tipo de muestra.
+
+Veamos un ejemplo donde seleccionamos muestras del conjunto de datos 
+`muestra_computos` que contiene 10,000 observaciones.
+
+
+```r
+library(rsample)
+
+load("data/election_2012.rda")
+muestra_computos <- slice_sample(election_2012, n = 10000)
+muestra_computos
+```
+
+```
+## # A tibble: 10,000 × 23
+##    state_code state_name  state…¹ distr…² distr…³ polli…⁴ section region polli…⁵
+##    <chr>      <chr>       <chr>     <int>   <int>   <int>   <int> <chr>  <chr>  
+##  1 15         México      MEX          45      40   77364     133 centr… B-C    
+##  2 28         Tamaulipas  TAM           6       9  126685    1079 nores… B-C    
+##  3 18         Nayarit     NAY           7       2   86587     955 oeste  B-C    
+##  4 09         Ciudad de … CDMX          1       1   22214     859 centr… B-C    
+##  5 29         Tlaxcala    TLAX         10       1  127221     178 este   B-C    
+##  6 13         Hidalgo     HGO           5       2   49224     595 este   E      
+##  7 07         Chiapas     CHPS         15      10   13835    1885 suroe… B-C    
+##  8 19         Nuevo León  NL            3       6   90042    2135 nores… B-C    
+##  9 25         Sinaloa     SIN           6       3  113407    3554 noroe… B-C    
+## 10 15         México      MEX          22      17   67597    1468 centr… B-C    
+## # … with 9,990 more rows, 14 more variables: section_type <chr>,
+## #   pri_pvem <int>, pan <int>, panal <int>, prd_pt_mc <int>, otros <int>,
+## #   total <int>, nominal_list <int>, pri_pvem_pct <dbl>, pan_pct <dbl>,
+## #   panal_pct <dbl>, prd_pt_mc_pct <dbl>, otros_pct <dbl>, winner <chr>, and
+## #   abbreviated variable names ¹​state_abbr, ²​district_loc_17, ³​district_fed_17,
+## #   ⁴​polling_id, ⁵​polling_type
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
+```
+
+Generamos 100 muestras bootstrap, y la función nos regresa un arreglo con 100
+renglones, cada uno corresponde a una muestra bootstrap.
+
+
+```r
+set.seed(839287482)
+computos_boot <- bootstraps(muestra_computos, times = 100)
+computos_boot
+```
+
+```
+## # Bootstrap sampling 
+## # A tibble: 100 × 2
+##    splits               id          
+##    <list>               <chr>       
+##  1 <split [10000/3647]> Bootstrap001
+##  2 <split [10000/3623]> Bootstrap002
+##  3 <split [10000/3724]> Bootstrap003
+##  4 <split [10000/3682]> Bootstrap004
+##  5 <split [10000/3696]> Bootstrap005
+##  6 <split [10000/3716]> Bootstrap006
+##  7 <split [10000/3679]> Bootstrap007
+##  8 <split [10000/3734]> Bootstrap008
+##  9 <split [10000/3632]> Bootstrap009
+## 10 <split [10000/3692]> Bootstrap010
+## # … with 90 more rows
+## # ℹ Use `print(n = ...)` to see more rows
+```
+
+La columna `splits` tiene información de las muestras seleccionadas, para la 
+primera vemos que de 10,000 observaciones en la muestra original la primera 
+muestra bootstrap contiene 10000-3647=6353.
+
+
+```r
+first_computos_boot <- computos_boot$splits[[1]]
+first_computos_boot 
+```
+
+```
+## <Analysis/Assess/Total>
+## <10000/3647/10000>
+```
+
+Y podemos obtener los datos de la muestra bootstrap con la función 
+`as.data.frame()`
+
+
+```r
+as.data.frame(first_computos_boot)
+```
+
+```
+## # A tibble: 10,000 × 23
+##    state_code state_name  state…¹ distr…² distr…³ polli…⁴ section region polli…⁵
+##    <chr>      <chr>       <chr>     <int>   <int>   <int>   <int> <chr>  <chr>  
+##  1 14         Jalisco     JAL          14      14   57620     998 oeste  B-C    
+##  2 31         Yucatán     YUC           7       3  139226     561 sures… B-C    
+##  3 14         Jalisco     JAL          14      14   57998     826 oeste  B-C    
+##  4 16         Michoacán   MICH         13       3   79390    2609 oeste  B-C    
+##  5 21         Puebla      PUE          13       7  101237      48 este   B-C    
+##  6 14         Jalisco     JAL          12      12   57145    2446 oeste  B-C    
+##  7 10         Durango     DGO           4       1   34549     400 noroe… B-C    
+##  8 11         Guanajuato  GTO          20      10   42863    1865 centr… B-C    
+##  9 03         Baja Calif… BCS           9       1    5541     374 noroe… B-C    
+## 10 14         Jalisco     JAL          16      16   58584    2542 oeste  B-C    
+## # … with 9,990 more rows, 14 more variables: section_type <chr>,
+## #   pri_pvem <int>, pan <int>, panal <int>, prd_pt_mc <int>, otros <int>,
+## #   total <int>, nominal_list <int>, pri_pvem_pct <dbl>, pan_pct <dbl>,
+## #   panal_pct <dbl>, prd_pt_mc_pct <dbl>, otros_pct <dbl>, winner <chr>, and
+## #   abbreviated variable names ¹​state_abbr, ²​district_loc_17, ³​district_fed_17,
+## #   ⁴​polling_id, ⁵​polling_type
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
+```
+
+Una de las principales ventajas de usar este paquete es que es eficiente en 
+el uso de memoria.
+
+
+```r
+library(pryr)
+object_size(muestra_computos)
+```
+
+```
+## 1.41 MB
+```
+
+```r
+object_size(computos_boot)
+```
+
+```
+## 5.49 MB
+```
+
+```r
+# tamaño por muestra
+object_size(computos_boot)/nrow(computos_boot)
+```
+
+```
+## 54.92 kB
+```
+
+```r
+# el incremento en tamaño es << 100
+as.numeric(object_size(computos_boot)/object_size(muestra_computos))
+```
+
+```
+## [1] 3.894905
+```
+
+2. El paquete `boot` está asociado al libro *Bootstrap Methods and Their 
+Applications* (@davison) y tiene, entre otras, funciones para calcular 
+replicaciones bootstrap y para construir intervalos de confianza usando bootstrap: 
+    + calculo de replicaciones bootstrap con la función `boot()`,
+    + intervalos normales, de percentiles y $BC_a$ con la función `boot.ci()`,
+    + intevalos ABC con la función `abc.ci().
+    
+3. El paquete `bootstrap` contiene datos usados en @Efron, y la implementación 
+de funciones para calcular replicaciones y construir intervalos de confianza:
+    + calculo de replicaciones bootstrap con la función `bootstrap()`,
+    + intervalos $BC_a$ con la función `bcanon()`, 
+    + intevalos ABC con la función `abcnon().
+
+
+## Conclusiones y observaciones {-}
+
+* El principio fundamental del Bootstrap no paramétrico es que podemos estimar
+la distribución poblacional con la distribución empírica. Por tanto para 
+hacer inferencia tomamos muestras con reemplazo de la muestra y 
+analizamos la variación de la estadística de interés a lo largo de las 
+remuestras.
+
+* El bootstrap nos da la posibilidad de crear intervalos de confianza
+cuando no contamos con fórmulas para hacerlo de manera analítica y sin 
+supuestos distribucionales de la población.
+
+* Hay muchas opciones para construir intervalos bootstrap, los que tienen 
+mejores propiedades son los intervalos $BC_a$, sin embargo los más comunes son 
+los intervalos normales con error estándar bootstrap y los intervalos de 
+percentiles de la distribución bootstrap.
+
+* Antes de hacer intervalos normales vale la pena 
+graficar la distribución bootstrap y evaluar si el supuesto de normalidad es 
+razonable. Así como evaluar el sesgo relativo.
+
+* En cuanto al número de muestras bootstrap se recomienda al menos $1,000$ 
+al hacer pruebas, y $10,000$ o $15,000$ para los resultados finales, sobre
+todo cuando se hacen intervalos de confianza de percentiles.
+
+* La función de distribución empírica es una mala estimación en las colas de 
+las distribuciones, por lo que es difícil construir intervalos de confianza 
+(usando bootstrap no paramétrico) para estadísticas que dependen mucho de las 
+colas. O en general para estadísticas que dependen de un número chico de 
+observaciones de una muestra grande.
+
 
