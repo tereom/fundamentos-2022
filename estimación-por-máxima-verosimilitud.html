@@ -308,15 +308,15 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#bootstrap-en-r"><i class="fa fa-check"></i>Bootstrap en R</a></li>
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#conclusiones-y-observaciones"><i class="fa fa-check"></i>Conclusiones y observaciones</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html"><i class="fa fa-check"></i><b>6</b> Estimación por máxima verosimilitud</a>
+<li class="chapter" data-level="6" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html"><i class="fa fa-check"></i><b>6</b> Estimación por máxima verosimilitud</a>
 <ul>
-<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#introducción-a-estimación-por-máxima-verosimilitud"><i class="fa fa-check"></i>Introducción a estimación por máxima verosimilitud</a></li>
-<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#máxima-verosimilitud-para-observaciones-continuas"><i class="fa fa-check"></i>Máxima verosimilitud para observaciones continuas</a></li>
-<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#aspectos-numéricos"><i class="fa fa-check"></i>Aspectos numéricos</a>
+<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#introducción-a-estimación-por-máxima-verosimilitud"><i class="fa fa-check"></i>Introducción a estimación por máxima verosimilitud</a></li>
+<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-observaciones-continuas"><i class="fa fa-check"></i>Máxima verosimilitud para observaciones continuas</a></li>
+<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#aspectos-numéricos"><i class="fa fa-check"></i>Aspectos numéricos</a>
 <ul>
-<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#el-método-de-momentos"><i class="fa fa-check"></i>El método de momentos</a></li>
+<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#el-método-de-momentos"><i class="fa fa-check"></i>El método de momentos</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="S:max-verosimilitud.html"><a href="S:max-verosimilitud.html#máxima-verosimilitud-para-más-de-un-parámetro"><i class="fa fa-check"></i>Máxima verosimilitud para más de un parámetro</a></li>
+<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-más-de-un-parámetro"><i class="fa fa-check"></i>Máxima verosimilitud para más de un parámetro</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html"><i class="fa fa-check"></i>Apéndice: Principios de visualizacion</a>
 <ul>
@@ -366,8 +366,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="S:max-verosimilitud" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Sección 6</span> Estimación por máxima verosimilitud<a href="S:max-verosimilitud.html#S:max-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="estimación-por-máxima-verosimilitud" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Sección 6</span> Estimación por máxima verosimilitud<a href="estimación-por-máxima-verosimilitud.html#estimación-por-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Los ejemplos que hemos visto han sido todos de estimadores <em>plug-in</em> (o por sustitución):
 si queremos saber una cantidad poblacional, y tenemos una muestra dada, entonces
 calculamos la estadística de interés <em>como si la muestra fuera la población</em>. Por ejemplo,
@@ -388,7 +388,7 @@ datos está en que es posible comprimir más eficientemente la información, es 
 modelos más complejos juntando varios de estos modelos y de sus dependencias, y de que es
 posible hacer más teoría útil que nos guíe. La desventaja es que es necesario que esos supuestos teóricos sean razonables.</p>
 <div id="introducción-a-estimación-por-máxima-verosimilitud" class="section level2 unnumbered hasAnchor">
-<h2>Introducción a estimación por máxima verosimilitud<a href="S:max-verosimilitud.html#introducción-a-estimación-por-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>Introducción a estimación por máxima verosimilitud<a href="estimación-por-máxima-verosimilitud.html#introducción-a-estimación-por-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Uno de los procedimientos más estándar en esta situación es el <strong>método
 de máxima verosimilitud</strong>. Los estimadores de máxima verosimilitud tienen propiedades
 convenientes, y dan en general resultados razonables siempre y cuando los supuestos
@@ -457,13 +457,13 @@ de arriba es igual a</p>
 <p>Ahora la idea es <strong>encontrar la p que maximiza la probabilidad de lo que observamos</strong>. En
 este caso se puede hacer con cálculo, pero vamos a ver una gráfica de esta función y
 cómo resolverla de manera numérica.</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="S:max-verosimilitud.html#cb275-1" aria-hidden="true" tabindex="-1"></a>verosimilitud <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
-<span id="cb275-2"><a href="S:max-verosimilitud.html#cb275-2" aria-hidden="true" tabindex="-1"></a>  p<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span><span class="dv">6</span></span>
-<span id="cb275-3"><a href="S:max-verosimilitud.html#cb275-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb275-4"><a href="S:max-verosimilitud.html#cb275-4" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prob =</span> <span class="fu">map_dbl</span>(x, verosimilitud))</span>
-<span id="cb275-5"><a href="S:max-verosimilitud.html#cb275-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb275-6"><a href="S:max-verosimilitud.html#cb275-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb275-7"><a href="S:max-verosimilitud.html#cb275-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;p&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="estimación-por-máxima-verosimilitud.html#cb275-1" aria-hidden="true" tabindex="-1"></a>verosimilitud <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
+<span id="cb275-2"><a href="estimación-por-máxima-verosimilitud.html#cb275-2" aria-hidden="true" tabindex="-1"></a>  p<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span><span class="dv">6</span></span>
+<span id="cb275-3"><a href="estimación-por-máxima-verosimilitud.html#cb275-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb275-4"><a href="estimación-por-máxima-verosimilitud.html#cb275-4" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prob =</span> <span class="fu">map_dbl</span>(x, verosimilitud))</span>
+<span id="cb275-5"><a href="estimación-por-máxima-verosimilitud.html#cb275-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb275-6"><a href="estimación-por-máxima-verosimilitud.html#cb275-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb275-7"><a href="estimación-por-máxima-verosimilitud.html#cb275-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;p&quot;</span>)</span></code></pre></div>
 <p><img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-2-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Nótese que esta gráfica:</p>
 <ul>
@@ -554,27 +554,27 @@ Y esta es nuestra función de verosimilitud para una observación.</p>
 (por ejemplo, después de cada corrida la máquina se prepara de una manera estándar,
 y es como si el proceso comenzara otra vez). Entonces tenemos que multiplicar
 estas probabilidades para cada observación <span class="math inline">\(r_1\)</span>:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="S:max-verosimilitud.html#cb276-1" aria-hidden="true" tabindex="-1"></a>calc_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(r){</span>
-<span id="cb276-2"><a href="S:max-verosimilitud.html#cb276-2" aria-hidden="true" tabindex="-1"></a>  q_func <span class="ot">&lt;-</span> <span class="fl">0.03</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.97</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
-<span id="cb276-3"><a href="S:max-verosimilitud.html#cb276-3" aria-hidden="true" tabindex="-1"></a>  q_falla <span class="ot">&lt;-</span> <span class="fl">0.2</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.8</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
-<span id="cb276-4"><a href="S:max-verosimilitud.html#cb276-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(p){</span>
-<span id="cb276-5"><a href="S:max-verosimilitud.html#cb276-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#nota: esta no es la mejor manera de calcularlo, hay </span></span>
-<span id="cb276-6"><a href="S:max-verosimilitud.html#cb276-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># que usar logaritmos.</span></span>
-<span id="cb276-7"><a href="S:max-verosimilitud.html#cb276-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prod</span>(p<span class="sc">*</span>q_func <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">*</span>q_falla)</span>
-<span id="cb276-8"><a href="S:max-verosimilitud.html#cb276-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb276-9"><a href="S:max-verosimilitud.html#cb276-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb276-10"><a href="S:max-verosimilitud.html#cb276-10" aria-hidden="true" tabindex="-1"></a>verosim <span class="ot">&lt;-</span> <span class="fu">calc_verosim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb276-11"><a href="S:max-verosimilitud.html#cb276-11" aria-hidden="true" tabindex="-1"></a><span class="fu">verosim</span>(<span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="estimación-por-máxima-verosimilitud.html#cb276-1" aria-hidden="true" tabindex="-1"></a>calc_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(r){</span>
+<span id="cb276-2"><a href="estimación-por-máxima-verosimilitud.html#cb276-2" aria-hidden="true" tabindex="-1"></a>  q_func <span class="ot">&lt;-</span> <span class="fl">0.03</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.97</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
+<span id="cb276-3"><a href="estimación-por-máxima-verosimilitud.html#cb276-3" aria-hidden="true" tabindex="-1"></a>  q_falla <span class="ot">&lt;-</span> <span class="fl">0.2</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.8</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
+<span id="cb276-4"><a href="estimación-por-máxima-verosimilitud.html#cb276-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(p){</span>
+<span id="cb276-5"><a href="estimación-por-máxima-verosimilitud.html#cb276-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#nota: esta no es la mejor manera de calcularlo, hay </span></span>
+<span id="cb276-6"><a href="estimación-por-máxima-verosimilitud.html#cb276-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># que usar logaritmos.</span></span>
+<span id="cb276-7"><a href="estimación-por-máxima-verosimilitud.html#cb276-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prod</span>(p<span class="sc">*</span>q_func <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">*</span>q_falla)</span>
+<span id="cb276-8"><a href="estimación-por-máxima-verosimilitud.html#cb276-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb276-9"><a href="estimación-por-máxima-verosimilitud.html#cb276-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb276-10"><a href="estimación-por-máxima-verosimilitud.html#cb276-10" aria-hidden="true" tabindex="-1"></a>verosim <span class="ot">&lt;-</span> <span class="fu">calc_verosim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb276-11"><a href="estimación-por-máxima-verosimilitud.html#cb276-11" aria-hidden="true" tabindex="-1"></a><span class="fu">verosim</span>(<span class="fl">0.1</span>)</span></code></pre></div>
 <pre><code>## [1] 2.692087e-14</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="S:max-verosimilitud.html#cb278-1" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prob =</span> <span class="fu">map_dbl</span>(x, verosim))</span>
-<span id="cb278-2"><a href="S:max-verosimilitud.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb278-3"><a href="S:max-verosimilitud.html#cb278-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb278-4"><a href="S:max-verosimilitud.html#cb278-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;prop funcionado&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="estimación-por-máxima-verosimilitud.html#cb278-1" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prob =</span> <span class="fu">map_dbl</span>(x, verosim))</span>
+<span id="cb278-2"><a href="estimación-por-máxima-verosimilitud.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb278-3"><a href="estimación-por-máxima-verosimilitud.html#cb278-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb278-4"><a href="estimación-por-máxima-verosimilitud.html#cb278-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;prop funcionado&quot;</span>)</span></code></pre></div>
 <p><img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Y nuestra estimación puntual sería de alrededor de 80%.</p>
 </div>
 <div id="máxima-verosimilitud-para-observaciones-continuas" class="section level2 unnumbered hasAnchor">
-<h2>Máxima verosimilitud para observaciones continuas<a href="S:max-verosimilitud.html#máxima-verosimilitud-para-observaciones-continuas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>Máxima verosimilitud para observaciones continuas<a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-observaciones-continuas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Cuando las observaciones <span class="math inline">\(x_1,\ldots, x_n\)</span> provienen de una distribución
 continua, no tiene sentido considerar <span class="math inline">\(P(X = x_i)\)</span>, pues siempre es igual
 a cero.</p>
@@ -609,7 +609,7 @@ por qué esto es intuitivamente razonable: ¿cuál es
 el valor esperado de una exponencial con parámetro <span class="math inline">\(\lambda\)</span>?</p>
 </div>
 <div id="aspectos-numéricos" class="section level2 unnumbered hasAnchor">
-<h2>Aspectos numéricos<a href="S:max-verosimilitud.html#aspectos-numéricos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>Aspectos numéricos<a href="estimación-por-máxima-verosimilitud.html#aspectos-numéricos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Encontrar el estimador de máxima verosimilitud (<span class="math inline">\(\textsf{MLE}\)</span>) es automático en la mayoría de los casos.
 En teoría, podemos reutilizar la misma rutina numérica para encontrar el estimador sin ninguna ayuda de la analista.
 Esto contrasta con otras técnicas de estimación en donde se requieren cálculos y manipulación de ecuaciones.</p>
@@ -617,15 +617,15 @@ Esto contrasta con otras técnicas de estimación en donde se requieren cálculo
 números que pueden ser muy chicos (por ejemplo <span class="math inline">\(p^6\)</span>, etc). Esto puede producir
 desbordes numéricos fácilmente. Por ejemplo para un tamaño de muestra de 1000, podríamos
 tener que calcular</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="S:max-verosimilitud.html#cb279-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb279-2"><a href="S:max-verosimilitud.html#cb279-2" aria-hidden="true" tabindex="-1"></a>proba <span class="ot">&lt;-</span> (p <span class="sc">^</span> <span class="dv">800</span>)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span><span class="dv">200</span></span>
-<span id="cb279-3"><a href="S:max-verosimilitud.html#cb279-3" aria-hidden="true" tabindex="-1"></a>proba</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="estimación-por-máxima-verosimilitud.html#cb279-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb279-2"><a href="estimación-por-máxima-verosimilitud.html#cb279-2" aria-hidden="true" tabindex="-1"></a>proba <span class="ot">&lt;-</span> (p <span class="sc">^</span> <span class="dv">800</span>)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span><span class="dv">200</span></span>
+<span id="cb279-3"><a href="estimación-por-máxima-verosimilitud.html#cb279-3" aria-hidden="true" tabindex="-1"></a>proba</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>En estos casos, es mejor hacer los cálculos en escala logarítmica. El logaritmo
 convierte productos en sumas, y baja exponentes multiplicando. Si calculamos en escala
 logaritmica la cantidad de arriba, no tenemos problema:</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="S:max-verosimilitud.html#cb281-1" aria-hidden="true" tabindex="-1"></a>log_proba <span class="ot">&lt;-</span> <span class="dv">800</span> <span class="sc">*</span> <span class="fu">log</span>(p) <span class="sc">+</span> <span class="dv">200</span> <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
-<span id="cb281-2"><a href="S:max-verosimilitud.html#cb281-2" aria-hidden="true" tabindex="-1"></a>log_proba</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="estimación-por-máxima-verosimilitud.html#cb281-1" aria-hidden="true" tabindex="-1"></a>log_proba <span class="ot">&lt;-</span> <span class="dv">800</span> <span class="sc">*</span> <span class="fu">log</span>(p) <span class="sc">+</span> <span class="dv">200</span> <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
+<span id="cb281-2"><a href="estimación-por-máxima-verosimilitud.html#cb281-2" aria-hidden="true" tabindex="-1"></a>log_proba</span></code></pre></div>
 <pre><code>## [1] -1863.14</code></pre>
 <p>Ahora notemos que</p>
 <ul>
@@ -651,35 +651,35 @@ escribe la función de log-verosimilitud.
 </p>
 </div>
 <p><strong>Ejemplo.</strong> En nuestro primer ejemplo,</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="S:max-verosimilitud.html#cb283-1" aria-hidden="true" tabindex="-1"></a>log_verosimilitud <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
-<span id="cb283-2"><a href="S:max-verosimilitud.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span><span class="sc">*</span><span class="fu">log</span>(p) <span class="sc">+</span> <span class="dv">6</span><span class="sc">*</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
-<span id="cb283-3"><a href="S:max-verosimilitud.html#cb283-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb283-4"><a href="S:max-verosimilitud.html#cb283-4" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.01</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">log_prob =</span> <span class="fu">map_dbl</span>(x, log_verosimilitud))</span>
-<span id="cb283-5"><a href="S:max-verosimilitud.html#cb283-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> log_prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb283-6"><a href="S:max-verosimilitud.html#cb283-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb283-7"><a href="S:max-verosimilitud.html#cb283-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;p&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="estimación-por-máxima-verosimilitud.html#cb283-1" aria-hidden="true" tabindex="-1"></a>log_verosimilitud <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
+<span id="cb283-2"><a href="estimación-por-máxima-verosimilitud.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span><span class="sc">*</span><span class="fu">log</span>(p) <span class="sc">+</span> <span class="dv">6</span><span class="sc">*</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
+<span id="cb283-3"><a href="estimación-por-máxima-verosimilitud.html#cb283-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb283-4"><a href="estimación-por-máxima-verosimilitud.html#cb283-4" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.01</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">log_prob =</span> <span class="fu">map_dbl</span>(x, log_verosimilitud))</span>
+<span id="cb283-5"><a href="estimación-por-máxima-verosimilitud.html#cb283-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> log_prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb283-6"><a href="estimación-por-máxima-verosimilitud.html#cb283-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb283-7"><a href="estimación-por-máxima-verosimilitud.html#cb283-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;p&quot;</span>)</span></code></pre></div>
 <p><img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-9-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Obtenemos el mismo máximo. Podemos incluso resolver numéricamente:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="S:max-verosimilitud.html#cb284-1" aria-hidden="true" tabindex="-1"></a>solucion <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">p =</span> <span class="fl">0.5</span>, log_verosimilitud, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">fnscale =</span> <span class="sc">-</span><span class="dv">1</span>))</span>
-<span id="cb284-2"><a href="S:max-verosimilitud.html#cb284-2" aria-hidden="true" tabindex="-1"></a>solucion<span class="sc">$</span>par</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="estimación-por-máxima-verosimilitud.html#cb284-1" aria-hidden="true" tabindex="-1"></a>solucion <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">p =</span> <span class="fl">0.5</span>, log_verosimilitud, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">fnscale =</span> <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb284-2"><a href="estimación-por-máxima-verosimilitud.html#cb284-2" aria-hidden="true" tabindex="-1"></a>solucion<span class="sc">$</span>par</span></code></pre></div>
 <pre><code>## [1] 0.25</code></pre>
 <p>Y en nuestro segundo ejemplo:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="S:max-verosimilitud.html#cb286-1" aria-hidden="true" tabindex="-1"></a>calc_log_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(r){</span>
-<span id="cb286-2"><a href="S:max-verosimilitud.html#cb286-2" aria-hidden="true" tabindex="-1"></a>  q_func <span class="ot">&lt;-</span> <span class="fl">0.03</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.97</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
-<span id="cb286-3"><a href="S:max-verosimilitud.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  q_falla <span class="ot">&lt;-</span> <span class="fl">0.2</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.8</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
-<span id="cb286-4"><a href="S:max-verosimilitud.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(p){</span>
-<span id="cb286-5"><a href="S:max-verosimilitud.html#cb286-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#nota: esta no es la mejor manera de calcularlo, hay </span></span>
-<span id="cb286-6"><a href="S:max-verosimilitud.html#cb286-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># que usar logaritmos.</span></span>
-<span id="cb286-7"><a href="S:max-verosimilitud.html#cb286-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">log</span>(p<span class="sc">*</span>q_func <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">*</span>q_falla))</span>
-<span id="cb286-8"><a href="S:max-verosimilitud.html#cb286-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb286-9"><a href="S:max-verosimilitud.html#cb286-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb286-10"><a href="S:max-verosimilitud.html#cb286-10" aria-hidden="true" tabindex="-1"></a>log_verosim <span class="ot">&lt;-</span> <span class="fu">calc_log_verosim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb286-11"><a href="S:max-verosimilitud.html#cb286-11" aria-hidden="true" tabindex="-1"></a><span class="fu">log_verosim</span>(<span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="estimación-por-máxima-verosimilitud.html#cb286-1" aria-hidden="true" tabindex="-1"></a>calc_log_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(r){</span>
+<span id="cb286-2"><a href="estimación-por-máxima-verosimilitud.html#cb286-2" aria-hidden="true" tabindex="-1"></a>  q_func <span class="ot">&lt;-</span> <span class="fl">0.03</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.97</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
+<span id="cb286-3"><a href="estimación-por-máxima-verosimilitud.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  q_falla <span class="ot">&lt;-</span> <span class="fl">0.2</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.8</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
+<span id="cb286-4"><a href="estimación-por-máxima-verosimilitud.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(p){</span>
+<span id="cb286-5"><a href="estimación-por-máxima-verosimilitud.html#cb286-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#nota: esta no es la mejor manera de calcularlo, hay </span></span>
+<span id="cb286-6"><a href="estimación-por-máxima-verosimilitud.html#cb286-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># que usar logaritmos.</span></span>
+<span id="cb286-7"><a href="estimación-por-máxima-verosimilitud.html#cb286-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">log</span>(p<span class="sc">*</span>q_func <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">*</span>q_falla))</span>
+<span id="cb286-8"><a href="estimación-por-máxima-verosimilitud.html#cb286-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb286-9"><a href="estimación-por-máxima-verosimilitud.html#cb286-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb286-10"><a href="estimación-por-máxima-verosimilitud.html#cb286-10" aria-hidden="true" tabindex="-1"></a>log_verosim <span class="ot">&lt;-</span> <span class="fu">calc_log_verosim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb286-11"><a href="estimación-por-máxima-verosimilitud.html#cb286-11" aria-hidden="true" tabindex="-1"></a><span class="fu">log_verosim</span>(<span class="fl">0.1</span>)</span></code></pre></div>
 <pre><code>## [1] -31.24587</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="S:max-verosimilitud.html#cb288-1" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">log_verosimilitud =</span> <span class="fu">map_dbl</span>(x, log_verosim))</span>
-<span id="cb288-2"><a href="S:max-verosimilitud.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> log_verosimilitud)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb288-3"><a href="S:max-verosimilitud.html#cb288-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.775</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb288-4"><a href="S:max-verosimilitud.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;prop funcionado&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="estimación-por-máxima-verosimilitud.html#cb288-1" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">log_verosimilitud =</span> <span class="fu">map_dbl</span>(x, log_verosim))</span>
+<span id="cb288-2"><a href="estimación-por-máxima-verosimilitud.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> log_verosimilitud)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb288-3"><a href="estimación-por-máxima-verosimilitud.html#cb288-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.775</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb288-4"><a href="estimación-por-máxima-verosimilitud.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;prop funcionado&quot;</span>)</span></code></pre></div>
 <p><img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-12-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>En la función de verosimilitud los datos están fijos y optimizamos con respecto a
 las variables que no conocemos. ¿Cómo construimos esta función en general, para cualquier
@@ -689,23 +689,23 @@ donde <strong>los datos están fijos</strong>.</p>
 <p>Podemos construir una función que genera la función de verosimilitud dependiendo de los datos. En nuestro primer ejemplo de muestras de registros erróneos,
 podríamos construir una función que genera la log verosimilitud dependiendo
 del tamaño de muestra y del número de errores encontrado:</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="S:max-verosimilitud.html#cb289-1" aria-hidden="true" tabindex="-1"></a>construir_log_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, n_err){</span>
-<span id="cb289-2"><a href="S:max-verosimilitud.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n es tamaño de muestra </span></span>
-<span id="cb289-3"><a href="S:max-verosimilitud.html#cb289-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n_err el número de errores detectados (datos)</span></span>
-<span id="cb289-4"><a href="S:max-verosimilitud.html#cb289-4" aria-hidden="true" tabindex="-1"></a>  n_corr <span class="ot">&lt;-</span> n <span class="sc">-</span> n_err</span>
-<span id="cb289-5"><a href="S:max-verosimilitud.html#cb289-5" aria-hidden="true" tabindex="-1"></a>  log_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
-<span id="cb289-6"><a href="S:max-verosimilitud.html#cb289-6" aria-hidden="true" tabindex="-1"></a>    n_err <span class="sc">*</span> <span class="fu">log</span>(p) <span class="sc">+</span> n_corr <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
-<span id="cb289-7"><a href="S:max-verosimilitud.html#cb289-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb289-8"><a href="S:max-verosimilitud.html#cb289-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="estimación-por-máxima-verosimilitud.html#cb289-1" aria-hidden="true" tabindex="-1"></a>construir_log_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, n_err){</span>
+<span id="cb289-2"><a href="estimación-por-máxima-verosimilitud.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n es tamaño de muestra </span></span>
+<span id="cb289-3"><a href="estimación-por-máxima-verosimilitud.html#cb289-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># n_err el número de errores detectados (datos)</span></span>
+<span id="cb289-4"><a href="estimación-por-máxima-verosimilitud.html#cb289-4" aria-hidden="true" tabindex="-1"></a>  n_corr <span class="ot">&lt;-</span> n <span class="sc">-</span> n_err</span>
+<span id="cb289-5"><a href="estimación-por-máxima-verosimilitud.html#cb289-5" aria-hidden="true" tabindex="-1"></a>  log_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
+<span id="cb289-6"><a href="estimación-por-máxima-verosimilitud.html#cb289-6" aria-hidden="true" tabindex="-1"></a>    n_err <span class="sc">*</span> <span class="fu">log</span>(p) <span class="sc">+</span> n_corr <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
+<span id="cb289-7"><a href="estimación-por-máxima-verosimilitud.html#cb289-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb289-8"><a href="estimación-por-máxima-verosimilitud.html#cb289-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Cuando fijamos <span class="math inline">\(n\)</span> y <span class="math inline">\(n_{\textsf{err}}\)</span>, esta función genera otra función, la log verosimilitud, que es la que queremos optimizar.</p>
 <p>Supongamos entonces que sacamos 20 registros al azar y observamos 10 incorrectos. La función
 de verosimilitud es</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="S:max-verosimilitud.html#cb290-1" aria-hidden="true" tabindex="-1"></a>log_vero <span class="ot">&lt;-</span> <span class="fu">construir_log_verosim</span>(<span class="dv">20</span>, <span class="dv">10</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="S:max-verosimilitud.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb291-2"><a href="S:max-verosimilitud.html#cb291-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_ver =</span> <span class="fu">log_vero</span>(x)) <span class="sc">%&gt;%</span> </span>
-<span id="cb291-3"><a href="S:max-verosimilitud.html#cb291-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> log_ver)) <span class="sc">+</span> </span>
-<span id="cb291-4"><a href="S:max-verosimilitud.html#cb291-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb291-5"><a href="S:max-verosimilitud.html#cb291-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="estimación-por-máxima-verosimilitud.html#cb290-1" aria-hidden="true" tabindex="-1"></a>log_vero <span class="ot">&lt;-</span> <span class="fu">construir_log_verosim</span>(<span class="dv">20</span>, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="estimación-por-máxima-verosimilitud.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb291-2"><a href="estimación-por-máxima-verosimilitud.html#cb291-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_ver =</span> <span class="fu">log_vero</span>(x)) <span class="sc">%&gt;%</span> </span>
+<span id="cb291-3"><a href="estimación-por-máxima-verosimilitud.html#cb291-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> log_ver)) <span class="sc">+</span> </span>
+<span id="cb291-4"><a href="estimación-por-máxima-verosimilitud.html#cb291-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb291-5"><a href="estimación-por-máxima-verosimilitud.html#cb291-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-15-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p><strong>Ejemplo.</strong> Supongamos que en una población de transacciones hay un porcentaje <span class="math inline">\(p\)</span> (desconocido)
 que son fraudulentas. Tenemos un sistema de clasificación humana que que marca transacciones como sospechosas.
@@ -717,19 +717,19 @@ de que una transacción sea marcada como sospechosa es (proba total):</p>
 <p>Pues tenemos que contar 98% de la proporción <span class="math inline">\(p\)</span> de fraudulentas
 (correctamente detectadas) más 0.1% de la proporción <span class="math inline">\((1-p)\)</span> de fraudulentas.
 Escribimos entonces nuestra función de verosimilitud</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="S:max-verosimilitud.html#cb292-1" aria-hidden="true" tabindex="-1"></a>crear_log_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, n_sosp){</span>
-<span id="cb292-2"><a href="S:max-verosimilitud.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># devolver la función log verosimilitud </span></span>
-<span id="cb292-3"><a href="S:max-verosimilitud.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  log_verosimilitud_pct <span class="ot">&lt;-</span> <span class="cf">function</span>(pct){</span>
-<span id="cb292-4"><a href="S:max-verosimilitud.html#cb292-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sup que pct es la proporcentaje de fraudes,</span></span>
-<span id="cb292-5"><a href="S:max-verosimilitud.html#cb292-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># que es el parámetro que queremos estimar</span></span>
-<span id="cb292-6"><a href="S:max-verosimilitud.html#cb292-6" aria-hidden="true" tabindex="-1"></a>    prob_sosp <span class="ot">&lt;-</span> <span class="fl">0.98</span> <span class="sc">*</span> pct <span class="sc">/</span> <span class="dv">100</span> <span class="sc">+</span> <span class="fl">0.001</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pct <span class="sc">/</span> <span class="dv">100</span>)</span>
-<span id="cb292-7"><a href="S:max-verosimilitud.html#cb292-7" aria-hidden="true" tabindex="-1"></a>    log_prob <span class="ot">&lt;-</span> n_sosp <span class="sc">*</span> <span class="fu">log</span>(prob_sosp) <span class="sc">+</span> (n <span class="sc">-</span> n_sosp) <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span> prob_sosp)</span>
-<span id="cb292-8"><a href="S:max-verosimilitud.html#cb292-8" aria-hidden="true" tabindex="-1"></a>    log_prob</span>
-<span id="cb292-9"><a href="S:max-verosimilitud.html#cb292-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb292-10"><a href="S:max-verosimilitud.html#cb292-10" aria-hidden="true" tabindex="-1"></a>  log_verosimilitud_pct</span>
-<span id="cb292-11"><a href="S:max-verosimilitud.html#cb292-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="estimación-por-máxima-verosimilitud.html#cb292-1" aria-hidden="true" tabindex="-1"></a>crear_log_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, n_sosp){</span>
+<span id="cb292-2"><a href="estimación-por-máxima-verosimilitud.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># devolver la función log verosimilitud </span></span>
+<span id="cb292-3"><a href="estimación-por-máxima-verosimilitud.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  log_verosimilitud_pct <span class="ot">&lt;-</span> <span class="cf">function</span>(pct){</span>
+<span id="cb292-4"><a href="estimación-por-máxima-verosimilitud.html#cb292-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sup que pct es la proporcentaje de fraudes,</span></span>
+<span id="cb292-5"><a href="estimación-por-máxima-verosimilitud.html#cb292-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># que es el parámetro que queremos estimar</span></span>
+<span id="cb292-6"><a href="estimación-por-máxima-verosimilitud.html#cb292-6" aria-hidden="true" tabindex="-1"></a>    prob_sosp <span class="ot">&lt;-</span> <span class="fl">0.98</span> <span class="sc">*</span> pct <span class="sc">/</span> <span class="dv">100</span> <span class="sc">+</span> <span class="fl">0.001</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pct <span class="sc">/</span> <span class="dv">100</span>)</span>
+<span id="cb292-7"><a href="estimación-por-máxima-verosimilitud.html#cb292-7" aria-hidden="true" tabindex="-1"></a>    log_prob <span class="ot">&lt;-</span> n_sosp <span class="sc">*</span> <span class="fu">log</span>(prob_sosp) <span class="sc">+</span> (n <span class="sc">-</span> n_sosp) <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span> prob_sosp)</span>
+<span id="cb292-8"><a href="estimación-por-máxima-verosimilitud.html#cb292-8" aria-hidden="true" tabindex="-1"></a>    log_prob</span>
+<span id="cb292-9"><a href="estimación-por-máxima-verosimilitud.html#cb292-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb292-10"><a href="estimación-por-máxima-verosimilitud.html#cb292-10" aria-hidden="true" tabindex="-1"></a>  log_verosimilitud_pct</span>
+<span id="cb292-11"><a href="estimación-por-máxima-verosimilitud.html#cb292-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>La verosimilitud es una función de <span class="math inline">\(p\)</span>.</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="S:max-verosimilitud.html#cb293-1" aria-hidden="true" tabindex="-1"></a>log_verosim <span class="ot">&lt;-</span> <span class="fu">crear_log_verosim</span>(<span class="at">n =</span> <span class="dv">2000</span>, <span class="at">n_sosp =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="estimación-por-máxima-verosimilitud.html#cb293-1" aria-hidden="true" tabindex="-1"></a>log_verosim <span class="ot">&lt;-</span> <span class="fu">crear_log_verosim</span>(<span class="at">n =</span> <span class="dv">2000</span>, <span class="at">n_sosp =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p>A continuación la mostramos de manera gráfica.</p>
 <p><img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-18-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>No se ve muy claro dónde ocurre el máximo, pero podemos ampliar cerca de cero la
@@ -759,29 +759,29 @@ En otro caso,</p>
 <p><span class="math display">\[{\mathcal L}_n(b) = \frac{1}{b^n},\]</span>
 pues la función de densidad de una uniforme en <span class="math inline">\([0,b]\)</span> es igual a <span class="math inline">\(1/b\)</span> en
 el intervalo <span class="math inline">\([0,b]\)</span>, y 0 en otro caso. Podemos escribir entonces:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="S:max-verosimilitud.html#cb294-1" aria-hidden="true" tabindex="-1"></a>crear_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb294-2"><a href="S:max-verosimilitud.html#cb294-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb294-3"><a href="S:max-verosimilitud.html#cb294-3" aria-hidden="true" tabindex="-1"></a>  verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(b){</span>
-<span id="cb294-4"><a href="S:max-verosimilitud.html#cb294-4" aria-hidden="true" tabindex="-1"></a>    indicadora <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">all</span>(x <span class="sc">&lt;=</span> b), <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb294-5"><a href="S:max-verosimilitud.html#cb294-5" aria-hidden="true" tabindex="-1"></a>    indicadora <span class="sc">/</span> b<span class="sc">^</span>n</span>
-<span id="cb294-6"><a href="S:max-verosimilitud.html#cb294-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb294-7"><a href="S:max-verosimilitud.html#cb294-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="estimación-por-máxima-verosimilitud.html#cb294-1" aria-hidden="true" tabindex="-1"></a>crear_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb294-2"><a href="estimación-por-máxima-verosimilitud.html#cb294-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb294-3"><a href="estimación-por-máxima-verosimilitud.html#cb294-3" aria-hidden="true" tabindex="-1"></a>  verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(b){</span>
+<span id="cb294-4"><a href="estimación-por-máxima-verosimilitud.html#cb294-4" aria-hidden="true" tabindex="-1"></a>    indicadora <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">all</span>(x <span class="sc">&lt;=</span> b), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb294-5"><a href="estimación-por-máxima-verosimilitud.html#cb294-5" aria-hidden="true" tabindex="-1"></a>    indicadora <span class="sc">/</span> b<span class="sc">^</span>n</span>
+<span id="cb294-6"><a href="estimación-por-máxima-verosimilitud.html#cb294-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb294-7"><a href="estimación-por-máxima-verosimilitud.html#cb294-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Ahora podemos hacer máxima verosimilitud para un ejemplo:</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="S:max-verosimilitud.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">234</span>)</span>
-<span id="cb295-2"><a href="S:max-verosimilitud.html#cb295-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb295-3"><a href="S:max-verosimilitud.html#cb295-3" aria-hidden="true" tabindex="-1"></a>verosim <span class="ot">&lt;-</span> <span class="fu">crear_verosim</span>(x)</span>
-<span id="cb295-4"><a href="S:max-verosimilitud.html#cb295-4" aria-hidden="true" tabindex="-1"></a>res_opt <span class="ot">&lt;-</span> <span class="fu">optimize</span>(verosim, <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1000</span>, <span class="dv">1000</span>), <span class="at">maximum =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb295-5"><a href="S:max-verosimilitud.html#cb295-5" aria-hidden="true" tabindex="-1"></a>res_opt<span class="sc">$</span>maximum</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="estimación-por-máxima-verosimilitud.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">234</span>)</span>
+<span id="cb295-2"><a href="estimación-por-máxima-verosimilitud.html#cb295-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb295-3"><a href="estimación-por-máxima-verosimilitud.html#cb295-3" aria-hidden="true" tabindex="-1"></a>verosim <span class="ot">&lt;-</span> <span class="fu">crear_verosim</span>(x)</span>
+<span id="cb295-4"><a href="estimación-por-máxima-verosimilitud.html#cb295-4" aria-hidden="true" tabindex="-1"></a>res_opt <span class="ot">&lt;-</span> <span class="fu">optimize</span>(verosim, <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1000</span>, <span class="dv">1000</span>), <span class="at">maximum =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb295-5"><a href="estimación-por-máxima-verosimilitud.html#cb295-5" aria-hidden="true" tabindex="-1"></a>res_opt<span class="sc">$</span>maximum</span></code></pre></div>
 <pre><code>## [1] 2.788167</code></pre>
 <p>Y nótese que, como esperaríamos, este valor es el máximo de la muestra:</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="S:max-verosimilitud.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="estimación-por-máxima-verosimilitud.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)</span></code></pre></div>
 <pre><code>## [1] 2.788158</code></pre>
 <p>La gráfica de la función de verosimilitud es:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="S:max-verosimilitud.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">b =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb299-2"><a href="S:max-verosimilitud.html#cb299-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">verosim_1 =</span> <span class="fu">map_dbl</span>(b, <span class="sc">~</span> <span class="fu">verosim</span>(.x))) <span class="sc">%&gt;%</span> </span>
-<span id="cb299-3"><a href="S:max-verosimilitud.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb299-4"><a href="S:max-verosimilitud.html#cb299-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> b, <span class="at">y =</span> verosim_1)) <span class="sc">+</span></span>
-<span id="cb299-5"><a href="S:max-verosimilitud.html#cb299-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> x), <span class="fu">aes</span>(<span class="at">x =</span> x), <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="estimación-por-máxima-verosimilitud.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">b =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb299-2"><a href="estimación-por-máxima-verosimilitud.html#cb299-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">verosim_1 =</span> <span class="fu">map_dbl</span>(b, <span class="sc">~</span> <span class="fu">verosim</span>(.x))) <span class="sc">%&gt;%</span> </span>
+<span id="cb299-3"><a href="estimación-por-máxima-verosimilitud.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb299-4"><a href="estimación-por-máxima-verosimilitud.html#cb299-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> b, <span class="at">y =</span> verosim_1)) <span class="sc">+</span></span>
+<span id="cb299-5"><a href="estimación-por-máxima-verosimilitud.html#cb299-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> x), <span class="fu">aes</span>(<span class="at">x =</span> x), <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-23-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Podemos escribir en una fórmula como:</p>
 <p><span class="math display">\[\begin{align}
@@ -805,7 +805,7 @@ Si aplicamos sin cuidado descenso en gradiente, por ejemplo, podríamos comenzar
 incorrectamente en un valor <span class="math inline">\(b_0 &lt; x_{\max}\)</span> y el algoritmo no avanzaría
 al máximo.</p>
 <div id="el-método-de-momentos" class="section level3 unnumbered hasAnchor">
-<h3>El método de momentos<a href="S:max-verosimilitud.html#el-método-de-momentos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>El método de momentos<a href="estimación-por-máxima-verosimilitud.html#el-método-de-momentos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un método alternativo para estimación de parámetros es el método de momentos (<span class="math inline">\(\textsf{MOM}\)</span>). Para esto
 creamos un sistema de ecuaciones de cardinalidad igual al número de parámetros a estimar.
 Es decir, consideramos <span class="math inline">\(\theta \in \mathbb{R}^p;\)</span> los momentos teoricos
@@ -834,7 +834,7 @@ sobre la observación <span class="math inline"><span class="math inline">\(X_3\
 </div>
 </div>
 <div id="máxima-verosimilitud-para-más-de-un-parámetro" class="section level2 unnumbered hasAnchor">
-<h2>Máxima verosimilitud para más de un parámetro<a href="S:max-verosimilitud.html#máxima-verosimilitud-para-más-de-un-parámetro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2>Máxima verosimilitud para más de un parámetro<a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-más-de-un-parámetro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Si nuestro modelo contiene más de un parámetro desconocido podemos también usar
 máxima verosimilitud. En este caso, optimizamos sobre todos los parámetros usando
 cálculo o alguna rutina numérica</p>
@@ -844,39 +844,39 @@ sacar una buena calificación. Suponemos que una vez que conocemos el tipo de
 estudiante, todas las preguntas tienen la misma probabilidad de ser contestadas
 correctamente, de manera independiente. El modelo
 teórico está representado por la siguiente simulación:</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="S:max-verosimilitud.html#cb300-1" aria-hidden="true" tabindex="-1"></a>sim_formas <span class="ot">&lt;-</span> <span class="cf">function</span>(p_azar, p_corr){</span>
-<span id="cb300-2"><a href="S:max-verosimilitud.html#cb300-2" aria-hidden="true" tabindex="-1"></a>  tipo <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span> <span class="sc">-</span> p_azar)</span>
-<span id="cb300-3"><a href="S:max-verosimilitud.html#cb300-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(tipo<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb300-4"><a href="S:max-verosimilitud.html#cb300-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># al azar</span></span>
-<span id="cb300-5"><a href="S:max-verosimilitud.html#cb300-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span>
-<span id="cb300-6"><a href="S:max-verosimilitud.html#cb300-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb300-7"><a href="S:max-verosimilitud.html#cb300-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># no al azar</span></span>
-<span id="cb300-8"><a href="S:max-verosimilitud.html#cb300-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, p_corr)</span>
-<span id="cb300-9"><a href="S:max-verosimilitud.html#cb300-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb300-10"><a href="S:max-verosimilitud.html#cb300-10" aria-hidden="true" tabindex="-1"></a>  x</span>
-<span id="cb300-11"><a href="S:max-verosimilitud.html#cb300-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="estimación-por-máxima-verosimilitud.html#cb300-1" aria-hidden="true" tabindex="-1"></a>sim_formas <span class="ot">&lt;-</span> <span class="cf">function</span>(p_azar, p_corr){</span>
+<span id="cb300-2"><a href="estimación-por-máxima-verosimilitud.html#cb300-2" aria-hidden="true" tabindex="-1"></a>  tipo <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span> <span class="sc">-</span> p_azar)</span>
+<span id="cb300-3"><a href="estimación-por-máxima-verosimilitud.html#cb300-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(tipo<span class="sc">==</span><span class="dv">0</span>){</span>
+<span id="cb300-4"><a href="estimación-por-máxima-verosimilitud.html#cb300-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># al azar</span></span>
+<span id="cb300-5"><a href="estimación-por-máxima-verosimilitud.html#cb300-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span>
+<span id="cb300-6"><a href="estimación-por-máxima-verosimilitud.html#cb300-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb300-7"><a href="estimación-por-máxima-verosimilitud.html#cb300-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># no al azar</span></span>
+<span id="cb300-8"><a href="estimación-por-máxima-verosimilitud.html#cb300-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, p_corr)</span>
+<span id="cb300-9"><a href="estimación-por-máxima-verosimilitud.html#cb300-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb300-10"><a href="estimación-por-máxima-verosimilitud.html#cb300-10" aria-hidden="true" tabindex="-1"></a>  x</span>
+<span id="cb300-11"><a href="estimación-por-máxima-verosimilitud.html#cb300-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Y una muestra se ve como sigue:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="S:max-verosimilitud.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
-<span id="cb301-2"><a href="S:max-verosimilitud.html#cb301-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="sc">~</span> <span class="fu">sim_formas</span>(<span class="fl">0.3</span>, <span class="fl">0.75</span>))</span>
-<span id="cb301-3"><a href="S:max-verosimilitud.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(muestra)</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="estimación-por-máxima-verosimilitud.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb301-2"><a href="estimación-por-máxima-verosimilitud.html#cb301-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="sc">~</span> <span class="fu">sim_formas</span>(<span class="fl">0.3</span>, <span class="fl">0.75</span>))</span>
+<span id="cb301-3"><a href="estimación-por-máxima-verosimilitud.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(muestra)</span></code></pre></div>
 <p><img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-26-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Supongamos que no conocemos la probabildad de contestar correctamente ni la
 proporción de estudiantes que contestó al azar. ¿Como estimamos estas dos cantidades?</p>
 <p>Escribimos la verosimilitud:</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="S:max-verosimilitud.html#cb302-1" aria-hidden="true" tabindex="-1"></a>crear_log_p <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb302-2"><a href="S:max-verosimilitud.html#cb302-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb302-3"><a href="S:max-verosimilitud.html#cb302-3" aria-hidden="true" tabindex="-1"></a>  log_p <span class="ot">&lt;-</span> <span class="cf">function</span>(pars){</span>
-<span id="cb302-4"><a href="S:max-verosimilitud.html#cb302-4" aria-hidden="true" tabindex="-1"></a>    p_azar <span class="ot">=</span> pars[<span class="dv">1</span>]</span>
-<span id="cb302-5"><a href="S:max-verosimilitud.html#cb302-5" aria-hidden="true" tabindex="-1"></a>    p_corr <span class="ot">=</span> pars[<span class="dv">2</span>]</span>
-<span id="cb302-6"><a href="S:max-verosimilitud.html#cb302-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">log</span>(p_azar <span class="sc">*</span> <span class="fu">dbinom</span>(x, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> p_azar) <span class="sc">*</span> <span class="fu">dbinom</span>(x, <span class="dv">10</span>, p_corr)))</span>
-<span id="cb302-7"><a href="S:max-verosimilitud.html#cb302-7" aria-hidden="true" tabindex="-1"></a>  }  </span>
-<span id="cb302-8"><a href="S:max-verosimilitud.html#cb302-8" aria-hidden="true" tabindex="-1"></a>  log_p</span>
-<span id="cb302-9"><a href="S:max-verosimilitud.html#cb302-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="estimación-por-máxima-verosimilitud.html#cb302-1" aria-hidden="true" tabindex="-1"></a>crear_log_p <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb302-2"><a href="estimación-por-máxima-verosimilitud.html#cb302-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-3"><a href="estimación-por-máxima-verosimilitud.html#cb302-3" aria-hidden="true" tabindex="-1"></a>  log_p <span class="ot">&lt;-</span> <span class="cf">function</span>(pars){</span>
+<span id="cb302-4"><a href="estimación-por-máxima-verosimilitud.html#cb302-4" aria-hidden="true" tabindex="-1"></a>    p_azar <span class="ot">=</span> pars[<span class="dv">1</span>]</span>
+<span id="cb302-5"><a href="estimación-por-máxima-verosimilitud.html#cb302-5" aria-hidden="true" tabindex="-1"></a>    p_corr <span class="ot">=</span> pars[<span class="dv">2</span>]</span>
+<span id="cb302-6"><a href="estimación-por-máxima-verosimilitud.html#cb302-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">log</span>(p_azar <span class="sc">*</span> <span class="fu">dbinom</span>(x, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> p_azar) <span class="sc">*</span> <span class="fu">dbinom</span>(x, <span class="dv">10</span>, p_corr)))</span>
+<span id="cb302-7"><a href="estimación-por-máxima-verosimilitud.html#cb302-7" aria-hidden="true" tabindex="-1"></a>  }  </span>
+<span id="cb302-8"><a href="estimación-por-máxima-verosimilitud.html#cb302-8" aria-hidden="true" tabindex="-1"></a>  log_p</span>
+<span id="cb302-9"><a href="estimación-por-máxima-verosimilitud.html#cb302-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Creamos la función de verosimilitud con los datos</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="S:max-verosimilitud.html#cb303-1" aria-hidden="true" tabindex="-1"></a>log_p <span class="ot">&lt;-</span> <span class="fu">crear_log_p</span>(muestra)</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="estimación-por-máxima-verosimilitud.html#cb303-1" aria-hidden="true" tabindex="-1"></a>log_p <span class="ot">&lt;-</span> <span class="fu">crear_log_p</span>(muestra)</span></code></pre></div>
 <p>y optimizamos</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="S:max-verosimilitud.html#cb304-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), log_p, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">fnscale =</span> <span class="sc">-</span><span class="dv">1</span>))</span>
-<span id="cb304-2"><a href="S:max-verosimilitud.html#cb304-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>par</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="estimación-por-máxima-verosimilitud.html#cb304-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), log_p, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">fnscale =</span> <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb304-2"><a href="estimación-por-máxima-verosimilitud.html#cb304-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>par</span></code></pre></div>
 <pre><code>## [1] 0.2827061 0.7413276</code></pre>
 <p>En este caso, obtenemos estimaciones razonables de ambos parámetros.
 Nota: dependiendo de los datos, este problema
@@ -900,38 +900,38 @@ verosimilitud cuando tenemos una muestra <span class="math inline">\(X_1, \ldots
 (puedes derivar e igualar el cero para encontrar el mínimo). También podemos resolver numéricamente,
 por ejemplo:</p>
 <p>Supongamos que tenemos la siguiente muestra:</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="S:max-verosimilitud.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">41852</span>)</span>
-<span id="cb306-2"><a href="S:max-verosimilitud.html#cb306-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">150</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="estimación-por-máxima-verosimilitud.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">41852</span>)</span>
+<span id="cb306-2"><a href="estimación-por-máxima-verosimilitud.html#cb306-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">150</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>La función generadora de la log verosimilitud para una muestra es (ve la expresión
 del ejercicio anterior y calcula su logaritmo), y generamos la función de verosimilitud
 para nuestra muestra:</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="S:max-verosimilitud.html#cb307-1" aria-hidden="true" tabindex="-1"></a>crear_log_p <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb307-2"><a href="S:max-verosimilitud.html#cb307-2" aria-hidden="true" tabindex="-1"></a>  log_p <span class="ot">&lt;-</span> <span class="cf">function</span>(pars){</span>
-<span id="cb307-3"><a href="S:max-verosimilitud.html#cb307-3" aria-hidden="true" tabindex="-1"></a>    media <span class="ot">=</span> pars[<span class="dv">1</span>]</span>
-<span id="cb307-4"><a href="S:max-verosimilitud.html#cb307-4" aria-hidden="true" tabindex="-1"></a>    desv_est <span class="ot">=</span> pars[<span class="dv">2</span>]</span>
-<span id="cb307-5"><a href="S:max-verosimilitud.html#cb307-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ve la ecuación del ejercicio anterior</span></span>
-<span id="cb307-6"><a href="S:max-verosimilitud.html#cb307-6" aria-hidden="true" tabindex="-1"></a>    z <span class="ot">&lt;-</span> (x <span class="sc">-</span> media) <span class="sc">/</span> desv_est</span>
-<span id="cb307-7"><a href="S:max-verosimilitud.html#cb307-7" aria-hidden="true" tabindex="-1"></a>    log_verosim <span class="ot">&lt;-</span> <span class="sc">-</span>(<span class="fu">log</span>(desv_est) <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">mean</span>(z <span class="sc">^</span> <span class="dv">2</span>))</span>
-<span id="cb307-8"><a href="S:max-verosimilitud.html#cb307-8" aria-hidden="true" tabindex="-1"></a>    log_verosim</span>
-<span id="cb307-9"><a href="S:max-verosimilitud.html#cb307-9" aria-hidden="true" tabindex="-1"></a>  }  </span>
-<span id="cb307-10"><a href="S:max-verosimilitud.html#cb307-10" aria-hidden="true" tabindex="-1"></a>  log_p</span>
-<span id="cb307-11"><a href="S:max-verosimilitud.html#cb307-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb307-12"><a href="S:max-verosimilitud.html#cb307-12" aria-hidden="true" tabindex="-1"></a>log_p <span class="ot">&lt;-</span> <span class="fu">crear_log_p</span>(muestra)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="estimación-por-máxima-verosimilitud.html#cb307-1" aria-hidden="true" tabindex="-1"></a>crear_log_p <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb307-2"><a href="estimación-por-máxima-verosimilitud.html#cb307-2" aria-hidden="true" tabindex="-1"></a>  log_p <span class="ot">&lt;-</span> <span class="cf">function</span>(pars){</span>
+<span id="cb307-3"><a href="estimación-por-máxima-verosimilitud.html#cb307-3" aria-hidden="true" tabindex="-1"></a>    media <span class="ot">=</span> pars[<span class="dv">1</span>]</span>
+<span id="cb307-4"><a href="estimación-por-máxima-verosimilitud.html#cb307-4" aria-hidden="true" tabindex="-1"></a>    desv_est <span class="ot">=</span> pars[<span class="dv">2</span>]</span>
+<span id="cb307-5"><a href="estimación-por-máxima-verosimilitud.html#cb307-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ve la ecuación del ejercicio anterior</span></span>
+<span id="cb307-6"><a href="estimación-por-máxima-verosimilitud.html#cb307-6" aria-hidden="true" tabindex="-1"></a>    z <span class="ot">&lt;-</span> (x <span class="sc">-</span> media) <span class="sc">/</span> desv_est</span>
+<span id="cb307-7"><a href="estimación-por-máxima-verosimilitud.html#cb307-7" aria-hidden="true" tabindex="-1"></a>    log_verosim <span class="ot">&lt;-</span> <span class="sc">-</span>(<span class="fu">log</span>(desv_est) <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">mean</span>(z <span class="sc">^</span> <span class="dv">2</span>))</span>
+<span id="cb307-8"><a href="estimación-por-máxima-verosimilitud.html#cb307-8" aria-hidden="true" tabindex="-1"></a>    log_verosim</span>
+<span id="cb307-9"><a href="estimación-por-máxima-verosimilitud.html#cb307-9" aria-hidden="true" tabindex="-1"></a>  }  </span>
+<span id="cb307-10"><a href="estimación-por-máxima-verosimilitud.html#cb307-10" aria-hidden="true" tabindex="-1"></a>  log_p</span>
+<span id="cb307-11"><a href="estimación-por-máxima-verosimilitud.html#cb307-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb307-12"><a href="estimación-por-máxima-verosimilitud.html#cb307-12" aria-hidden="true" tabindex="-1"></a>log_p <span class="ot">&lt;-</span> <span class="fu">crear_log_p</span>(muestra)</span></code></pre></div>
 <p>Ahora optimizamos (checa que el método converge):</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="S:max-verosimilitud.html#cb308-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), log_p, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">fnscale =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">maxit =</span> <span class="dv">1000</span>), <span class="at">method =</span> <span class="st">&quot;Nelder-Mead&quot;</span>)</span>
-<span id="cb308-2"><a href="S:max-verosimilitud.html#cb308-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>convergence</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="estimación-por-máxima-verosimilitud.html#cb308-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), log_p, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">fnscale =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">maxit =</span> <span class="dv">1000</span>), <span class="at">method =</span> <span class="st">&quot;Nelder-Mead&quot;</span>)</span>
+<span id="cb308-2"><a href="estimación-por-máxima-verosimilitud.html#cb308-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>convergence</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="S:max-verosimilitud.html#cb310-1" aria-hidden="true" tabindex="-1"></a>est_mv <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">parametro =</span> <span class="fu">c</span>(<span class="st">&quot;media&quot;</span>, <span class="st">&quot;sigma&quot;</span>), <span class="at">estimador =</span> res<span class="sc">$</span>par) <span class="sc">%&gt;%</span> </span>
-<span id="cb310-2"><a href="S:max-verosimilitud.html#cb310-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;parametro&quot;</span>)</span>
-<span id="cb310-3"><a href="S:max-verosimilitud.html#cb310-3" aria-hidden="true" tabindex="-1"></a>est_mv</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="estimación-por-máxima-verosimilitud.html#cb310-1" aria-hidden="true" tabindex="-1"></a>est_mv <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">parametro =</span> <span class="fu">c</span>(<span class="st">&quot;media&quot;</span>, <span class="st">&quot;sigma&quot;</span>), <span class="at">estimador =</span> res<span class="sc">$</span>par) <span class="sc">%&gt;%</span> </span>
+<span id="cb310-2"><a href="estimación-por-máxima-verosimilitud.html#cb310-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;parametro&quot;</span>)</span>
+<span id="cb310-3"><a href="estimación-por-máxima-verosimilitud.html#cb310-3" aria-hidden="true" tabindex="-1"></a>est_mv</span></code></pre></div>
 <pre><code>##       estimador
 ## media  1.136001
 ## sigma  1.838421</code></pre>
 <p>Verifica que el estimador de la media y de la desviación estándar
 es el que esperábamos (y que puedes derivar analíticamente):</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="S:max-verosimilitud.html#cb312-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(muestra)</span>
-<span id="cb312-2"><a href="S:max-verosimilitud.html#cb312-2" aria-hidden="true" tabindex="-1"></a>sd_n <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>( <span class="fu">mean</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb312-3"><a href="S:max-verosimilitud.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">media =</span> <span class="fu">mean</span>(muestra), <span class="at">sigma =</span> <span class="fu">sd_n</span>(muestra)) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="estimación-por-máxima-verosimilitud.html#cb312-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(muestra)</span>
+<span id="cb312-2"><a href="estimación-por-máxima-verosimilitud.html#cb312-2" aria-hidden="true" tabindex="-1"></a>sd_n <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>( <span class="fu">mean</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb312-3"><a href="estimación-por-máxima-verosimilitud.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">media =</span> <span class="fu">mean</span>(muestra), <span class="at">sigma =</span> <span class="fu">sd_n</span>(muestra)) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##  media  sigma 
 ## 1.1364 1.8392</code></pre>
 <p>La siguiente pregunta qué nos interesa hacer es: ¿cómo estimamos la variabilidad
