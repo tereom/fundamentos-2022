@@ -74,7 +74,7 @@ g_1 + g_2
 
 Donde: 
 
-- En rojo está nuestro estimador puntual de la mediana de cada
+- En rojo está nuestro = puntual de la mediana de cada
 grupo (la mediana muestral), y
 - Las segmentos muestran un intervalo de confianza del 95\% 
 para nuestra estimación de la mediana: esto quiere decir que 
@@ -763,24 +763,23 @@ sesgo
 ```
 
 Este número puede parecer grande, pero sí calculamos la desviación relativa
-con respecto al estimador vemos que es chico en la escala de la distribución 
-bootstrap:
+con respecto al error estándar vemos que es chico en la escala de la distribución bootstrap:
 
 
 ```r
-sesgo_relativo <- sesgo / total_est
+ee_boot <- sd(totales_boot$total_boot)
+sesgo_relativo <- sesgo / ee_boot
 sesgo_relativo
 ```
 
 ```
-## [1] 0.0005053678
+## [1] 0.01522088
 ```
 
 De forma que procedemos a construir intervalos de confianza como sigue :
 
 
 ```r
-ee_boot <- sd(totales_boot$total_boot)
 c(total_est - 2*ee_boot, total_est + 2*ee_boot)
 ```
 
@@ -941,6 +940,22 @@ Así que tomamos el punto de vista bayesiano en la intepretación, pero
 buscamos que nuestros intervalos cumplan o 
 aproximen bien garantías frecuentistas (discutimos esto más adelante). Los intervalos
 que producimos en esta sección pueden interpretarse de las dos maneras.
+
+
+## Sesgo {-}
+
+Notemos que hemos revisado el sesgo en varias ocasiones, esto es porque algunos
+estimadores comunes (por ejemplo, cociente de dos cantidades aleatorias) pueden sufrir de **sesgo** grande, especialmente en el caso de muestras chicas. Esto a su vez afecta la cobertura, pues es posible que nuestros intervalos no tengan “cobertura simétrica”, por ejemplo. Para muchos estimadores, y muestras no muy chicas, esté sesgo tiende a ser poco importante y no es necesario hacer correcciones.
+
+Si el tamaño del sesgo es grande comparado con la dispersión de la distribución bootstrap generalmente consideramos que bajo el diseño actual el estimador que estamos usando no es apropiado, y podemos proponer otro estimador u otro 
+procedimiento para construir intervalos (ver @Efron intervalos BC_{a}),
+
+* @Efron sugieren más de 20% de la desviación estándar, 
+
+* mientras que en @Chihara se sugiere 2% de la desviación estándar.
+
+Dependiendo que tan crítico es que los intervalos estén bien calibrados podemos
+evaluar nuestro problema particular.
 
 
 ## Intervalos bootstrap de percentiles {-}
@@ -1297,8 +1312,8 @@ Y nuestra estimación puntual es
 
 
 ```r
-estimador <- muestra_casas |> summarise(estimate = sum(area_habitable_sup_m2) / sum(area_lote_m2))
-estimador
+estimacion <- muestra_casas |> summarise(estimate = sum(area_habitable_sup_m2) / sum(area_lote_m2))
+estimacion
 ```
 
 ```
@@ -1417,7 +1432,7 @@ graf_casas(casas_muestra) +
 Donde observamos cómo tenemos incertidumbre en cuanto al nivel y forma de las curvas
 en los extremos de los datos (casas grandes y chicas), lo cual es natural. Aunque podemos
 resumir para hacer bandas de confianza, mostrar remuestras de esta manera es informativo: por ejempo:
-vemos cómo es probable también que para casas de emnos de 70 metros cuadrados el precio por
+vemos cómo es probable también que para casas de menos de 70 metros cuadrados el precio por
 metro cuadrado no cambia tanto (líneas constantes)
 
 
@@ -2190,6 +2205,16 @@ as.numeric(object_size(computos_boot)/object_size(muestra_computos))
 ## [1] 3.894905
 ```
 
+Adicionalmente incluye funciones para el cálculo de intervalos bootstrap: 
+
+
+```r
+intervalo_propinas_90 <- bootstraps(propinas, strata = momento, 1000) |> 
+  mutate(res_boot = map(splits, estimador)) |> 
+  int_pctl(res_boot, alpha = 0.10) 
+```
+
+
 2. El paquete `boot` está asociado al libro *Bootstrap Methods and Their 
 Applications* (@davison) y tiene, entre otras, funciones para calcular 
 replicaciones bootstrap y para construir intervalos de confianza usando bootstrap: 
@@ -2223,7 +2248,7 @@ percentiles de la distribución bootstrap.
 
 * Antes de hacer intervalos normales vale la pena 
 graficar la distribución bootstrap y evaluar si el supuesto de normalidad es 
-razonable. Así como evaluar el sesgo relativo.
+razonable.
 
 * En cuanto al número de muestras bootstrap se recomienda al menos $1,000$ 
 al hacer pruebas, y $10,000$ o $15,000$ para los resultados finales, sobre

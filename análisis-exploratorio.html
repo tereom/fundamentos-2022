@@ -289,6 +289,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-inventario-de-casas-vendidas"><i class="fa fa-check"></i>Ejemplo: inventario de casas vendidas</a></li>
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#calibración-de-intervalos-de-confianza"><i class="fa fa-check"></i>Calibración de intervalos de confianza</a></li>
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#interpretación-de-intervalos-de-confianza"><i class="fa fa-check"></i>Interpretación de intervalos de confianza</a></li>
+<li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#sesgo"><i class="fa fa-check"></i>Sesgo</a></li>
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#intervalos-bootstrap-de-percentiles"><i class="fa fa-check"></i>Intervalos bootstrap de percentiles</a>
 <ul>
 <li class="chapter" data-level="" data-path="intervalos-de-confianza-y-remuestreo.html"><a href="intervalos-de-confianza-y-remuestreo.html#ejemplo-8"><i class="fa fa-check"></i>Ejemplo</a></li>
@@ -317,6 +318,12 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#el-método-de-momentos"><i class="fa fa-check"></i>El método de momentos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-más-de-un-parámetro"><i class="fa fa-check"></i>Máxima verosimilitud para más de un parámetro</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="bootstrap-paramétrico.html"><a href="bootstrap-paramétrico.html"><i class="fa fa-check"></i><b>7</b> <em>Bootstrap</em> paramétrico</a>
+<ul>
+<li class="chapter" data-level="" data-path="bootstrap-paramétrico.html"><a href="bootstrap-paramétrico.html#ventajas-y-desventajas-de-bootstrap-paramétrico"><i class="fa fa-check"></i>Ventajas y desventajas de <em>bootstrap</em> paramétrico</a></li>
+<li class="chapter" data-level="" data-path="bootstrap-paramétrico.html"><a href="bootstrap-paramétrico.html#verificando-los-supuestos-distribucionales"><i class="fa fa-check"></i>Verificando los supuestos distribucionales</a></li>
+<li class="chapter" data-level="" data-path="bootstrap-paramétrico.html"><a href="bootstrap-paramétrico.html#modelos-mal-identificados"><i class="fa fa-check"></i>Modelos mal identificados</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html"><i class="fa fa-check"></i>Apéndice: Principios de visualizacion</a>
 <ul>
@@ -437,13 +444,33 @@ num_personas
 <tbody>
 <tr>
 <td style="text-align:right;">
-9.60
+20.29
 </td>
 <td style="text-align:right;">
-4.00
+2.75
 </td>
 <td style="text-align:left;">
-Si
+No
+</td>
+<td style="text-align:left;">
+Sab
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15.04
+</td>
+<td style="text-align:right;">
+1.96
+</td>
+<td style="text-align:left;">
+No
 </td>
 <td style="text-align:left;">
 Dom
@@ -457,19 +484,39 @@ Cena
 </tr>
 <tr>
 <td style="text-align:right;">
-29.03
+12.90
 </td>
 <td style="text-align:right;">
-5.92
+1.10
 </td>
 <td style="text-align:left;">
-No
+Si
 </td>
 <td style="text-align:left;">
 Sab
 </td>
 <td style="text-align:left;">
 Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16.47
+</td>
+<td style="text-align:right;">
+3.23
+</td>
+<td style="text-align:left;">
+Si
+</td>
+<td style="text-align:left;">
+Jue
+</td>
+<td style="text-align:left;">
+Comida
 </td>
 <td style="text-align:right;">
 3
@@ -477,30 +524,10 @@ Cena
 </tr>
 <tr>
 <td style="text-align:right;">
-24.08
+13.28
 </td>
 <td style="text-align:right;">
-2.92
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Jue
-</td>
-<td style="text-align:left;">
-Comida
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-17.82
-</td>
-<td style="text-align:right;">
-1.75
+2.72
 </td>
 <td style="text-align:left;">
 No
@@ -517,10 +544,50 @@ Cena
 </tr>
 <tr>
 <td style="text-align:right;">
-16.40
+19.82
 </td>
 <td style="text-align:right;">
-2.50
+3.18
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Sab
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12.03
+</td>
+<td style="text-align:right;">
+1.50
+</td>
+<td style="text-align:left;">
+Si
+</td>
+<td style="text-align:left;">
+Vie
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19.81
+</td>
+<td style="text-align:right;">
+4.19
 </td>
 <td style="text-align:left;">
 Si
@@ -537,53 +604,13 @@ Comida
 </tr>
 <tr>
 <td style="text-align:right;">
-24.55
+15.77
 </td>
 <td style="text-align:right;">
-2.00
+2.23
 </td>
 <td style="text-align:left;">
 No
-</td>
-<td style="text-align:left;">
-Dom
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-20.69
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Dom
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-15.01
-</td>
-<td style="text-align:right;">
-2.09
-</td>
-<td style="text-align:left;">
-Si
 </td>
 <td style="text-align:left;">
 Sab
@@ -597,42 +624,22 @@ Cena
 </tr>
 <tr>
 <td style="text-align:right;">
-17.51
+10.65
 </td>
 <td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:left;">
-Si
-</td>
-<td style="text-align:left;">
-Dom
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-25.00
-</td>
-<td style="text-align:right;">
-3.75
+1.50
 </td>
 <td style="text-align:left;">
 No
 </td>
 <td style="text-align:left;">
-Dom
+Jue
 </td>
 <td style="text-align:left;">
-Cena
+Comida
 </td>
 <td style="text-align:right;">
-4
+2
 </td>
 </tr>
 </tbody>

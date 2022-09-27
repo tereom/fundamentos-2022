@@ -36,7 +36,7 @@ convenientes, y dan en general resultados razonables siempre y cuando los supues
 sean razonables. 
 
 **Máxima verosimilitud es un proceso intuitivo, y consiste en aprender o estimar valores de parámetros desconocidos suponiendo para los datos su explicación más probable**. Para
-esto, usando supuestos y modelos requeriremos calcular la probabilidad de un conjunto
+esto, usando supuestos y modelos, requeriremos calcular la probabilidad de un conjunto
 de observaciones.
 
 **Ejemplo.** Adaptado de [@Chihara]. Supongamos que una máquina produce dos tipos de bolsas de 25 galletas: la mitad de las veces produce una bolsa con 5 galletas de avena y 20 de chispas de chocolate, y
@@ -772,7 +772,6 @@ reales que no conocemos.
 
 <img src="images/mle-normal.png" width="937" style="display: block; margin: auto;" />
 
-En las siguientes secciones veremos los métodos clásicos para encontrar el $\textsf{MLE}$. Y mas adelante, estudiaremos los propiedades teóricas que hacen a estos estimadores tan útiles y prácticos en aplicaciones. 
 
 **Ejemplo**. Como ejercicio, podemos encontrar los estimadores de máxima
 verosimilitud cuando tenemos una muestra $X_1, \ldots, X_n \sim \mathsf{N}(\mu, \sigma^2).$
