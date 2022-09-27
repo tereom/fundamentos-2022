@@ -1,7 +1,7 @@
 # fundamentos-2022
 
 Notas del curso *Fundamentos de Estadística con Remuestreo* del programa de
-maestría en Ciencia de Datos del ITAM.
+maestría en Ciencia de Datos del ITAM. La primera versión de estas notas se desarrolló en 2019 y se puede encontrar [aquí](https://github.com/tereom/fundamentos).
 
 Este curso busca explicar los principios básicos de la estadística y su papel en el análisis de datos. Nuestro punto de vista es uno de fundamentos, con menos énfasis en recetas o técnicas particulares.
 
