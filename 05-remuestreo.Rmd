@@ -1870,7 +1870,7 @@ enigh_boot %>%
     srvyr::summarise(mean_ingcor = survey_mean(ing_cor, vartype =  "ci"))
 
 # por estado
-enigh_boot %>% 
+  enigh_boot %>% 
     group_by(edo) %>% 
     srvyr::summarise(mean_ingcor = survey_mean(ing_cor)) 
 ```
