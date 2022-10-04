@@ -2011,7 +2011,7 @@ enigh_boot %>%
 
 ```r
 # por estado
-enigh_boot %>% 
+  enigh_boot %>% 
     group_by(edo) %>% 
     srvyr::summarise(mean_ingcor = survey_mean(ing_cor)) 
 ```
