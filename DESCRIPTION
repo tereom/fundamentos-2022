@@ -8,6 +8,7 @@ Imports:
     patchwork,
     lubridate, 
     gridExtra,
+    mapproj,
     pryr
 URL: https://github.com/tereom/fundamentos-2022
 BugReports: https://github.com/tereom/fundamentos-2022/issues
