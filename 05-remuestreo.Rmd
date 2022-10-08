@@ -1355,7 +1355,7 @@ Usamos un intervalo de percentiles para obtener:
 
 ```{r}
 dist_boot |> int_pctl(res_boot) |> 
-  mutate(estimador = estimador$estimate) |> 
+  mutate(estimador = estimacion$estimate) |> 
   rename(media_boot = .estimate) |> 
   mutate(bias = media_boot - estimador) |> 
   pivot_longer(is_numeric) |> 
