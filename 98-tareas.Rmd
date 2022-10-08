@@ -274,7 +274,7 @@ data(mxstate.map) # datos para hacer el mapa instalar de github diegovalle/mxmap
 ```
 
 ```{r, echo = FALSE}
-readr::write_rds(mxstate.map, path = "data/mxstate_map.Rdata")
+#readr::write_rds(mxstate.map, path = "data/mxstate_map.Rdata")
 mxstate.map <- read_rds("data/mxstate_map.Rdata")
 ```
 
