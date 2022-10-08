@@ -852,7 +852,6 @@ replicaciones_2
 ##  9 9                 45381.       4.58               208.
 ## 10 10                46519.       4.58               213.
 ## # … with 1,490 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 
