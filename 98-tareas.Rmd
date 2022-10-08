@@ -1,7 +1,7 @@
 # Tareas {-}
 
 ```{r setup, include=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning=FALSE, cache =TRUE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning=FALSE, cache =TRUE, eval = FALSE)
 ```
 
 * Las tareas se envían por correo a <teresa.ortiz.mancera@gmail.com> con título: 
@@ -273,13 +273,13 @@ library(mxmaps)
 data(mxstate.map) # datos para hacer el mapa instalar de github diegovalle/mxmaps
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, eval=FALSE}
 #readr::write_rds(mxstate.map, path = "data/mxstate_map.Rdata")
 mxstate.map <- read_rds("data/mxstate_map.Rdata")
 ```
 
 
-```{r, fig.width=6.5, fig.height=5}
+```{r, fig.width=6.5, fig.height=5, eval=FALSE}
 mxstate_ing_cor <- mxstate.map %>% 
   left_join(edo_ing_cor, by = c("region" = "edo"))
 
@@ -288,12 +288,12 @@ mapa_ingcor <- ggplot(mxstate_ing_cor, aes(long, lat, group = group)) +
   geom_polygon(aes(fill = mediana), color = "darkgray") +
   coord_map()
 
-mapa_ingcor 
+mapa_ingcor
 ```
 
 Podemos agregar interactividad con el paquete `plotly`.
 
-```{r, fig.width=6.5, fig.height=4.5}
+```{r, fig.width=6.5, fig.height=4.5, eval=FALSE}
 library(plotly)
 
 # función para formatear con comas los datos de ingreso
