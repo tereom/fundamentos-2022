@@ -267,7 +267,48 @@ class="math display">\[\mathbb{E}[\tilde \theta_n]
 </div>
 El sesgo del estimador es precisamente la diferencia: $\textsf{Sesgo} = \mathbb{E}[\tilde \theta_n] - \theta^*.$
 
-### Ejemplo {-}
+### Ejemplo: Información de Fisher {-}
+
+En el caso Bernoulli obtenemos $I_n(\theta) = \frac{n}{\theta(1-\theta)}$, si 
+$n = 20$ podemos comparar con $\theta=0.5, 0.7, 0.8$,
+
+
+```r
+library(patchwork)
+# Verosimilitud X_1,...,X_n ~ Bernoulli(theta)
+L_bernoulli <- function(n, S){
+    function(theta){
+        theta ^ S * (1 - theta) ^ (n - S)
+    }  
+}
+xy <- data.frame(x = 0:1)
+
+l_b1 <- ggplot(xy, aes(x = x)) +
+  stat_function(fun = L_bernoulli(n = 20, S = 10)) +
+  xlab(expression(theta)) +
+  ylab(expression(L(theta))) +
+  labs(title = "Verosimilitud", subtitle = "n=20, S = 10") +
+  ylim(0, 5e-05)
+l_b2 <- ggplot(xy, aes(x = x)) +
+  stat_function(fun = L_bernoulli(n = 20, S = 14)) +
+  xlab(expression(theta)) +
+  ylab(expression(L(theta))) +
+  labs(title = "Verosimilitud", subtitle = "n=20, S = 14") +
+  ylim(0, 5e-05)
+l_b3 <- ggplot(xy, aes(x = x)) +
+  stat_function(fun = L_bernoulli(n = 20, S = 16)) +
+  xlab(expression(theta)) +
+  ylab(expression(L(theta))) +
+  labs(title = "Verosimilitud", subtitle = "n=20, S = 19") +
+  ylim(0, 5e-05)
+
+l_b1 + l_b2 + l_b3
+```
+
+<img src="11-propiedades-mle_files/figure-html/unnamed-chunk-14-1.png" width="720" style="display: block; margin: auto;" />
+
+
+### Ejemplo: Normalidad {-}
 
 Regresando a nuestro ejemplo. Veremos empiricamente que el 
 estimador $\hat \theta_n$ es **asintóticamente normal.** Esta propiedad la
@@ -278,7 +319,7 @@ verosímil. Por ejemplo, podemos utilizar el $\mathsf{MLE}$ de los momios. La
 figura que sigue muestra la distribución de $\hat \theta_n$ para distintas
 remuestras $(B = 500)$ con distintos valores de $n.$
 
-<img src="11-propiedades-mle_files/figure-html/unnamed-chunk-14-1.png" width="95%" style="display: block; margin: auto;" />
+<img src="11-propiedades-mle_files/figure-html/unnamed-chunk-15-1.png" width="95%" style="display: block; margin: auto;" />
 
 El gráfico anterior valida empíricamente la distribución asintótica para 
 casos de muchas observaciones. A continuación ilustraremos cómo explotar 
@@ -336,7 +377,7 @@ el **método delta**.
 <div class="mathblock">
 <p><strong>Teorema.</strong> Si <span class="math inline">\(\tau =
 g(\theta)\)</span> es una función diferenciable y <span
-class="math inline">\(g\&#39;(\theta) \neq 0\)</span>, entonces</p>
+class="math inline">\(g&#39;(\theta) \neq 0\)</span>, entonces</p>
 </div>
 
 $$\hat \tau_n \overset{d}{\rightarrow} \mathsf{N}( \tau^*, \hat{\mathsf{ee}}^2_\tau),$$

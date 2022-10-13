@@ -66,7 +66,7 @@ En principio, los modelos que consideramos pueden ser complicados y tener varias
 usando máxima verosimilitud.
 
 **Nota**: Cuando decimos *muestra* en general nos referimos a observaciones
-independientes obtenidas del mismo proceso (ver la sección \@ref(S:distribucion-muestreo) para ver qué 
+independientes obtenidas del mismo proceso (ver la sección de distribución de muestreo) para ver qué 
 significa que sea independientes). Este esquema es un supuesto
 que simplifica mucho los cálculos, como discutimos antes. Muchas veces este supuesto
 sale del diseño de la muestra o del estudio, pero en todo caso es importante considerar
@@ -642,121 +642,13 @@ incorrectamente en un valor $b_0 < x_{\max}$ y el algoritmo no avanzaría
 al máximo. 
 
 
-
-### El método de momentos {-}
-
-Un método alternativo para estimación de parámetros es el método de momentos ($\textsf{MOM}$). Para esto 
-creamos un sistema de ecuaciones de cardinalidad igual al número de parámetros a estimar. 
-Es decir, consideramos $\theta \in \mathbb{R}^p;$ los momentos teoricos
-\begin{align}
-  m_k(\theta) = \mathbb{E}_f[X^k] = \int_{\mathcal{X}} x^k \, f(x; \theta) \, \text{d} x;
-\end{align}
-los momentos empíricos 
-\begin{align}
-  \hat m_k(\theta) = \frac1n \sum_{i = 1}^n X_i^k;
-\end{align}
-y creamos el siguiente sistema de ecuaciones: 
-\begin{align}
-  m_k(\theta) = \hat m_k(\theta), \qquad k = 1, \ldots, p.
-\end{align}
-Este sistema explota la aproximación $m_k(\theta) \approx \hat m_k(\theta),$ cuya justificación está determinada
-por la *Ley de los grandes números.*
-
-**Ejemplo.** *(continuación).* Para el caso de  $n$ observaciones $X_i \sim U[0,b],$ el método de momentos 
-arroja un estimador de la forma
-$$\hat b_{\textsf{MOM}} = 2 \bar X_n.$$
-<div class="ejercicio">
-<p>Considera el caso de una muestra de tamaño <span
-class="math inline">\(n = 3,\)</span> con observaciones <span
-class="math inline">\(X_1 = X_2 = 1\)</span> y <span
-class="math inline">\(X_3= 7\)</span>. ¿Cuál es el estimador <span
-class="math inline">\(\textsf{MOM}\)</span>? ¿Qué implicaciones tiene
-sobre la observación <span class="math inline">\(X_3\)</span>?</p>
-</div>
-
-
 ## Máxima verosimilitud para más de un parámetro {-}
 
 Si nuestro modelo contiene más de un parámetro desconocido podemos también usar
 máxima verosimilitud. En este caso, optimizamos sobre todos los parámetros usando
-cálculo o alguna rutina numérica
+cálculo o alguna rutina numérica.
 
-**Ejemplo.** Supongamos que en una población de estudiantes tenemos dos tipos: unos llenaron un
-examen de opción múltiple al azar (1 de 5), y otros contestaron las preguntas intentando
-sacar una buena calificación. Suponemos que una vez que conocemos el tipo de 
-estudiante, todas las preguntas tienen la misma probabilidad de ser contestadas
-correctamente, de manera independiente. El modelo
-teórico está representado por la siguiente simulación:
-
-
-```r
-sim_formas <- function(p_azar, p_corr){
-  tipo <- rbinom(1, 1, 1 - p_azar)
-  if(tipo==0){
-    # al azar
-    x <- rbinom(1, 10, 1/5)
-  } else {
-    # no al azar
-    x <- rbinom(1, 10, p_corr)
-  }
-  x
-}
-```
-
-Y una muestra se ve como sigue:
-
-
-```r
-set.seed(12)
-muestra <- map_dbl(1:200, ~ sim_formas(0.3, 0.75))
-qplot(muestra)
-```
-
-<img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-26-1.png" width="480" style="display: block; margin: auto;" />
-
-Supongamos que no conocemos la probabildad de contestar correctamente  ni la
-proporción de estudiantes que contestó al azar. ¿Como estimamos estas dos cantidades?
-
-Escribimos la verosimilitud:
-
-
-```r
-crear_log_p <- function(x){
-
-  log_p <- function(pars){
-    p_azar = pars[1]
-    p_corr = pars[2]
-    sum(log(p_azar * dbinom(x, 10, 1/5) + (1 - p_azar) * dbinom(x, 10, p_corr)))
-  }  
-  log_p
-}
-```
-
-Creamos la función de verosimilitud con los datos
-
-
-```r
-log_p <- crear_log_p(muestra)
-```
-
-y optimizamos
-
-
-```r
-res <- optim(c(0.5, 0.5), log_p, control = list(fnscale = -1))
-res$par
-```
-
-```
-## [1] 0.2827061 0.7413276
-```
-
-En este caso, obtenemos estimaciones razonables de ambos parámetros. 
-Nota: dependiendo de los datos, este problema
-puede estar mal condicionado. Por ejemplo, ¿qué pasa si la probabilidad de acertar
-cuando se contesta bien está cercano al azar?
-
-**Ejemplo.** (Tomado de [@zuev]). Considera el caso de $n$ muestras iid de un modelo Gaussiano. Es decir, 
+**Ejemplo.** Considera el caso de $n$ muestras iid de un modelo Gaussiano. Es decir, 
 $X_1, \ldots, X_n \sim \mathsf{N}(\mu, \sigma^2).$ Consideremos que ambos parámetros son desconocidos y nos gustaria 
 encontrar el $\textsf{MLE}$. Para este problema denotamos $\theta \in \mathbb{R}^2$, donde $\theta_1 = \mu$ y $\theta_2 = \sigma^2.$ 
 
@@ -808,7 +700,7 @@ log_p <- crear_log_p(muestra)
 ```
 
 
-Ahora optimizamos (checa que el método converge):
+Ahora optimizamos:
 
 
 ```r
@@ -846,6 +738,83 @@ c(media = mean(muestra), sigma = sd_n(muestra)) %>% round(4)
 ##  media  sigma 
 ## 1.1364 1.8392
 ```
+
+**Ejemplo.** Supongamos que en una población de estudiantes tenemos dos tipos: unos llenaron un
+examen de opción múltiple al azar (1 de 5), y otros contestaron las preguntas intentando
+sacar una buena calificación. Suponemos que una vez que conocemos el tipo de 
+estudiante, todas las preguntas tienen la misma probabilidad de ser contestadas
+correctamente, de manera independiente. El modelo
+teórico está representado por la siguiente simulación:
+
+
+```r
+sim_formas <- function(p_azar, p_corr){
+  tipo <- rbinom(1, 1, 1 - p_azar)
+  if(tipo==0){
+    # al azar
+    x <- rbinom(1, 10, 1/5)
+  } else {
+    # no al azar
+    x <- rbinom(1, 10, p_corr)
+  }
+  x
+}
+```
+
+Y una muestra se ve como sigue:
+
+
+```r
+set.seed(12)
+muestra <- map_dbl(1:200, ~ sim_formas(0.3, 0.75))
+qplot(muestra)
+```
+
+<img src="09-max-verosimilitud_files/figure-html/unnamed-chunk-30-1.png" width="480" style="display: block; margin: auto;" />
+
+Supongamos que no conocemos la probabildad de contestar correctamente  ni la
+proporción de estudiantes que contestó al azar. ¿Como estimamos estas dos cantidades?
+
+Escribimos la verosimilitud:
+
+
+```r
+crear_log_p <- function(x){
+
+  log_p <- function(pars){
+    p_azar = pars[1]
+    p_corr = pars[2]
+    sum(log(p_azar * dbinom(x, 10, 1/5) + (1 - p_azar) * dbinom(x, 10, p_corr)))
+  }  
+  log_p
+}
+```
+
+Creamos la función de verosimilitud con los datos
+
+
+```r
+log_p <- crear_log_p(muestra)
+```
+
+y optimizamos
+
+
+```r
+res <- optim(c(0.5, 0.5), log_p, control = list(fnscale = -1))
+res$par
+```
+
+```
+## [1] 0.2827061 0.7413276
+```
+
+En este caso, obtenemos estimaciones razonables de ambos parámetros. 
+Nota: dependiendo de los datos, este problema
+puede estar mal condicionado. Por ejemplo, ¿qué pasa si la probabilidad de acertar
+cuando se contesta bien está cercano al azar?
+
+
 
 La siguiente pregunta qué nos interesa hacer es: ¿cómo estimamos la variabilidad
 de estos estimadores? Más adelante veremos una respuesta basada en teoría, pero

@@ -321,4 +321,14 @@ mapa_ingcor <- ggplot(mxstate_ing_cor %>% mutate(ee = round(mediana_se)),
 ggplotly(mapa_ingcor, tooltip = c("text", "label"))
 ```
 
+## 9. Máxima verosimilitud y bootstrap paramétrico {-}
 
+Sean $X_1,...,X_n \sim N(\mu, 1)$ y $\theta = e^{\mu}$. Simula una muestra de  
+tamaño $n = 100$ usando $\mu = 5$.
+
+* Usa bootstrap paramétrico para construir un intervalo del 95% de confianza.
+
+* Usa bootstrap no paramétrico y compara tus respuestas.
+
+* Realiza un histograma de replicaciones bootstrap para cada método, estas son estimaciones de la distribución $\hat{\theta}$. Comparalos con la verdadera distribución de $\hat{\theta}$
+(que puedes obtener vía simulación). ¿Cuál es la aproximación más cercana a la verdadera distribución?

@@ -313,10 +313,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#introducción-a-estimación-por-máxima-verosimilitud"><i class="fa fa-check"></i>Introducción a estimación por máxima verosimilitud</a></li>
 <li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-observaciones-continuas"><i class="fa fa-check"></i>Máxima verosimilitud para observaciones continuas</a></li>
-<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#aspectos-numéricos"><i class="fa fa-check"></i>Aspectos numéricos</a>
-<ul>
-<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#el-método-de-momentos"><i class="fa fa-check"></i>El método de momentos</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#aspectos-numéricos"><i class="fa fa-check"></i>Aspectos numéricos</a></li>
 <li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-más-de-un-parámetro"><i class="fa fa-check"></i>Máxima verosimilitud para más de un parámetro</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="bootstrap-paramétrico.html"><a href="bootstrap-paramétrico.html"><i class="fa fa-check"></i><b>7</b> <em>Bootstrap</em> paramétrico</a>
@@ -338,7 +335,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#normalidad-asintótica"><i class="fa fa-check"></i>Normalidad asintótica</a>
 <ul>
-<li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#ejemplo-13"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#ejemplo-información-de-fisher"><i class="fa fa-check"></i>Ejemplo: Información de Fisher</a></li>
+<li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#ejemplo-normalidad"><i class="fa fa-check"></i>Ejemplo: Normalidad</a></li>
 <li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#el-método-delta"><i class="fa fa-check"></i>El método delta</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#optimalidad-del-textsfmle"><i class="fa fa-check"></i>Optimalidad del <span class="math inline">\(\textsf{MLE}\)</span></a></li>
@@ -374,6 +372,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#mapas"><i class="fa fa-check"></i>Mapas</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#máxima-verosimilitud-y-bootstrap-paramétrico"><i class="fa fa-check"></i>9. Máxima verosimilitud y bootstrap paramétrico</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -622,8 +621,43 @@ Asimismo, el teorema de Normalidad asintótica nos permite establecer que el <sp
 </p>
 </div>
 <p>El sesgo del estimador es precisamente la diferencia: <span class="math inline">\(\textsf{Sesgo} = \mathbb{E}[\tilde \theta_n] - \theta^*.\)</span></p>
-<div id="ejemplo-13" class="section level3 unnumbered hasAnchor">
-<h3>Ejemplo<a href="propiedades-teóricas-de-mle.html#ejemplo-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ejemplo-información-de-fisher" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo: Información de Fisher<a href="propiedades-teóricas-de-mle.html#ejemplo-información-de-fisher" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En el caso Bernoulli obtenemos <span class="math inline">\(I_n(\theta) = \frac{n}{\theta(1-\theta)}\)</span>, si
+<span class="math inline">\(n = 20\)</span> podemos comparar con <span class="math inline">\(\theta=0.5, 0.7, 0.8\)</span>,</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="propiedades-teóricas-de-mle.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb364-2"><a href="propiedades-teóricas-de-mle.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Verosimilitud X_1,...,X_n ~ Bernoulli(theta)</span></span>
+<span id="cb364-3"><a href="propiedades-teóricas-de-mle.html#cb364-3" aria-hidden="true" tabindex="-1"></a>L_bernoulli <span class="ot">&lt;-</span> <span class="cf">function</span>(n, S){</span>
+<span id="cb364-4"><a href="propiedades-teóricas-de-mle.html#cb364-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(theta){</span>
+<span id="cb364-5"><a href="propiedades-teóricas-de-mle.html#cb364-5" aria-hidden="true" tabindex="-1"></a>        theta <span class="sc">^</span> S <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> theta) <span class="sc">^</span> (n <span class="sc">-</span> S)</span>
+<span id="cb364-6"><a href="propiedades-teóricas-de-mle.html#cb364-6" aria-hidden="true" tabindex="-1"></a>    }  </span>
+<span id="cb364-7"><a href="propiedades-teóricas-de-mle.html#cb364-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb364-8"><a href="propiedades-teóricas-de-mle.html#cb364-8" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb364-9"><a href="propiedades-teóricas-de-mle.html#cb364-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb364-10"><a href="propiedades-teóricas-de-mle.html#cb364-10" aria-hidden="true" tabindex="-1"></a>l_b1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(xy, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb364-11"><a href="propiedades-teóricas-de-mle.html#cb364-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="fu">L_bernoulli</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">S =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb364-12"><a href="propiedades-teóricas-de-mle.html#cb364-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="fu">expression</span>(theta)) <span class="sc">+</span></span>
+<span id="cb364-13"><a href="propiedades-teóricas-de-mle.html#cb364-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">L</span>(theta))) <span class="sc">+</span></span>
+<span id="cb364-14"><a href="propiedades-teóricas-de-mle.html#cb364-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Verosimilitud&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;n=20, S = 10&quot;</span>) <span class="sc">+</span></span>
+<span id="cb364-15"><a href="propiedades-teóricas-de-mle.html#cb364-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">5e-05</span>)</span>
+<span id="cb364-16"><a href="propiedades-teóricas-de-mle.html#cb364-16" aria-hidden="true" tabindex="-1"></a>l_b2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(xy, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb364-17"><a href="propiedades-teóricas-de-mle.html#cb364-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="fu">L_bernoulli</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">S =</span> <span class="dv">14</span>)) <span class="sc">+</span></span>
+<span id="cb364-18"><a href="propiedades-teóricas-de-mle.html#cb364-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="fu">expression</span>(theta)) <span class="sc">+</span></span>
+<span id="cb364-19"><a href="propiedades-teóricas-de-mle.html#cb364-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">L</span>(theta))) <span class="sc">+</span></span>
+<span id="cb364-20"><a href="propiedades-teóricas-de-mle.html#cb364-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Verosimilitud&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;n=20, S = 14&quot;</span>) <span class="sc">+</span></span>
+<span id="cb364-21"><a href="propiedades-teóricas-de-mle.html#cb364-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">5e-05</span>)</span>
+<span id="cb364-22"><a href="propiedades-teóricas-de-mle.html#cb364-22" aria-hidden="true" tabindex="-1"></a>l_b3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(xy, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb364-23"><a href="propiedades-teóricas-de-mle.html#cb364-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="fu">L_bernoulli</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">S =</span> <span class="dv">16</span>)) <span class="sc">+</span></span>
+<span id="cb364-24"><a href="propiedades-teóricas-de-mle.html#cb364-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="fu">expression</span>(theta)) <span class="sc">+</span></span>
+<span id="cb364-25"><a href="propiedades-teóricas-de-mle.html#cb364-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">L</span>(theta))) <span class="sc">+</span></span>
+<span id="cb364-26"><a href="propiedades-teóricas-de-mle.html#cb364-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Verosimilitud&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;n=20, S = 19&quot;</span>) <span class="sc">+</span></span>
+<span id="cb364-27"><a href="propiedades-teóricas-de-mle.html#cb364-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">5e-05</span>)</span>
+<span id="cb364-28"><a href="propiedades-teóricas-de-mle.html#cb364-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb364-29"><a href="propiedades-teóricas-de-mle.html#cb364-29" aria-hidden="true" tabindex="-1"></a>l_b1 <span class="sc">+</span> l_b2 <span class="sc">+</span> l_b3</span></code></pre></div>
+<p><img src="11-propiedades-mle_files/figure-html/unnamed-chunk-14-1.png" width="720" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ejemplo-normalidad" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo: Normalidad<a href="propiedades-teóricas-de-mle.html#ejemplo-normalidad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Regresando a nuestro ejemplo. Veremos empiricamente que el
 estimador <span class="math inline">\(\hat \theta_n\)</span> es <strong>asintóticamente normal.</strong> Esta propiedad la
 hemos visto anteriormente para un caso muy particular. Lo vimos en el TLC para
@@ -632,7 +666,7 @@ Como hemos visto, esta propiedad la satisface cualquier otro estimador que sea m
 verosímil. Por ejemplo, podemos utilizar el <span class="math inline">\(\mathsf{MLE}\)</span> de los momios. La
 figura que sigue muestra la distribución de <span class="math inline">\(\hat \theta_n\)</span> para distintas
 remuestras <span class="math inline">\((B = 500)\)</span> con distintos valores de <span class="math inline">\(n.\)</span></p>
-<p><img src="11-propiedades-mle_files/figure-html/unnamed-chunk-14-1.png" width="95%" style="display: block; margin: auto;" /></p>
+<p><img src="11-propiedades-mle_files/figure-html/unnamed-chunk-15-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p>El gráfico anterior valida empíricamente la distribución asintótica para
 casos de muchas observaciones. A continuación ilustraremos cómo explotar
 este resultado para obtener intervalos de confianza.</p>
@@ -678,7 +712,7 @@ la distribución de <span class="math inline">\(\tau = g(\theta)?\)</span></p>
 el <strong>método delta</strong>.</p>
 <div class="mathblock">
 <p>
-<strong>Teorema.</strong> Si <span class="math inline"><span class="math inline">\(\tau = g(\theta)\)</span></span> es una función diferenciable y <span class="math inline"><span class="math inline">\(g\&amp;#39;(\theta) \neq 0\)</span></span>, entonces
+<strong>Teorema.</strong> Si <span class="math inline"><span class="math inline">\(\tau = g(\theta)\)</span></span> es una función diferenciable y <span class="math inline"><span class="math inline">\(g&amp;#39;(\theta) \neq 0\)</span></span>, entonces
 </p>
 </div>
 <span class="math display">\[\hat \tau_n \overset{d}{\rightarrow} \mathsf{N}( \tau^*, \hat{\mathsf{ee}}^2_\tau),\]</span>

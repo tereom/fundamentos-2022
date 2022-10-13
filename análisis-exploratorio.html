@@ -313,10 +313,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#introducción-a-estimación-por-máxima-verosimilitud"><i class="fa fa-check"></i>Introducción a estimación por máxima verosimilitud</a></li>
 <li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-observaciones-continuas"><i class="fa fa-check"></i>Máxima verosimilitud para observaciones continuas</a></li>
-<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#aspectos-numéricos"><i class="fa fa-check"></i>Aspectos numéricos</a>
-<ul>
-<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#el-método-de-momentos"><i class="fa fa-check"></i>El método de momentos</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#aspectos-numéricos"><i class="fa fa-check"></i>Aspectos numéricos</a></li>
 <li class="chapter" data-level="" data-path="estimación-por-máxima-verosimilitud.html"><a href="estimación-por-máxima-verosimilitud.html#máxima-verosimilitud-para-más-de-un-parámetro"><i class="fa fa-check"></i>Máxima verosimilitud para más de un parámetro</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="bootstrap-paramétrico.html"><a href="bootstrap-paramétrico.html"><i class="fa fa-check"></i><b>7</b> <em>Bootstrap</em> paramétrico</a>
@@ -338,7 +335,8 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#normalidad-asintótica"><i class="fa fa-check"></i>Normalidad asintótica</a>
 <ul>
-<li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#ejemplo-13"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#ejemplo-información-de-fisher"><i class="fa fa-check"></i>Ejemplo: Información de Fisher</a></li>
+<li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#ejemplo-normalidad"><i class="fa fa-check"></i>Ejemplo: Normalidad</a></li>
 <li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#el-método-delta"><i class="fa fa-check"></i>El método delta</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="propiedades-teóricas-de-mle.html"><a href="propiedades-teóricas-de-mle.html#optimalidad-del-textsfmle"><i class="fa fa-check"></i>Optimalidad del <span class="math inline">\(\textsf{MLE}\)</span></a></li>
@@ -374,6 +372,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#mapas"><i class="fa fa-check"></i>Mapas</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#máxima-verosimilitud-y-bootstrap-paramétrico"><i class="fa fa-check"></i>9. Máxima verosimilitud y bootstrap paramétrico</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -467,90 +466,10 @@ num_personas
 <tbody>
 <tr>
 <td style="text-align:right;">
-13.27
+50.81
 </td>
 <td style="text-align:right;">
-2.50
-</td>
-<td style="text-align:left;">
-Si
-</td>
-<td style="text-align:left;">
-Sab
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-48.17
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Dom
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-6
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-21.01
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:left;">
-Si
-</td>
-<td style="text-align:left;">
-Vie
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-20.69
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Dom
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-15.69
-</td>
-<td style="text-align:right;">
-3.00
+10.00
 </td>
 <td style="text-align:left;">
 Si
@@ -567,10 +486,90 @@ Cena
 </tr>
 <tr>
 <td style="text-align:right;">
-25.21
+18.26
 </td>
 <td style="text-align:right;">
-4.29
+3.25
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Jue
+</td>
+<td style="text-align:left;">
+Comida
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20.69
+</td>
+<td style="text-align:right;">
+2.45
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Sab
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14.07
+</td>
+<td style="text-align:right;">
+2.50
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Dom
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9.60
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:left;">
+Si
+</td>
+<td style="text-align:left;">
+Dom
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15.81
+</td>
+<td style="text-align:right;">
+3.16
 </td>
 <td style="text-align:left;">
 Si
@@ -580,6 +579,46 @@ Sab
 </td>
 <td style="text-align:left;">
 Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+27.20
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Jue
+</td>
+<td style="text-align:left;">
+Comida
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16.66
+</td>
+<td style="text-align:right;">
+3.40
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Jue
+</td>
+<td style="text-align:left;">
+Comida
 </td>
 <td style="text-align:right;">
 2
@@ -607,56 +646,16 @@ Comida
 </tr>
 <tr>
 <td style="text-align:right;">
-11.24
+9.55
 </td>
 <td style="text-align:right;">
-1.76
+1.45
 </td>
 <td style="text-align:left;">
-Si
+No
 </td>
 <td style="text-align:left;">
 Sab
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-17.47
-</td>
-<td style="text-align:right;">
-3.50
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Jue
-</td>
-<td style="text-align:left;">
-Comida
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-14.78
-</td>
-<td style="text-align:right;">
-3.23
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Dom
 </td>
 <td style="text-align:left;">
 Cena

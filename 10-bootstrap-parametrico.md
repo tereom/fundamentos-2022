@@ -129,7 +129,7 @@ est_mle_boot
 
 Y esta es nuestra replicación *bootstrap* de los estimadores de máxima verosimilitud.
 
-La idea es la misma que el *bootstrap*, con la ventaja de que estamos simulando
+La idea es la misma que el *bootstrap no paramétrico*, con la ventaja de que estamos simulando
 del modelo que suponemos es el correcto, es decir, estamos usando información adicional
 que no teníamos en el *bootstrap* no paramétrico. Ahora es necesario repetir un 
 número grande de veces.
@@ -573,7 +573,7 @@ crear_log_p <- function(x){
 }
 # simular datos
 set.seed(12)
-muestra <- simular_modelo(200, params = logit(c(0.3, 0.29)))
+muestra <- simular_modelo(2000, params = logit(c(0.3, 0.29)))
 qplot(muestra)
 ```
 
@@ -598,7 +598,7 @@ est_mle
 
 ```
 ## p_azar_logit p_corr_logit 
-##   -0.0343061   -0.7474912
+##   -0.9194029   -0.8896454
 ```
 
 ```r
@@ -609,7 +609,7 @@ probs_mle
 
 ```
 ##    p_azar    p_corr 
-## 0.4914243 0.3213682
+## 0.2850796 0.2911830
 ```
 
 En primer lugar, parece ser que nuestras estimaciones son menos precias. Vamos 
@@ -634,19 +634,19 @@ set.seed(8934)
 reps_boot <- map(1:500, ~ rep_boot(.x, simular_modelo, crear_log_p, est_mle, 
                                    n = length(muestra))) %>% 
   bind_rows
-reps_boot %>% mutate(across(everything(), round, 2)) %>% head
+reps_boot %>% mutate(across(everything(), round, 2)) %>% head()
 ```
 
 ```
 ## # A tibble: 6 × 4
 ##   p_azar_logit p_corr_logit   rep convergence
 ##          <dbl>        <dbl> <dbl>       <dbl>
-## 1         0.32        -0.7      1           0
-## 2         0.13        -0.71     2           0
-## 3         0.11        -0.78     3           0
-## 4        -0.19        -0.71     4           0
-## 5         0.36        -0.55     5           0
-## 6         0.74        -0.61     6           0
+## 1        -1.14        -0.92     1           0
+## 2        -1.11        -0.85     2           0
+## 3        -1.17        -0.95     3           0
+## 4        -2.74        -1.01     4           0
+## 5        -1.05        -0.93     5           0
+## 6        -0.91        -0.87     6           0
 ```
 
 El optimizador encontró resultados que no tienen sentido:
@@ -656,7 +656,7 @@ El optimizador encontró resultados que no tienen sentido:
 ggplot(reps_boot, 
        aes(x = inv_logit(p_azar_logit), y = inv_logit(p_corr_logit), 
            colour = factor(convergence))) +
-  geom_point() +
+  geom_point(show.legend = FALSE) +
   xlab("p_azar") + ylab("p_corr")
 ```
 
