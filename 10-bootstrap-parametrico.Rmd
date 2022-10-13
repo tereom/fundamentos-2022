@@ -101,7 +101,7 @@ est_mle_boot
 
 Y esta es nuestra replicación *bootstrap* de los estimadores de máxima verosimilitud.
 
-La idea es la misma que el *bootstrap*, con la ventaja de que estamos simulando
+La idea es la misma que el *bootstrap no paramétrico*, con la ventaja de que estamos simulando
 del modelo que suponemos es el correcto, es decir, estamos usando información adicional
 que no teníamos en el *bootstrap* no paramétrico. Ahora es necesario repetir un 
 número grande de veces.
@@ -412,7 +412,7 @@ crear_log_p <- function(x){
 }
 # simular datos
 set.seed(12)
-muestra <- simular_modelo(200, params = logit(c(0.3, 0.29)))
+muestra <- simular_modelo(2000, params = logit(c(0.3, 0.29)))
 qplot(muestra)
 ```
 
@@ -449,7 +449,7 @@ set.seed(8934)
 reps_boot <- map(1:500, ~ rep_boot(.x, simular_modelo, crear_log_p, est_mle, 
                                    n = length(muestra))) %>% 
   bind_rows
-reps_boot %>% mutate(across(everything(), round, 2)) %>% head
+reps_boot %>% mutate(across(everything(), round, 2)) %>% head()
 ```
 
 El optimizador encontró resultados que no tienen sentido:
@@ -458,7 +458,7 @@ El optimizador encontró resultados que no tienen sentido:
 ggplot(reps_boot, 
        aes(x = inv_logit(p_azar_logit), y = inv_logit(p_corr_logit), 
            colour = factor(convergence))) +
-  geom_point() +
+  geom_point(show.legend = FALSE) +
   xlab("p_azar") + ylab("p_corr")
 ```
 

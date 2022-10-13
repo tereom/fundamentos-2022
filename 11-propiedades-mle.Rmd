@@ -346,7 +346,45 @@ $$\mathbb{E}[\tilde \theta_n] =\theta^*.$$
 ```
 El sesgo del estimador es precisamente la diferencia: $\textsf{Sesgo} = \mathbb{E}[\tilde \theta_n] - \theta^*.$
 
-### Ejemplo {-}
+### Ejemplo: Información de Fisher {-}
+
+En el caso Bernoulli obtenemos $I_n(\theta) = \frac{n}{\theta(1-\theta)}$, si 
+$n = 20$ podemos comparar con $\theta=0.5, 0.7, 0.8$,
+
+```{r, fig.height=3.5, fig.width=7.5}
+library(patchwork)
+# Verosimilitud X_1,...,X_n ~ Bernoulli(theta)
+L_bernoulli <- function(n, S){
+    function(theta){
+        theta ^ S * (1 - theta) ^ (n - S)
+    }  
+}
+xy <- data.frame(x = 0:1)
+
+l_b1 <- ggplot(xy, aes(x = x)) +
+  stat_function(fun = L_bernoulli(n = 20, S = 10)) +
+  xlab(expression(theta)) +
+  ylab(expression(L(theta))) +
+  labs(title = "Verosimilitud", subtitle = "n=20, S = 10") +
+  ylim(0, 5e-05)
+l_b2 <- ggplot(xy, aes(x = x)) +
+  stat_function(fun = L_bernoulli(n = 20, S = 14)) +
+  xlab(expression(theta)) +
+  ylab(expression(L(theta))) +
+  labs(title = "Verosimilitud", subtitle = "n=20, S = 14") +
+  ylim(0, 5e-05)
+l_b3 <- ggplot(xy, aes(x = x)) +
+  stat_function(fun = L_bernoulli(n = 20, S = 16)) +
+  xlab(expression(theta)) +
+  ylab(expression(L(theta))) +
+  labs(title = "Verosimilitud", subtitle = "n=20, S = 19") +
+  ylim(0, 5e-05)
+
+l_b1 + l_b2 + l_b3
+```
+
+
+### Ejemplo: Normalidad {-}
 
 Regresando a nuestro ejemplo. Veremos empiricamente que el 
 estimador $\hat \theta_n$ es **asintóticamente normal.** Esta propiedad la
@@ -358,7 +396,6 @@ figura que sigue muestra la distribución de $\hat \theta_n$ para distintas
 remuestras $(B = 500)$ con distintos valores de $n.$
 
 ```{r, echo = FALSE, fig.height = 5, out.width = '95%', fig.asp = .6}
-
 theta_true      <- p_true/(1 - p_true)
 fisher_true_inv <- ((1+theta_true)**2) * theta_true
 ee_true         <- sqrt(fisher_true_inv)
@@ -462,7 +499,7 @@ La respuesta es afirmativa y la enunciamos por medio de un teorema. El resultado
 el **método delta**. 
 
 ```{block, type = 'mathblock'}
-**Teorema.** Si $\tau = g(\theta)$ es una función diferenciable y $g\'(\theta) \neq 0$, entonces
+**Teorema.** Si $\tau = g(\theta)$ es una función diferenciable y $g'(\theta) \neq 0$, entonces
 ```
 
 $$\hat \tau_n \overset{d}{\rightarrow} \mathsf{N}( \tau^*, \hat{\mathsf{ee}}^2_\tau),$$
