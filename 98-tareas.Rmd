@@ -323,3 +323,31 @@ tamaño $n = 100$ usando $\mu = 5$.
 
 * Realiza un histograma de replicaciones bootstrap para cada método, estas son estimaciones de la distribución $\hat{\theta}$. Comparalos con la verdadera distribución de $\hat{\theta}$
 (que puedes obtener vía simulación). ¿Cuál es la aproximación más cercana a la verdadera distribución?
+
+## 10. Bootstrap y más pruebas de hipótesis {-}
+
+1. Comparando dos tratamientos. Supongamos que a $n_1$ personas se les asigna el 
+tratamiento 1 y a $n_2$ se les asigna el tratamiento 2. Sean $X_1$ el número de
+personas que responden de manera favorable al tratamiento uno y $X_2$ el 
+número de personas que responden de manera favorable al tratamiento 2. 
+Suponemos $X_1 \sim Binomial(n_1, p_1)$ y $X_2 \sim Binomial(n_2, p_2)$. Sea
+$\psi = p_1 - p_2$ la cantidad de interés:
+
+* Encuentra el estimador de máxima verosimilitud para $\psi$.  
+* (Opcinal) Usa el método [delta para más de un parámetro](https://en.wikipedia.org/wiki/Delta_method#Multivariate_delta_method) 
+para encontrar el error estándaar asintótico de $\hat{\psi}_{MLE}$.  
+* Supongamos $n_1 = n_2 = 200$, $X_1 = 160$ y $X_2 = 148$ construye un intervalo
+del 90% de confianza para $\psi$ usando bootstrap paramétrico y (opcional) el 
+método delta.
+ 
+1. (Chihara) Los niveles de calcio en adultos saludables se distribuyen de acuerdo
+a una Normal con media 9.5 mg/dl y desviación estándar desconocida. Un médico 
+sospecha que la media de los niveles de calcio para mujeres en su comunidad es 
+distinta. Colecta mediciones de 20 mujeres saludables y encuentra que la media 
+es de 9.2 y la desviación estándar muestral de 1.1. Escribe la hipótesis nula, 
+realiza una prueba de hipótesis e interpreta los resultados.
+
+2. (Chihara) Los datos [Alelager](https://raw.githubusercontent.com/tereom/fundamentos/render-html/data/Alelager.csv) contienen unformación de calorías y alcohol 
+(por volumen) para una muestra de cervezas ale y lager (por 12 oz). Investiga la 
+hipótesis que las ales tienen más calorías que las lager (usando lo visto la clase del lunes).
+
