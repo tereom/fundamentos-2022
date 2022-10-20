@@ -388,6 +388,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#mapas"><i class="fa fa-check"></i>Mapas</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#máxima-verosimilitud-y-bootstrap-paramétrico"><i class="fa fa-check"></i>9. Máxima verosimilitud y bootstrap paramétrico</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#bootstrap-y-más-pruebas-de-hipótesis"><i class="fa fa-check"></i>10. Bootstrap y más pruebas de hipótesis</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -669,6 +670,38 @@ tamaño <span class="math inline">\(n = 100\)</span> usando <span class="math in
 <li><p>Realiza un histograma de replicaciones bootstrap para cada método, estas son estimaciones de la distribución <span class="math inline">\(\hat{\theta}\)</span>. Comparalos con la verdadera distribución de <span class="math inline">\(\hat{\theta}\)</span>
 (que puedes obtener vía simulación). ¿Cuál es la aproximación más cercana a la verdadera distribución?</p></li>
 </ul>
+</div>
+<div id="bootstrap-y-más-pruebas-de-hipótesis" class="section level2 unnumbered hasAnchor">
+<h2>10. Bootstrap y más pruebas de hipótesis<a href="tareas.html#bootstrap-y-más-pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Comparando dos tratamientos. Supongamos que a <span class="math inline">\(n_1\)</span> personas se les asigna el
+tratamiento 1 y a <span class="math inline">\(n_2\)</span> se les asigna el tratamiento 2. Sean <span class="math inline">\(X_1\)</span> el número de
+personas que responden de manera favorable al tratamiento uno y <span class="math inline">\(X_2\)</span> el
+número de personas que responden de manera favorable al tratamiento 2.
+Suponemos <span class="math inline">\(X_1 \sim Binomial(n_1, p_1)\)</span> y <span class="math inline">\(X_2 \sim Binomial(n_2, p_2)\)</span>. Sea
+<span class="math inline">\(\psi = p_1 - p_2\)</span> la cantidad de interés:</li>
+</ol>
+<ul>
+<li>Encuentra el estimador de máxima verosimilitud para <span class="math inline">\(\psi\)</span>.<br />
+</li>
+<li>(Opcinal) Usa el método <a href="https://en.wikipedia.org/wiki/Delta_method#Multivariate_delta_method">delta para más de un parámetro</a>
+para encontrar el error estándaar asintótico de <span class="math inline">\(\hat{\psi}_{MLE}\)</span>.<br />
+</li>
+<li>Supongamos <span class="math inline">\(n_1 = n_2 = 200\)</span>, <span class="math inline">\(X_1 = 160\)</span> y <span class="math inline">\(X_2 = 148\)</span> construye un intervalo
+del 90% de confianza para <span class="math inline">\(\psi\)</span> usando bootstrap paramétrico y (opcional) el
+método delta.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>(Chihara) Los niveles de calcio en adultos saludables se distribuyen de acuerdo
+a una Normal con media 9.5 mg/dl y desviación estándar desconocida. Un médico
+sospecha que la media de los niveles de calcio para mujeres en su comunidad es
+distinta. Colecta mediciones de 20 mujeres saludables y encuentra que la media
+es de 9.2 y la desviación estándar muestral de 1.1. Escribe la hipótesis nula,
+realiza una prueba de hipótesis e interpreta los resultados.</p></li>
+<li><p>(Chihara) Los datos <a href="https://raw.githubusercontent.com/tereom/fundamentos/render-html/data/Alelager.csv">Alelager</a> contienen unformación de calorías y alcohol
+(por volumen) para una muestra de cervezas ale y lager (por 12 oz). Investiga la
+hipótesis que las ales tienen más calorías que las lager (usando lo visto la clase del lunes).</p></li>
+</ol>
 
 </div>
 </div>
