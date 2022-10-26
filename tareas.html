@@ -714,16 +714,63 @@ del 90% de confianza para <span class="math inline">\(\psi\)</span> usando boots
 método delta.</li>
 </ul>
 <ol style="list-style-type: decimal">
-<li><p>(Chihara) Los niveles de calcio en adultos saludables se distribuyen de acuerdo
+<li>(Chihara) Los niveles de calcio en adultos saludables se distribuyen de acuerdo
 a una Normal con media 9.5 mg/dl y desviación estándar desconocida. Un médico
 sospecha que la media de los niveles de calcio para mujeres en su comunidad es
 distinta. Colecta mediciones de 20 mujeres saludables y encuentra que la media
 es de 9.2 y la desviación estándar muestral de 1.1. Escribe la hipótesis nula,
-realiza una prueba de hipótesis e interpreta los resultados.</p></li>
-<li><p>(Chihara) Los datos <a href="https://raw.githubusercontent.com/tereom/fundamentos/render-html/data/Alelager.csv">Alelager</a> contienen unformación de calorías y alcohol
-(por volumen) para una muestra de cervezas ale y lager (por 12 oz). Investiga la
-hipótesis que las ales tienen más calorías que las lager (usando lo visto la clase del lunes).</p></li>
+realiza una prueba de hipótesis e interpreta los resultados.</li>
 </ol>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="tareas.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Respuestas</span></span>
+<span id="cb507-2"><a href="tareas.html#cb507-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Ejercicio 1: bootstrap</span></span>
+<span id="cb507-3"><a href="tareas.html#cb507-3" aria-hidden="true" tabindex="-1"></a>n_1 <span class="ot">&lt;-</span> <span class="dv">200</span>; n_2 <span class="ot">&lt;-</span>  <span class="dv">200</span></span>
+<span id="cb507-4"><a href="tareas.html#cb507-4" aria-hidden="true" tabindex="-1"></a>X_1 <span class="ot">=</span> <span class="dv">160</span>; X_2 <span class="ot">&lt;-</span> <span class="dv">148</span></span>
+<span id="cb507-5"><a href="tareas.html#cb507-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-6"><a href="tareas.html#cb507-6" aria-hidden="true" tabindex="-1"></a>p_1 <span class="ot">&lt;-</span> X_1<span class="sc">/</span>n_1</span>
+<span id="cb507-7"><a href="tareas.html#cb507-7" aria-hidden="true" tabindex="-1"></a>p_2 <span class="ot">&lt;-</span> X_2 <span class="sc">/</span> n_2</span>
+<span id="cb507-8"><a href="tareas.html#cb507-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-9"><a href="tareas.html#cb507-9" aria-hidden="true" tabindex="-1"></a>ee <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_1<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p_1) <span class="sc">/</span> n_2 <span class="sc">+</span> p_2<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p_2) <span class="sc">/</span> n_2)</span>
+<span id="cb507-10"><a href="tareas.html#cb507-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-11"><a href="tareas.html#cb507-11" aria-hidden="true" tabindex="-1"></a><span class="co">#delta</span></span>
+<span id="cb507-12"><a href="tareas.html#cb507-12" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">-</span> <span class="fl">1.645</span> <span class="sc">*</span> ee</span>
+<span id="cb507-13"><a href="tareas.html#cb507-13" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">+</span> <span class="fl">1.645</span> <span class="sc">*</span> ee</span>
+<span id="cb507-14"><a href="tareas.html#cb507-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-15"><a href="tareas.html#cb507-15" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstarp</span></span>
+<span id="cb507-16"><a href="tareas.html#cb507-16" aria-hidden="true" tabindex="-1"></a>dif_p <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb507-17"><a href="tareas.html#cb507-17" aria-hidden="true" tabindex="-1"></a>  p_1_star <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="dv">160</span><span class="sc">/</span><span class="dv">200</span>) <span class="sc">/</span> <span class="dv">200</span></span>
+<span id="cb507-18"><a href="tareas.html#cb507-18" aria-hidden="true" tabindex="-1"></a>  p_2_star <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="dv">148</span><span class="sc">/</span><span class="dv">200</span>) <span class="sc">/</span> <span class="dv">200</span></span>
+<span id="cb507-19"><a href="tareas.html#cb507-19" aria-hidden="true" tabindex="-1"></a>  p_1_star <span class="sc">-</span> p_2_star</span>
+<span id="cb507-20"><a href="tareas.html#cb507-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb507-21"><a href="tareas.html#cb507-21" aria-hidden="true" tabindex="-1"></a>ee_boot <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">1000</span>, <span class="fu">dif_p</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>() <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span>
+<span id="cb507-22"><a href="tareas.html#cb507-22" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">-</span> <span class="fl">1.645</span> <span class="sc">*</span> ee_boot</span>
+<span id="cb507-23"><a href="tareas.html#cb507-23" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">+</span> <span class="fl">1.645</span> <span class="sc">*</span> ee_boot</span>
+<span id="cb507-24"><a href="tareas.html#cb507-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-25"><a href="tareas.html#cb507-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-26"><a href="tareas.html#cb507-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejercicio 2: t</span></span>
+<span id="cb507-27"><a href="tareas.html#cb507-27" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="fl">9.5</span></span>
+<span id="cb507-28"><a href="tareas.html#cb507-28" aria-hidden="true" tabindex="-1"></a>ee_hat <span class="ot">&lt;-</span> <span class="fl">1.1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
+<span id="cb507-29"><a href="tareas.html#cb507-29" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_hat</span>
+<span id="cb507-30"><a href="tareas.html#cb507-30" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(t, <span class="at">df =</span> <span class="dv">19</span>)</span>
+<span id="cb507-31"><a href="tareas.html#cb507-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-32"><a href="tareas.html#cb507-32" aria-hidden="true" tabindex="-1"></a><span class="co"># podemos calcular el error estándar con boostrap paramétrico</span></span>
+<span id="cb507-33"><a href="tareas.html#cb507-33" aria-hidden="true" tabindex="-1"></a>ee_boot_hat <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">10000</span>, <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">9.5</span>, <span class="fl">1.1</span>) <span class="sc">|&gt;</span> <span class="fu">mean</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>() <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span>
+<span id="cb507-34"><a href="tareas.html#cb507-34" aria-hidden="true" tabindex="-1"></a>ee_boot_hat</span>
+<span id="cb507-35"><a href="tareas.html#cb507-35" aria-hidden="true" tabindex="-1"></a>ee_hat <span class="ot">&lt;-</span> <span class="fl">1.1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
+<span id="cb507-36"><a href="tareas.html#cb507-36" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_boot_hat</span>
+<span id="cb507-37"><a href="tareas.html#cb507-37" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(t, <span class="at">df =</span> <span class="dv">19</span>)</span>
+<span id="cb507-38"><a href="tareas.html#cb507-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-39"><a href="tareas.html#cb507-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Con simulación es equivalente a una prueba Wald, con la misma deficiencia que</span></span>
+<span id="cb507-40"><a href="tareas.html#cb507-40" aria-hidden="true" tabindex="-1"></a><span class="co"># una prueba de Wald que asume la varianza conocida y da resultados un poco</span></span>
+<span id="cb507-41"><a href="tareas.html#cb507-41" aria-hidden="true" tabindex="-1"></a><span class="co"># diferentes con tamaño de muestra chicos</span></span>
+<span id="cb507-42"><a href="tareas.html#cb507-42" aria-hidden="true" tabindex="-1"></a>sims_mu <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">20000</span>, <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">9.5</span>, <span class="fl">1.1</span>) <span class="sc">|&gt;</span> <span class="fu">mean</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>()</span>
+<span id="cb507-43"><a href="tareas.html#cb507-43" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">mean</span>(sims_mu <span class="sc">&lt;=</span> <span class="fl">9.2</span>)</span>
+<span id="cb507-44"><a href="tareas.html#cb507-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-45"><a href="tareas.html#cb507-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Wald</span></span>
+<span id="cb507-46"><a href="tareas.html#cb507-46" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_hat</span>
+<span id="cb507-47"><a href="tareas.html#cb507-47" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(w)</span>
+<span id="cb507-48"><a href="tareas.html#cb507-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb507-49"><a href="tareas.html#cb507-49" aria-hidden="true" tabindex="-1"></a><span class="co"># en este ejemplo era más apropuado la t por que n-1=19 si tiene diferencias</span></span>
+<span id="cb507-50"><a href="tareas.html#cb507-50" aria-hidden="true" tabindex="-1"></a><span class="co"># entre la t y la normal</span></span></code></pre></div>
 
 </div>
 </div>

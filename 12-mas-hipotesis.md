@@ -267,7 +267,7 @@ es $\hat{p}_1 = 0.85$, y la tasa del segundo es de $\hat{p}_2 = 0.91$. ¿Estos
 datos son consistentes con la hipótesis de que los algoritmos tienen desempeño 
 muy similar? Es decir, queremos probar la hipótesis $p_1 = p_2$.
 
-Calculamos la estidística de Wald:
+Calculamos la estadística de Wald:
 
 
 ```r
@@ -428,6 +428,9 @@ c(w = w, valor_p = valor_p) %>% round(3)
 ##  -2.677   0.007
 ```
 
+
+
+
 Y vemos que tenemos evidencia considerable de que el desempeño no es el mismo:
 el algoritmo 2 parece ser mejor.
 
@@ -446,7 +449,7 @@ supuestos distribucionales (modelos probabilísticos), pues
 estas pruebas se basan en la función de verosimilitud $\mathcal{L}(\theta; x_1,\ldots, x_n)$.
 
 **Ejemplo**. Supongamos que tenemos la hipótesis nula de que una moneda
-es justa ($p =0.05$ de sol). En 120 tiros de la moneda (que suponemos
+es justa ($p =0.5$ de sol). En 120 tiros de la moneda (que suponemos
 independientes), observamos 75 soles.
 Recordemos la función de log-verosimilitud para el modelo binomial 
 (ignorando constantes que no dependen de $p$) es
@@ -541,7 +544,7 @@ sims_tbl <- tibble(sim_x = simulados_nula) %>%
   mutate(lambda = map_dbl(sim_x, ~ lambda(n_volados, .x, p_0 = 0.5)))
 ggplot(sims_tbl, aes(x = lambda)) + 
   geom_histogram(binwidth = 0.7) +
-  geom_vline(xintercept = 2.92, colour = "red")
+  geom_vline(xintercept = lambda_obs, color = "red")
 ```
 
 <img src="12-mas-hipotesis_files/figure-html/unnamed-chunk-20-1.png" width="480" style="display: block; margin: auto;" />

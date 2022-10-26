@@ -634,7 +634,7 @@ el algoritmo 2. El algoritmo 1 corre en 1 hora, y el algoritmo 2 tarda 24 horas.
 es <span class="math inline">\(\hat{p}_1 = 0.85\)</span>, y la tasa del segundo es de <span class="math inline">\(\hat{p}_2 = 0.91\)</span>. ¿Estos
 datos son consistentes con la hipótesis de que los algoritmos tienen desempeño
 muy similar? Es decir, queremos probar la hipótesis <span class="math inline">\(p_1 = p_2\)</span>.</p>
-<p>Calculamos la estidística de Wald:</p>
+<p>Calculamos la estadística de Wald:</p>
 <div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="más-de-pruebas-de-hipótesis-e-intervalos.html#cb375-1" aria-hidden="true" tabindex="-1"></a>n_1 <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb375-2"><a href="más-de-pruebas-de-hipótesis-e-intervalos.html#cb375-2" aria-hidden="true" tabindex="-1"></a>n_2 <span class="ot">&lt;-</span> <span class="dv">250</span></span>
 <span id="cb375-3"><a href="más-de-pruebas-de-hipótesis-e-intervalos.html#cb375-3" aria-hidden="true" tabindex="-1"></a>p_hat_1 <span class="ot">&lt;-</span> <span class="fl">0.86</span></span>
@@ -751,7 +751,7 @@ especificas.</p>
 supuestos distribucionales (modelos probabilísticos), pues
 estas pruebas se basan en la función de verosimilitud <span class="math inline">\(\mathcal{L}(\theta; x_1,\ldots, x_n)\)</span>.</p>
 <p><strong>Ejemplo</strong>. Supongamos que tenemos la hipótesis nula de que una moneda
-es justa (<span class="math inline">\(p =0.05\)</span> de sol). En 120 tiros de la moneda (que suponemos
+es justa (<span class="math inline">\(p =0.5\)</span> de sol). En 120 tiros de la moneda (que suponemos
 independientes), observamos 75 soles.
 Recordemos la función de log-verosimilitud para el modelo binomial
 (ignorando constantes que no dependen de <span class="math inline">\(p\)</span>) es
@@ -827,7 +827,7 @@ y ver cómo se distribuye la estadística <span class="math inline">\(\lambda\)<
 <span id="cb390-15"><a href="más-de-pruebas-de-hipótesis-e-intervalos.html#cb390-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lambda =</span> <span class="fu">map_dbl</span>(sim_x, <span class="sc">~</span> <span class="fu">lambda</span>(n_volados, .x, <span class="at">p_0 =</span> <span class="fl">0.5</span>)))</span>
 <span id="cb390-16"><a href="más-de-pruebas-de-hipótesis-e-intervalos.html#cb390-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_tbl, <span class="fu">aes</span>(<span class="at">x =</span> lambda)) <span class="sc">+</span> </span>
 <span id="cb390-17"><a href="más-de-pruebas-de-hipótesis-e-intervalos.html#cb390-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb390-18"><a href="más-de-pruebas-de-hipótesis-e-intervalos.html#cb390-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">2.92</span>, <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<span id="cb390-18"><a href="más-de-pruebas-de-hipótesis-e-intervalos.html#cb390-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> lambda_obs, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="12-mas-hipotesis_files/figure-html/unnamed-chunk-20-1.png" width="480" style="display: block; margin: auto;" />
 Con esta aproximación a la distribución de referencia podemos calcular
 el valor p en nuestro ejemplo anterior:</p>
