@@ -347,7 +347,56 @@ distinta. Colecta mediciones de 20 mujeres saludables y encuentra que la media
 es de 9.2 y la desviación estándar muestral de 1.1. Escribe la hipótesis nula, 
 realiza una prueba de hipótesis e interpreta los resultados.
 
-2. (Chihara) Los datos [Alelager](https://raw.githubusercontent.com/tereom/fundamentos/render-html/data/Alelager.csv) contienen unformación de calorías y alcohol 
-(por volumen) para una muestra de cervezas ale y lager (por 12 oz). Investiga la 
-hipótesis que las ales tienen más calorías que las lager (usando lo visto la clase del lunes).
+```{r, eval = FALSE}
+# Respuestas
+#Ejercicio 1: bootstrap
+n_1 <- 200; n_2 <-  200
+X_1 = 160; X_2 <- 148
+
+p_1 <- X_1/n_1
+p_2 <- X_2 / n_2
+
+ee <- sqrt(p_1*(1 - p_1) / n_2 + p_2*(1 - p_2) / n_2)
+
+#delta
+(p_1 - p_2) - 1.645 * ee
+(p_1 - p_2) + 1.645 * ee
+
+# bootstarp
+dif_p <- function() {
+  p_1_star <- rbinom(1, 200, 160/200) / 200
+  p_2_star <- rbinom(1, 200, 148/200) / 200
+  p_1_star - p_2_star
+}
+ee_boot <- rerun(1000, dif_p()) |> flatten_dbl() |> sd()
+(p_1 - p_2) - 1.645 * ee_boot
+(p_1 - p_2) + 1.645 * ee_boot
+
+
+# Ejercicio 2: t
+mu_0 <- 9.5
+ee_hat <- 1.1 / sqrt(20)
+t <- (9.2 - mu_0) / ee_hat
+2 * pt(t, df = 19)
+
+# podemos calcular el error estándar con boostrap paramétrico
+ee_boot_hat <- rerun(10000, rnorm(20, 9.5, 1.1) |> mean()) |> flatten_dbl() |> sd()
+ee_boot_hat
+ee_hat <- 1.1 / sqrt(20)
+t <- (9.2 - mu_0) / ee_boot_hat
+2 * pt(t, df = 19)
+
+# Con simulación es equivalente a una prueba Wald, con la misma deficiencia que
+# una prueba de Wald que asume la varianza conocida y da resultados un poco
+# diferentes con tamaño de muestra chicos
+sims_mu <- rerun(20000, rnorm(20, 9.5, 1.1) |> mean()) |> flatten_dbl()
+2 * mean(sims_mu <= 9.2)
+
+# Wald
+w <- (9.2 - mu_0) / ee_hat
+2 * pnorm(w)
+
+# en este ejemplo era más apropuado la t por que n-1=19 si tiene diferencias
+# entre la t y la normal
+```
 

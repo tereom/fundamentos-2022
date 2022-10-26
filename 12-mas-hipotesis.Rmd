@@ -250,7 +250,7 @@ es $\hat{p}_1 = 0.85$, y la tasa del segundo es de $\hat{p}_2 = 0.91$. ¿Estos
 datos son consistentes con la hipótesis de que los algoritmos tienen desempeño 
 muy similar? Es decir, queremos probar la hipótesis $p_1 = p_2$.
 
-Calculamos la estidística de Wald:
+Calculamos la estadística de Wald:
 
 ```{r}
 n_1 <- 100
@@ -365,6 +365,9 @@ valor_p <- 2 * (1 - pnorm(abs(w)))
 c(w = w, valor_p = valor_p) %>% round(3)
 ```
 
+
+
+
 Y vemos que tenemos evidencia considerable de que el desempeño no es el mismo:
 el algoritmo 2 parece ser mejor.
 
@@ -385,7 +388,7 @@ supuestos distribucionales (modelos probabilísticos), pues
 estas pruebas se basan en la función de verosimilitud $\mathcal{L}(\theta; x_1,\ldots, x_n)$.
 
 **Ejemplo**. Supongamos que tenemos la hipótesis nula de que una moneda
-es justa ($p =0.05$ de sol). En 120 tiros de la moneda (que suponemos
+es justa ($p =0.5$ de sol). En 120 tiros de la moneda (que suponemos
 independientes), observamos 75 soles.
 Recordemos la función de log-verosimilitud para el modelo binomial 
 (ignorando constantes que no dependen de $p$) es
@@ -480,7 +483,7 @@ sims_tbl <- tibble(sim_x = simulados_nula) %>%
   mutate(lambda = map_dbl(sim_x, ~ lambda(n_volados, .x, p_0 = 0.5)))
 ggplot(sims_tbl, aes(x = lambda)) + 
   geom_histogram(binwidth = 0.7) +
-  geom_vline(xintercept = 2.92, colour = "red")
+  geom_vline(xintercept = lambda_obs, color = "red")
 ```
 Con esta aproximación a la distribución de referencia podemos calcular
 el valor p en nuestro ejemplo anterior:
