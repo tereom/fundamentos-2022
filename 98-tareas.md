@@ -410,3 +410,38 @@ w <- (9.2 - mu_0) / ee_hat
 # entre la t y la normal
 ```
 
+## 11. Más pruebas de hipótesis {-}
+
+
+1. (Wasserman) Mendel criaba chícharos de semillas lisas amarillas y de semillas
+corrugadas verdes. Éstas daban lugar a 4 tipos de descendientes: amarrillas lisas, amarillas corrugadas, verdes lisas y verdes corrugadas. El número de cada una
+es multinomial con parámetro $p=(p_1, p_2, p_3, p_4)$. De acuerdo a su teoría de 
+herencia este vector de probabilidades es:
+$$p=(9/16,3/16,3/16,1/16)$$
+A lo largo de $n=556$ experimentos observó $x=(315,101,108,32)$. Utiliza la prueba
+de cociente de verosimilitudes para probar $H_0:p=p_0$ contra $H_0:p\ne p_0$.
+
+2. (Wasserman) Sea $X=(X_1,\dots,X_n)\sim Uniforme(0,\theta)$ y $T=max(X)$ (el 
+máximo de $X$). Queremos probar:
+
+$H_0: \theta=1/2$ contra $H_1:\theta>1/2$
+
+En este caso la prueba Wald no es apropiada pues $T$ no converge a la Normal. 
+Supongamos que decidimos probar la hipótesis rechazando $H_0$ si $T>c$.
+
+ * Encuentra la función de poder.  
+ * ¿Qué valor de $c$ corresponde a un tamaño de prueba $\alpha=0.05$?  
+ * En una muestra de tamaño $n=20$ con $T=0.48$ ¿cuál es el valor $p$?, ¿qué 
+ concluyes acerca de $H_0$?  
+ * En una muestra de tamaño $n=20$ con $T=0.52$ ¿cuál es el valor $p$?, ¿qué 
+ concluyes acerca de $H_0$?
+
+
+3. Sean $X_1, ...X_n \sim Poisson(\lambda)$, 
+
+* Sea $\lambda_0>0$. ¿Cuál es la prueba Wald para 
+$H_0: \lambda = \lambda_0, H_1: \lambda \neq \lambda_0$
+
+* Si $\lambda_0=1$, $n=20$ y $\alpha = 0.05$. Simula  $X_1, ...X_n \sim Poisson(\lambda_0)$ y realiza la prueba Wald, repite 1000 veces y registra
+el porcentaje de veces que rechazas $H_0$, qué tan cerca te queda el 
+error del tipo 1 de $0.05$?

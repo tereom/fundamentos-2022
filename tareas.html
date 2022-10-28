@@ -411,6 +411,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#máxima-verosimilitud-y-bootstrap-paramétrico"><i class="fa fa-check"></i>9. Máxima verosimilitud y bootstrap paramétrico</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#bootstrap-y-más-pruebas-de-hipótesis"><i class="fa fa-check"></i>10. Bootstrap y más pruebas de hipótesis</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#más-pruebas-de-hipótesis"><i class="fa fa-check"></i>11. Más pruebas de hipótesis</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -771,6 +772,44 @@ realiza una prueba de hipótesis e interpreta los resultados.</li>
 <span id="cb507-48"><a href="tareas.html#cb507-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb507-49"><a href="tareas.html#cb507-49" aria-hidden="true" tabindex="-1"></a><span class="co"># en este ejemplo era más apropuado la t por que n-1=19 si tiene diferencias</span></span>
 <span id="cb507-50"><a href="tareas.html#cb507-50" aria-hidden="true" tabindex="-1"></a><span class="co"># entre la t y la normal</span></span></code></pre></div>
+</div>
+<div id="más-pruebas-de-hipótesis" class="section level2 unnumbered hasAnchor">
+<h2>11. Más pruebas de hipótesis<a href="tareas.html#más-pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>(Wasserman) Mendel criaba chícharos de semillas lisas amarillas y de semillas
+corrugadas verdes. Éstas daban lugar a 4 tipos de descendientes: amarrillas lisas, amarillas corrugadas, verdes lisas y verdes corrugadas. El número de cada una
+es multinomial con parámetro <span class="math inline">\(p=(p_1, p_2, p_3, p_4)\)</span>. De acuerdo a su teoría de
+herencia este vector de probabilidades es:
+<span class="math display">\[p=(9/16,3/16,3/16,1/16)\]</span>
+A lo largo de <span class="math inline">\(n=556\)</span> experimentos observó <span class="math inline">\(x=(315,101,108,32)\)</span>. Utiliza la prueba
+de cociente de verosimilitudes para probar <span class="math inline">\(H_0:p=p_0\)</span> contra <span class="math inline">\(H_0:p\ne p_0\)</span>.</p></li>
+<li><p>(Wasserman) Sea <span class="math inline">\(X=(X_1,\dots,X_n)\sim Uniforme(0,\theta)\)</span> y <span class="math inline">\(T=max(X)\)</span> (el
+máximo de <span class="math inline">\(X\)</span>). Queremos probar:</p></li>
+</ol>
+<p><span class="math inline">\(H_0: \theta=1/2\)</span> contra <span class="math inline">\(H_1:\theta&gt;1/2\)</span></p>
+<p>En este caso la prueba Wald no es apropiada pues <span class="math inline">\(T\)</span> no converge a la Normal.
+Supongamos que decidimos probar la hipótesis rechazando <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T&gt;c\)</span>.</p>
+<ul>
+<li>Encuentra la función de poder.<br />
+</li>
+<li>¿Qué valor de <span class="math inline">\(c\)</span> corresponde a un tamaño de prueba <span class="math inline">\(\alpha=0.05\)</span>?<br />
+</li>
+<li>En una muestra de tamaño <span class="math inline">\(n=20\)</span> con <span class="math inline">\(T=0.48\)</span> ¿cuál es el valor <span class="math inline">\(p\)</span>?, ¿qué
+concluyes acerca de <span class="math inline">\(H_0\)</span>?<br />
+</li>
+<li>En una muestra de tamaño <span class="math inline">\(n=20\)</span> con <span class="math inline">\(T=0.52\)</span> ¿cuál es el valor <span class="math inline">\(p\)</span>?, ¿qué
+concluyes acerca de <span class="math inline">\(H_0\)</span>?</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Sean <span class="math inline">\(X_1, ...X_n \sim Poisson(\lambda)\)</span>,</li>
+</ol>
+<ul>
+<li><p>Sea <span class="math inline">\(\lambda_0&gt;0\)</span>. ¿Cuál es la prueba Wald para
+<span class="math inline">\(H_0: \lambda = \lambda_0, H_1: \lambda \neq \lambda_0\)</span></p></li>
+<li><p>Si <span class="math inline">\(\lambda_0=1\)</span>, <span class="math inline">\(n=20\)</span> y <span class="math inline">\(\alpha = 0.05\)</span>. Simula <span class="math inline">\(X_1, ...X_n \sim Poisson(\lambda_0)\)</span> y realiza la prueba Wald, repite 1000 veces y registra
+el porcentaje de veces que rechazas <span class="math inline">\(H_0\)</span>, qué tan cerca te queda el
+error del tipo 1 de <span class="math inline">\(0.05\)</span>?</p></li>
+</ul>
 
 </div>
 </div>
