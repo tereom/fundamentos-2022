@@ -223,6 +223,8 @@ la probabilidad inicial de la moneda 1 a 0.9)?
 
 ```
 
+
+
 Justifica las siguientes aseveraciones (para este ejemplo):
 
 ```{block, type='ejercicio'}
@@ -238,8 +240,6 @@ muchas observaciones para que se pueda concentrar en otros valores diferentes a
 los de la inicial.
 
 ```
-
-Puedes experimentar en esta [shiny app](https://tereom.shinyapps.io/app_bernoulli/) con diferentes iniciales, número de volados y observación de éxitos.
 
 Ahora resumimos los elementos básicos de la inferencia bayesiana, que son
 relativamente simples:
@@ -267,7 +267,9 @@ arriba, es una constante de normalización.
 
 
 En estadística Bayesiana, las probablidades posteriores $P(\theta|X)$ dan toda
-la información que necesitamos para hacer inferencia. ¿Cuándo damos probablidad
+la información que necesitamos para hacer inferencia. 
+
+¿Cuándo damos probablidad
 alta a un parámetro particular $\theta$? Cuando su verosimilitud es alta y/o
 cuando su probabilidad inicial es alta. De este modo, la posterior combina la
 información inicial que tenemos acerca de los parámetros con la información en
@@ -308,6 +310,7 @@ que $\theta$ está en el intervalo
 ```{r}
 quantile(sim_inicial$theta, c(0.025, 0.975)) %>% round(2)
 ```
+
 Es difícil justificar en abstracto por qué escogeriamos una inicial con esta
 forma. *Aunque esto los detallaremos más adelante*, puedes pensar, por el
 momento, que alguien observó algunos casos de esta población, y quizá vio tres éxitos y tres fracasos. Esto sugeriría que es poco probable que la probablidad
@@ -339,6 +342,7 @@ sims <- bind_rows(sim_inicial, sim_posterior)
 ggplot(sims, aes(x = theta, fill = dist)) +
   geom_histogram(aes(x = theta), bins = 30, alpha = 0.5, position = "identity")
 ```
+
 La posterior nos dice cuáles son las *posibilidades* de dónde puede estar
 el parámetro $\theta$. Nótese que ahora excluye prácticamente valores más chicos
 que 0.25 o mayores que 0.9. Esta distribución posterior es el objeto con el
@@ -371,6 +375,9 @@ intervalo es muy amplio (va de 0.15 a 0.85)
 - El **intervalo de la posterior** actualiza nuestras creencias acerca de $\theta$
 una vez que observamos los datos, y es considerablemente más angosto y por lo tanto
 informativo.
+
+
+Puedes experimentar en esta [shiny app](https://tereom.shinyapps.io/app_bernoulli/) con diferentes iniciales, número de volados y observación de éxitos.
 
 
 **Observaciones**:

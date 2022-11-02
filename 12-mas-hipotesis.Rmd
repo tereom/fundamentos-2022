@@ -832,6 +832,11 @@ Cuando diseñamos una prueba de este tipo, quisiéramos minimizar dos tipos de e
 - Rechazar la hipótesis nula $H_0$ cuando es cierta: **Error tipo I**
 - No rechazar la hipótesis nula $H_0$ cuando $H_0$ es falsa: **Error tipo II**
 
+<!-- | Resultados de la prueba -->
+<!-- | Rechazar la hipótesis nula | No rechazar la hipótesis nula -->
+<!-- Hipótesis nula es cierta | Error tipo I  | Decisión correcta -->
+<!-- Hipótesis alterna es cierta | Decisión correcta | Error tipo II -->
+
 La gravedad de cada error depende del problema. En nuestro ejemplo de la medicina, por
 ejemplo: 
 
