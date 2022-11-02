@@ -412,6 +412,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#máxima-verosimilitud-y-bootstrap-paramétrico"><i class="fa fa-check"></i>9. Máxima verosimilitud y bootstrap paramétrico</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#bootstrap-y-más-pruebas-de-hipótesis"><i class="fa fa-check"></i>10. Bootstrap y más pruebas de hipótesis</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#más-pruebas-de-hipótesis"><i class="fa fa-check"></i>11. Más pruebas de hipótesis</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#introducción-a-inferencia-bayesiana-2"><i class="fa fa-check"></i>12. Introducción a inferencia bayesiana</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -790,7 +791,7 @@ máximo de <span class="math inline">\(X\)</span>). Queremos probar:</p></li>
 <p>En este caso la prueba Wald no es apropiada pues <span class="math inline">\(T\)</span> no converge a la Normal.
 Supongamos que decidimos probar la hipótesis rechazando <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T&gt;c\)</span>.</p>
 <ul>
-<li>Encuentra la función de poder.<br />
+<li>Encuentra la función de potencia<br />
 </li>
 <li>¿Qué valor de <span class="math inline">\(c\)</span> corresponde a un tamaño de prueba <span class="math inline">\(\alpha=0.05\)</span>?<br />
 </li>
@@ -801,7 +802,7 @@ concluyes acerca de <span class="math inline">\(H_0\)</span>?<br />
 concluyes acerca de <span class="math inline">\(H_0\)</span>?</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li>Sean <span class="math inline">\(X_1, ...X_n \sim Poisson(\lambda)\)</span>,</li>
+<li>(Wasserman) Sean <span class="math inline">\(X_1, ...X_n \sim Poisson(\lambda)\)</span>,</li>
 </ol>
 <ul>
 <li><p>Sea <span class="math inline">\(\lambda_0&gt;0\)</span>. ¿Cuál es la prueba Wald para
@@ -809,6 +810,31 @@ concluyes acerca de <span class="math inline">\(H_0\)</span>?</li>
 <li><p>Si <span class="math inline">\(\lambda_0=1\)</span>, <span class="math inline">\(n=20\)</span> y <span class="math inline">\(\alpha = 0.05\)</span>. Simula <span class="math inline">\(X_1, ...X_n \sim Poisson(\lambda_0)\)</span> y realiza la prueba Wald, repite 1000 veces y registra
 el porcentaje de veces que rechazas <span class="math inline">\(H_0\)</span>, qué tan cerca te queda el
 error del tipo 1 de <span class="math inline">\(0.05\)</span>?</p></li>
+</ul>
+</div>
+<div id="introducción-a-inferencia-bayesiana-2" class="section level2 unnumbered hasAnchor">
+<h2>12. Introducción a inferencia bayesiana<a href="tareas.html#introducción-a-inferencia-bayesiana-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Revisa el ejercicio introductorio a inferencia bayesiana, experimenta con los
+valores y contesta:</p>
+<ul>
+<li>¿Qué pasa cuando el número de soles es 0? ¿Cómo cambian las probabilidades
+posteriores de cada moneda?</li>
+<li>Incrementa el número de volados, por ejemplo a 10. ¿Qué pasa si observaste
+8 soles, por ejemplo? ¿Y si observaste 0?</li>
+<li>¿Qué pasa si cambias las probabilidades iniciales (por ejemplo incrementas
+la probabilidad inicial de la moneda 1 a 0.9)?</li>
+</ul>
+<p>Justifica las siguientes aseveraciones (para este ejemplo):</p>
+<ul>
+<li>Las probabilidades posteriores o finales son una especie de punto intermedio
+entre verosimilitud y probablidades iniciales.</li>
+<li>Si tenemos pocas observaciones, las probabilidades posteriores son similares
+a las iniciales.</li>
+<li>Cuando tenemos muchos datos, las probabilidades posteriores están más
+concentradas, y no es tan importante la inicial.</li>
+<li>Si la inicial está muy concentrada en algún valor, la posterior requiere de
+muchas observaciones para que se pueda concentrar en otros valores diferentes a
+los de la inicial.</li>
 </ul>
 
 </div>

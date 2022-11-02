@@ -429,7 +429,7 @@ $H_0: \theta=1/2$ contra $H_1:\theta>1/2$
 En este caso la prueba Wald no es apropiada pues $T$ no converge a la Normal. 
 Supongamos que decidimos probar la hipótesis rechazando $H_0$ si $T>c$.
 
- * Encuentra la función de poder.  
+ * Encuentra la función de potencia  
  * ¿Qué valor de $c$ corresponde a un tamaño de prueba $\alpha=0.05$?  
  * En una muestra de tamaño $n=20$ con $T=0.48$ ¿cuál es el valor $p$?, ¿qué 
  concluyes acerca de $H_0$?  
@@ -437,7 +437,7 @@ Supongamos que decidimos probar la hipótesis rechazando $H_0$ si $T>c$.
  concluyes acerca de $H_0$?
 
 
-3. Sean $X_1, ...X_n \sim Poisson(\lambda)$, 
+3. (Wasserman) Sean $X_1, ...X_n \sim Poisson(\lambda)$, 
 
 * Sea $\lambda_0>0$. ¿Cuál es la prueba Wald para 
 $H_0: \lambda = \lambda_0, H_1: \lambda \neq \lambda_0$
@@ -445,3 +445,28 @@ $H_0: \lambda = \lambda_0, H_1: \lambda \neq \lambda_0$
 * Si $\lambda_0=1$, $n=20$ y $\alpha = 0.05$. Simula  $X_1, ...X_n \sim Poisson(\lambda_0)$ y realiza la prueba Wald, repite 1000 veces y registra
 el porcentaje de veces que rechazas $H_0$, qué tan cerca te queda el 
 error del tipo 1 de $0.05$?
+
+
+## 12. Introducción a inferencia bayesiana {-}
+
+Revisa el ejercicio introductorio a inferencia bayesiana, experimenta con los 
+valores y contesta:
+
+- ¿Qué pasa cuando el número de soles es 0? ¿Cómo cambian las probabilidades
+posteriores de cada moneda?
+- Incrementa el número de volados, por ejemplo a 10. ¿Qué pasa si observaste
+8 soles, por ejemplo? ¿Y si observaste 0?
+- ¿Qué pasa si cambias las probabilidades iniciales (por ejemplo incrementas
+la probabilidad inicial de la moneda 1 a 0.9)?
+
+Justifica las siguientes aseveraciones (para este ejemplo):
+
+- Las probabilidades posteriores o finales son una especie de punto intermedio
+entre verosimilitud y probablidades iniciales.
+- Si tenemos pocas observaciones, las probabilidades posteriores son similares
+a las iniciales.
+- Cuando tenemos muchos datos, las probabilidades posteriores están más
+concentradas, y no es tan importante la inicial.
+- Si la inicial está muy concentrada en algún valor, la posterior requiere de
+muchas observaciones para que se pueda concentrar en otros valores diferentes a
+los de la inicial.

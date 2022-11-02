@@ -412,6 +412,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#máxima-verosimilitud-y-bootstrap-paramétrico"><i class="fa fa-check"></i>9. Máxima verosimilitud y bootstrap paramétrico</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#bootstrap-y-más-pruebas-de-hipótesis"><i class="fa fa-check"></i>10. Bootstrap y más pruebas de hipótesis</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#más-pruebas-de-hipótesis"><i class="fa fa-check"></i>11. Más pruebas de hipótesis</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#introducción-a-inferencia-bayesiana-2"><i class="fa fa-check"></i>12. Introducción a inferencia bayesiana</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -665,7 +666,6 @@ valores diferentes a los de la inicial.
 </li>
 </ul>
 </div>
-<p>Puedes experimentar en esta <a href="https://tereom.shinyapps.io/app_bernoulli/">shiny app</a> con diferentes iniciales, número de volados y observación de éxitos.</p>
 <p>Ahora resumimos los elementos básicos de la inferencia bayesiana, que son
 relativamente simples:</p>
 <div class="mathblock">
@@ -706,7 +706,8 @@ constante de normalización.
 </p>
 </div>
 <p>En estadística Bayesiana, las probablidades posteriores <span class="math inline">\(P(\theta|X)\)</span> dan toda
-la información que necesitamos para hacer inferencia. ¿Cuándo damos probablidad
+la información que necesitamos para hacer inferencia.</p>
+<p>¿Cuándo damos probablidad
 alta a un parámetro particular <span class="math inline">\(\theta\)</span>? Cuando su verosimilitud es alta y/o
 cuando su probabilidad inicial es alta. De este modo, la posterior combina la
 información inicial que tenemos acerca de los parámetros con la información en
@@ -737,7 +738,7 @@ valor no tan lejano de 0.5. Por ejemplo, con probabilidad 0.95 creemos
 que <span class="math inline">\(\theta\)</span> está en el intervalo</p>
 <div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="introducción-a-inferencia-bayesiana-1.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(sim_inicial<span class="sc">$</span>theta, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>)) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##  2.5% 97.5% 
-##  0.15  0.86</code></pre>
+##  0.14  0.86</code></pre>
 <p>Es difícil justificar en abstracto por qué escogeriamos una inicial con esta
 forma. <em>Aunque esto los detallaremos más adelante</em>, puedes pensar, por el
 momento, que alguien observó algunos casos de esta población, y quizá vio tres éxitos y tres fracasos. Esto sugeriría que es poco probable que la probablidad
@@ -760,8 +761,8 @@ Concluimos entonces que la posterior tiene una distribución <span class="math i
 <span id="cb439-3"><a href="introducción-a-inferencia-bayesiana-1.html#cb439-3" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sim_inicial, sim_posterior)</span>
 <span id="cb439-4"><a href="introducción-a-inferencia-bayesiana-1.html#cb439-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims, <span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">fill =</span> dist)) <span class="sc">+</span></span>
 <span id="cb439-5"><a href="introducción-a-inferencia-bayesiana-1.html#cb439-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<p><img src="14-intro-bayesiana_files/figure-html/unnamed-chunk-9-1.png" width="480" style="display: block; margin: auto;" />
-La posterior nos dice cuáles son las <em>posibilidades</em> de dónde puede estar
+<p><img src="14-intro-bayesiana_files/figure-html/unnamed-chunk-9-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>La posterior nos dice cuáles son las <em>posibilidades</em> de dónde puede estar
 el parámetro <span class="math inline">\(\theta\)</span>. Nótese que ahora excluye prácticamente valores más chicos
 que 0.25 o mayores que 0.9. Esta distribución posterior es el objeto con el
 que hacemos inferencia: nos dice dónde es creíble que esté el parámetro <span class="math inline">\(\theta\)</span>.</p>
@@ -772,8 +773,8 @@ usamos la media posterior:</p>
 <pre><code>## # A tibble: 2 × 2
 ##   dist      theta_hat
 ##   &lt;chr&gt;         &lt;dbl&gt;
-## 1 inicial       0.5  
-## 2 posterior     0.612</code></pre>
+## 1 inicial       0.502
+## 2 posterior     0.611</code></pre>
 <p>Nota que el estimador de máxima verosimilitud es <span class="math inline">\(\hat{p} = 19/30 = 0.63\)</span>, que
 es ligeramente diferente de la media posterior. ¿Por qué?</p>
 <p>Y podemos construir intervalos de percentiles, que en esta situación
@@ -786,7 +787,7 @@ suelen llamarse <em>intervalos de credibilidad</em>, por ejemplo:</p>
 ## # Groups:   dist [2]
 ##   dist      `0.025` `0.975`
 ##   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-## 1 inicial      0.15    0.86
+## 1 inicial      0.14    0.86
 ## 2 posterior    0.45    0.76</code></pre>
 <p>El segundo renglón nos da un intervalo posterior para <span class="math inline">\(\theta\)</span> de <em>credibilidad</em>
 95%. En inferencia bayesiana esto sustituye a los intervalos de confianza.</p>
@@ -797,6 +798,7 @@ intervalo es muy amplio (va de 0.15 a 0.85)</li>
 una vez que observamos los datos, y es considerablemente más angosto y por lo tanto
 informativo.</li>
 </ul>
+<p>Puedes experimentar en esta <a href="https://tereom.shinyapps.io/app_bernoulli/">shiny app</a> con diferentes iniciales, número de volados y observación de éxitos.</p>
 <p><strong>Observaciones</strong>:</p>
 <ul>
 <li>Nótese que escogimos una forma analítica fácil para la inicial, pues resultó

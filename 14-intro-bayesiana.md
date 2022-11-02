@@ -238,6 +238,8 @@ incrementas la probabilidad inicial de la moneda 1 a 0.9)?</li>
 </ul>
 </div>
 
+
+
 Justifica las siguientes aseveraciones (para este ejemplo):
 
 <div class="ejercicio">
@@ -253,8 +255,6 @@ requiere de muchas observaciones para que se pueda concentrar en otros
 valores diferentes a los de la inicial.</li>
 </ul>
 </div>
-
-Puedes experimentar en esta [shiny app](https://tereom.shinyapps.io/app_bernoulli/) con diferentes iniciales, número de volados y observación de éxitos.
 
 Ahora resumimos los elementos básicos de la inferencia bayesiana, que son
 relativamente simples:
@@ -285,7 +285,9 @@ constante de normalización.</p>
 
 
 En estadística Bayesiana, las probablidades posteriores $P(\theta|X)$ dan toda
-la información que necesitamos para hacer inferencia. ¿Cuándo damos probablidad
+la información que necesitamos para hacer inferencia. 
+
+¿Cuándo damos probablidad
 alta a un parámetro particular $\theta$? Cuando su verosimilitud es alta y/o
 cuando su probabilidad inicial es alta. De este modo, la posterior combina la
 información inicial que tenemos acerca de los parámetros con la información en
@@ -331,8 +333,9 @@ quantile(sim_inicial$theta, c(0.025, 0.975)) %>% round(2)
 
 ```
 ##  2.5% 97.5% 
-##  0.15  0.86
+##  0.14  0.86
 ```
+
 Es difícil justificar en abstracto por qué escogeriamos una inicial con esta
 forma. *Aunque esto los detallaremos más adelante*, puedes pensar, por el
 momento, que alguien observó algunos casos de esta población, y quizá vio tres éxitos y tres fracasos. Esto sugeriría que es poco probable que la probablidad
@@ -367,6 +370,7 @@ ggplot(sims, aes(x = theta, fill = dist)) +
 ```
 
 <img src="14-intro-bayesiana_files/figure-html/unnamed-chunk-9-1.png" width="480" style="display: block; margin: auto;" />
+
 La posterior nos dice cuáles son las *posibilidades* de dónde puede estar
 el parámetro $\theta$. Nótese que ahora excluye prácticamente valores más chicos
 que 0.25 o mayores que 0.9. Esta distribución posterior es el objeto con el
@@ -385,8 +389,8 @@ sims %>% group_by(dist) %>%
 ## # A tibble: 2 × 2
 ##   dist      theta_hat
 ##   <chr>         <dbl>
-## 1 inicial       0.5  
-## 2 posterior     0.612
+## 1 inicial       0.502
+## 2 posterior     0.611
 ```
 Nota que el estimador de máxima verosimilitud es $\hat{p} = 19/30 = 0.63$, que
 es ligeramente diferente de la media posterior. ¿Por qué?
@@ -407,7 +411,7 @@ sims %>% group_by(dist) %>%
 ## # Groups:   dist [2]
 ##   dist      `0.025` `0.975`
 ##   <chr>       <dbl>   <dbl>
-## 1 inicial      0.15    0.86
+## 1 inicial      0.14    0.86
 ## 2 posterior    0.45    0.76
 ```
 El segundo renglón nos da un intervalo posterior para $\theta$ de *credibilidad*
@@ -418,6 +422,9 @@ intervalo es muy amplio (va de 0.15 a 0.85)
 - El **intervalo de la posterior** actualiza nuestras creencias acerca de $\theta$
 una vez que observamos los datos, y es considerablemente más angosto y por lo tanto
 informativo.
+
+
+Puedes experimentar en esta [shiny app](https://tereom.shinyapps.io/app_bernoulli/) con diferentes iniciales, número de volados y observación de éxitos.
 
 
 **Observaciones**:
