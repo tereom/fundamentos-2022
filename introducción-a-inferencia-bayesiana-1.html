@@ -413,6 +413,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#bootstrap-y-más-pruebas-de-hipótesis"><i class="fa fa-check"></i>10. Bootstrap y más pruebas de hipótesis</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#más-pruebas-de-hipótesis"><i class="fa fa-check"></i>11. Más pruebas de hipótesis</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#introducción-a-inferencia-bayesiana-2"><i class="fa fa-check"></i>12. Introducción a inferencia bayesiana</a></li>
+<li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#modelo-beta-binomial"><i class="fa fa-check"></i>13. Modelo Beta-Binomial</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -718,7 +719,7 @@ sigue:</p>
 </div>
 <div id="ejemplo-estimando-una-proporción" class="section level2 unnumbered hasAnchor">
 <h2>Ejemplo: estimando una proporción<a href="introducción-a-inferencia-bayesiana-1.html#ejemplo-estimando-una-proporción" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Regresamos ahora a nuestro problema de estimar una proporción <span class="math inline">\(\theta\)</span> de una
+<p>Consideremos ahora el problema de estimar una proporción <span class="math inline">\(\theta\)</span> de una
 población dada usando una muestra iid <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> de variables
 Bernoulli. Ya sabemos calcular la
 verosimilitud (el modelo de los datos):</p>
@@ -738,7 +739,7 @@ valor no tan lejano de 0.5. Por ejemplo, con probabilidad 0.95 creemos
 que <span class="math inline">\(\theta\)</span> está en el intervalo</p>
 <div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="introducción-a-inferencia-bayesiana-1.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(sim_inicial<span class="sc">$</span>theta, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>)) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##  2.5% 97.5% 
-##  0.14  0.86</code></pre>
+##  0.15  0.85</code></pre>
 <p>Es difícil justificar en abstracto por qué escogeriamos una inicial con esta
 forma. <em>Aunque esto los detallaremos más adelante</em>, puedes pensar, por el
 momento, que alguien observó algunos casos de esta población, y quizá vio tres éxitos y tres fracasos. Esto sugeriría que es poco probable que la probablidad
@@ -773,7 +774,7 @@ usamos la media posterior:</p>
 <pre><code>## # A tibble: 2 × 2
 ##   dist      theta_hat
 ##   &lt;chr&gt;         &lt;dbl&gt;
-## 1 inicial       0.502
+## 1 inicial       0.503
 ## 2 posterior     0.611</code></pre>
 <p>Nota que el estimador de máxima verosimilitud es <span class="math inline">\(\hat{p} = 19/30 = 0.63\)</span>, que
 es ligeramente diferente de la media posterior. ¿Por qué?</p>
@@ -787,7 +788,7 @@ suelen llamarse <em>intervalos de credibilidad</em>, por ejemplo:</p>
 ## # Groups:   dist [2]
 ##   dist      `0.025` `0.975`
 ##   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-## 1 inicial      0.14    0.86
+## 1 inicial      0.15    0.85
 ## 2 posterior    0.45    0.76</code></pre>
 <p>El segundo renglón nos da un intervalo posterior para <span class="math inline">\(\theta\)</span> de <em>credibilidad</em>
 95%. En inferencia bayesiana esto sustituye a los intervalos de confianza.</p>
@@ -1013,7 +1014,7 @@ como distribuciones iniciales (dadas por 4 parámetros: <span class="math inline
 </ul>
 <p><strong>Observaciones</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Nótese que este último ejemplo tienen más de un parámetro. En estos casos,
+<li><p>Nótese que este último ejemplo tiene más de un parámetro. En estos casos,
 el objeto de interés es la <strong>posterior conjunta</strong> de los parámetros <span class="math inline">\(p(\theta_1,\theta_2,\cdots, \theta_p|x)\)</span>.
 Este último ejemplo es relativamente simple pues por la selección de iniciales,
 para simular de la conjunta de <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\tau\)</span> podemos simular primero <span class="math inline">\(\tau\)</span> (o <span class="math inline">\(\sigma\)</span>), y después
@@ -1049,7 +1050,7 @@ estándar es alrededor de 7 centímetros</p>
 <span id="cb460-3"><a href="introducción-a-inferencia-bayesiana-1.html#cb460-3" aria-hidden="true" tabindex="-1"></a><span class="co"># seleccionamos un valor para a, por ejemplo: si es más chico sigma tendrá más</span></span>
 <span id="cb460-4"><a href="introducción-a-inferencia-bayesiana-1.html#cb460-4" aria-hidden="true" tabindex="-1"></a><span class="co"># disperisón</span></span>
 <span id="cb460-5"><a href="introducción-a-inferencia-bayesiana-1.html#cb460-5" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb460-6"><a href="introducción-a-inferencia-bayesiana-1.html#cb460-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ponemos 8 = sqrt(b/a) -&gt; b = a * 64</span></span>
+<span id="cb460-6"><a href="introducción-a-inferencia-bayesiana-1.html#cb460-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ponemos 7 = sqrt(b/a) -&gt; b = a * 64</span></span>
 <span id="cb460-7"><a href="introducción-a-inferencia-bayesiana-1.html#cb460-7" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a <span class="sc">*</span> sigma_0<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb460-8"><a href="introducción-a-inferencia-bayesiana-1.html#cb460-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">a =</span> a, <span class="at">b =</span> b)</span></code></pre></div>
 <pre><code>##   a   b 
