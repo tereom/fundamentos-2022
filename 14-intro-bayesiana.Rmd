@@ -283,7 +283,7 @@ knitr::include_graphics('images/perros.png')
 
 ## Ejemplo: estimando una proporción {-}
 
-Regresamos ahora a nuestro problema de estimar una proporción $\theta$ de una
+Consideremos ahora el problema de estimar una proporción $\theta$ de una
 población dada usando una muestra iid $X_1,X_2,\ldots, X_n$ de variables
 Bernoulli.  Ya sabemos calcular la
 verosimilitud (el modelo de los datos):
@@ -617,7 +617,7 @@ como distribuciones iniciales (dadas por 4 parámetros: $\mu_0, n_0, \alpha,\bet
 
 **Observaciones**
 
-1. Nótese que este último ejemplo tienen más de un parámetro. En estos casos,
+1. Nótese que este último ejemplo tiene más de un parámetro. En estos casos,
 el objeto de interés es la **posterior conjunta** de los parámetros $p(\theta_1,\theta_2,\cdots, \theta_p|x)$.
 Este último ejemplo es relativamente simple pues por la selección de iniciales,
 para simular de la conjunta de $\mu$ y $\tau$ podemos simular primero $\tau$ (o $\sigma$), y después
@@ -660,7 +660,7 @@ sigma_0 <- 7
 # seleccionamos un valor para a, por ejemplo: si es más chico sigma tendrá más
 # disperisón
 a <- 3
-# ponemos 8 = sqrt(b/a) -> b = a * 64
+# ponemos 7 = sqrt(b/a) -> b = a * 64
 b <- a * sigma_0^2
 c(a = a, b = b)
 ```
