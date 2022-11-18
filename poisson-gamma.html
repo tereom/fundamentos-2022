@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Fundamentos de Estadística con Remuestreo</title>
+  <title>14. Poisson-Gamma | Fundamentos de Estadística con Remuestreo</title>
   <meta name="description" content="Curso de Fundamentos de Estadística con Remuestreo, maestría en Ciencia de Datos, ITAM, Otoño 2022." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Fundamentos de Estadística con Remuestreo" />
+  <meta property="og:title" content="14. Poisson-Gamma | Fundamentos de Estadística con Remuestreo" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Curso de Fundamentos de Estadística con Remuestreo, maestría en Ciencia de Datos, ITAM, Otoño 2022." />
   <meta name="github-repo" content="tereom/fundamentos-2022" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Fundamentos de Estadística con Remuestreo" />
+  <meta name="twitter:title" content="14. Poisson-Gamma | Fundamentos de Estadística con Remuestreo" />
   
   <meta name="twitter:description" content="Curso de Fundamentos de Estadística con Remuestreo, maestría en Ciencia de Datos, ITAM, Otoño 2022." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="temario.html"/>
+<link rel="prev" href="tareas.html"/>
+<link rel="next" href="referencias.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -437,32 +437,21 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Fundamentos de Estadística con Remuestreo</h1>
-<p class="author"><em>Teresa Ortiz, Alfredo Garbuno, Felipe González</em></p>
-</div>
-<div id="información-del-curso" class="section level1 unnumbered hasAnchor">
-<h1>Información del curso<a href="index.html#información-del-curso" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Notas del curso <em>Fundamentos de Estadística con Remuestreo</em>, este curso busca explicar los principios básicos de la estadística y su papel en el análisis de datos. Nuestro punto de vista es uno de fundamentos, con menos énfasis en recetas o técnicas particulares.</p>
-<div id="ligas" class="section level4 unnumbered hasAnchor">
-<h4>Ligas<a href="index.html#ligas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<ul>
-<li>Notas: <a href="https://tereom.github.io/fundamentos-2022/" class="uri">https://tereom.github.io/fundamentos-2022/</a><br />
-</li>
-<li>Repositorio con material: <a href="https://github.com/tereom/fundamentos-2022" class="uri">https://github.com/tereom/fundamentos-2022</a><br />
-</li>
-<li>Correo: <a href="mailto:teresa.ortiz.mancera@gmail.com">teresa.ortiz.mancera@gmail.com</a><br />
-</li>
-<li>Zoom clase (martes 4:00-7:00 pm): <a href="https://itam.zoom.us/j/98626655757" class="uri">https://itam.zoom.us/j/98626655757</a><br />
-</li>
-<li>Zoom sesiones de dudas (viernes 5:00-5:45 pm): <a href="https://itam.zoom.us/j/97547475945" class="uri">https://itam.zoom.us/j/97547475945</a><br />
-</li>
-<li>Canvas: <a href="https://itam.instructure.com/courses/7652" class="uri">https://itam.instructure.com/courses/7652</a><br />
-</li>
-</ul>
-<p></br></p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="Licencia Creative Commons" style="border-width:0"/></a><br />Este trabajo está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.</p>
-</div>
+<div id="poisson-gamma" class="section level1 unnumbered hasAnchor">
+<h1>14. Poisson-Gamma<a href="poisson-gamma.html#poisson-gamma" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Revisa el ejemplo de modelo Poisson de las notas.</p>
+<p>Sea <span class="math inline">\(\lambda\)</span> el número promedio de goles en el mundial de futból de mujeres. Analizaremos <span class="math inline">\(\lambda\)</span> usando el modelo Gamma-Poisson donde <span class="math inline">\(X_i\)</span> es el número observado de goles en una muestra de juegos del mundial:</p>
+<p><span class="math display">\[X_i|\lambda \sim Poisson(\lambda), X_1,...,X_n iid\]</span>
+<span class="math display">\[\lambda \sim Gamma(1,0.25)\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Simula de la distribución inicial para describir el conocimiento inicial de <span class="math inline">\(\lambda\)</span>. Reporta un intervalo del 95% y la media.</p></li>
+<li><p>¿Poqué sería razonable utilizar un modelo Poisson para los datos <span class="math inline">\(X_i\)</span>?</p></li>
+<li><p>Los datos wwc_2019_matches incluídos en el paquete fivethirtyeight incluyen información del número de goles por equipo del mundial 2019. Describe, y grafica el número total de goles.</p></li>
+<li><p>Identifica la distribución posterior de <span class="math inline">\(\lambda\)</span> y calcula un intervalo del 95% de credibilidad para <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Simula de la distribución predictiva posterior para diagnosticar si el modelo Poisson es apropiado para nuestros datos (revisa el ejemplo de clase, deberás simular conjuntos de datos del mismo tamaño que los datos observados.</p></li>
+<li><p>Utiliza la distribución predictiva posterior para crear un intervalo del 95% para una nueva observación.</p></li>
+</ol>
+
 </div>
 <script type="text/javascript">smartify();</script>
             </section>
@@ -470,8 +459,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-
-<a href="temario.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tareas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -502,7 +491,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/98-tareas.Rmd",
 "text": "Edit"
 },
 "history": {

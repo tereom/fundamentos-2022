@@ -520,3 +520,24 @@ usando la inicial y verosimilitud que definimos arriba. Una vez que realices la
 multiplicación debes identificar el núcleo de una distribución Normal, 
 
 ¿cuáles son sus parámetros (media y varianza)?
+
+# 14. Poisson-Gamma {-}
+
+Revisa el ejemplo de modelo Poisson de las notas.
+
+Sea $\lambda$ el número promedio de goles en el mundial de futból de mujeres. Analizaremos $\lambda$ usando el modelo Gamma-Poisson donde $X_i$ es el número observado de goles en una muestra de juegos del mundial:
+
+$$X_i|\lambda \sim Poisson(\lambda), X_1,...,X_n iid$$
+$$\lambda \sim Gamma(1,0.25)$$
+
+a. Simula de la distribución inicial para describir el conocimiento inicial de $\lambda$. Reporta un intervalo del 95% y la media.
+
+b. ¿Poqué sería razonable utilizar un modelo Poisson para los datos $X_i$?
+
+c. Los datos wwc_2019_matches incluídos en el paquete fivethirtyeight incluyen información del número de goles por equipo del mundial 2019. Describe, y grafica el número total de goles.
+
+d. Identifica la distribución posterior de $\lambda$ y calcula un intervalo del 95% de credibilidad para $\lambda$.
+
+e. Simula de la distribución predictiva posterior para diagnosticar si el modelo Poisson es apropiado para nuestros datos (revisa el ejemplo de clase, deberás simular conjuntos de datos del mismo tamaño que los datos observados.
+
+f. Utiliza la distribución predictiva posterior para crear un intervalo del 95% para una nueva observación.

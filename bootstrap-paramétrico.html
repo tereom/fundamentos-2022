@@ -415,6 +415,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#introducción-a-inferencia-bayesiana-2"><i class="fa fa-check"></i>12. Introducción a inferencia bayesiana</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#modelo-beta-binomial"><i class="fa fa-check"></i>13. Modelo Beta-Binomial</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="poisson-gamma.html"><a href="poisson-gamma.html"><i class="fa fa-check"></i>14. Poisson-Gamma</a></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/tereom/fundamentos-2022" target="blank">Publicado con bookdown</a></li>
@@ -538,8 +539,7 @@ cálculo de la función de verosimilitud y optimización:</p>
 ##  8 sigma              1.73 
 ##  9 media              1.19 
 ## 10 sigma              1.73 
-## # … with 9,990 more rows
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+## # … with 9,990 more rows</code></pre>
 <p>Ya ahora podemos estimar error estándar:</p>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="bootstrap-paramétrico.html#cb330-1" aria-hidden="true" tabindex="-1"></a>error_est <span class="ot">&lt;-</span> reps_boot <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(parametro) <span class="sc">%&gt;%</span> </span>
 <span id="cb330-2"><a href="bootstrap-paramétrico.html#cb330-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ee_boot =</span> <span class="fu">sd</span>(estimador_boot)) </span>
@@ -604,8 +604,7 @@ para asegurarte que entiendes el procedimiento:</p>
 ##  8 4     sigma              2.28 
 ##  9 5     media             -0.228
 ## 10 5     sigma              1.73 
-## # … with 9,990 more rows
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+## # … with 9,990 more rows</code></pre>
 <div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="bootstrap-paramétrico.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reps_boot, <span class="fu">aes</span>(<span class="at">sample =</span> estimador_boot)) <span class="sc">+</span> </span>
 <span id="cb343-2"><a href="bootstrap-paramétrico.html#cb343-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> <span class="fu">geom_qq_line</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
 <span id="cb343-3"><a href="bootstrap-paramétrico.html#cb343-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>parametro, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)</span></code></pre></div>

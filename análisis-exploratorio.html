@@ -415,6 +415,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#introducción-a-inferencia-bayesiana-2"><i class="fa fa-check"></i>12. Introducción a inferencia bayesiana</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#modelo-beta-binomial"><i class="fa fa-check"></i>13. Modelo Beta-Binomial</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="poisson-gamma.html"><a href="poisson-gamma.html"><i class="fa fa-check"></i>14. Poisson-Gamma</a></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/tereom/fundamentos-2022" target="blank">Publicado con bookdown</a></li>
@@ -507,10 +508,10 @@ num_personas
 <tbody>
 <tr>
 <td style="text-align:right;">
-13.00
+16.40
 </td>
 <td style="text-align:right;">
-2.00
+2.50
 </td>
 <td style="text-align:left;">
 Si
@@ -527,36 +528,16 @@ Comida
 </tr>
 <tr>
 <td style="text-align:right;">
-15.95
+13.42
 </td>
 <td style="text-align:right;">
-2.00
+3.48
 </td>
 <td style="text-align:left;">
-No
+Si
 </td>
 <td style="text-align:left;">
-Jue
-</td>
-<td style="text-align:left;">
-Comida
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-12.26
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Jue
+Vie
 </td>
 <td style="text-align:left;">
 Comida
@@ -567,7 +548,47 @@ Comida
 </tr>
 <tr>
 <td style="text-align:right;">
-10.33
+15.04
+</td>
+<td style="text-align:right;">
+1.96
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Dom
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28.55
+</td>
+<td style="text-align:right;">
+2.05
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Dom
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8.77
 </td>
 <td style="text-align:right;">
 2.00
@@ -576,10 +597,10 @@ Comida
 No
 </td>
 <td style="text-align:left;">
-Jue
+Dom
 </td>
 <td style="text-align:left;">
-Comida
+Cena
 </td>
 <td style="text-align:right;">
 2
@@ -587,7 +608,67 @@ Comida
 </tr>
 <tr>
 <td style="text-align:right;">
-16.82
+28.15
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:left;">
+Si
+</td>
+<td style="text-align:left;">
+Sab
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+38.07
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Dom
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14.48
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:left;">
+Si
+</td>
+<td style="text-align:left;">
+Dom
+</td>
+<td style="text-align:left;">
+Cena
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23.10
 </td>
 <td style="text-align:right;">
 4.00
@@ -602,98 +683,18 @@ Dom
 Cena
 </td>
 <td style="text-align:right;">
-2
+3
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-24.59
+17.51
 </td>
 <td style="text-align:right;">
-3.61
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Dom
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-28.17
-</td>
-<td style="text-align:right;">
-6.50
+3.00
 </td>
 <td style="text-align:left;">
 Si
-</td>
-<td style="text-align:left;">
-Sab
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-29.03
-</td>
-<td style="text-align:right;">
-5.92
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Sab
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-17.82
-</td>
-<td style="text-align:right;">
-1.75
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Sab
-</td>
-<td style="text-align:left;">
-Cena
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-10.29
-</td>
-<td style="text-align:right;">
-2.60
-</td>
-<td style="text-align:left;">
-No
 </td>
 <td style="text-align:left;">
 Dom

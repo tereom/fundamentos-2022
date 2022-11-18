@@ -170,7 +170,6 @@ reps_boot
 ##  9 media              1.19 
 ## 10 sigma              1.73 
 ## # … with 9,990 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 Ya ahora podemos estimar error estándar:
@@ -287,7 +286,6 @@ reps_boot
 ##  9 5     media             -0.228
 ## 10 5     sigma              1.73 
 ## # … with 9,990 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 

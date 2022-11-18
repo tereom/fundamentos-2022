@@ -1834,7 +1834,6 @@ hogar
 ##  9 100026706        1       2     2    189  17311.        30 10      106
 ## 10 100027201        1       2     3    186 120488.        69 10      106
 ## # … with 74,637 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 Para el cálculo de estadísticos debemos usar los factores de expansión, por 
@@ -2031,7 +2030,6 @@ enigh_boot %>%
 ##  9 18         48148.          1822.
 ## 10 19         68959.          3625.
 ## # … with 20 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 Resumiendo:
@@ -2088,7 +2086,6 @@ muestra_computos
 ## #   panal_pct <dbl>, prd_pt_mc_pct <dbl>, otros_pct <dbl>, winner <chr>, and
 ## #   abbreviated variable names ¹​state_abbr, ²​district_loc_17, ³​district_fed_17,
 ## #   ⁴​polling_id, ⁵​polling_type
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 Generamos 100 muestras bootstrap, y la función nos regresa un arreglo con 100
@@ -2117,7 +2114,6 @@ computos_boot
 ##  9 <split [10000/3632]> Bootstrap009
 ## 10 <split [10000/3692]> Bootstrap010
 ## # … with 90 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 La columna `splits` tiene información de las muestras seleccionadas, para la 
@@ -2163,7 +2159,6 @@ as.data.frame(first_computos_boot)
 ## #   panal_pct <dbl>, prd_pt_mc_pct <dbl>, otros_pct <dbl>, winner <chr>, and
 ## #   abbreviated variable names ¹​state_abbr, ²​district_loc_17, ³​district_fed_17,
 ## #   ⁴​polling_id, ⁵​polling_type
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 Una de las principales ventajas de usar este paquete es que es eficiente en 

@@ -415,6 +415,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#introducción-a-inferencia-bayesiana-2"><i class="fa fa-check"></i>12. Introducción a inferencia bayesiana</a></li>
 <li class="chapter" data-level="" data-path="tareas.html"><a href="tareas.html#modelo-beta-binomial"><i class="fa fa-check"></i>13. Modelo Beta-Binomial</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="poisson-gamma.html"><a href="poisson-gamma.html"><i class="fa fa-check"></i>14. Poisson-Gamma</a></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/tereom/fundamentos-2022" target="blank">Publicado con bookdown</a></li>
@@ -1830,8 +1831,7 @@ población de INEGI.</p></li>
 ##  8 100026704        1       2     2    189 169918.        53 10      106
 ##  9 100026706        1       2     2    189  17311.        30 10      106
 ## 10 100027201        1       2     3    186 120488.        69 10      106
-## # … with 74,637 more rows
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+## # … with 74,637 more rows</code></pre>
 <p>Para el cálculo de estadísticos debemos usar los factores de expansión, por
 ejemplo el ingreso trimestral total sería:</p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(hogar<span class="sc">$</span>factor <span class="sc">*</span> hogar<span class="sc">$</span>ing_cor <span class="sc">/</span> <span class="dv">1000</span>)</span></code></pre></div>
@@ -1965,8 +1965,7 @@ en <code>srvyr</code> que es una versión <em>tidy</em> que utiliza las funcione
 ##  8 17         42973.          1675.
 ##  9 18         48148.          1822.
 ## 10 19         68959.          3625.
-## # … with 20 more rows
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+## # … with 20 more rows</code></pre>
 <p>Resumiendo:</p>
 <ul>
 <li><p>El bootstrap de Rao y Wu genera un estimador consistente y aproximadamente
@@ -2015,8 +2014,7 @@ identificador del número y tipo de muestra.</li>
 ## #   total &lt;int&gt;, nominal_list &lt;int&gt;, pri_pvem_pct &lt;dbl&gt;, pan_pct &lt;dbl&gt;,
 ## #   panal_pct &lt;dbl&gt;, prd_pt_mc_pct &lt;dbl&gt;, otros_pct &lt;dbl&gt;, winner &lt;chr&gt;, and
 ## #   abbreviated variable names ¹​state_abbr, ²​district_loc_17, ³​district_fed_17,
-## #   ⁴​polling_id, ⁵​polling_type
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
+## #   ⁴​polling_id, ⁵​polling_type</code></pre>
 <p>Generamos 100 muestras bootstrap, y la función nos regresa un arreglo con 100
 renglones, cada uno corresponde a una muestra bootstrap.</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">839287482</span>)</span>
@@ -2036,8 +2034,7 @@ renglones, cada uno corresponde a una muestra bootstrap.</p>
 ##  8 &lt;split [10000/3734]&gt; Bootstrap008
 ##  9 &lt;split [10000/3632]&gt; Bootstrap009
 ## 10 &lt;split [10000/3692]&gt; Bootstrap010
-## # … with 90 more rows
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+## # … with 90 more rows</code></pre>
 <p>La columna <code>splits</code> tiene información de las muestras seleccionadas, para la
 primera vemos que de 10,000 observaciones en la muestra original la primera
 muestra bootstrap contiene 10000-3647=6353.</p>
@@ -2066,8 +2063,7 @@ muestra bootstrap contiene 10000-3647=6353.</p>
 ## #   total &lt;int&gt;, nominal_list &lt;int&gt;, pri_pvem_pct &lt;dbl&gt;, pan_pct &lt;dbl&gt;,
 ## #   panal_pct &lt;dbl&gt;, prd_pt_mc_pct &lt;dbl&gt;, otros_pct &lt;dbl&gt;, winner &lt;chr&gt;, and
 ## #   abbreviated variable names ¹​state_abbr, ²​district_loc_17, ³​district_fed_17,
-## #   ⁴​polling_id, ⁵​polling_type
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
+## #   ⁴​polling_id, ⁵​polling_type</code></pre>
 <p>Una de las principales ventajas de usar este paquete es que es eficiente en
 el uso de memoria.</p>
 <div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="intervalos-de-confianza-y-remuestreo.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pryr)</span>
