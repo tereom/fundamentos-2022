@@ -378,6 +378,28 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="introducción-a-inferencia-bayesiana-1.html"><a href="introducción-a-inferencia-bayesiana-1.html#ejemplo-posterior-predictiva-de-pareto-uniforme."><i class="fa fa-check"></i>Ejemplo: posterior predictiva de Pareto-Uniforme.</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html"><i class="fa fa-check"></i><b>11</b> Calibración bayesiana y Regularización</a>
+<ul>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#enfoque-bayesiano-y-frecuentista"><i class="fa fa-check"></i>Enfoque bayesiano y frecuentista</a></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#ejemplo-estimación-de-una-proporción"><i class="fa fa-check"></i>Ejemplo: estimación de una proporción</a></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#intervalos-de-agresti-coull"><i class="fa fa-check"></i>Intervalos de Agresti-Coull</a></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#incorporando-información-inicial"><i class="fa fa-check"></i>Incorporando información inicial</a>
+<ul>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#ejemplo-porporción-de-hogares-de-ingresos-grandes"><i class="fa fa-check"></i>Ejemplo: porporción de hogares de ingresos grandes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#inferencia-bayesiana-y-regularización"><i class="fa fa-check"></i>Inferencia bayesiana y regularización</a></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#ejemplo-modelo-normal-y-estaturas"><i class="fa fa-check"></i>Ejemplo: modelo normal y estaturas</a></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#ejemplo-estimación-de-proporciones"><i class="fa fa-check"></i>Ejemplo: estimación de proporciones</a></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#teoría-de-decisión"><i class="fa fa-check"></i>Teoría de decisión</a>
+<ul>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#ejemplo-riesgo-frecuentista"><i class="fa fa-check"></i>Ejemplo: riesgo frecuentista</a></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#ejemplo-riesgo-posterior"><i class="fa fa-check"></i>Ejemplo: riesgo posterior</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#riesgo-de-bayes"><i class="fa fa-check"></i>Riesgo de Bayes</a>
+<ul>
+<li class="chapter" data-level="" data-path="calibración-bayesiana-y-regularización.html"><a href="calibración-bayesiana-y-regularización.html#ejemplo-14"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html"><i class="fa fa-check"></i>Apéndice: Principios de visualizacion</a>
 <ul>
 <li class="chapter" data-level="" data-path="apéndice-principios-de-visualizacion.html"><a href="apéndice-principios-de-visualizacion.html#el-cuarteto-de-anscombe"><i class="fa fa-check"></i>El cuarteto de Anscombe</a></li>
@@ -525,21 +547,21 @@ las respuestas (con título fundamentos-tarea06).</p>
 <div id="tarea-conteo-rápido" class="section level2 unnumbered hasAnchor">
 <h2>7. Tarea conteo rápido<a href="tareas.html#tarea-conteo-rápido" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Código de bootstrap</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="tareas.html#cb493-1" aria-hidden="true" tabindex="-1"></a>boot_conteo <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb493-2"><a href="tareas.html#cb493-2" aria-hidden="true" tabindex="-1"></a>  sample_2006 <span class="sc">%&gt;%</span> </span>
-<span id="cb493-3"><a href="tareas.html#cb493-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(stratum) <span class="sc">%&gt;%</span> </span>
-<span id="cb493-4"><a href="tareas.html#cb493-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb493-5"><a href="tareas.html#cb493-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(polling_id, stratum, pri_pvem<span class="sc">:</span>total) <span class="sc">%&gt;%</span> <span class="co"># columnas relevantes</span></span>
-<span id="cb493-6"><a href="tareas.html#cb493-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;party&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;votes&quot;</span>, </span>
-<span id="cb493-7"><a href="tareas.html#cb493-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> pri_pvem<span class="sc">:</span>otros) <span class="sc">%&gt;%</span> <span class="co"># alargamos</span></span>
-<span id="cb493-8"><a href="tareas.html#cb493-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(stratum, party) <span class="sc">%&gt;%</span> </span>
-<span id="cb493-9"><a href="tareas.html#cb493-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">Y =</span> <span class="fu">sum</span>(votes), <span class="at">X =</span> <span class="fu">sum</span>(total), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb493-10"><a href="tareas.html#cb493-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(strata_sample_2006, <span class="at">by =</span> <span class="st">&quot;stratum&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># unimos tabla de pesos</span></span>
-<span id="cb493-11"><a href="tareas.html#cb493-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(party) <span class="sc">%&gt;%</span> </span>
-<span id="cb493-12"><a href="tareas.html#cb493-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">p_hat =</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">sum</span>(N <span class="sc">/</span> n <span class="sc">*</span> Y) <span class="sc">/</span> <span class="fu">sum</span>(N <span class="sc">/</span> n <span class="sc">*</span> X), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
-<span id="cb493-13"><a href="tareas.html#cb493-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb493-14"><a href="tareas.html#cb493-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Replicaciones bootstrap</span></span>
-<span id="cb493-15"><a href="tareas.html#cb493-15" aria-hidden="true" tabindex="-1"></a>boot_reps <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="sc">~</span><span class="fu">boot_conteo</span>(), <span class="at">.id =</span> <span class="st">&quot;sim&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="tareas.html#cb558-1" aria-hidden="true" tabindex="-1"></a>boot_conteo <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb558-2"><a href="tareas.html#cb558-2" aria-hidden="true" tabindex="-1"></a>  sample_2006 <span class="sc">%&gt;%</span> </span>
+<span id="cb558-3"><a href="tareas.html#cb558-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(stratum) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-4"><a href="tareas.html#cb558-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-5"><a href="tareas.html#cb558-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(polling_id, stratum, pri_pvem<span class="sc">:</span>total) <span class="sc">%&gt;%</span> <span class="co"># columnas relevantes</span></span>
+<span id="cb558-6"><a href="tareas.html#cb558-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;party&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;votes&quot;</span>, </span>
+<span id="cb558-7"><a href="tareas.html#cb558-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols =</span> pri_pvem<span class="sc">:</span>otros) <span class="sc">%&gt;%</span> <span class="co"># alargamos</span></span>
+<span id="cb558-8"><a href="tareas.html#cb558-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(stratum, party) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-9"><a href="tareas.html#cb558-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">Y =</span> <span class="fu">sum</span>(votes), <span class="at">X =</span> <span class="fu">sum</span>(total), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-10"><a href="tareas.html#cb558-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(strata_sample_2006, <span class="at">by =</span> <span class="st">&quot;stratum&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># unimos tabla de pesos</span></span>
+<span id="cb558-11"><a href="tareas.html#cb558-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(party) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-12"><a href="tareas.html#cb558-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">p_hat =</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">sum</span>(N <span class="sc">/</span> n <span class="sc">*</span> Y) <span class="sc">/</span> <span class="fu">sum</span>(N <span class="sc">/</span> n <span class="sc">*</span> X), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
+<span id="cb558-13"><a href="tareas.html#cb558-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb558-14"><a href="tareas.html#cb558-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Replicaciones bootstrap</span></span>
+<span id="cb558-15"><a href="tareas.html#cb558-15" aria-hidden="true" tabindex="-1"></a>boot_reps <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="sc">~</span><span class="fu">boot_conteo</span>(), <span class="at">.id =</span> <span class="st">&quot;sim&quot;</span>)</span></code></pre></div>
 </div>
 <div id="tarea-enigh" class="section level2 unnumbered hasAnchor">
 <h2>8. Tarea ENIGH<a href="tareas.html#tarea-enigh" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -552,80 +574,80 @@ las variables alimentos, vestido, vivienda, salud, comunica, educacion y esparci
 <p>Debes tomar en cuenta el diseño de la muestra, puedes usar la función
 <code>survey_quantile()</code> del paquete <code>srvyr</code> o <code>svyquantile()</code> del paquete <code>survey</code>.
 Reporta las estimaciones y sus errores estándar usando el bootstrap de Rao y Wu.</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="tareas.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb494-2"><a href="tareas.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb494-3"><a href="tareas.html#cb494-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb494-4"><a href="tareas.html#cb494-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(srvyr)</span>
-<span id="cb494-5"><a href="tareas.html#cb494-5" aria-hidden="true" tabindex="-1"></a>concentrado_hogar <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/concentradohogar.csv&quot;</span>)</span>
-<span id="cb494-6"><a href="tareas.html#cb494-6" aria-hidden="true" tabindex="-1"></a><span class="co"># para facilitar los cálculos ponemos las variables en un vector</span></span>
-<span id="cb494-7"><a href="tareas.html#cb494-7" aria-hidden="true" tabindex="-1"></a>vars_cats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;alimentos&quot;</span>, <span class="st">&quot;vestido&quot;</span>, <span class="st">&quot;vivienda&quot;</span>, <span class="st">&quot;salud&quot;</span>, <span class="st">&quot;transporte&quot;</span>,</span>
-<span id="cb494-8"><a href="tareas.html#cb494-8" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;comunica&quot;</span>, <span class="st">&quot;educacion&quot;</span>, <span class="st">&quot;esparci&quot;</span>)</span>
-<span id="cb494-9"><a href="tareas.html#cb494-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb494-10"><a href="tareas.html#cb494-10" aria-hidden="true" tabindex="-1"></a>hogar <span class="ot">&lt;-</span> concentrado_hogar <span class="sc">%&gt;%</span> </span>
-<span id="cb494-11"><a href="tareas.html#cb494-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(folioviv, foliohog, ubica_geo, est_dis, upm, factor_hog, ing_cor,</span>
-<span id="cb494-12"><a href="tareas.html#cb494-12" aria-hidden="true" tabindex="-1"></a>         <span class="fu">all_of</span>(vars_cats))</span>
-<span id="cb494-13"><a href="tareas.html#cb494-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb494-14"><a href="tareas.html#cb494-14" aria-hidden="true" tabindex="-1"></a><span class="co"># creamos una variable con el gasto total y el porcentaje de gasto en cada categoría</span></span>
-<span id="cb494-15"><a href="tareas.html#cb494-15" aria-hidden="true" tabindex="-1"></a>hogar_gastos <span class="ot">&lt;-</span> hogar <span class="sc">%&gt;%</span></span>
-<span id="cb494-16"><a href="tareas.html#cb494-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gasto =</span> alimentos <span class="sc">+</span> vestido <span class="sc">+</span> vivienda <span class="sc">+</span> salud <span class="sc">+</span> transporte <span class="sc">+</span> </span>
-<span id="cb494-17"><a href="tareas.html#cb494-17" aria-hidden="true" tabindex="-1"></a>           comunica <span class="sc">+</span> educacion <span class="sc">+</span> esparci) <span class="sc">%&gt;%</span> </span>
-<span id="cb494-18"><a href="tareas.html#cb494-18" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(vars_cats, <span class="fu">list</span>(<span class="sc">~</span>. <span class="sc">/</span> gasto))</span>
-<span id="cb494-19"><a href="tareas.html#cb494-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb494-20"><a href="tareas.html#cb494-20" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hogar_gastos)</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="tareas.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb559-2"><a href="tareas.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb559-3"><a href="tareas.html#cb559-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb559-4"><a href="tareas.html#cb559-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(srvyr)</span>
+<span id="cb559-5"><a href="tareas.html#cb559-5" aria-hidden="true" tabindex="-1"></a>concentrado_hogar <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/concentradohogar.csv&quot;</span>)</span>
+<span id="cb559-6"><a href="tareas.html#cb559-6" aria-hidden="true" tabindex="-1"></a><span class="co"># para facilitar los cálculos ponemos las variables en un vector</span></span>
+<span id="cb559-7"><a href="tareas.html#cb559-7" aria-hidden="true" tabindex="-1"></a>vars_cats <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;alimentos&quot;</span>, <span class="st">&quot;vestido&quot;</span>, <span class="st">&quot;vivienda&quot;</span>, <span class="st">&quot;salud&quot;</span>, <span class="st">&quot;transporte&quot;</span>,</span>
+<span id="cb559-8"><a href="tareas.html#cb559-8" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;comunica&quot;</span>, <span class="st">&quot;educacion&quot;</span>, <span class="st">&quot;esparci&quot;</span>)</span>
+<span id="cb559-9"><a href="tareas.html#cb559-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb559-10"><a href="tareas.html#cb559-10" aria-hidden="true" tabindex="-1"></a>hogar <span class="ot">&lt;-</span> concentrado_hogar <span class="sc">%&gt;%</span> </span>
+<span id="cb559-11"><a href="tareas.html#cb559-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(folioviv, foliohog, ubica_geo, est_dis, upm, factor_hog, ing_cor,</span>
+<span id="cb559-12"><a href="tareas.html#cb559-12" aria-hidden="true" tabindex="-1"></a>         <span class="fu">all_of</span>(vars_cats))</span>
+<span id="cb559-13"><a href="tareas.html#cb559-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb559-14"><a href="tareas.html#cb559-14" aria-hidden="true" tabindex="-1"></a><span class="co"># creamos una variable con el gasto total y el porcentaje de gasto en cada categoría</span></span>
+<span id="cb559-15"><a href="tareas.html#cb559-15" aria-hidden="true" tabindex="-1"></a>hogar_gastos <span class="ot">&lt;-</span> hogar <span class="sc">%&gt;%</span></span>
+<span id="cb559-16"><a href="tareas.html#cb559-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gasto =</span> alimentos <span class="sc">+</span> vestido <span class="sc">+</span> vivienda <span class="sc">+</span> salud <span class="sc">+</span> transporte <span class="sc">+</span> </span>
+<span id="cb559-17"><a href="tareas.html#cb559-17" aria-hidden="true" tabindex="-1"></a>           comunica <span class="sc">+</span> educacion <span class="sc">+</span> esparci) <span class="sc">%&gt;%</span> </span>
+<span id="cb559-18"><a href="tareas.html#cb559-18" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(vars_cats, <span class="fu">list</span>(<span class="sc">~</span>. <span class="sc">/</span> gasto))</span>
+<span id="cb559-19"><a href="tareas.html#cb559-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb559-20"><a href="tareas.html#cb559-20" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hogar_gastos)</span></code></pre></div>
 <p>Para usar las funciones de <code>srvyr</code> lo primero es especificar el diseño de la
 muestra.</p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="tareas.html#cb495-1" aria-hidden="true" tabindex="-1"></a>enigh_design <span class="ot">&lt;-</span> hogar_gastos <span class="sc">%&gt;%</span> </span>
-<span id="cb495-2"><a href="tareas.html#cb495-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(<span class="at">ids =</span> upm, <span class="at">weights =</span> factor_hog, <span class="at">strata =</span> est_dis)</span>
-<span id="cb495-3"><a href="tareas.html#cb495-3" aria-hidden="true" tabindex="-1"></a>enigh_design</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="tareas.html#cb560-1" aria-hidden="true" tabindex="-1"></a>enigh_design <span class="ot">&lt;-</span> hogar_gastos <span class="sc">%&gt;%</span> </span>
+<span id="cb560-2"><a href="tareas.html#cb560-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(<span class="at">ids =</span> upm, <span class="at">weights =</span> factor_hog, <span class="at">strata =</span> est_dis)</span>
+<span id="cb560-3"><a href="tareas.html#cb560-3" aria-hidden="true" tabindex="-1"></a>enigh_design</span></code></pre></div>
 <p>Elegimos <em>bootstrap</em> de Rao y Wu.</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="tareas.html#cb496-1" aria-hidden="true" tabindex="-1"></a>enigh_boot <span class="ot">&lt;-</span> enigh_design <span class="sc">%&gt;%</span> </span>
-<span id="cb496-2"><a href="tareas.html#cb496-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_rep</span>(<span class="at">type =</span> <span class="st">&quot;subbootstrap&quot;</span>, <span class="at">replicates =</span> <span class="dv">300</span>)</span>
-<span id="cb496-3"><a href="tareas.html#cb496-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-4"><a href="tareas.html#cb496-4" aria-hidden="true" tabindex="-1"></a>deciles_ingcor <span class="ot">&lt;-</span> enigh_boot <span class="sc">%&gt;%</span></span>
-<span id="cb496-5"><a href="tareas.html#cb496-5" aria-hidden="true" tabindex="-1"></a>  srvyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">q_ing_cor =</span> <span class="fu">survey_quantile</span>(ing_cor, <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), </span>
-<span id="cb496-6"><a href="tareas.html#cb496-6" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">vartype =</span> <span class="cn">NULL</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb496-7"><a href="tareas.html#cb496-7" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>())</span>
-<span id="cb496-8"><a href="tareas.html#cb496-8" aria-hidden="true" tabindex="-1"></a>deciles_ingcor</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="tareas.html#cb561-1" aria-hidden="true" tabindex="-1"></a>enigh_boot <span class="ot">&lt;-</span> enigh_design <span class="sc">%&gt;%</span> </span>
+<span id="cb561-2"><a href="tareas.html#cb561-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_rep</span>(<span class="at">type =</span> <span class="st">&quot;subbootstrap&quot;</span>, <span class="at">replicates =</span> <span class="dv">300</span>)</span>
+<span id="cb561-3"><a href="tareas.html#cb561-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb561-4"><a href="tareas.html#cb561-4" aria-hidden="true" tabindex="-1"></a>deciles_ingcor <span class="ot">&lt;-</span> enigh_boot <span class="sc">%&gt;%</span></span>
+<span id="cb561-5"><a href="tareas.html#cb561-5" aria-hidden="true" tabindex="-1"></a>  srvyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">q_ing_cor =</span> <span class="fu">survey_quantile</span>(ing_cor, <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), </span>
+<span id="cb561-6"><a href="tareas.html#cb561-6" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">vartype =</span> <span class="cn">NULL</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb561-7"><a href="tareas.html#cb561-7" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>())</span>
+<span id="cb561-8"><a href="tareas.html#cb561-8" aria-hidden="true" tabindex="-1"></a>deciles_ingcor</span></code></pre></div>
 <p>Creamos una nueva variable con los deciles.</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="tareas.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
-<span id="cb497-2"><a href="tareas.html#cb497-2" aria-hidden="true" tabindex="-1"></a>enigh_boot_q <span class="ot">&lt;-</span> enigh_boot <span class="sc">%&gt;%</span></span>
-<span id="cb497-3"><a href="tareas.html#cb497-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decil =</span> <span class="fu">cut2</span>(ing_cor, <span class="at">cuts =</span> deciles_ingcor<span class="sc">$</span>value, </span>
-<span id="cb497-4"><a href="tareas.html#cb497-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels.mean =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="tareas.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb562-2"><a href="tareas.html#cb562-2" aria-hidden="true" tabindex="-1"></a>enigh_boot_q <span class="ot">&lt;-</span> enigh_boot <span class="sc">%&gt;%</span></span>
+<span id="cb562-3"><a href="tareas.html#cb562-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decil =</span> <span class="fu">cut2</span>(ing_cor, <span class="at">cuts =</span> deciles_ingcor<span class="sc">$</span>value, </span>
+<span id="cb562-4"><a href="tareas.html#cb562-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels.mean =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <p>Y realizamos las estimaciones por decil.</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="tareas.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimaciones</span></span>
-<span id="cb498-2"><a href="tareas.html#cb498-2" aria-hidden="true" tabindex="-1"></a>estimaciones <span class="ot">&lt;-</span> enigh_boot_q <span class="sc">%&gt;%</span> </span>
-<span id="cb498-3"><a href="tareas.html#cb498-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decil) <span class="sc">%&gt;%</span> </span>
-<span id="cb498-4"><a href="tareas.html#cb498-4" aria-hidden="true" tabindex="-1"></a>  srvyr<span class="sc">::</span><span class="fu">summarise_at</span>(vars_cats, survey_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb498-5"><a href="tareas.html#cb498-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-6"><a href="tareas.html#cb498-6" aria-hidden="true" tabindex="-1"></a><span class="co"># errores estándar</span></span>
-<span id="cb498-7"><a href="tareas.html#cb498-7" aria-hidden="true" tabindex="-1"></a>estimaciones_se <span class="ot">&lt;-</span> estimaciones <span class="sc">%&gt;%</span> </span>
-<span id="cb498-8"><a href="tareas.html#cb498-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decil, <span class="fu">contains</span>(<span class="st">&quot;se&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb498-9"><a href="tareas.html#cb498-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>decil, <span class="at">names_to =</span> <span class="st">&quot;campo&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;se&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb498-10"><a href="tareas.html#cb498-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">campo =</span> stringr<span class="sc">::</span><span class="fu">str_extract</span>(campo, <span class="st">&quot;.*(?=_)&quot;</span>))</span>
-<span id="cb498-11"><a href="tareas.html#cb498-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb498-12"><a href="tareas.html#cb498-12" aria-hidden="true" tabindex="-1"></a><span class="co"># unimos las dos para hacer la gráfica</span></span>
-<span id="cb498-13"><a href="tareas.html#cb498-13" aria-hidden="true" tabindex="-1"></a>estimaciones_tidy <span class="ot">&lt;-</span> estimaciones <span class="sc">%&gt;%</span> </span>
-<span id="cb498-14"><a href="tareas.html#cb498-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decil, <span class="fu">all_of</span>(vars_cats)) <span class="sc">%&gt;%</span> </span>
-<span id="cb498-15"><a href="tareas.html#cb498-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>decil, <span class="at">names_to =</span> <span class="st">&quot;campo&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;est&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb498-16"><a href="tareas.html#cb498-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(estimaciones_se)</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="tareas.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimaciones</span></span>
+<span id="cb563-2"><a href="tareas.html#cb563-2" aria-hidden="true" tabindex="-1"></a>estimaciones <span class="ot">&lt;-</span> enigh_boot_q <span class="sc">%&gt;%</span> </span>
+<span id="cb563-3"><a href="tareas.html#cb563-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decil) <span class="sc">%&gt;%</span> </span>
+<span id="cb563-4"><a href="tareas.html#cb563-4" aria-hidden="true" tabindex="-1"></a>  srvyr<span class="sc">::</span><span class="fu">summarise_at</span>(vars_cats, survey_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb563-5"><a href="tareas.html#cb563-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb563-6"><a href="tareas.html#cb563-6" aria-hidden="true" tabindex="-1"></a><span class="co"># errores estándar</span></span>
+<span id="cb563-7"><a href="tareas.html#cb563-7" aria-hidden="true" tabindex="-1"></a>estimaciones_se <span class="ot">&lt;-</span> estimaciones <span class="sc">%&gt;%</span> </span>
+<span id="cb563-8"><a href="tareas.html#cb563-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decil, <span class="fu">contains</span>(<span class="st">&quot;se&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb563-9"><a href="tareas.html#cb563-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>decil, <span class="at">names_to =</span> <span class="st">&quot;campo&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;se&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb563-10"><a href="tareas.html#cb563-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">campo =</span> stringr<span class="sc">::</span><span class="fu">str_extract</span>(campo, <span class="st">&quot;.*(?=_)&quot;</span>))</span>
+<span id="cb563-11"><a href="tareas.html#cb563-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb563-12"><a href="tareas.html#cb563-12" aria-hidden="true" tabindex="-1"></a><span class="co"># unimos las dos para hacer la gráfica</span></span>
+<span id="cb563-13"><a href="tareas.html#cb563-13" aria-hidden="true" tabindex="-1"></a>estimaciones_tidy <span class="ot">&lt;-</span> estimaciones <span class="sc">%&gt;%</span> </span>
+<span id="cb563-14"><a href="tareas.html#cb563-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decil, <span class="fu">all_of</span>(vars_cats)) <span class="sc">%&gt;%</span> </span>
+<span id="cb563-15"><a href="tareas.html#cb563-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>decil, <span class="at">names_to =</span> <span class="st">&quot;campo&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;est&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb563-16"><a href="tareas.html#cb563-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(estimaciones_se)</span></code></pre></div>
 <p>Y graficamos.</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="tareas.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(estimaciones_tidy) <span class="sc">+</span></span>
-<span id="cb499-2"><a href="tareas.html#cb499-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(decil), <span class="at">y =</span> est, <span class="at">group =</span> campo, <span class="at">color =</span> campo)) <span class="sc">+</span></span>
-<span id="cb499-3"><a href="tareas.html#cb499-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&quot;decil&quot;</span>, <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="tareas.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(estimaciones_tidy) <span class="sc">+</span></span>
+<span id="cb564-2"><a href="tareas.html#cb564-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(decil), <span class="at">y =</span> est, <span class="at">group =</span> campo, <span class="at">color =</span> campo)) <span class="sc">+</span></span>
+<span id="cb564-3"><a href="tareas.html#cb564-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&quot;decil&quot;</span>, <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <p>Podemos hacer páneles para ver la variación en cada categoría.</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="tareas.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(estimaciones_tidy) <span class="sc">+</span></span>
-<span id="cb500-2"><a href="tareas.html#cb500-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(decil), <span class="at">y =</span> est, <span class="at">group =</span> campo, <span class="at">color =</span> campo), </span>
-<span id="cb500-3"><a href="tareas.html#cb500-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb500-4"><a href="tareas.html#cb500-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> campo, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb500-5"><a href="tareas.html#cb500-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&quot;decil&quot;</span>, <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="tareas.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(estimaciones_tidy) <span class="sc">+</span></span>
+<span id="cb565-2"><a href="tareas.html#cb565-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(decil), <span class="at">y =</span> est, <span class="at">group =</span> campo, <span class="at">color =</span> campo), </span>
+<span id="cb565-3"><a href="tareas.html#cb565-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb565-4"><a href="tareas.html#cb565-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> campo, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb565-5"><a href="tareas.html#cb565-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&quot;decil&quot;</span>, <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <p>Y finalmente agregamos errores estándar.</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="tareas.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(estimaciones_tidy) <span class="sc">+</span></span>
-<span id="cb501-2"><a href="tareas.html#cb501-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(decil), <span class="at">y =</span> est, <span class="at">group =</span> campo, <span class="at">color =</span> campo), </span>
-<span id="cb501-3"><a href="tareas.html#cb501-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb501-4"><a href="tareas.html#cb501-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(decil), <span class="at">ymin =</span> est <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se, <span class="at">ymax =</span> est <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se, </span>
-<span id="cb501-5"><a href="tareas.html#cb501-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">group =</span> campo, <span class="at">color =</span> campo), <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb501-6"><a href="tareas.html#cb501-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> campo, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb501-7"><a href="tareas.html#cb501-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&quot;decil&quot;</span>, <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="tareas.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(estimaciones_tidy) <span class="sc">+</span></span>
+<span id="cb566-2"><a href="tareas.html#cb566-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(decil), <span class="at">y =</span> est, <span class="at">group =</span> campo, <span class="at">color =</span> campo), </span>
+<span id="cb566-3"><a href="tareas.html#cb566-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb566-4"><a href="tareas.html#cb566-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(decil), <span class="at">ymin =</span> est <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se, <span class="at">ymax =</span> est <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se, </span>
+<span id="cb566-5"><a href="tareas.html#cb566-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">group =</span> campo, <span class="at">color =</span> campo), <span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb566-6"><a href="tareas.html#cb566-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> campo, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb566-7"><a href="tareas.html#cb566-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">&quot;decil&quot;</span>, <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <div id="mapas" class="section level3 unnumbered hasAnchor">
 <h3>Mapas<a href="tareas.html#mapas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Si quisieran hacer un mapa con la mediana de ingreso corriente trimestral por
@@ -642,48 +664,48 @@ localidades, que está disponible en el sitio del INEGI.</em></p></li>
 </ol>
 <p>Por lo tanto debemos comenzar creando una variable de entidad, para ello usamos
 la función <code>str_sub()</code> del paquete <code>stringr</code>.</p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="tareas.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb502-2"><a href="tareas.html#cb502-2" aria-hidden="true" tabindex="-1"></a>enigh_boot_edo <span class="ot">&lt;-</span> enigh_boot <span class="sc">%&gt;%</span> </span>
-<span id="cb502-3"><a href="tareas.html#cb502-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edo =</span> <span class="fu">str_sub</span>(ubica_geo, <span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="tareas.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb567-2"><a href="tareas.html#cb567-2" aria-hidden="true" tabindex="-1"></a>enigh_boot_edo <span class="ot">&lt;-</span> enigh_boot <span class="sc">%&gt;%</span> </span>
+<span id="cb567-3"><a href="tareas.html#cb567-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edo =</span> <span class="fu">str_sub</span>(ubica_geo, <span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Una vez que tenemos la variable en el diseño usamos <code>group_by()</code> y <code>svy_median()</code>
 para calcular la mediana en cada estado y el error estándar de las estimaciones.</li>
 </ol>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="tareas.html#cb503-1" aria-hidden="true" tabindex="-1"></a>edo_ing_cor <span class="ot">&lt;-</span> enigh_boot_edo <span class="sc">%&gt;%</span> </span>
-<span id="cb503-2"><a href="tareas.html#cb503-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(edo) <span class="sc">%&gt;%</span> </span>
-<span id="cb503-3"><a href="tareas.html#cb503-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mediana =</span> <span class="fu">survey_median</span>(ing_cor, <span class="at">vartype =</span> <span class="st">&quot;se&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="tareas.html#cb568-1" aria-hidden="true" tabindex="-1"></a>edo_ing_cor <span class="ot">&lt;-</span> enigh_boot_edo <span class="sc">%&gt;%</span> </span>
+<span id="cb568-2"><a href="tareas.html#cb568-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(edo) <span class="sc">%&gt;%</span> </span>
+<span id="cb568-3"><a href="tareas.html#cb568-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mediana =</span> <span class="fu">survey_median</span>(ing_cor, <span class="at">vartype =</span> <span class="st">&quot;se&quot;</span>)) </span></code></pre></div>
 <p>Ahora vemos como hacer un mapa con los resultados de nuestro análisis, para ello
 usaremos el paquete <a href="https://www.diegovalle.net/mxmaps/index.html">mxmaps</a>. En este
 caso el <code>data.frame</code> con la información de ingreso corriente por estado se
 llama <code>edo_ing_cor</code>.</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="tareas.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mxmaps)</span>
-<span id="cb504-2"><a href="tareas.html#cb504-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mxstate.map) <span class="co"># datos para hacer el mapa instalar de github diegovalle/mxmaps</span></span></code></pre></div>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="tareas.html#cb505-1" aria-hidden="true" tabindex="-1"></a>mxstate_ing_cor <span class="ot">&lt;-</span> mxstate.map <span class="sc">%&gt;%</span> </span>
-<span id="cb505-2"><a href="tareas.html#cb505-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(edo_ing_cor, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;region&quot;</span> <span class="ot">=</span> <span class="st">&quot;edo&quot;</span>))</span>
-<span id="cb505-3"><a href="tareas.html#cb505-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb505-4"><a href="tareas.html#cb505-4" aria-hidden="true" tabindex="-1"></a><span class="co"># este es el mapa básico</span></span>
-<span id="cb505-5"><a href="tareas.html#cb505-5" aria-hidden="true" tabindex="-1"></a>mapa_ingcor <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mxstate_ing_cor, <span class="fu">aes</span>(long, lat, <span class="at">group =</span> group)) <span class="sc">+</span> </span>
-<span id="cb505-6"><a href="tareas.html#cb505-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> mediana), <span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="sc">+</span></span>
-<span id="cb505-7"><a href="tareas.html#cb505-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_map</span>()</span>
-<span id="cb505-8"><a href="tareas.html#cb505-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb505-9"><a href="tareas.html#cb505-9" aria-hidden="true" tabindex="-1"></a>mapa_ingcor</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="tareas.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mxmaps)</span>
+<span id="cb569-2"><a href="tareas.html#cb569-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mxstate.map) <span class="co"># datos para hacer el mapa instalar de github diegovalle/mxmaps</span></span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="tareas.html#cb570-1" aria-hidden="true" tabindex="-1"></a>mxstate_ing_cor <span class="ot">&lt;-</span> mxstate.map <span class="sc">%&gt;%</span> </span>
+<span id="cb570-2"><a href="tareas.html#cb570-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(edo_ing_cor, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;region&quot;</span> <span class="ot">=</span> <span class="st">&quot;edo&quot;</span>))</span>
+<span id="cb570-3"><a href="tareas.html#cb570-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb570-4"><a href="tareas.html#cb570-4" aria-hidden="true" tabindex="-1"></a><span class="co"># este es el mapa básico</span></span>
+<span id="cb570-5"><a href="tareas.html#cb570-5" aria-hidden="true" tabindex="-1"></a>mapa_ingcor <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mxstate_ing_cor, <span class="fu">aes</span>(long, lat, <span class="at">group =</span> group)) <span class="sc">+</span> </span>
+<span id="cb570-6"><a href="tareas.html#cb570-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> mediana), <span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="sc">+</span></span>
+<span id="cb570-7"><a href="tareas.html#cb570-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_map</span>()</span>
+<span id="cb570-8"><a href="tareas.html#cb570-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb570-9"><a href="tareas.html#cb570-9" aria-hidden="true" tabindex="-1"></a>mapa_ingcor</span></code></pre></div>
 <p>Podemos agregar interactividad con el paquete <code>plotly</code>.</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="tareas.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb506-2"><a href="tareas.html#cb506-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb506-3"><a href="tareas.html#cb506-3" aria-hidden="true" tabindex="-1"></a><span class="co"># función para formatear con comas los datos de ingreso</span></span>
-<span id="cb506-4"><a href="tareas.html#cb506-4" aria-hidden="true" tabindex="-1"></a>comma <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">format</span>(x, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb506-5"><a href="tareas.html#cb506-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb506-6"><a href="tareas.html#cb506-6" aria-hidden="true" tabindex="-1"></a>mapa_ingcor <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mxstate_ing_cor <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ee =</span> <span class="fu">round</span>(mediana_se)), </span>
-<span id="cb506-7"><a href="tareas.html#cb506-7" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">aes</span>(long, lat, <span class="at">group =</span> group, </span>
-<span id="cb506-8"><a href="tareas.html#cb506-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">text =</span> <span class="fu">str_c</span>(<span class="st">&quot;ingreso corriente: &quot;</span>,  </span>
-<span id="cb506-9"><a href="tareas.html#cb506-9" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">comma</span>(mediana)), <span class="at">label =</span> ee)) <span class="sc">+</span> </span>
-<span id="cb506-10"><a href="tareas.html#cb506-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> mediana), <span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb506-11"><a href="tareas.html#cb506-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">&quot;YlGnBu&quot;</span>, <span class="at">type =</span> <span class="st">&quot;div&quot;</span>) <span class="sc">+</span> <span class="co">#paleta </span></span>
-<span id="cb506-12"><a href="tareas.html#cb506-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mediana de ingreso corriente&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb506-13"><a href="tareas.html#cb506-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb506-14"><a href="tareas.html#cb506-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_map</span>()</span>
-<span id="cb506-15"><a href="tareas.html#cb506-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb506-16"><a href="tareas.html#cb506-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(mapa_ingcor, <span class="at">tooltip =</span> <span class="fu">c</span>(<span class="st">&quot;text&quot;</span>, <span class="st">&quot;label&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="tareas.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb571-2"><a href="tareas.html#cb571-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb571-3"><a href="tareas.html#cb571-3" aria-hidden="true" tabindex="-1"></a><span class="co"># función para formatear con comas los datos de ingreso</span></span>
+<span id="cb571-4"><a href="tareas.html#cb571-4" aria-hidden="true" tabindex="-1"></a>comma <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">format</span>(x, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb571-5"><a href="tareas.html#cb571-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb571-6"><a href="tareas.html#cb571-6" aria-hidden="true" tabindex="-1"></a>mapa_ingcor <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mxstate_ing_cor <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ee =</span> <span class="fu">round</span>(mediana_se)), </span>
+<span id="cb571-7"><a href="tareas.html#cb571-7" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">aes</span>(long, lat, <span class="at">group =</span> group, </span>
+<span id="cb571-8"><a href="tareas.html#cb571-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">text =</span> <span class="fu">str_c</span>(<span class="st">&quot;ingreso corriente: &quot;</span>,  </span>
+<span id="cb571-9"><a href="tareas.html#cb571-9" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">comma</span>(mediana)), <span class="at">label =</span> ee)) <span class="sc">+</span> </span>
+<span id="cb571-10"><a href="tareas.html#cb571-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> mediana), <span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb571-11"><a href="tareas.html#cb571-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">&quot;YlGnBu&quot;</span>, <span class="at">type =</span> <span class="st">&quot;div&quot;</span>) <span class="sc">+</span> <span class="co">#paleta </span></span>
+<span id="cb571-12"><a href="tareas.html#cb571-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mediana de ingreso corriente&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb571-13"><a href="tareas.html#cb571-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb571-14"><a href="tareas.html#cb571-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_map</span>()</span>
+<span id="cb571-15"><a href="tareas.html#cb571-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb571-16"><a href="tareas.html#cb571-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(mapa_ingcor, <span class="at">tooltip =</span> <span class="fu">c</span>(<span class="st">&quot;text&quot;</span>, <span class="st">&quot;label&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="máxima-verosimilitud-y-bootstrap-paramétrico" class="section level2 unnumbered hasAnchor">
@@ -725,56 +747,56 @@ distinta. Colecta mediciones de 20 mujeres saludables y encuentra que la media
 es de 9.2 y la desviación estándar muestral de 1.1. Escribe la hipótesis nula,
 realiza una prueba de hipótesis e interpreta los resultados.</li>
 </ol>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="tareas.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Respuestas</span></span>
-<span id="cb507-2"><a href="tareas.html#cb507-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Ejercicio 1: bootstrap</span></span>
-<span id="cb507-3"><a href="tareas.html#cb507-3" aria-hidden="true" tabindex="-1"></a>n_1 <span class="ot">&lt;-</span> <span class="dv">200</span>; n_2 <span class="ot">&lt;-</span>  <span class="dv">200</span></span>
-<span id="cb507-4"><a href="tareas.html#cb507-4" aria-hidden="true" tabindex="-1"></a>X_1 <span class="ot">=</span> <span class="dv">160</span>; X_2 <span class="ot">&lt;-</span> <span class="dv">148</span></span>
-<span id="cb507-5"><a href="tareas.html#cb507-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-6"><a href="tareas.html#cb507-6" aria-hidden="true" tabindex="-1"></a>p_1 <span class="ot">&lt;-</span> X_1<span class="sc">/</span>n_1</span>
-<span id="cb507-7"><a href="tareas.html#cb507-7" aria-hidden="true" tabindex="-1"></a>p_2 <span class="ot">&lt;-</span> X_2 <span class="sc">/</span> n_2</span>
-<span id="cb507-8"><a href="tareas.html#cb507-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-9"><a href="tareas.html#cb507-9" aria-hidden="true" tabindex="-1"></a>ee <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_1<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p_1) <span class="sc">/</span> n_2 <span class="sc">+</span> p_2<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p_2) <span class="sc">/</span> n_2)</span>
-<span id="cb507-10"><a href="tareas.html#cb507-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-11"><a href="tareas.html#cb507-11" aria-hidden="true" tabindex="-1"></a><span class="co">#delta</span></span>
-<span id="cb507-12"><a href="tareas.html#cb507-12" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">-</span> <span class="fl">1.645</span> <span class="sc">*</span> ee</span>
-<span id="cb507-13"><a href="tareas.html#cb507-13" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">+</span> <span class="fl">1.645</span> <span class="sc">*</span> ee</span>
-<span id="cb507-14"><a href="tareas.html#cb507-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-15"><a href="tareas.html#cb507-15" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstarp</span></span>
-<span id="cb507-16"><a href="tareas.html#cb507-16" aria-hidden="true" tabindex="-1"></a>dif_p <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb507-17"><a href="tareas.html#cb507-17" aria-hidden="true" tabindex="-1"></a>  p_1_star <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="dv">160</span><span class="sc">/</span><span class="dv">200</span>) <span class="sc">/</span> <span class="dv">200</span></span>
-<span id="cb507-18"><a href="tareas.html#cb507-18" aria-hidden="true" tabindex="-1"></a>  p_2_star <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="dv">148</span><span class="sc">/</span><span class="dv">200</span>) <span class="sc">/</span> <span class="dv">200</span></span>
-<span id="cb507-19"><a href="tareas.html#cb507-19" aria-hidden="true" tabindex="-1"></a>  p_1_star <span class="sc">-</span> p_2_star</span>
-<span id="cb507-20"><a href="tareas.html#cb507-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb507-21"><a href="tareas.html#cb507-21" aria-hidden="true" tabindex="-1"></a>ee_boot <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">1000</span>, <span class="fu">dif_p</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>() <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span>
-<span id="cb507-22"><a href="tareas.html#cb507-22" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">-</span> <span class="fl">1.645</span> <span class="sc">*</span> ee_boot</span>
-<span id="cb507-23"><a href="tareas.html#cb507-23" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">+</span> <span class="fl">1.645</span> <span class="sc">*</span> ee_boot</span>
-<span id="cb507-24"><a href="tareas.html#cb507-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-25"><a href="tareas.html#cb507-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-26"><a href="tareas.html#cb507-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejercicio 2: t</span></span>
-<span id="cb507-27"><a href="tareas.html#cb507-27" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="fl">9.5</span></span>
-<span id="cb507-28"><a href="tareas.html#cb507-28" aria-hidden="true" tabindex="-1"></a>ee_hat <span class="ot">&lt;-</span> <span class="fl">1.1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
-<span id="cb507-29"><a href="tareas.html#cb507-29" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_hat</span>
-<span id="cb507-30"><a href="tareas.html#cb507-30" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(t, <span class="at">df =</span> <span class="dv">19</span>)</span>
-<span id="cb507-31"><a href="tareas.html#cb507-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-32"><a href="tareas.html#cb507-32" aria-hidden="true" tabindex="-1"></a><span class="co"># podemos calcular el error estándar con boostrap paramétrico</span></span>
-<span id="cb507-33"><a href="tareas.html#cb507-33" aria-hidden="true" tabindex="-1"></a>ee_boot_hat <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">10000</span>, <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">9.5</span>, <span class="fl">1.1</span>) <span class="sc">|&gt;</span> <span class="fu">mean</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>() <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span>
-<span id="cb507-34"><a href="tareas.html#cb507-34" aria-hidden="true" tabindex="-1"></a>ee_boot_hat</span>
-<span id="cb507-35"><a href="tareas.html#cb507-35" aria-hidden="true" tabindex="-1"></a>ee_hat <span class="ot">&lt;-</span> <span class="fl">1.1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
-<span id="cb507-36"><a href="tareas.html#cb507-36" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_boot_hat</span>
-<span id="cb507-37"><a href="tareas.html#cb507-37" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(t, <span class="at">df =</span> <span class="dv">19</span>)</span>
-<span id="cb507-38"><a href="tareas.html#cb507-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-39"><a href="tareas.html#cb507-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Con simulación es equivalente a una prueba Wald, con la misma deficiencia que</span></span>
-<span id="cb507-40"><a href="tareas.html#cb507-40" aria-hidden="true" tabindex="-1"></a><span class="co"># una prueba de Wald que asume la varianza conocida y da resultados un poco</span></span>
-<span id="cb507-41"><a href="tareas.html#cb507-41" aria-hidden="true" tabindex="-1"></a><span class="co"># diferentes con tamaño de muestra chicos</span></span>
-<span id="cb507-42"><a href="tareas.html#cb507-42" aria-hidden="true" tabindex="-1"></a>sims_mu <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">20000</span>, <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">9.5</span>, <span class="fl">1.1</span>) <span class="sc">|&gt;</span> <span class="fu">mean</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>()</span>
-<span id="cb507-43"><a href="tareas.html#cb507-43" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">mean</span>(sims_mu <span class="sc">&lt;=</span> <span class="fl">9.2</span>)</span>
-<span id="cb507-44"><a href="tareas.html#cb507-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-45"><a href="tareas.html#cb507-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Wald</span></span>
-<span id="cb507-46"><a href="tareas.html#cb507-46" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_hat</span>
-<span id="cb507-47"><a href="tareas.html#cb507-47" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(w)</span>
-<span id="cb507-48"><a href="tareas.html#cb507-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb507-49"><a href="tareas.html#cb507-49" aria-hidden="true" tabindex="-1"></a><span class="co"># en este ejemplo era más apropuado la t por que n-1=19 si tiene diferencias</span></span>
-<span id="cb507-50"><a href="tareas.html#cb507-50" aria-hidden="true" tabindex="-1"></a><span class="co"># entre la t y la normal</span></span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="tareas.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Respuestas</span></span>
+<span id="cb572-2"><a href="tareas.html#cb572-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Ejercicio 1: bootstrap</span></span>
+<span id="cb572-3"><a href="tareas.html#cb572-3" aria-hidden="true" tabindex="-1"></a>n_1 <span class="ot">&lt;-</span> <span class="dv">200</span>; n_2 <span class="ot">&lt;-</span>  <span class="dv">200</span></span>
+<span id="cb572-4"><a href="tareas.html#cb572-4" aria-hidden="true" tabindex="-1"></a>X_1 <span class="ot">=</span> <span class="dv">160</span>; X_2 <span class="ot">&lt;-</span> <span class="dv">148</span></span>
+<span id="cb572-5"><a href="tareas.html#cb572-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-6"><a href="tareas.html#cb572-6" aria-hidden="true" tabindex="-1"></a>p_1 <span class="ot">&lt;-</span> X_1<span class="sc">/</span>n_1</span>
+<span id="cb572-7"><a href="tareas.html#cb572-7" aria-hidden="true" tabindex="-1"></a>p_2 <span class="ot">&lt;-</span> X_2 <span class="sc">/</span> n_2</span>
+<span id="cb572-8"><a href="tareas.html#cb572-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-9"><a href="tareas.html#cb572-9" aria-hidden="true" tabindex="-1"></a>ee <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_1<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p_1) <span class="sc">/</span> n_2 <span class="sc">+</span> p_2<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> p_2) <span class="sc">/</span> n_2)</span>
+<span id="cb572-10"><a href="tareas.html#cb572-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-11"><a href="tareas.html#cb572-11" aria-hidden="true" tabindex="-1"></a><span class="co">#delta</span></span>
+<span id="cb572-12"><a href="tareas.html#cb572-12" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">-</span> <span class="fl">1.645</span> <span class="sc">*</span> ee</span>
+<span id="cb572-13"><a href="tareas.html#cb572-13" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">+</span> <span class="fl">1.645</span> <span class="sc">*</span> ee</span>
+<span id="cb572-14"><a href="tareas.html#cb572-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-15"><a href="tareas.html#cb572-15" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstarp</span></span>
+<span id="cb572-16"><a href="tareas.html#cb572-16" aria-hidden="true" tabindex="-1"></a>dif_p <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb572-17"><a href="tareas.html#cb572-17" aria-hidden="true" tabindex="-1"></a>  p_1_star <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="dv">160</span><span class="sc">/</span><span class="dv">200</span>) <span class="sc">/</span> <span class="dv">200</span></span>
+<span id="cb572-18"><a href="tareas.html#cb572-18" aria-hidden="true" tabindex="-1"></a>  p_2_star <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">200</span>, <span class="dv">148</span><span class="sc">/</span><span class="dv">200</span>) <span class="sc">/</span> <span class="dv">200</span></span>
+<span id="cb572-19"><a href="tareas.html#cb572-19" aria-hidden="true" tabindex="-1"></a>  p_1_star <span class="sc">-</span> p_2_star</span>
+<span id="cb572-20"><a href="tareas.html#cb572-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb572-21"><a href="tareas.html#cb572-21" aria-hidden="true" tabindex="-1"></a>ee_boot <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">1000</span>, <span class="fu">dif_p</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>() <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span>
+<span id="cb572-22"><a href="tareas.html#cb572-22" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">-</span> <span class="fl">1.645</span> <span class="sc">*</span> ee_boot</span>
+<span id="cb572-23"><a href="tareas.html#cb572-23" aria-hidden="true" tabindex="-1"></a>(p_1 <span class="sc">-</span> p_2) <span class="sc">+</span> <span class="fl">1.645</span> <span class="sc">*</span> ee_boot</span>
+<span id="cb572-24"><a href="tareas.html#cb572-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-25"><a href="tareas.html#cb572-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-26"><a href="tareas.html#cb572-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejercicio 2: t</span></span>
+<span id="cb572-27"><a href="tareas.html#cb572-27" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="fl">9.5</span></span>
+<span id="cb572-28"><a href="tareas.html#cb572-28" aria-hidden="true" tabindex="-1"></a>ee_hat <span class="ot">&lt;-</span> <span class="fl">1.1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
+<span id="cb572-29"><a href="tareas.html#cb572-29" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_hat</span>
+<span id="cb572-30"><a href="tareas.html#cb572-30" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(t, <span class="at">df =</span> <span class="dv">19</span>)</span>
+<span id="cb572-31"><a href="tareas.html#cb572-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-32"><a href="tareas.html#cb572-32" aria-hidden="true" tabindex="-1"></a><span class="co"># podemos calcular el error estándar con boostrap paramétrico</span></span>
+<span id="cb572-33"><a href="tareas.html#cb572-33" aria-hidden="true" tabindex="-1"></a>ee_boot_hat <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">10000</span>, <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">9.5</span>, <span class="fl">1.1</span>) <span class="sc">|&gt;</span> <span class="fu">mean</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>() <span class="sc">|&gt;</span> <span class="fu">sd</span>()</span>
+<span id="cb572-34"><a href="tareas.html#cb572-34" aria-hidden="true" tabindex="-1"></a>ee_boot_hat</span>
+<span id="cb572-35"><a href="tareas.html#cb572-35" aria-hidden="true" tabindex="-1"></a>ee_hat <span class="ot">&lt;-</span> <span class="fl">1.1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
+<span id="cb572-36"><a href="tareas.html#cb572-36" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_boot_hat</span>
+<span id="cb572-37"><a href="tareas.html#cb572-37" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(t, <span class="at">df =</span> <span class="dv">19</span>)</span>
+<span id="cb572-38"><a href="tareas.html#cb572-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-39"><a href="tareas.html#cb572-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Con simulación es equivalente a una prueba Wald, con la misma deficiencia que</span></span>
+<span id="cb572-40"><a href="tareas.html#cb572-40" aria-hidden="true" tabindex="-1"></a><span class="co"># una prueba de Wald que asume la varianza conocida y da resultados un poco</span></span>
+<span id="cb572-41"><a href="tareas.html#cb572-41" aria-hidden="true" tabindex="-1"></a><span class="co"># diferentes con tamaño de muestra chicos</span></span>
+<span id="cb572-42"><a href="tareas.html#cb572-42" aria-hidden="true" tabindex="-1"></a>sims_mu <span class="ot">&lt;-</span> <span class="fu">rerun</span>(<span class="dv">20000</span>, <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">9.5</span>, <span class="fl">1.1</span>) <span class="sc">|&gt;</span> <span class="fu">mean</span>()) <span class="sc">|&gt;</span> <span class="fu">flatten_dbl</span>()</span>
+<span id="cb572-43"><a href="tareas.html#cb572-43" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">mean</span>(sims_mu <span class="sc">&lt;=</span> <span class="fl">9.2</span>)</span>
+<span id="cb572-44"><a href="tareas.html#cb572-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-45"><a href="tareas.html#cb572-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Wald</span></span>
+<span id="cb572-46"><a href="tareas.html#cb572-46" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> (<span class="fl">9.2</span> <span class="sc">-</span> mu_0) <span class="sc">/</span> ee_hat</span>
+<span id="cb572-47"><a href="tareas.html#cb572-47" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(w)</span>
+<span id="cb572-48"><a href="tareas.html#cb572-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-49"><a href="tareas.html#cb572-49" aria-hidden="true" tabindex="-1"></a><span class="co"># en este ejemplo era más apropuado la t por que n-1=19 si tiene diferencias</span></span>
+<span id="cb572-50"><a href="tareas.html#cb572-50" aria-hidden="true" tabindex="-1"></a><span class="co"># entre la t y la normal</span></span></code></pre></div>
 </div>
 <div id="más-pruebas-de-hipótesis" class="section level2 unnumbered hasAnchor">
 <h2>11. Más pruebas de hipótesis<a href="tareas.html#más-pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
