@@ -333,7 +333,7 @@ quantile(sim_inicial$theta, c(0.025, 0.975)) %>% round(2)
 
 ```
 ##  2.5% 97.5% 
-##  0.15  0.85
+##  0.15  0.86
 ```
 
 Es difícil justificar en abstracto por qué escogeriamos una inicial con esta
@@ -389,7 +389,7 @@ sims %>% group_by(dist) %>%
 ## # A tibble: 2 × 2
 ##   dist      theta_hat
 ##   <chr>         <dbl>
-## 1 inicial       0.496
+## 1 inicial       0.499
 ## 2 posterior     0.611
 ```
 Nota que el estimador de máxima verosimilitud es $\hat{p} = 19/30 = 0.63$, que
@@ -411,7 +411,7 @@ sims %>% group_by(dist) %>%
 ## # Groups:   dist [2]
 ##   dist      `0.025` `0.975`
 ##   <chr>       <dbl>   <dbl>
-## 1 inicial      0.15    0.85
+## 1 inicial      0.15    0.86
 ## 2 posterior    0.45    0.76
 ```
 El segundo renglón nos da un intervalo posterior para $\theta$ de *credibilidad*

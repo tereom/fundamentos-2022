@@ -521,7 +521,7 @@ multiplicación debes identificar el núcleo de una distribución Normal,
 
 ¿cuáles son sus parámetros (media y varianza)?
 
-# 14. Poisson-Gamma {-}
+## 14. Poisson-Gamma ([Bayes Rules](https://www.bayesrulesbook.com/chapter-5.html#exercises-4)) {-}
 
 Revisa el ejemplo de modelo Poisson de las notas.
 
