@@ -308,12 +308,12 @@ corto en una dirección al azar para obtener una propuesta $\theta^* \sim q(\the
 2. Aceptamos or rechazamos el salto:
   - Si $\alpha = \frac{f(\theta^*)}{f(\theta^{(i)})} \geq 1$, aceptamos el salto
   y ponemos $\theta^{(i+1)}=\theta^*$. Regresamos a 1 para la siguiente
-  iteración $iarrow i + 1.$
+  iteración $i\leftarrow i + 1.$
   - Si $\alpha = \frac{f(\theta^*)}{f(\theta^{(i)})} < 1$, entonces aceptamos
   con probabilidad $\alpha$ el salto, ponemos $\theta^{(i+1)}=\theta^*$ y
-  regresamos a 1 para la siguiente iteración $i arrow i + 1$. Si rechazamos
+  regresamos a 1 para la siguiente iteración $i\leftarrow i + 1$. Si rechazamos
   el salto, ponemos entonces $\theta^{(i+1)}=\theta^{(i)}$ y regresamos a 1 para
-  la siguiente iteración $iarrow i + 1.$
+  la siguiente iteración $i\leftarrow i + 1.$
 
 Requerimos también que la función que propone los saltos sea simétrica: es
 decir, $q(\theta^*|\theta^{(i)})$ debe ser igual a $q(\theta^{(i)}|\theta^*)$.
