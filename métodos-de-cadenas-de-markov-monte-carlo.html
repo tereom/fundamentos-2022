@@ -790,7 +790,7 @@ y ponemos <span class="math inline">\(\theta^{(i+1)}=\theta^*\)</span>. Regresam
 iteración <span class="math inline">\(i\leftarrow i + 1.\)</span></li>
 <li>Si <span class="math inline">\(\alpha = \frac{f(\theta^*)}{f(\theta^{(i)})} &lt; 1\)</span>, entonces aceptamos
 con probabilidad <span class="math inline">\(\alpha\)</span> el salto, ponemos <span class="math inline">\(\theta^{(i+1)}=\theta^*\)</span> y
-regresamos a 1 para la siguiente iteración <span class="math inline">\(i \leftarrow i + 1\)</span>. Si rechazamos
+regresamos a 1 para la siguiente iteración <span class="math inline">\(i\leftarrow i + 1\)</span>. Si rechazamos
 el salto, ponemos entonces <span class="math inline">\(\theta^{(i+1)}=\theta^{(i)}\)</span> y regresamos a 1 para
 la siguiente iteración <span class="math inline">\(i\leftarrow i + 1.\)</span></li>
 </ul>
@@ -1628,19 +1628,19 @@ con <span class="math inline">\(X_i \sim \mathsf{N}(\mu, \sigma^2)\)</span>.</p>
 con <span class="math inline">\(\mu\)</span> <span class="math inline">\(\mathsf{N}(\mu_0, \sigma_0)\)</span> y <span class="math inline">\(\tau = 1/\sigma^2\)</span> con distribución
 <span class="math inline">\(\mathsf{Gamma}(a,b)\)</span>. Esto no nos da el modelo conjugado que vimos antes (nota
 la diferencia de la especificación de la inicial conjunta).</p>
-<p>Comenzamos por escribir
-<span class="math display">\[p(\mu, \sigma^2|x) \propto \frac{1}{{\sigma^{n/2} }}  \exp\left(-\sum\frac{(x_i-\mu)²}{2\sigma^2}\right) \exp\left(- \frac{(\mu - \mu_0)^2}{2\sigma_0^2}\right )\frac{1}{(\sigma^2)^{a + 1}}\exp\left (-\beta/\sigma^2\right)\]</span></p>
+<p>Comenzamos por escribir</p>
+<p><span class="math display">\[p(\mu, \sigma^2|x) \propto \frac{1}{{\sigma^{n/2}}}  \exp(-\sum\frac{(x_i-\mu)²}{2\sigma^2}) \exp(- \frac{(\mu - \mu_0)^2}{2\sigma_0^2}) \frac{1}{(\sigma^2)^{a + 1}}\exp (-\beta/\sigma^2 )\]</span></p>
 <p>Comenzamos analizando <span class="math inline">\(p(\mu|\sigma^2, x)\)</span>. Por la ecuación de arriba, e ignorando
 los términos que <strong>no</strong> dependen de <span class="math inline">\(\mu\)</span>:
-<span class="math display">\[p(\mu|\sigma^2, x) \propto \exp \left[ - \sum_i \left(\frac{(\mu - x_i)^2}{2\sigma^2} - \frac{(\mu - \mu_0)^2}{2n\sigma_0^2}\right)\right]\]</span>
+<span class="math display">\[p(\mu|\sigma^2, x) \propto \exp [ - \sum_i (\frac{(\mu - x_i)^2}{2\sigma^2} - \frac{(\mu - \mu_0)^2}{2n\sigma_0^2})]\]</span>
 que es una distribución normal (completa cuadrados):</p>
 <p><span class="math display">\[\mu|\sigma^2,x \sim \mathsf{N}\bigg(\frac{\sigma^2}{\sigma^2 + n\sigma_0^2}\mu_0 + \frac{n\sigma_0^2}{\sigma^2 + n \sigma_0^2}\bar{x}, \frac{\sigma \sigma_0}{\sqrt{\sigma^2 + n\sigma_0^2}}\bigg)\]</span></p>
 <p>Ahora consideramos <span class="math inline">\(p(\sigma^2|mu,x)\)</span>. Ignoramos en <span class="math inline">\(p(\mu,\sigma^2|x)\)</span> los términos que *no** dependen de <span class="math inline">\(\sigma^2\)</span>:</p>
-<p><span class="math display">\[p(\sigma^2|\mu, x) \propto \frac{1}{{\sigma^{n/2} }}  \exp\left(-\sum\frac{(x_i-\mu)²}{2\sigma^2}\right) \frac{1}{(\sigma^2)^{a + 1}}\exp\left (-\beta/\sigma^2\right)\]</span>
+<p><span class="math display">\[p(\sigma^2|\mu, x) \propto \frac{1}{{\sigma^{n/2} }}  \exp(-\sum\frac{(x_i-\mu)²}{2\sigma^2}) \frac{1}{(\sigma^2)^{a + 1}}\exp (-\beta/\sigma^2)\]</span>
 que simplificando da</p>
-<p><span class="math display">\[ = \frac{1}{\sigma^{n/2 + a + 1}}\exp\left( -\frac{\beta +\frac{1}{2}\sum(x_i - \mu)^2}{\sigma^2}  \right)\]</span>
+<p><span class="math display">\[ = \frac{1}{\sigma^{n/2 + a + 1}}\exp( -\frac{\beta +\frac{1}{2}\sum(x_i - \mu)^2}{\sigma^2}  )\]</span>
 de modo que</p>
-<p><span class="math display">\[\sigma^2|\mu, x \sim \mathsf{GI}\left(a +n/2, b + \frac{1}{2}\sum(x_i -\mu)^2\right)\]</span></p>
+<p><span class="math display">\[\sigma^2|\mu, x \sim \mathsf{GI}(a +n/2, b + \frac{1}{2}\sum(x_i -\mu)^2)\]</span></p>
 </div>
 <div id="ejemplo-17" class="section level3 unnumbered hasAnchor">
 <h3>Ejemplo<a href="métodos-de-cadenas-de-markov-monte-carlo.html#ejemplo-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>

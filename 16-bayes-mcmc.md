@@ -388,7 +388,7 @@ corto en una dirección al azar para obtener una propuesta $\theta^* \sim q(\the
   iteración $i\leftarrow i + 1.$
   - Si $\alpha = \frac{f(\theta^*)}{f(\theta^{(i)})} < 1$, entonces aceptamos
   con probabilidad $\alpha$ el salto, ponemos $\theta^{(i+1)}=\theta^*$ y
-  regresamos a 1 para la siguiente iteración $i \leftarrow i + 1$. Si rechazamos
+  regresamos a 1 para la siguiente iteración $i\leftarrow i + 1$. Si rechazamos
   el salto, ponemos entonces $\theta^{(i+1)}=\theta^{(i)}$ y regresamos a 1 para
   la siguiente iteración $i\leftarrow i + 1.$
 
@@ -1529,24 +1529,25 @@ $\mathsf{Gamma}(a,b)$. Esto no nos da el modelo conjugado que vimos antes (nota
 la diferencia de la especificación de la inicial conjunta).
 
 Comenzamos por escribir 
-$$p(\mu, \sigma^2|x) \propto \frac{1}{{\sigma^{n/2} }}  \exp\left(-\sum\frac{(x_i-\mu)²}{2\sigma^2}\right) \exp\left(- \frac{(\mu - \mu_0)^2}{2\sigma_0^2}\right )\frac{1}{(\sigma^2)^{a + 1}}\exp\left (-\beta/\sigma^2\right)$$
+
+$$p(\mu, \sigma^2|x) \propto \frac{1}{{\sigma^{n/2}}}  \exp(-\sum\frac{(x_i-\mu)²}{2\sigma^2}) \exp(- \frac{(\mu - \mu_0)^2}{2\sigma_0^2}) \frac{1}{(\sigma^2)^{a + 1}}\exp (-\beta/\sigma^2 )$$
 
 Comenzamos analizando $p(\mu|\sigma^2, x)$. Por la ecuación de arriba, e ignorando
 los términos que **no** dependen de $\mu$:
-$$p(\mu|\sigma^2, x) \propto \exp \left[ - \sum_i \left(\frac{(\mu - x_i)^2}{2\sigma^2} - \frac{(\mu - \mu_0)^2}{2n\sigma_0^2}\right)\right]$$
+$$p(\mu|\sigma^2, x) \propto \exp [ - \sum_i (\frac{(\mu - x_i)^2}{2\sigma^2} - \frac{(\mu - \mu_0)^2}{2n\sigma_0^2})]$$
 que es una distribución normal (completa cuadrados):
 
 $$\mu|\sigma^2,x \sim \mathsf{N}\bigg(\frac{\sigma^2}{\sigma^2 + n\sigma_0^2}\mu_0 + \frac{n\sigma_0^2}{\sigma^2 + n \sigma_0^2}\bar{x}, \frac{\sigma \sigma_0}{\sqrt{\sigma^2 + n\sigma_0^2}}\bigg)$$
 
 Ahora consideramos $p(\sigma^2|mu,x)$. Ignoramos en $p(\mu,\sigma^2|x)$ los términos que *no** dependen de $\sigma^2$:
 
-$$p(\sigma^2|\mu, x) \propto \frac{1}{{\sigma^{n/2} }}  \exp\left(-\sum\frac{(x_i-\mu)²}{2\sigma^2}\right) \frac{1}{(\sigma^2)^{a + 1}}\exp\left (-\beta/\sigma^2\right)$$
+$$p(\sigma^2|\mu, x) \propto \frac{1}{{\sigma^{n/2} }}  \exp(-\sum\frac{(x_i-\mu)²}{2\sigma^2}) \frac{1}{(\sigma^2)^{a + 1}}\exp (-\beta/\sigma^2)$$
 que simplificando da
 
-$$ = \frac{1}{\sigma^{n/2 + a + 1}}\exp\left( -\frac{\beta +\frac{1}{2}\sum(x_i - \mu)^2}{\sigma^2}  \right)$$
+$$ = \frac{1}{\sigma^{n/2 + a + 1}}\exp( -\frac{\beta +\frac{1}{2}\sum(x_i - \mu)^2}{\sigma^2}  )$$
 de modo que 
 
-$$\sigma^2|\mu, x \sim \mathsf{GI}\left(a +n/2, b + \frac{1}{2}\sum(x_i -\mu)^2\right)$$
+$$\sigma^2|\mu, x \sim \mathsf{GI}(a +n/2, b + \frac{1}{2}\sum(x_i -\mu)^2)$$
 
 ### Ejemplo {-}
 

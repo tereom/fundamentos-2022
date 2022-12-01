@@ -654,7 +654,7 @@ los datos verdaderos? Para evitar sesgarnos, también ocultamos la etiqueta verd
 <p>Usamos una gráfica que muestra los cuantiles 0.10, 0.50, 0.90:</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="pruebas-de-hipótesis.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">88</span>)</span>
 <span id="cb58-2"><a href="pruebas-de-hipótesis.html#cb58-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">&quot;grupo&quot;</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code></pre></div>
-<pre><code>## decrypt(&quot;qXsb vWiW mt 2LUmimLt QM&quot;)</code></pre>
+<pre><code>## decrypt(&quot;0lta Uo1o uQ OhHu1uhQ D2&quot;)</code></pre>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="pruebas-de-hipótesis.html#cb60-1" aria-hidden="true" tabindex="-1"></a>reps_mezcla <span class="ot">&lt;-</span> reps <span class="sc">|&gt;</span>  </span>
 <span id="cb60-2"><a href="pruebas-de-hipótesis.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_1 =</span> <span class="fu">factor</span>(digest<span class="sc">::</span><span class="fu">digest2int</span>(grupo) <span class="sc">%%</span> <span class="dv">177</span>))</span>
 <span id="cb60-3"><a href="pruebas-de-hipótesis.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grafica_cuantiles</span>(reps_mezcla, grupo_1, x) <span class="sc">+</span></span>
