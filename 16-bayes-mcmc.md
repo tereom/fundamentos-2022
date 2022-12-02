@@ -1541,7 +1541,7 @@ $$\mu|\sigma^2,x \sim \mathsf{N}\bigg(\frac{\sigma^2}{\sigma^2 + n\sigma_0^2}\mu
 
 Ahora consideramos $p(\sigma^2|mu,x)$. Ignoramos en $p(\mu,\sigma^2|x)$ los términos que *no** dependen de $\sigma^2$:
 
-$$p(\sigma^2|\mu, x) \propto \frac{1}{{\sigma^{n/2} }}  \exp(-\sum\frac{(x_i-\mu)²}{2\sigma^2}) \frac{1}{(\sigma^2)^{a + 1}}\exp (-\beta/\sigma^2)$$
+$$p(\sigma^2|\mu, x) \propto \frac{1}{\sigma^{n/2}}  \exp(-\sum\frac{(x_i-\mu)²}{2\sigma^2}) \frac{1}{(\sigma^2)^{a + 1}}\exp (-\beta/\sigma^2)$$
 que simplificando da
 
 $$ = \frac{1}{\sigma^{n/2 + a + 1}}\exp( -\frac{\beta +\frac{1}{2}\sum(x_i - \mu)^2}{\sigma^2}  )$$
