@@ -15,3 +15,6 @@ más-de-pruebas-de-hipótesis-e-intervalos
 introducción-a-inferencia-bayesiana-1
 calibración-bayesiana-y-regularización
 métodos-de-cadenas-de-markov-monte-carlo
+ejemplos-de-inferencia-bayesiana-en-stan-i
+ejemplo-exámenes-1
+ejemplo-exámenes-mal-identificado
