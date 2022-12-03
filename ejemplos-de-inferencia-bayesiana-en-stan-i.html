@@ -548,133 +548,87 @@ y compilamos:</p>
 <span id="cb663-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb663-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
 <span id="cb663-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb663-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">parallel_chains =</span> <span class="dv">4</span>,</span>
 <span id="cb663-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb663-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">500</span>)</span></code></pre></div>
-<pre><code>## Running MCMC with 4 parallel chains...</code></pre>
-<pre><code>## Chain 1 ./modelo-1: 1: d9__stubs__TEXTX__init_offsets__TEXT88__gcc_except_tab__TEXT__const__TEXTKrK__cstring__TEXTZ__unwind_info__TEXT$
-$
-__eh_frame__TEXT(?
-(?
-__DATA_CONST@
-@
-__got__DATA_CONST@
-@
-__const__DATA_CONSTP
-pWP
-8__DATA
-@
-@__data__DATA
-
-__common__DATA
-__bss__DATA
-8H__LINKEDIT@4[3[7؜plP: File name too long</code></pre>
-<pre><code>## Chain 1 ./modelo-1: 1: X!H__PAGEZERO__TEXT@
-@
-__text__TEXTd9: not found</code></pre>
-<pre><code>## Chain 1 ./modelo-1: 2: 
-: not found</code></pre>
-<pre><code>## Chain 1 ./modelo-1: 3: Syntax error: &quot;(&quot; unexpected</code></pre>
-<pre><code>## Chain 2 ./modelo-1: 1: d9__stubs__TEXTX__init_offsets__TEXT88__gcc_except_tab__TEXT__const__TEXTKrK__cstring__TEXTZ__unwind_info__TEXT$
-$
-__eh_frame__TEXT(?
-(?
-__DATA_CONST@
-@
-__got__DATA_CONST@
-@
-__const__DATA_CONSTP
-pWP
-8__DATA
-@
-@__data__DATA
-
-__common__DATA
-__bss__DATA
-8H__LINKEDIT@4[3[7؜plP: File name too long</code></pre>
-<pre><code>## Chain 2 ./modelo-1: 1: X!H__PAGEZERO__TEXT@
-@
-__text__TEXTd9: not found</code></pre>
-<pre><code>## Chain 2 ./modelo-1: 2: 
-: not found</code></pre>
-<pre><code>## Chain 2 ./modelo-1: 3: Syntax error: &quot;(&quot; unexpected</code></pre>
-<pre><code>## Chain 3 ./modelo-1: 1: d9__stubs__TEXTX__init_offsets__TEXT88__gcc_except_tab__TEXT__const__TEXTKrK__cstring__TEXTZ__unwind_info__TEXT$
-$
-__eh_frame__TEXT(?
-(?
-__DATA_CONST@
-@
-__got__DATA_CONST@
-@
-__const__DATA_CONSTP
-pWP
-8__DATA
-@
-@__data__DATA
-
-__common__DATA
-__bss__DATA
-8H__LINKEDIT@4[3[7؜plP: File name too long</code></pre>
-<pre><code>## Chain 3 ./modelo-1: 1: X!H__PAGEZERO__TEXT@
-@
-__text__TEXTd9: not found</code></pre>
-<pre><code>## Chain 3 ./modelo-1: 2: 
-: not found</code></pre>
-<pre><code>## Chain 3 ./modelo-1: 3: Syntax error: &quot;(&quot; unexpected</code></pre>
-<pre><code>## Chain 4 ./modelo-1: 1: d9__stubs__TEXTX__init_offsets__TEXT88__gcc_except_tab__TEXT__const__TEXTKrK__cstring__TEXTZ__unwind_info__TEXT$
-$
-__eh_frame__TEXT(?
-(?
-__DATA_CONST@
-@
-__got__DATA_CONST@
-@
-__const__DATA_CONSTP
-pWP
-8__DATA
-@
-@__data__DATA
-
-__common__DATA
-__bss__DATA
-8H__LINKEDIT@4[3[7؜plP: File name too long</code></pre>
-<pre><code>## Chain 4 ./modelo-1: 1: X!H__PAGEZERO__TEXT@
-@
-__text__TEXTd9: not found</code></pre>
-<pre><code>## Chain 4 ./modelo-1: 2: 
-: not found</code></pre>
-<pre><code>## Chain 4 ./modelo-1: 3: Syntax error: &quot;(&quot; unexpected</code></pre>
-<pre><code>## Warning: Chain 1 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 2 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 3 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 4 finished unexpectedly!</code></pre>
-<pre><code>## Warning: All chains finished unexpectedly! Use the $output(chain_id) method for more information.</code></pre>
-<pre><code>## Warning: Use read_cmdstan_csv() to read the results of the failed chains.</code></pre>
-<pre><code>## Warning: No chains finished successfully. Unable to retrieve the fit.</code></pre>
+<pre><code>## Running MCMC with 4 parallel chains...
+## 
+## Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+## Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+## Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+## Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+## Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+## Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+## Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+## Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+## Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+## Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+## Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+## Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
+## Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+## Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+## Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+## Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+## Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+## Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+## Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+## Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+## Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+## Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+## Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+## Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+## Chain 1 finished in 0.0 seconds.
+## Chain 2 finished in 0.0 seconds.
+## Chain 3 finished in 0.0 seconds.
+## Chain 4 finished in 0.0 seconds.
+## 
+## All 4 chains finished successfully.
+## Mean chain execution time: 0.0 seconds.
+## Total execution time: 0.3 seconds.</code></pre>
 <p>Checamos diagnósticos:</p>
-<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb688-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
-<pre><code>## Error: No CmdStan runs finished successfully. Unable to run bin/diagnose.</code></pre>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb665-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
+<pre><code>## Processing csv files: /tmp/RtmpxL3JZN/modelo-1-202212030056-1-7dabca.csv, /tmp/RtmpxL3JZN/modelo-1-202212030056-2-7dabca.csv, /tmp/RtmpxL3JZN/modelo-1-202212030056-3-7dabca.csv, /tmp/RtmpxL3JZN/modelo-1-202212030056-4-7dabca.csv
+## 
+## Checking sampler transitions treedepth.
+## Treedepth satisfactory for all transitions.
+## 
+## Checking sampler transitions for divergences.
+## No divergent transitions found.
+## 
+## Checking E-BFMI - sampler transitions HMC potential energy.
+## E-BFMI satisfactory.
+## 
+## Effective sample size satisfactory.
+## 
+## Split R-hat values satisfactory all parameters.
+## 
+## Processing complete, no problems detected.</code></pre>
 <p>Si no hay problemas, podemos ver el resumen:</p>
-<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb690-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">summary</span>()</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb667-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">summary</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 10
+##   variable      mean  median     sd    mad      q5     q95  rhat ess_b…¹ ess_t…²
+##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 lp__       -24.5   -24.3   0.694  0.289  -26.0   -24.1    1.00   1845.   2051.
+## 2 theta        0.611   0.613 0.0787 0.0786   0.476   0.739  1.00   1324.   1635.
+## 3 theta_ini…   0.500   0.502 0.190  0.208    0.189   0.813  1.00   4182.   4102.
+## # … with abbreviated variable names ¹​ess_bulk, ²​ess_tail</code></pre>
 <p>Donde verificamos que el tamaño de muestra efectivo (ess) y el diagnóstico de
 <span class="math inline">\(\hat{R}\)</span> son apropiados.</p>
 <p>Podemos ver las cadenas de la siguiente forma:</p>
-<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb692-1" aria-hidden="true" tabindex="-1"></a>theta_tbl <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;theta&quot;</span>, <span class="st">&quot;theta_inicial&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>()</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
-<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb694-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(theta_tbl, <span class="fu">aes</span>(<span class="at">x =</span> .iteration, <span class="at">y =</span> theta)) <span class="sc">+</span></span>
-<span id="cb694-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb694-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb694-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb694-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.chain, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## Error in ggplot(theta_tbl, aes(x = .iteration, y = theta)): object &#39;theta_tbl&#39; not found</code></pre>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb669-1" aria-hidden="true" tabindex="-1"></a>theta_tbl <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;theta&quot;</span>, <span class="st">&quot;theta_inicial&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>()</span>
+<span id="cb669-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb669-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(theta_tbl, <span class="fu">aes</span>(<span class="at">x =</span> .iteration, <span class="at">y =</span> theta)) <span class="sc">+</span></span>
+<span id="cb669-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb669-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb669-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb669-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.chain, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="17-inferencia-stan-01_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Y replicamos la gráfica de las notas haciendo:</p>
-<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb696-1" aria-hidden="true" tabindex="-1"></a>sims_tbl <span class="ot">&lt;-</span> theta_tbl <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(theta<span class="sc">:</span>theta_inicial, <span class="at">names_to =</span> <span class="st">&quot;dist&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;theta&quot;</span>)</span></code></pre></div>
-<pre><code>## Error in pivot_longer(., theta:theta_inicial, names_to = &quot;dist&quot;, values_to = &quot;theta&quot;): object &#39;theta_tbl&#39; not found</code></pre>
-<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb698-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_tbl, <span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">fill =</span> dist)) <span class="sc">+</span> </span>
-<span id="cb698-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb698-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<pre><code>## Error in ggplot(sims_tbl, aes(x = theta, fill = dist)): object &#39;sims_tbl&#39; not found</code></pre>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb670-1" aria-hidden="true" tabindex="-1"></a>sims_tbl <span class="ot">&lt;-</span> theta_tbl <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(theta<span class="sc">:</span>theta_inicial, <span class="at">names_to =</span> <span class="st">&quot;dist&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;theta&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Dropping &#39;draws_df&#39; class as required metadata was removed.</code></pre>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_tbl, <span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">fill =</span> dist)) <span class="sc">+</span> </span>
+<span id="cb672-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb672-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="17-inferencia-stan-01_files/figure-html/unnamed-chunk-9-1.png" width="576" /></p>
 </div>
 <div id="estimación-del-máximo-de-una-uniforme" class="section level2 unnumbered hasAnchor">
 <h2>Estimación del máximo de una uniforme<a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#estimación-del-máximo-de-una-uniforme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Tomamos el ejemplo de los boletos de lotería</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb700-1" aria-hidden="true" tabindex="-1"></a>loteria_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/nums_loteria_avion.csv&quot;</span>, <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;numero&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb700-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb700-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">numero =</span> <span class="fu">as.integer</span>(numero))</span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb673-1" aria-hidden="true" tabindex="-1"></a>loteria_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/nums_loteria_avion.csv&quot;</span>, <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;numero&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb673-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb673-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">numero =</span> <span class="fu">as.integer</span>(numero))</span></code></pre></div>
 <pre><code>## Rows: 99 Columns: 2
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -683,10 +637,10 @@ y compilamos:</p>
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb702-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">334</span>)</span>
-<span id="cb702-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb702-2" aria-hidden="true" tabindex="-1"></a>muestra_loteria <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(loteria_tbl, <span class="dv">25</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb702-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb702-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">numero =</span> numero<span class="sc">/</span><span class="dv">1000</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb703-1" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">334</span>)</span>
+<span id="cb675-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb675-2" aria-hidden="true" tabindex="-1"></a>muestra_loteria <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(loteria_tbl, <span class="dv">25</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb675-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb675-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">numero =</span> numero<span class="sc">/</span><span class="dv">1000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb676-1" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
 <pre><code>## // Ejemplo de estimación del máximo de uniforme
 ## data {
 ##   int n; // número de observaciones
@@ -707,47 +661,99 @@ y compilamos:</p>
 ##   y ~ uniform(0, theta);
 ## }</code></pre>
 <p>Pasamos datos y muestreamos</p>
-<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-1" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">nrow</span>(muestra_loteria), <span class="at">y =</span> muestra_loteria<span class="sc">$</span>numero)</span>
-<span id="cb705-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-2" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
-<span id="cb705-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
-<span id="cb705-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
-<span id="cb705-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
-<span id="cb705-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">5000</span>,</span>
-<span id="cb705-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">20000</span>,</span>
-<span id="cb705-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">parallel_chains =</span> <span class="dv">4</span>,</span>
-<span id="cb705-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">5000</span>)</span></code></pre></div>
-<pre><code>## Running MCMC with 4 parallel chains...</code></pre>
-<pre><code>## Chain 1 ./modelo-2: 1: Syntax error: word unexpected (expecting &quot;)&quot;)</code></pre>
-<pre><code>## Chain 2 ./modelo-2: 1: Syntax error: word unexpected (expecting &quot;)&quot;)</code></pre>
-<pre><code>## Chain 3 ./modelo-2: 1: Syntax error: word unexpected (expecting &quot;)&quot;)</code></pre>
-<pre><code>## Chain 4 ./modelo-2: 1: Syntax error: word unexpected (expecting &quot;)&quot;)</code></pre>
-<pre><code>## Warning: Chain 1 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 2 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 3 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 4 finished unexpectedly!</code></pre>
-<pre><code>## Warning: All chains finished unexpectedly! Use the $output(chain_id) method for more information.</code></pre>
-<pre><code>## Warning: Use read_cmdstan_csv() to read the results of the failed chains.</code></pre>
-<pre><code>## Warning: No chains finished successfully. Unable to retrieve the fit.</code></pre>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-1" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">nrow</span>(muestra_loteria), <span class="at">y =</span> muestra_loteria<span class="sc">$</span>numero)</span>
+<span id="cb678-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-2" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb678-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
+<span id="cb678-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
+<span id="cb678-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb678-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">5000</span>,</span>
+<span id="cb678-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">20000</span>,</span>
+<span id="cb678-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">parallel_chains =</span> <span class="dv">4</span>,</span>
+<span id="cb678-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb678-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">5000</span>)</span></code></pre></div>
+<pre><code>## Running MCMC with 4 parallel chains...
+## 
+## Chain 1 Iteration:     1 / 25000 [  0%]  (Warmup) 
+## Chain 1 Iteration:  5000 / 25000 [ 20%]  (Warmup) 
+## Chain 1 Iteration:  5001 / 25000 [ 20%]  (Sampling) 
+## Chain 1 Iteration: 10000 / 25000 [ 40%]  (Sampling) 
+## Chain 2 Iteration:     1 / 25000 [  0%]  (Warmup) 
+## Chain 2 Iteration:  5000 / 25000 [ 20%]  (Warmup) 
+## Chain 2 Iteration:  5001 / 25000 [ 20%]  (Sampling) 
+## Chain 3 Iteration:     1 / 25000 [  0%]  (Warmup) 
+## Chain 3 Iteration:  5000 / 25000 [ 20%]  (Warmup) 
+## Chain 3 Iteration:  5001 / 25000 [ 20%]  (Sampling)</code></pre>
+<pre><code>## Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+<pre><code>## Chain 3 Exception: uniform_lpdf: Upper bound parameter is inf, but must be finite! (in &#39;/tmp/RtmpxL3JZN/model-1ff966d88785.stan&#39;, line 18, column 2 to column 24)</code></pre>
+<pre><code>## Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+<pre><code>## Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+<pre><code>## Chain 3</code></pre>
+<pre><code>## Chain 4 Iteration:     1 / 25000 [  0%]  (Warmup) 
+## Chain 4 Iteration:  5000 / 25000 [ 20%]  (Warmup) 
+## Chain 4 Iteration:  5001 / 25000 [ 20%]  (Sampling) 
+## Chain 1 Iteration: 15000 / 25000 [ 60%]  (Sampling) 
+## Chain 2 Iteration: 10000 / 25000 [ 40%]  (Sampling) 
+## Chain 3 Iteration: 10000 / 25000 [ 40%]  (Sampling) 
+## Chain 4 Iteration: 10000 / 25000 [ 40%]  (Sampling) 
+## Chain 1 Iteration: 20000 / 25000 [ 80%]  (Sampling) 
+## Chain 2 Iteration: 15000 / 25000 [ 60%]  (Sampling) 
+## Chain 3 Iteration: 15000 / 25000 [ 60%]  (Sampling) 
+## Chain 4 Iteration: 15000 / 25000 [ 60%]  (Sampling) 
+## Chain 1 Iteration: 25000 / 25000 [100%]  (Sampling) 
+## Chain 2 Iteration: 20000 / 25000 [ 80%]  (Sampling) 
+## Chain 3 Iteration: 20000 / 25000 [ 80%]  (Sampling) 
+## Chain 4 Iteration: 20000 / 25000 [ 80%]  (Sampling) 
+## Chain 1 finished in 0.4 seconds.
+## Chain 2 Iteration: 25000 / 25000 [100%]  (Sampling) 
+## Chain 3 Iteration: 25000 / 25000 [100%]  (Sampling) 
+## Chain 4 Iteration: 25000 / 25000 [100%]  (Sampling) 
+## Chain 2 finished in 0.5 seconds.
+## Chain 3 finished in 0.5 seconds.
+## Chain 4 finished in 0.5 seconds.
+## 
+## All 4 chains finished successfully.
+## Mean chain execution time: 0.5 seconds.
+## Total execution time: 0.6 seconds.</code></pre>
 <p>Checamos diagnósticos:</p>
-<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb718-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
-<pre><code>## Error: No CmdStan runs finished successfully. Unable to run bin/diagnose.</code></pre>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb686-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
+<pre><code>## Processing csv files: /tmp/RtmpxL3JZN/modelo-2-202212030056-1-0a3eba.csv, /tmp/RtmpxL3JZN/modelo-2-202212030056-2-0a3eba.csv, /tmp/RtmpxL3JZN/modelo-2-202212030056-3-0a3eba.csv, /tmp/RtmpxL3JZN/modelo-2-202212030056-4-0a3eba.csv
+## 
+## Checking sampler transitions treedepth.
+## Treedepth satisfactory for all transitions.
+## 
+## Checking sampler transitions for divergences.
+## No divergent transitions found.
+## 
+## Checking E-BFMI - sampler transitions HMC potential energy.
+## E-BFMI satisfactory.
+## 
+## Effective sample size satisfactory.
+## 
+## Split R-hat values satisfactory all parameters.
+## 
+## Processing complete, no problems detected.</code></pre>
 <p>Si no hay problemas, podemos ver el resumen:</p>
-<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">summary</span>()</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb722-1" aria-hidden="true" tabindex="-1"></a>resumen</span></code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;resumen&#39; not found</code></pre>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb688-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">summary</span>()</span>
+<span id="cb688-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb688-2" aria-hidden="true" tabindex="-1"></a>resumen</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 10
+##   variable  mean median      sd     mad    q5   q95  rhat ess_bulk ess_tail
+##   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 lp__     -231.  -231.   0.793   0.359 -233. -231.  1.00   23508.   21069.
+## 2 theta    6087.  6012. 243.    165.    5864. 6567.  1.00   20929.   18821.</code></pre>
 <p>El intervalo 95% que obtenemos es:</p>
-<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb724-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb724-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb724-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">theta_inf =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.025</span>), </span>
-<span id="cb724-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb724-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">theta_mediana =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.5</span>),</span>
-<span id="cb724-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb724-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">theta_sup =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb690-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb690-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb690-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">theta_inf =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.025</span>), </span>
+<span id="cb690-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb690-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">theta_mediana =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.5</span>),</span>
+<span id="cb690-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb690-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">theta_sup =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.975</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   theta_inf theta_mediana theta_sup
+##       &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+## 1     5858.         6012.     6742.</code></pre>
 <p>Podemos ahora intentar con la inicial gamma que nos pareció
 más intuitiva, aún cuando el modelo no es conjugado:</p>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb726-1" aria-hidden="true" tabindex="-1"></a>archivo_stan <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">&quot;stan/modelo-3.stan&quot;</span>)</span>
-<span id="cb726-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb726-2" aria-hidden="true" tabindex="-1"></a><span class="co"># compilar</span></span>
-<span id="cb726-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb726-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(archivo_stan)</span></code></pre></div>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb727-1" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb692-1" aria-hidden="true" tabindex="-1"></a>archivo_stan <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">&quot;stan/modelo-3.stan&quot;</span>)</span>
+<span id="cb692-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb692-2" aria-hidden="true" tabindex="-1"></a><span class="co"># compilar</span></span>
+<span id="cb692-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb692-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(archivo_stan)</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb693-1" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
 <pre><code>## // Ejemplo de estimación del máximo de uniforme
 ## data {
 ##   int n; // número de observaciones
@@ -768,51 +774,98 @@ más intuitiva, aún cuando el modelo no es conjugado:</p>
 ##   y ~ uniform(0, theta);
 ## }</code></pre>
 <p>Pasamos datos y muestreamos</p>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb729-1" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">nrow</span>(muestra_loteria), <span class="at">y =</span> muestra_loteria<span class="sc">$</span>numero)</span>
-<span id="cb729-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb729-2" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
-<span id="cb729-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb729-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
-<span id="cb729-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb729-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
-<span id="cb729-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb729-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
-<span id="cb729-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb729-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">10000</span>,</span>
-<span id="cb729-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb729-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">parallel_chains =</span> <span class="dv">4</span>,</span>
-<span id="cb729-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb729-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
-<pre><code>## Running MCMC with 4 parallel chains...</code></pre>
-<pre><code>## Chain 1 ./modelo-3: 1: Syntax error: &quot;)&quot; unexpected</code></pre>
-<pre><code>## Chain 2 ./modelo-3: 1: Syntax error: &quot;)&quot; unexpected</code></pre>
-<pre><code>## Chain 3 ./modelo-3: 1: Syntax error: &quot;)&quot; unexpected</code></pre>
-<pre><code>## Chain 4 ./modelo-3: 1: Syntax error: &quot;)&quot; unexpected</code></pre>
-<pre><code>## Warning: Chain 1 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 2 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 3 finished unexpectedly!</code></pre>
-<pre><code>## Warning: Chain 4 finished unexpectedly!</code></pre>
-<pre><code>## Warning: All chains finished unexpectedly! Use the $output(chain_id) method for more information.</code></pre>
-<pre><code>## Warning: Use read_cmdstan_csv() to read the results of the failed chains.</code></pre>
-<pre><code>## Warning: No chains finished successfully. Unable to retrieve the fit.</code></pre>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb695-1" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">nrow</span>(muestra_loteria), <span class="at">y =</span> muestra_loteria<span class="sc">$</span>numero)</span>
+<span id="cb695-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb695-2" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb695-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb695-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
+<span id="cb695-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb695-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
+<span id="cb695-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb695-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb695-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb695-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">10000</span>,</span>
+<span id="cb695-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb695-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">parallel_chains =</span> <span class="dv">4</span>,</span>
+<span id="cb695-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb695-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
+<pre><code>## Running MCMC with 4 parallel chains...
+## 
+## Chain 1 Iteration:     1 / 11000 [  0%]  (Warmup) 
+## Chain 1 Iteration:  1001 / 11000 [  9%]  (Sampling) 
+## Chain 1 Iteration:  3000 / 11000 [ 27%]  (Sampling) 
+## Chain 1 Iteration:  5000 / 11000 [ 45%]  (Sampling) 
+## Chain 1 Iteration:  7000 / 11000 [ 63%]  (Sampling) 
+## Chain 2 Iteration:     1 / 11000 [  0%]  (Warmup) 
+## Chain 2 Iteration:  1001 / 11000 [  9%]  (Sampling) 
+## Chain 2 Iteration:  3000 / 11000 [ 27%]  (Sampling) 
+## Chain 2 Iteration:  5000 / 11000 [ 45%]  (Sampling) 
+## Chain 3 Iteration:     1 / 11000 [  0%]  (Warmup) 
+## Chain 3 Iteration:  1001 / 11000 [  9%]  (Sampling) 
+## Chain 3 Iteration:  3000 / 11000 [ 27%]  (Sampling) 
+## Chain 3 Iteration:  5000 / 11000 [ 45%]  (Sampling) 
+## Chain 4 Iteration:     1 / 11000 [  0%]  (Warmup) 
+## Chain 4 Iteration:  1001 / 11000 [  9%]  (Sampling) 
+## Chain 4 Iteration:  3000 / 11000 [ 27%]  (Sampling) 
+## Chain 4 Iteration:  5000 / 11000 [ 45%]  (Sampling) 
+## Chain 2 Iteration:  7000 / 11000 [ 63%]  (Sampling) 
+## Chain 2 Iteration:  9000 / 11000 [ 81%]  (Sampling) 
+## Chain 2 Iteration: 11000 / 11000 [100%]  (Sampling) 
+## Chain 2 finished in 0.2 seconds.
+## Chain 1 Iteration:  9000 / 11000 [ 81%]  (Sampling) 
+## Chain 1 Iteration: 11000 / 11000 [100%]  (Sampling) 
+## Chain 3 Iteration:  7000 / 11000 [ 63%]  (Sampling) 
+## Chain 3 Iteration:  9000 / 11000 [ 81%]  (Sampling) 
+## Chain 3 Iteration: 11000 / 11000 [100%]  (Sampling) 
+## Chain 4 Iteration:  7000 / 11000 [ 63%]  (Sampling) 
+## Chain 4 Iteration:  9000 / 11000 [ 81%]  (Sampling) 
+## Chain 4 Iteration: 11000 / 11000 [100%]  (Sampling) 
+## Chain 1 finished in 0.2 seconds.
+## Chain 3 finished in 0.2 seconds.
+## Chain 4 finished in 0.2 seconds.
+## 
+## All 4 chains finished successfully.
+## Mean chain execution time: 0.2 seconds.
+## Total execution time: 0.4 seconds.</code></pre>
 <p>Checamos diagnósticos:</p>
-<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb742-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
-<pre><code>## Error: No CmdStan runs finished successfully. Unable to run bin/diagnose.</code></pre>
+<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb697-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
+<pre><code>## Processing csv files: /tmp/RtmpxL3JZN/modelo-3-202212030056-1-5018a0.csv, /tmp/RtmpxL3JZN/modelo-3-202212030056-2-5018a0.csv, /tmp/RtmpxL3JZN/modelo-3-202212030056-3-5018a0.csv, /tmp/RtmpxL3JZN/modelo-3-202212030056-4-5018a0.csv
+## 
+## Checking sampler transitions treedepth.
+## Treedepth satisfactory for all transitions.
+## 
+## Checking sampler transitions for divergences.
+## No divergent transitions found.
+## 
+## Checking E-BFMI - sampler transitions HMC potential energy.
+## E-BFMI satisfactory.
+## 
+## Effective sample size satisfactory.
+## 
+## Split R-hat values satisfactory all parameters.
+## 
+## Processing complete, no problems detected.</code></pre>
 <p>Si no hay problemas, podemos ver el resumen:</p>
-<div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb744-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb744-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">summary</span>()</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
-<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb746-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb746-1" aria-hidden="true" tabindex="-1"></a>resumen</span></code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;resumen&#39; not found</code></pre>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb699-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">summary</span>()</span>
+<span id="cb699-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb699-2" aria-hidden="true" tabindex="-1"></a>resumen</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 10
+##   variable  mean median      sd     mad    q5   q95  rhat ess_bulk ess_tail
+##   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 lp__     -179.  -178.   0.799   0.362 -180. -178.  1.00   11507.   10915.
+## 2 theta    6150.  6052. 314.    208.    5867. 6764.  1.00    9946.    9364.</code></pre>
 <p>El intervalo 95% que obtenemos es:</p>
-<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb748-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb748-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb748-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">theta_inf =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.025</span>), </span>
-<span id="cb748-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb748-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">theta_mediana =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.5</span>),</span>
-<span id="cb748-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb748-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">theta_sup =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb701-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb701-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb701-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">theta_inf =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.025</span>), </span>
+<span id="cb701-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb701-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">theta_mediana =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.5</span>),</span>
+<span id="cb701-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb701-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">theta_sup =</span> <span class="fu">quantile</span>(theta, <span class="fl">0.975</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   theta_inf theta_mediana theta_sup
+##       &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+## 1     5860.         6052.     6996.</code></pre>
 <p>Y la posterior se ve como sigue:</p>
-<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb750-1" aria-hidden="true" tabindex="-1"></a>theta_post_sim <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> as.numeric</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
-<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb752-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb752-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(theta_post_sim)</span></code></pre></div>
-<pre><code>## Error in eval_tidy(mapping$x, data, caller_env): object &#39;theta_post_sim&#39; not found</code></pre>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb703-1" aria-hidden="true" tabindex="-1"></a>theta_post_sim <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> as.numeric</span>
+<span id="cb703-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb703-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(theta_post_sim)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="17-inferencia-stan-01_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
 <div id="ejemplo-de-cantantes" class="section level2 unnumbered hasAnchor">
 <h2>Ejemplo de cantantes<a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#ejemplo-de-cantantes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Haremos el ejemplo no conjugado de estaturas de cantantes, con
 verificación predictiva posterior.</p>
-<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb754-1" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb705-1" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
 <pre><code>## // Ejemplo de modelo normal para estaturas de cantantes
 ## data {
 ##   int n; // número de observaciones
@@ -839,74 +892,123 @@ verificación predictiva posterior.</p>
 ## 
 ## }</code></pre>
 <p>Pasamos datos y muestreamos</p>
-<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
-<span id="cb756-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-2" aria-hidden="true" tabindex="-1"></a>cantantes <span class="ot">&lt;-</span> lattice<span class="sc">::</span>singer <span class="sc">%&gt;%</span> </span>
-<span id="cb756-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estatura_cm =</span> (<span class="fl">2.54</span> <span class="sc">*</span> height)) <span class="sc">%&gt;%</span> </span>
-<span id="cb756-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(voice.part, <span class="st">&quot;Tenor&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb756-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">20</span>)</span>
-<span id="cb756-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-6" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">nrow</span>(cantantes), <span class="at">y =</span> cantantes<span class="sc">$</span>estatura_cm)</span>
-<span id="cb756-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-7" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
-<span id="cb756-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
-<span id="cb756-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
-<span id="cb756-10"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
-<span id="cb756-11"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">4000</span>,</span>
-<span id="cb756-12"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">4000</span>,</span>
-<span id="cb756-13"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb756-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
-<pre><code>## Running MCMC with 4 sequential chains...</code></pre>
-<pre><code>## Chain 1 ./modelo-cantantes: 13: Syntax error: &quot;)&quot; unexpected</code></pre>
-<pre><code>## Warning: Chain 1 finished unexpectedly!</code></pre>
-<pre><code>## Chain 2 ./modelo-cantantes: 13: Syntax error: &quot;)&quot; unexpected</code></pre>
-<pre><code>## Warning: Chain 2 finished unexpectedly!</code></pre>
-<pre><code>## Chain 3 ./modelo-cantantes: 13: Syntax error: &quot;)&quot; unexpected</code></pre>
-<pre><code>## Warning: Chain 3 finished unexpectedly!</code></pre>
-<pre><code>## Chain 4 ./modelo-cantantes: 13: Syntax error: &quot;)&quot; unexpected</code></pre>
-<pre><code>## Warning: Chain 4 finished unexpectedly!</code></pre>
-<pre><code>## Warning: All chains finished unexpectedly! Use the $output(chain_id) method for more information.</code></pre>
-<pre><code>## Warning: Use read_cmdstan_csv() to read the results of the failed chains.</code></pre>
-<pre><code>## Warning: No chains finished successfully. Unable to retrieve the fit.</code></pre>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
+<span id="cb707-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-2" aria-hidden="true" tabindex="-1"></a>cantantes <span class="ot">&lt;-</span> lattice<span class="sc">::</span>singer <span class="sc">%&gt;%</span> </span>
+<span id="cb707-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estatura_cm =</span> (<span class="fl">2.54</span> <span class="sc">*</span> height)) <span class="sc">%&gt;%</span> </span>
+<span id="cb707-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(voice.part, <span class="st">&quot;Tenor&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb707-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">20</span>)</span>
+<span id="cb707-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-6" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">nrow</span>(cantantes), <span class="at">y =</span> cantantes<span class="sc">$</span>estatura_cm)</span>
+<span id="cb707-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-7" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb707-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
+<span id="cb707-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
+<span id="cb707-10"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb707-11"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">4000</span>,</span>
+<span id="cb707-12"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">4000</span>,</span>
+<span id="cb707-13"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb707-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
+<pre><code>## Running MCMC with 4 sequential chains...
+## 
+## Chain 1 Iteration:    1 / 8000 [  0%]  (Warmup) 
+## Chain 1 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
+## Chain 1 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
+## Chain 1 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
+## Chain 1 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
+## Chain 1 Iteration: 8000 / 8000 [100%]  (Sampling) 
+## Chain 1 finished in 0.1 seconds.
+## Chain 2 Iteration:    1 / 8000 [  0%]  (Warmup) 
+## Chain 2 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
+## Chain 2 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
+## Chain 2 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
+## Chain 2 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
+## Chain 2 Iteration: 8000 / 8000 [100%]  (Sampling) 
+## Chain 2 finished in 0.1 seconds.
+## Chain 3 Iteration:    1 / 8000 [  0%]  (Warmup) 
+## Chain 3 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
+## Chain 3 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
+## Chain 3 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
+## Chain 3 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
+## Chain 3 Iteration: 8000 / 8000 [100%]  (Sampling) 
+## Chain 3 finished in 0.1 seconds.
+## Chain 4 Iteration:    1 / 8000 [  0%]  (Warmup) 
+## Chain 4 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
+## Chain 4 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
+## Chain 4 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
+## Chain 4 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
+## Chain 4 Iteration: 8000 / 8000 [100%]  (Sampling) 
+## Chain 4 finished in 0.1 seconds.
+## 
+## All 4 chains finished successfully.
+## Mean chain execution time: 0.1 seconds.
+## Total execution time: 0.9 seconds.</code></pre>
 <p>Checamos diagnósticos:</p>
-<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb769-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
-<pre><code>## Error: No CmdStan runs finished successfully. Unable to run bin/diagnose.</code></pre>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb709-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
+<pre><code>## Processing csv files: /tmp/RtmpxL3JZN/modelo-cantantes-202212030056-1-11001b.csv, /tmp/RtmpxL3JZN/modelo-cantantes-202212030056-2-11001b.csv, /tmp/RtmpxL3JZN/modelo-cantantes-202212030056-3-11001b.csv, /tmp/RtmpxL3JZN/modelo-cantantes-202212030056-4-11001b.csv
+## 
+## Checking sampler transitions treedepth.
+## Treedepth satisfactory for all transitions.
+## 
+## Checking sampler transitions for divergences.
+## No divergent transitions found.
+## 
+## Checking E-BFMI - sampler transitions HMC potential energy.
+## E-BFMI satisfactory.
+## 
+## Effective sample size satisfactory.
+## 
+## Split R-hat values satisfactory all parameters.
+## 
+## Processing complete, no problems detected.</code></pre>
 <p>Si no hay problemas, podemos ver el resumen:</p>
-<div class="sourceCode" id="cb771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb771-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb771-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">summary</span>()</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
-<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb773-1" aria-hidden="true" tabindex="-1"></a>resumen</span></code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;resumen&#39; not found</code></pre>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb711-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">summary</span>()</span>
+<span id="cb711-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb711-2" aria-hidden="true" tabindex="-1"></a>resumen</span></code></pre></div>
+<pre><code>## # A tibble: 23 × 10
+##    variable   mean median    sd   mad     q5    q95  rhat ess_bulk ess_tail
+##    &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+##  1 lp__     -46.2  -45.9   1.07 0.766 -48.3  -45.2   1.00    6796.    8066.
+##  2 mu       176.   176.    1.35 1.31  174.   178.    1.00   12204.    9317.
+##  3 sigma      6.70   6.54  1.18 1.10    5.07   8.85  1.00   12061.    8424.
+##  4 y_sim[1] 176.   176.    7.00 6.76  164.   187.    1.00   15924.   15078.
+##  5 y_sim[2] 176.   176.    6.91 6.76  164.   187.    1.00   15815.   15205.
+##  6 y_sim[3] 176.   176.    7.01 6.77  164.   187.    1.00   14830.   15367.
+##  7 y_sim[4] 176.   176.    6.95 6.69  164.   187.    1.00   15770.   15668.
+##  8 y_sim[5] 176.   176.    6.91 6.73  164.   187.    1.00   15282.   14563.
+##  9 y_sim[6] 176.   176.    6.99 6.69  164.   187.    1.00   16240.   15265.
+## 10 y_sim[7] 176.   176.    6.90 6.61  164.   187.    1.00   15662.   15977.
+## # … with 13 more rows</code></pre>
 <p>El intervalo 95% que obtenemos es:</p>
-<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb775-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;mu&quot;</span>, <span class="st">&quot;sigma&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb775-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb775-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> sigma)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb775-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb775-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb713-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;mu&quot;</span>, <span class="st">&quot;sigma&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb713-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb713-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> sigma)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb713-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb713-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code></pre></div>
+<p><img src="17-inferencia-stan-01_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>Y ahora extraemos algunas replicaciones de la posterior predictiva:</p>
-<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb777-1" aria-hidden="true" tabindex="-1"></a>y_sim_tbl <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="st">&quot;y_sim&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb777-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb777-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;y_sim&quot;</span>), <span class="st">&quot;nombre&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb777-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb777-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(nombre, <span class="fu">c</span>(<span class="st">&quot;nombre&quot;</span>, <span class="st">&quot;n_obs&quot;</span>, <span class="st">&quot;vacio&quot;</span>), <span class="st">&quot;[</span><span class="sc">\\</span><span class="st">[</span><span class="sc">\\</span><span class="st">]]&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb777-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb777-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>nombre, <span class="sc">-</span>vacio) <span class="sc">%&gt;%</span> </span>
-<span id="cb777-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb777-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.chain <span class="sc">==</span> <span class="dv">1</span>, .iteration <span class="sc">&lt;</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb777-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb777-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(.iteration, value) <span class="sc">%&gt;%</span> </span>
-<span id="cb777-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb777-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="fu">tibble</span>(<span class="at">.iteration =</span> <span class="dv">12</span>, <span class="at">value =</span> <span class="fu">round</span>(cantantes<span class="sc">$</span>estatura_cm, <span class="dv">0</span>)))</span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
-<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb779-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb779-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(y_sim_tbl, <span class="fu">aes</span>(<span class="at">sample =</span> value)) <span class="sc">+</span></span>
-<span id="cb779-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb779-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb779-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb779-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> .iteration)</span></code></pre></div>
-<pre><code>## Error in ggplot(y_sim_tbl, aes(sample = value)): object &#39;y_sim_tbl&#39; not found</code></pre>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb714-1" aria-hidden="true" tabindex="-1"></a>y_sim_tbl <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="st">&quot;y_sim&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as_draws_df</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb714-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb714-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;y_sim&quot;</span>), <span class="st">&quot;nombre&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb714-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb714-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(nombre, <span class="fu">c</span>(<span class="st">&quot;nombre&quot;</span>, <span class="st">&quot;n_obs&quot;</span>, <span class="st">&quot;vacio&quot;</span>), <span class="st">&quot;[</span><span class="sc">\\</span><span class="st">[</span><span class="sc">\\</span><span class="st">]]&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb714-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb714-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>nombre, <span class="sc">-</span>vacio) <span class="sc">%&gt;%</span> </span>
+<span id="cb714-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb714-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.chain <span class="sc">==</span> <span class="dv">1</span>, .iteration <span class="sc">&lt;</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb714-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb714-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(.iteration, value) <span class="sc">%&gt;%</span> </span>
+<span id="cb714-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb714-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="fu">tibble</span>(<span class="at">.iteration =</span> <span class="dv">12</span>, <span class="at">value =</span> <span class="fu">round</span>(cantantes<span class="sc">$</span>estatura_cm, <span class="dv">0</span>)))</span></code></pre></div>
+<pre><code>## Warning: Dropping &#39;draws_df&#39; class as required metadata was removed.</code></pre>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb716-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(y_sim_tbl, <span class="fu">aes</span>(<span class="at">sample =</span> value)) <span class="sc">+</span></span>
+<span id="cb716-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb716-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb716-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb716-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> .iteration)</span></code></pre></div>
+<p><img src="17-inferencia-stan-01_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 </div>
 <div id="ejemplo-exámenes-1" class="section level2 hasAnchor" number="13.1">
 <h2><span class="header-section-number">13.1</span> Ejemplo: exámenes<a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#ejemplo-exámenes-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb781-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-1" aria-hidden="true" tabindex="-1"></a>sim_formas <span class="ot">&lt;-</span> <span class="cf">function</span>(p_azar, p_corr){</span>
-<span id="cb781-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-2" aria-hidden="true" tabindex="-1"></a>  tipo <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span> <span class="sc">-</span> p_azar)</span>
-<span id="cb781-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(tipo<span class="sc">==</span><span class="dv">0</span>){</span>
-<span id="cb781-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># al azar</span></span>
-<span id="cb781-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span>
-<span id="cb781-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb781-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># no al azar</span></span>
-<span id="cb781-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, p_corr)</span>
-<span id="cb781-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb781-10"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-10" aria-hidden="true" tabindex="-1"></a>  x</span>
-<span id="cb781-11"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb781-12"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-12" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
-<span id="cb781-13"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb781-13" aria-hidden="true" tabindex="-1"></a>muestra_1 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="sc">~</span> <span class="fu">sim_formas</span>(<span class="fl">0.35</span>, <span class="fl">0.5</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb782-1" aria-hidden="true" tabindex="-1"></a>mod_informado</span></code></pre></div>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-1" aria-hidden="true" tabindex="-1"></a>sim_formas <span class="ot">&lt;-</span> <span class="cf">function</span>(p_azar, p_corr){</span>
+<span id="cb717-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-2" aria-hidden="true" tabindex="-1"></a>  tipo <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span> <span class="sc">-</span> p_azar)</span>
+<span id="cb717-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(tipo<span class="sc">==</span><span class="dv">0</span>){</span>
+<span id="cb717-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># al azar</span></span>
+<span id="cb717-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span>
+<span id="cb717-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb717-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># no al azar</span></span>
+<span id="cb717-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">10</span>, p_corr)</span>
+<span id="cb717-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb717-10"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-10" aria-hidden="true" tabindex="-1"></a>  x</span>
+<span id="cb717-11"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb717-12"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-12" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb717-13"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb717-13" aria-hidden="true" tabindex="-1"></a>muestra_1 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="sc">~</span> <span class="fu">sim_formas</span>(<span class="fl">0.35</span>, <span class="fl">0.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb718-1" aria-hidden="true" tabindex="-1"></a>mod_informado</span></code></pre></div>
 <pre><code>## // Ejemplo de estimación del máximo de uniforme
 ## data {
 ##   int n; // número de observaciones
@@ -931,15 +1033,15 @@ verificación predictiva posterior.</p>
 ##   }
 ## }</code></pre>
 <p>Pasamos datos y muestreamos</p>
-<div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb784-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
-<span id="cb784-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-2" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">length</span>(muestra_1), <span class="at">y =</span> muestra_1)</span>
-<span id="cb784-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-3" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod_informado<span class="sc">$</span><span class="fu">sample</span>(</span>
-<span id="cb784-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
-<span id="cb784-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
-<span id="cb784-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
-<span id="cb784-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">4000</span>,</span>
-<span id="cb784-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">4000</span>,</span>
-<span id="cb784-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb784-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
+<span id="cb720-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-2" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">length</span>(muestra_1), <span class="at">y =</span> muestra_1)</span>
+<span id="cb720-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-3" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod_informado<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb720-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
+<span id="cb720-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
+<span id="cb720-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb720-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">4000</span>,</span>
+<span id="cb720-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">4000</span>,</span>
+<span id="cb720-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb720-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
 <pre><code>## Running MCMC with 4 sequential chains...
 ## 
 ## Chain 1 Iteration:    1 / 8000 [  0%]  (Warmup) 
@@ -962,7 +1064,7 @@ verificación predictiva posterior.</p>
 ## Chain 3 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
 ## Chain 3 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
 ## Chain 3 Iteration: 8000 / 8000 [100%]  (Sampling) 
-## Chain 3 finished in 2.7 seconds.
+## Chain 3 finished in 3.1 seconds.
 ## Chain 4 Iteration:    1 / 8000 [  0%]  (Warmup) 
 ## Chain 4 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
 ## Chain 4 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
@@ -972,11 +1074,11 @@ verificación predictiva posterior.</p>
 ## Chain 4 finished in 2.8 seconds.
 ## 
 ## All 4 chains finished successfully.
-## Mean chain execution time: 2.7 seconds.
-## Total execution time: 11.2 seconds.</code></pre>
+## Mean chain execution time: 2.8 seconds.
+## Total execution time: 11.6 seconds.</code></pre>
 <p>Checamos diagnósticos:</p>
-<div class="sourceCode" id="cb786"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb786-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb786-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
-<pre><code>## Processing csv files: /tmp/Rtmp9yOOUr/modelo-examenes-202212030035-1-719098.csv, /tmp/Rtmp9yOOUr/modelo-examenes-202212030035-2-719098.csv, /tmp/Rtmp9yOOUr/modelo-examenes-202212030035-3-719098.csv, /tmp/Rtmp9yOOUr/modelo-examenes-202212030035-4-719098.csv
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb722-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
+<pre><code>## Processing csv files: /tmp/RtmpxL3JZN/modelo-examenes-202212030056-1-7190b5.csv, /tmp/RtmpxL3JZN/modelo-examenes-202212030056-2-7190b5.csv, /tmp/RtmpxL3JZN/modelo-examenes-202212030056-3-7190b5.csv, /tmp/RtmpxL3JZN/modelo-examenes-202212030056-4-7190b5.csv
 ## 
 ## Checking sampler transitions treedepth.
 ## Treedepth satisfactory for all transitions.
@@ -993,8 +1095,8 @@ verificación predictiva posterior.</p>
 ## 
 ## Processing complete, no problems detected.</code></pre>
 <p>Si no hay problemas, podemos ver el resumen:</p>
-<div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb788-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb788-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">summary</span>()</span>
-<span id="cb788-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb788-2" aria-hidden="true" tabindex="-1"></a>resumen</span></code></pre></div>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb724-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> ajuste<span class="sc">$</span><span class="fu">summary</span>()</span>
+<span id="cb724-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb724-2" aria-hidden="true" tabindex="-1"></a>resumen</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 10
 ##   variable       mean   median     sd    mad       q5      q95  rhat ess_bulk
 ##   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
@@ -1002,20 +1104,20 @@ verificación predictiva posterior.</p>
 ## 2 theta_azar    0.375    0.375 0.0468 0.0469    0.298    0.452  1.00    7631.
 ## 3 theta_corr    0.525    0.525 0.0182 0.0180    0.495    0.555  1.00    8297.
 ## # … with 1 more variable: ess_tail &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb790-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb790-1" aria-hidden="true" tabindex="-1"></a>sims_theta_tbl <span class="ot">&lt;-</span> </span>
-<span id="cb790-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb790-2" aria-hidden="true" tabindex="-1"></a>  ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;theta_azar&quot;</span>, <span class="st">&quot;theta_corr&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb790-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb790-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_draws_df</span>()  </span>
-<span id="cb790-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb790-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_theta_tbl, <span class="fu">aes</span>(<span class="at">x =</span> theta_azar, <span class="at">y =</span> theta_corr)) <span class="sc">+</span></span>
-<span id="cb790-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb790-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb726-1" aria-hidden="true" tabindex="-1"></a>sims_theta_tbl <span class="ot">&lt;-</span> </span>
+<span id="cb726-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb726-2" aria-hidden="true" tabindex="-1"></a>  ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;theta_azar&quot;</span>, <span class="st">&quot;theta_corr&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb726-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb726-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_draws_df</span>()  </span>
+<span id="cb726-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb726-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_theta_tbl, <span class="fu">aes</span>(<span class="at">x =</span> theta_azar, <span class="at">y =</span> theta_corr)) <span class="sc">+</span></span>
+<span id="cb726-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb726-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <p><img src="17-inferencia-stan-01_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 </div>
 <div id="ejemplo-exámenes-mal-identificado" class="section level2 hasAnchor" number="13.2">
 <h2><span class="header-section-number">13.2</span> Ejemplo: exámenes, mal identificado<a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#ejemplo-exámenes-mal-identificado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En este ejemplo cambiamos los parámetros de la simulación
 y ponemos iniciales poco informativas.</p>
-<div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb791-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
-<span id="cb791-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb791-2" aria-hidden="true" tabindex="-1"></a>muestra_2 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="sc">~</span> <span class="fu">sim_formas</span>(<span class="fl">0.35</span>, <span class="fl">0.21</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb792-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb792-1" aria-hidden="true" tabindex="-1"></a>mod_no_inf</span></code></pre></div>
+<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb727-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb727-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb727-2" aria-hidden="true" tabindex="-1"></a>muestra_2 <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="sc">~</span> <span class="fu">sim_formas</span>(<span class="fl">0.35</span>, <span class="fl">0.21</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb728-1" aria-hidden="true" tabindex="-1"></a>mod_no_inf</span></code></pre></div>
 <pre><code>## // Ejemplo de estimación del máximo de uniforme
 ## data {
 ##   int n; // número de observaciones
@@ -1040,38 +1142,79 @@ y ponemos iniciales poco informativas.</p>
 ##   }
 ## }</code></pre>
 <p>Pasamos datos y muestreamos</p>
-<div class="sourceCode" id="cb794"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb794-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
-<span id="cb794-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-2" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">length</span>(muestra_2), <span class="at">y =</span> muestra_2)</span>
-<span id="cb794-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-3" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod_no_inf<span class="sc">$</span><span class="fu">sample</span>(</span>
-<span id="cb794-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
-<span id="cb794-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
-<span id="cb794-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
-<span id="cb794-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">4000</span>,</span>
-<span id="cb794-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">4000</span>,</span>
-<span id="cb794-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb794-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
-<pre><code>## Running MCMC with 4 sequential chains...</code></pre>
-<pre><code>## Chain 1 ./modelo-examenes-no-inf: 1: Syntax error: word unexpected (expecting &quot;)&quot;)</code></pre>
-<pre><code>## Warning: Chain 1 finished unexpectedly!</code></pre>
-<pre><code>## Chain 2 ./modelo-examenes-no-inf: 1: Syntax error: word unexpected (expecting &quot;)&quot;)</code></pre>
-<pre><code>## Warning: Chain 2 finished unexpectedly!</code></pre>
-<pre><code>## Chain 3 ./modelo-examenes-no-inf: 1: Syntax error: word unexpected (expecting &quot;)&quot;)</code></pre>
-<pre><code>## Warning: Chain 3 finished unexpectedly!</code></pre>
-<pre><code>## Chain 4 ./modelo-examenes-no-inf: 1: Syntax error: word unexpected (expecting &quot;)&quot;)</code></pre>
-<pre><code>## Warning: Chain 4 finished unexpectedly!</code></pre>
-<pre><code>## Warning: All chains finished unexpectedly! Use the $output(chain_id) method for more information.</code></pre>
-<pre><code>## Warning: Use read_cmdstan_csv() to read the results of the failed chains.</code></pre>
-<pre><code>## Warning: No chains finished successfully. Unable to retrieve the fit.</code></pre>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
+<span id="cb730-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-2" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">length</span>(muestra_2), <span class="at">y =</span> muestra_2)</span>
+<span id="cb730-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-3" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod_no_inf<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb730-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
+<span id="cb730-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
+<span id="cb730-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb730-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">4000</span>,</span>
+<span id="cb730-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">4000</span>,</span>
+<span id="cb730-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb730-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
+<pre><code>## Running MCMC with 4 sequential chains...
+## 
+## Chain 1 Iteration:    1 / 8000 [  0%]  (Warmup) 
+## Chain 1 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
+## Chain 1 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
+## Chain 1 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
+## Chain 1 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
+## Chain 1 Iteration: 8000 / 8000 [100%]  (Sampling) 
+## Chain 1 finished in 3.7 seconds.
+## Chain 2 Iteration:    1 / 8000 [  0%]  (Warmup) 
+## Chain 2 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
+## Chain 2 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
+## Chain 2 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
+## Chain 2 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
+## Chain 2 Iteration: 8000 / 8000 [100%]  (Sampling) 
+## Chain 2 finished in 3.5 seconds.
+## Chain 3 Iteration:    1 / 8000 [  0%]  (Warmup) 
+## Chain 3 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
+## Chain 3 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
+## Chain 3 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
+## Chain 3 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
+## Chain 3 Iteration: 8000 / 8000 [100%]  (Sampling) 
+## Chain 3 finished in 6.2 seconds.
+## Chain 4 Iteration:    1 / 8000 [  0%]  (Warmup) 
+## Chain 4 Iteration: 2000 / 8000 [ 25%]  (Warmup) 
+## Chain 4 Iteration: 4000 / 8000 [ 50%]  (Warmup) 
+## Chain 4 Iteration: 4001 / 8000 [ 50%]  (Sampling) 
+## Chain 4 Iteration: 6000 / 8000 [ 75%]  (Sampling) 
+## Chain 4 Iteration: 8000 / 8000 [100%]  (Sampling) 
+## Chain 4 finished in 3.5 seconds.
+## 
+## All 4 chains finished successfully.
+## Mean chain execution time: 4.2 seconds.
+## Total execution time: 17.3 seconds.</code></pre>
+<pre><code>## Warning: 520 of 16000 (3.0%) transitions ended with a divergence.
+## See https://mc-stan.org/misc/warnings for details.</code></pre>
 <p>Y obtenemos mensajes de advertencia (divergencias), lo que implica que
 los diagnósticos indican que es posible que las cadenas no hayan explorado
 suficientemente la posterior</p>
-<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb807-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
-<pre><code>## Error: No CmdStan runs finished successfully. Unable to run bin/diagnose.</code></pre>
-<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb809-1" aria-hidden="true" tabindex="-1"></a>sims_theta_tbl <span class="ot">&lt;-</span> </span>
-<span id="cb809-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb809-2" aria-hidden="true" tabindex="-1"></a>  ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;theta_azar&quot;</span>, <span class="st">&quot;theta_corr&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb809-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb809-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_draws_df</span>()  </span></code></pre></div>
-<pre><code>## Error: No chains finished successfully. Unable to retrieve the draws.</code></pre>
-<div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb811-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_theta_tbl, <span class="fu">aes</span>(<span class="at">x =</span> theta_azar, <span class="at">y =</span> theta_corr)) <span class="sc">+</span></span>
-<span id="cb811-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb811-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb733-1" aria-hidden="true" tabindex="-1"></a>ajuste<span class="sc">$</span><span class="fu">cmdstan_diagnose</span>()</span></code></pre></div>
+<pre><code>## Processing csv files: /tmp/RtmpxL3JZN/modelo-examenes-no-inf-202212030057-1-7190b5.csv, /tmp/RtmpxL3JZN/modelo-examenes-no-inf-202212030057-2-7190b5.csv, /tmp/RtmpxL3JZN/modelo-examenes-no-inf-202212030057-3-7190b5.csv, /tmp/RtmpxL3JZN/modelo-examenes-no-inf-202212030057-4-7190b5.csv
+## 
+## Checking sampler transitions treedepth.
+## Treedepth satisfactory for all transitions.
+## 
+## Checking sampler transitions for divergences.
+## 520 of 16000 (3.25%) transitions ended with a divergence.
+## These divergent transitions indicate that HMC is not fully able to explore the posterior distribution.
+## Try increasing adapt delta closer to 1.
+## If this doesn&#39;t remove all divergences, try to reparameterize the model.
+## 
+## Checking E-BFMI - sampler transitions HMC potential energy.
+## E-BFMI satisfactory.
+## 
+## Effective sample size satisfactory.
+## 
+## Split R-hat values satisfactory all parameters.
+## 
+## Processing complete.</code></pre>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb735-1" aria-hidden="true" tabindex="-1"></a>sims_theta_tbl <span class="ot">&lt;-</span> </span>
+<span id="cb735-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb735-2" aria-hidden="true" tabindex="-1"></a>  ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;theta_azar&quot;</span>, <span class="st">&quot;theta_corr&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb735-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb735-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_draws_df</span>()  </span>
+<span id="cb735-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb735-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_theta_tbl, <span class="fu">aes</span>(<span class="at">x =</span> theta_azar, <span class="at">y =</span> theta_corr)) <span class="sc">+</span></span>
+<span id="cb735-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb735-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <p><img src="17-inferencia-stan-01_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 Donde vemos que el problema es serio: cuando <span class="math inline">\(\theta_{azar}\)</span> es chico, los
 datos son consistentes con valores de <span class="math inline">\(\theta_{corr}\)</span> cercanos a 0.2. Pero
@@ -1087,15 +1230,15 @@ si se hace más grande, entonces aparecen problemas numéricos y rechazos en los
 una proporción considerable de estudiantes <strong>no</strong> contesta al azar.</li>
 </ul>
 <p>Si corremos el modelo informado con la muestra de esta población, obtenemos:</p>
-<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
-<span id="cb812-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-2" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">length</span>(muestra_2), <span class="at">y =</span> muestra_2)</span>
-<span id="cb812-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-3" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod_informado<span class="sc">$</span><span class="fu">sample</span>(</span>
-<span id="cb812-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
-<span id="cb812-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
-<span id="cb812-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
-<span id="cb812-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">4000</span>,</span>
-<span id="cb812-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">4000</span>,</span>
-<span id="cb812-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb812-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
+<span id="cb736-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-2" aria-hidden="true" tabindex="-1"></a>datos_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">n =</span> <span class="fu">length</span>(muestra_2), <span class="at">y =</span> muestra_2)</span>
+<span id="cb736-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-3" aria-hidden="true" tabindex="-1"></a>ajuste <span class="ot">&lt;-</span> mod_informado<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb736-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> datos_lista,</span>
+<span id="cb736-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">1234</span>,</span>
+<span id="cb736-6"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb736-7"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> <span class="dv">4000</span>,</span>
+<span id="cb736-8"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> <span class="dv">4000</span>,</span>
+<span id="cb736-9"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb736-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">2000</span>)</span></code></pre></div>
 <pre><code>## Running MCMC with 4 sequential chains...
 ## 
 ## Chain 1 Iteration:    1 / 8000 [  0%]  (Warmup) 
@@ -1129,13 +1272,13 @@ una proporción considerable de estudiantes <strong>no</strong> contesta al azar
 ## 
 ## All 4 chains finished successfully.
 ## Mean chain execution time: 2.7 seconds.
-## Total execution time: 11.1 seconds.</code></pre>
+## Total execution time: 11.2 seconds.</code></pre>
 <p>No tenemos problemas numéricos, y la posterior se ve como sigue:</p>
-<div class="sourceCode" id="cb814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb814-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb814-1" aria-hidden="true" tabindex="-1"></a>sims_theta_tbl <span class="ot">&lt;-</span> </span>
-<span id="cb814-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb814-2" aria-hidden="true" tabindex="-1"></a>  ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;theta_azar&quot;</span>, <span class="st">&quot;theta_corr&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb814-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb814-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_draws_df</span>()  </span>
-<span id="cb814-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb814-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_theta_tbl, <span class="fu">aes</span>(<span class="at">x =</span> theta_azar, <span class="at">y =</span> theta_corr)) <span class="sc">+</span></span>
-<span id="cb814-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb814-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb738-1" aria-hidden="true" tabindex="-1"></a>sims_theta_tbl <span class="ot">&lt;-</span> </span>
+<span id="cb738-2"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb738-2" aria-hidden="true" tabindex="-1"></a>  ajuste<span class="sc">$</span><span class="fu">draws</span>(<span class="fu">c</span>(<span class="st">&quot;theta_azar&quot;</span>, <span class="st">&quot;theta_corr&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb738-3"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb738-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_draws_df</span>()  </span>
+<span id="cb738-4"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb738-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_theta_tbl, <span class="fu">aes</span>(<span class="at">x =</span> theta_azar, <span class="at">y =</span> theta_corr)) <span class="sc">+</span></span>
+<span id="cb738-5"><a href="ejemplos-de-inferencia-bayesiana-en-stan-i.html#cb738-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <p><img src="17-inferencia-stan-01_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 
 </div>
